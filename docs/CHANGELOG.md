@@ -2,6 +2,16 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## [4.0.1] — 2026-08-18
+
+### Repositório oficial
+- Publicação da baseline do site comercial no repositório `GabrielGonzagaSilva/Aureum-Site-Comercial`.
+- README atualizado para definir este repositório e o branch `main` como fonte oficial das próximas evoluções do site.
+
+### Correção funcional
+- Remoção do JavaScript inline legado da home.
+- Menu mobile, FAQ, animações, formulário, redes sociais e ano do footer passam a depender apenas de `assets/js/site.js`, evitando listeners duplicados e comportamento inconsistente.
+
 ## [4.0.0] — 2026-08-18
 
 ### Arquitetura
