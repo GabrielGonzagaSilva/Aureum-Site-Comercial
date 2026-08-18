@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## [4.0.2] — 2026-08-18
+
+### Publicação
+- Adicionado workflow em `.github/workflows/pages.yml` para publicação automática no GitHub Pages a cada push no branch `main`.
+- Configurado deploy estático com `actions/checkout@v6`, `actions/configure-pages@v6`, `actions/upload-pages-artifact@v4` e `actions/deploy-pages@v4`.
+- O endereço previsto de publicação é `https://gabrielgonzagasilva.github.io/Aureum-Site-Comercial/` após a ativação inicial do GitHub Pages no repositório.
+
 ## [4.0.1] — 2026-08-18
 
 ### Repositório oficial
