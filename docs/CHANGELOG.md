@@ -2,6 +2,19 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## [4.0.4] — 2026-08-18
+
+### Proteção de propriedade intelectual
+- Revisão completa da home e das páginas de Portugal, Espanha, Austrália e Brasil para evitar exposição pública do método operacional da Aureum.
+- Removidas sequências explícitas de análise, mapa documental, roadmap de execução, etapas internas e fluxos replicáveis por concorrentes.
+- A seção pública de método foi reposicionada como **Abordagem Aureum**, comunicando apenas experiência percebida pelo cliente: individualização, responsabilidade, clareza, organização e acompanhamento.
+- As páginas de destinos deixaram de apresentar processos em quatro etapas e passaram a comunicar princípios de experiência e atendimento.
+- Copy comercial refinada para preservar autoridade e diferenciação sem revelar árvores de decisão, checklists, lógica de elegibilidade ou mecânica operacional.
+
+### Governança
+- `docs/MAINTENANCE.md` passou a conter uma regra permanente de proteção do conteúdo público.
+- Fica proibida a publicação no site comercial de métodos passo a passo, critérios internos, checklists proprietários, roadmaps operacionais, lógica de precificação, inteligência competitiva, automações, prompts, dashboards e estruturas do Hub.
+
 ## [4.0.3] — 2026-08-18
 
 ### Correção de publicação
