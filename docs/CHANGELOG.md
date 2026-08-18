@@ -2,6 +2,12 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## [4.0.3] — 2026-08-18
+
+### Correção de publicação
+- Corrigido o workflow do GitHub Pages: `actions/configure-pages@v6` foi substituído por `actions/configure-pages@v5`, versão disponível e documentada pelo GitHub.
+- O push no `main` dispara uma nova tentativa de publicação automaticamente.
+
 ## [4.0.2] — 2026-08-18
 
 ### Publicação
