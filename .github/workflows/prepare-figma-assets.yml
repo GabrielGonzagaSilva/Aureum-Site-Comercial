@@ -19,9 +19,8 @@ jobs:
           npm install puppeteer-core --no-save
           CHROME="$(which google-chrome || which chromium-browser || which chromium)"
           export CHROME
-          cat > /tmp/capture-images.mjs <<'EOF'
+          cat > capture-images.mjs <<'EOF'
           import puppeteer from 'puppeteer-core';
-          import fs from 'fs';
           const browser = await puppeteer.launch({headless:true, executablePath:process.env.CHROME, args:['--no-sandbox','--disable-setuid-sandbox']});
           const page = await browser.newPage();
           await page.setViewport({width:1440,height:1000,deviceScaleFactor:1});
@@ -29,7 +28,7 @@ jobs:
             await page.goto(url,{waitUntil:'networkidle2',timeout:60000});
             const el=await page.$(selector);
             if(!el) throw new Error('Missing selector '+selector+' on '+url);
-            await el.screenshot({path});
+            await el.screenshot({path,type:'jpeg',quality:88});
           }
           const base='https://gabrielgonzagasilva.github.io/Aureum-Site-Comercial/';
           await shot(base,'.hero-image img','figma-reference-assets/hero.jpg');
@@ -41,7 +40,8 @@ jobs:
           await shot(base,'.dest-card:nth-child(4) img','figma-reference-assets/brasil.jpg');
           await browser.close();
           EOF
-          node /tmp/capture-images.mjs
+          node capture-images.mjs
+          rm capture-images.mjs
           for f in figma-reference-assets/*.jpg; do base64 -w 0 "$f" > "$f.b64"; done
       - name: Commit reference assets
         run: |
