@@ -13,37 +13,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Capture exact website image assets
+      - name: Prepare Aureum visual references
         run: |
-          mkdir -p figma-reference-assets
-          npm install puppeteer-core sharp --no-save
-          CHROME="$(which google-chrome || which chromium-browser || which chromium)"
-          export CHROME
-          cat > capture-images.mjs <<'EOF'
-          import puppeteer from 'puppeteer-core';
+          mkdir -p figma-reference-assets/source
+          npm install sharp --no-save
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1665242014432-fe7d2ae8bdc5?auto=format&fit=crop&q=82&w=1800" -o figma-reference-assets/source/hero.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1668367274736-a1316e367e00?auto=format&fit=crop&q=82&w=1800" -o figma-reference-assets/source/editorial.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1544740915-448e8ff02e67?auto=format&fit=crop&q=84&w=1600" -o figma-reference-assets/source/private.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1686824580969-08bef47ac2e8?auto=format&fit=crop&q=75&w=1600" -o figma-reference-assets/source/portugal.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1594719072279-4cef70e118f0?auto=format&fit=crop&q=75&w=1600" -o figma-reference-assets/source/espanha.jpg
+          curl -L --fail --retry 3 "https://housingallaustralians.org.au/wp-content/uploads/2025/04/dan-freeman-7Zb7kUyQg1E-unsplash-scaled-1.jpg" -o figma-reference-assets/source/australia.jpg
+          curl -L --fail --retry 3 "https://pontospravoar.com/wp-content/uploads/2025/02/filipe-freitas-rm9uMJP8o18-unsplash.png" -o figma-reference-assets/source/brasil.png
+          cat > optimize.mjs <<'EOF'
           import sharp from 'sharp';
-          const browser = await puppeteer.launch({headless:true, executablePath:process.env.CHROME, args:['--no-sandbox','--disable-setuid-sandbox']});
-          const page = await browser.newPage();
-          await page.setViewport({width:1440,height:1000,deviceScaleFactor:1});
-          async function shot(url, selector, path){
-            await page.goto(url,{waitUntil:'networkidle2',timeout:60000});
-            const el=await page.$(selector);
-            if(!el) throw new Error('Missing selector '+selector+' on '+url);
-            const png=await el.screenshot({type:'png'});
-            await sharp(png).resize({width:700,withoutEnlargement:true}).jpeg({quality:48,mozjpeg:true}).toFile(path);
+          import fs from 'fs';
+          const files=[['hero','jpg'],['editorial','jpg'],['private','jpg'],['portugal','jpg'],['espanha','jpg'],['australia','jpg'],['brasil','png']];
+          for(const [name,ext] of files){
+            await sharp('figma-reference-assets/source/'+name+'.'+ext).resize({width:720,withoutEnlargement:true}).jpeg({quality:52,mozjpeg:true}).toFile('figma-reference-assets/'+name+'.jpg');
           }
-          const base='https://gabrielgonzagasilva.github.io/Aureum-Site-Comercial/';
-          await shot(base,'.hero-image img','figma-reference-assets/hero.jpg');
-          await shot(base,'.editorial-photo img','figma-reference-assets/editorial.jpg');
-          await shot(base,'.private-image img','figma-reference-assets/private.jpg');
-          await shot(base,'.dest-card:nth-child(1) img','figma-reference-assets/portugal.jpg');
-          await shot(base,'.dest-card:nth-child(2) img','figma-reference-assets/espanha.jpg');
-          await shot(base,'.dest-card:nth-child(3) img','figma-reference-assets/australia.jpg');
-          await shot(base,'.dest-card:nth-child(4) img','figma-reference-assets/brasil.jpg');
-          await browser.close();
           EOF
-          node capture-images.mjs
-          rm capture-images.mjs
+          node optimize.mjs
+          rm optimize.mjs
+          rm -rf figma-reference-assets/source
           rm -f figma-reference-assets/*.b64
           for f in figma-reference-assets/*.jpg; do base64 -w 0 "$f" > "$f.b64"; done
       - name: Commit reference assets
@@ -52,5 +43,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add figma-reference-assets
           git diff --cached --quiet && exit 0
-          git commit -m "optimize Figma reference image assets"
+          git commit -m "finalize Figma reference image assets"
           git push
