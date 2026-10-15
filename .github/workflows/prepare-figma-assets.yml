@@ -27,7 +27,7 @@ jobs:
           cat > optimize.mjs <<'EOF'
           import sharp from 'sharp';
           import fs from 'fs';
-          const files=[['hero','jpg'],['editorial','jpg'],['private','jpg'],['portugal','jpg'],['espanha','jpg'],['australia','jpg'],['brasil','png']];
+          const files=[['hero','jpg'],['editorial','jpg'],['private','jpg'],['portugal','jpg'],['espanha','jpg'],['brasil','png']];
           for(const [name,ext] of files){
             await sharp('figma-reference-assets/source/'+name+'.'+ext).resize({width:720,withoutEnlargement:true}).jpeg({quality:52,mozjpeg:true}).toFile('figma-reference-assets/'+name+'.jpg');
           }
