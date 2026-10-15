@@ -13,21 +13,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download Aureum image references
+      - name: Capture exact website image assets
         run: |
           mkdir -p figma-reference-assets
-          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1665242014432-fe7d2ae8bdc5?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/hero.jpg
-          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1668367274736-a1316e367e00?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/editorial.jpg
-          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1544740915-448e8ff02e67?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/private.jpg
-          curl -L --fail --retry 3 "https://source.unsplash.com/Nbiyg4rYF2c/1200x900" -o figma-reference-assets/portugal.jpg || true
-          curl -L --fail --retry 3 "https://source.unsplash.com/h05Lu60YZaM/1200x900" -o figma-reference-assets/espanha.jpg || true
-          curl -L --fail --retry 3 "https://source.unsplash.com/7Zb7kUyQg1E/1200x900" -o figma-reference-assets/australia.jpg || true
-          curl -L --fail --retry 3 "https://source.unsplash.com/rm9uMJP8o18/1200x900" -o figma-reference-assets/brasil.jpg || true
+          npm install puppeteer-core --no-save
+          CHROME="$(which google-chrome || which chromium-browser || which chromium)"
+          export CHROME
+          cat > /tmp/capture-images.mjs <<'EOF'
+          import puppeteer from 'puppeteer-core';
+          import fs from 'fs';
+          const browser = await puppeteer.launch({headless:true, executablePath:process.env.CHROME, args:['--no-sandbox','--disable-setuid-sandbox']});
+          const page = await browser.newPage();
+          await page.setViewport({width:1440,height:1000,deviceScaleFactor:1});
+          async function shot(url, selector, path){
+            await page.goto(url,{waitUntil:'networkidle2',timeout:60000});
+            const el=await page.$(selector);
+            if(!el) throw new Error('Missing selector '+selector+' on '+url);
+            await el.screenshot({path});
+          }
+          const base='https://gabrielgonzagasilva.github.io/Aureum-Site-Comercial/';
+          await shot(base,'.hero-image img','figma-reference-assets/hero.jpg');
+          await shot(base,'.editorial-photo img','figma-reference-assets/editorial.jpg');
+          await shot(base,'.private-image img','figma-reference-assets/private.jpg');
+          await shot(base,'.dest-card:nth-child(1) img','figma-reference-assets/portugal.jpg');
+          await shot(base,'.dest-card:nth-child(2) img','figma-reference-assets/espanha.jpg');
+          await shot(base,'.dest-card:nth-child(3) img','figma-reference-assets/australia.jpg');
+          await shot(base,'.dest-card:nth-child(4) img','figma-reference-assets/brasil.jpg');
+          await browser.close();
+          EOF
+          node /tmp/capture-images.mjs
+          for f in figma-reference-assets/*.jpg; do base64 -w 0 "$f" > "$f.b64"; done
       - name: Commit reference assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add figma-reference-assets
           git diff --cached --quiet && exit 0
-          git commit -m "add Figma reference image assets"
+          git commit -m "refresh Figma reference image assets"
           git push
