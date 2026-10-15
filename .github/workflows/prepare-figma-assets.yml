@@ -16,11 +16,12 @@ jobs:
       - name: Capture exact website image assets
         run: |
           mkdir -p figma-reference-assets
-          npm install puppeteer-core --no-save
+          npm install puppeteer-core sharp --no-save
           CHROME="$(which google-chrome || which chromium-browser || which chromium)"
           export CHROME
           cat > capture-images.mjs <<'EOF'
           import puppeteer from 'puppeteer-core';
+          import sharp from 'sharp';
           const browser = await puppeteer.launch({headless:true, executablePath:process.env.CHROME, args:['--no-sandbox','--disable-setuid-sandbox']});
           const page = await browser.newPage();
           await page.setViewport({width:1440,height:1000,deviceScaleFactor:1});
@@ -28,7 +29,8 @@ jobs:
             await page.goto(url,{waitUntil:'networkidle2',timeout:60000});
             const el=await page.$(selector);
             if(!el) throw new Error('Missing selector '+selector+' on '+url);
-            await el.screenshot({path,type:'jpeg',quality:88});
+            const png=await el.screenshot({type:'png'});
+            await sharp(png).resize({width:700,withoutEnlargement:true}).jpeg({quality:48,mozjpeg:true}).toFile(path);
           }
           const base='https://gabrielgonzagasilva.github.io/Aureum-Site-Comercial/';
           await shot(base,'.hero-image img','figma-reference-assets/hero.jpg');
@@ -42,6 +44,7 @@ jobs:
           EOF
           node capture-images.mjs
           rm capture-images.mjs
+          rm -f figma-reference-assets/*.b64
           for f in figma-reference-assets/*.jpg; do base64 -w 0 "$f" > "$f.b64"; done
       - name: Commit reference assets
         run: |
@@ -49,5 +52,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add figma-reference-assets
           git diff --cached --quiet && exit 0
-          git commit -m "refresh Figma reference image assets"
+          git commit -m "optimize Figma reference image assets"
           git push
