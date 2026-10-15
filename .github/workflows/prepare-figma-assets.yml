@@ -1,0 +1,33 @@
+name: Prepare Figma Reference Assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/prepare-figma-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Aureum image references
+        run: |
+          mkdir -p figma-reference-assets
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1665242014432-fe7d2ae8bdc5?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/hero.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1668367274736-a1316e367e00?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/editorial.jpg
+          curl -L --fail --retry 3 "https://images.unsplash.com/photo-1544740915-448e8ff02e67?auto=format&fit=crop&q=65&w=1200" -o figma-reference-assets/private.jpg
+          curl -L --fail --retry 3 "https://unsplash.com/photos/Nbiyg4rYF2c/download?force=true&w=1200" -o figma-reference-assets/portugal.jpg
+          curl -L --fail --retry 3 "https://unsplash.com/photos/h05Lu60YZaM/download?force=true&w=1000" -o figma-reference-assets/espanha.jpg
+          curl -L --fail --retry 3 "https://unsplash.com/photos/7Zb7kUyQg1E/download?force=true&w=1000" -o figma-reference-assets/australia.jpg
+          curl -L --fail --retry 3 "https://unsplash.com/photos/rm9uMJP8o18/download?force=true&w=1200" -o figma-reference-assets/brasil.jpg
+      - name: Commit reference assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figma-reference-assets
+          git diff --cached --quiet && exit 0
+          git commit -m "add Figma reference image assets"
+          git push
