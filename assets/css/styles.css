@@ -352,3 +352,180 @@
       .footer{padding-top:58px}.footer-col a{font-size:17px}.footer-brand p{font-size:12px}.footer-bottom{font-size:10px}
     }
     @media (max-width:360px){:root{--pad:16px}.mobile-menu a{font-size:36px}.hero h1{font-size:49px}.contact-intro h2{font-size:50px}.country-hero h1{font-size:54px}}
+
+
+/* =========================================================
+   IMPECCABLE QUALITY GATE — v4.0.5
+   Rigid grid, type, responsive and interaction rules.
+   ========================================================= */
+:root{
+  --max:1440px;
+  --pad:72px;
+  --section:128px;
+  --section-compact:96px;
+  --section-large:144px;
+}
+html{
+  scrollbar-color:var(--brass) var(--paper-2);
+}
+*{caret-color:var(--brass)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--paper-2)}
+::-webkit-scrollbar-thumb{background:var(--brass);border:3px solid var(--paper-2);border-radius:999px}
+a{text-underline-offset:.18em;text-decoration-thickness:1px}
+.shell{width:min(100%,var(--max));padding-left:max(var(--pad),env(safe-area-inset-left));padding-right:max(var(--pad),env(safe-area-inset-right))}
+.display,.section-title{letter-spacing:-.035em}
+.hero h1{font-size:clamp(58px,7vw,96px);letter-spacing:-.035em;max-width:900px}
+.intro-main h2{font-size:clamp(52px,6.4vw,88px);letter-spacing:-.035em}
+.section-title{font-size:clamp(44px,5.5vw,80px)}
+.editorial-content h2{font-size:clamp(44px,4.8vw,72px);letter-spacing:-.035em}
+.private-copy h2{font-size:clamp(44px,5vw,78px);letter-spacing:-.035em}
+.contact-intro h2{font-size:clamp(52px,6vw,88px);letter-spacing:-.035em}
+.country-hero h1{font-size:clamp(64px,7vw,96px);letter-spacing:-.035em}
+.country-overview-main h2,.country-note h2{font-size:clamp(44px,5vw,76px);letter-spacing:-.035em}
+.country-cta h2{font-size:clamp(48px,5.7vw,84px);letter-spacing:-.035em}
+
+/* Impeccable: headings carry their own weight; no kicker scaffolding. */
+.eyebrow,.country-kicker,.hero-side .index{display:none!important}
+.hero-copy,.editorial-content,.services-head>div,.method-copy,.private-copy,.faq-title,.contact-intro>div,
+.country-overview-aside,.country-process-head>div,.country-note-grid>div:first-child{padding-top:0}
+.services-head .section-title,.method-copy .section-title,.faq-title .section-title,
+.country-process-head .section-title,.country-note h2{margin-top:0!important}
+
+/* Remove decorative indexing and tags that do not carry information. */
+.principle>span,.service-num,.service-arrow,.step-num,.step-tags,.country-situation>span,.country-step>small{display:none!important}
+.principle{grid-template-columns:1fr;gap:0}
+.service{grid-template-columns:minmax(280px,.95fr) minmax(320px,1.05fr);gap:48px}
+.step{grid-template-columns:1fr}
+.country-situation{grid-template-columns:1fr;gap:0}
+
+/* Draw arrows as authored geometry instead of Unicode glyphs. */
+.hero-cta .circle,.submit-btn .circle,.dest-link{font-size:0;position:relative}
+.hero-cta .circle:before,.submit-btn .circle:before,.dest-link:before{
+  content:"";position:absolute;width:13px;height:1px;background:currentColor;left:50%;top:50%;transform:translate(-54%,-50%) rotate(-45deg)
+}
+.hero-cta .circle:after,.submit-btn .circle:after,.dest-link:after{
+  content:"";position:absolute;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;left:50%;top:50%;transform:translate(-2px,-8px)
+}
+.faq-q span:last-child{font-size:0;position:relative;width:20px;height:20px}
+.faq-q span:last-child:before,.faq-q span:last-child:after{
+  content:"";position:absolute;left:50%;top:50%;width:14px;height:1px;background:currentColor;transform:translate(-50%,-50%);transition:transform .2s ease
+}
+.faq-q span:last-child:after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-q[aria-expanded="true"] span:last-child:after{transform:translate(-50%,-50%) rotate(0deg)}
+
+/* Reading measure and hierarchy. */
+.hero-lede,.lede,.editorial-content>p,.method-copy p,.private-copy>p,.contact-intro p,
+.country-overview-main>p,.country-process-head p,.country-note-item p,.country-cta p{max-width:72ch}
+.services-head,.dest-head,.contact-intro,.country-process-head{align-items:start}
+.intro-copy,.private-notes{gap:32px}
+.service p,.step p,.country-situation p,.country-step p,.principle p,.private-note p,.faq-a p{
+  line-height:1.72
+}
+
+/* Contrast: small text must remain readable on dark surfaces. */
+.contact-intro p,.contact-side small,.field label,.consent,.footer-brand p,.footer-bottom,
+.footer-col strong,.contact-social strong,.field input::placeholder,.field textarea::placeholder{
+  color:rgba(255,255,255,.68)
+}
+.footer-col a,.social-link{color:rgba(255,255,255,.84)}
+.dest-head p,.country-note-item p{color:rgba(255,255,255,.68)}
+
+/* Interaction floor: 44px minimum targets and stable focus. */
+.nav a,.mobile-menu a,.hero-cta,.submit-btn,.social-link,.footer-col a,.breadcrumb a{
+  min-height:44px;display:inline-flex;align-items:center
+}
+.faq-q{min-height:56px}
+.field input,.field select{min-height:44px}
+.consent{min-height:44px;align-items:center}
+.consent input{width:18px;height:18px;flex:0 0 auto}
+.menu-button{min-width:44px;min-height:44px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--brass-light);outline-offset:4px
+}
+.field:focus-within{border-bottom-color:var(--brass-light)}
+
+/* Grid and rhythm: one documented geometry at desktop. */
+.intro-grid,.method-grid,.faq-grid,.country-overview-grid{
+  grid-template-columns:416px minmax(0,1fr);
+  gap:64px
+}
+.services-head,.dest-head,.contact-intro,.country-process-head,.country-cta-grid{
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:24px
+}
+.contact-layout,.country-note-grid{
+  grid-template-columns:minmax(0,4fr) minmax(0,8fr);
+  gap:24px
+}
+.hero-inner{grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:110px}
+.country-hero-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px}
+.editorial-split{grid-template-columns:minmax(0,6.5fr) minmax(0,5.5fr)}
+.private-frame{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
+
+/* Motion: restrained, interruptible, no repetitive theatrics. */
+.reveal{transform:translateY(12px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+.dest-card img{transition:transform .55s cubic-bezier(.16,1,.3,1),filter .35s ease}
+.service:hover{padding-left:0}
+@media (hover:hover) and (pointer:fine){
+  .service:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em}
+}
+
+/* Tablet: 8-column contract. */
+@media (min-width:768px) and (max-width:1023px){
+  :root{--pad:48px;--section:104px}
+  .shell{max-width:1024px}
+  .hero-inner,.intro-grid,.method-grid,.faq-grid,.country-overview-grid,
+  .services-head,.dest-head,.contact-intro,.contact-layout,.country-process-head,
+  .country-note-grid,.country-cta-grid,.country-hero-grid{gap:24px}
+  .intro-grid,.method-grid,.faq-grid,.country-overview-grid{grid-template-columns:minmax(0,3fr) minmax(0,5fr)}
+  .hero h1{font-size:clamp(58px,8vw,78px)}
+  .section-title{font-size:clamp(44px,6vw,64px)}
+}
+
+/* Mobile: 4-column contract; reflow, never scale-only. */
+@media (max-width:767px){
+  :root{--pad:20px;--section:80px}
+  body{font-size:16px}
+  .shell{max-width:390px}
+  .hero-inner,.intro-grid,.method-grid,.faq-grid,.services-head,.dest-head,.contact-intro,
+  .contact-layout,.country-hero-grid,.country-overview-grid,.country-process-head,
+  .country-note-grid,.country-cta-grid,.private-frame,.editorial-split{
+    display:grid;grid-template-columns:1fr;gap:32px
+  }
+  .hero-inner{padding-top:124px;padding-bottom:72px}
+  .hero h1{font-size:clamp(52px,14vw,64px);line-height:.96}
+  .hero-lede,.lede,.intro-copy p,.editorial-content>p,.services-head .lede,.dest-head p,
+  .method-copy p,.private-copy>p,.contact-intro p,.service p,.step p,.principle p,
+  .private-note p,.faq-a p,.contact-side p,.country-overview-aside p,
+  .country-overview-main>p,.country-situation p,.country-process-head p,
+  .country-step p,.country-note-item p,.country-cta p,.footer-brand p,.footer-bottom{
+    font-size:16px
+  }
+  .section-title,.intro-main h2,.editorial-content h2,.private-copy h2,.contact-intro h2,
+  .country-overview-main h2,.country-note h2,.country-cta h2{font-size:clamp(40px,11vw,56px)}
+  .service{grid-template-columns:1fr;gap:12px;padding:28px 0}
+  .service p{grid-column:auto}
+  .dest-grid{display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:16px;margin:0;padding:0;overflow:visible}
+  .dest-card,.dest-card:first-child,.dest-card:nth-child(4){min-width:0;width:100%;height:420px;grid-column:auto;grid-row:auto}
+  .dest-card:first-child{height:500px}
+  .country-hero-media{min-height:420px}
+  .country-steps{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr;gap:36px}
+  .footer-brand{grid-column:auto}
+  .footer-col a,.social-link{font-size:18px}
+  .social-row{gap:4px 20px}
+  .mobile-menu{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+  .mobile-menu a{font-size:clamp(34px,10vw,44px);min-height:60px}
+  .contact-form{grid-template-columns:1fr}
+  .field.full,.consent,.form-submit{grid-column:1}
+  .form-submit{align-items:flex-start;flex-direction:column}
+  .form-status{text-align:left}
+}
+@media (max-width:359px){
+  :root{--pad:16px}
+  .shell{max-width:100%}
+}
+
+/* Large screens keep the 1440/1296 contract instead of stretching indefinitely. */
+@media (min-width:1441px){:root{--max:1440px;--pad:72px}}
