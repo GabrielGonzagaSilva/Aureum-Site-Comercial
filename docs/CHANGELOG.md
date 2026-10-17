@@ -2,6 +2,23 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## [4.0.5] — 2026-10-17
+
+### Impeccable quality gate
+- Aplicado um passe completo de layout, adaptação responsiva e polish em todas as UIs públicas da Aureum.
+- Grid desktop fixado em 12 colunas com 72 px de margem, 24 px de gutter e área útil de 1296 px; tablet em 8 colunas com 48 px de margem; mobile em 4 colunas com 20 px de margem.
+- Removidos eyebrows/kickers, numeração ornamental, letras decorativas e tags sem função informacional.
+- Tipografia revisada com display máximo de 96 px, tracking limitado a -0.04em, medidas de leitura mais controladas e body mobile mínimo de 16 px.
+- Destinos no mobile passaram de carrossel obrigatório para fluxo vertical em uma coluna.
+- Touch targets normalizados para no mínimo 44 px nos principais controles e links interativos.
+- Contraste reforçado em placeholders, labels, footer e textos secundários em superfícies escuras.
+- Setas e indicadores passaram a ser desenhados por CSS em vez de glifos Unicode decorativos.
+- Scrollbar, caret, seleção, focus ring e estados de foco foram alinhados à paleta Aureum.
+- Mantido suporte a `prefers-reduced-motion` e motion reduzido a transições discretas.
+- Home e páginas de Portugal, Espanha, Austrália e Brasil foram sincronizadas com o mesmo contrato visual e responsivo.
+- Figma atualizado com o mesmo quality gate nas versões desktop, tablet e mobile.
+- UX Pilot preparado com briefing rígido equivalente para geração hi-fi consistente com o sistema Aureum.
+
 ## [4.0.4] — 2026-08-18
 
 ### Proteção de propriedade intelectual
