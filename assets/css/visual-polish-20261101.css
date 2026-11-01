@@ -1,0 +1,76 @@
+/* AUREUM / visual refinement — 2026-11-01
+   Typographic hierarchy and photo-true destination cards.
+   Preserve photography, country asset mapping and accessible contrast. */
+
+:root {
+  --aureum-hero-type: "Manrope", "Inter", system-ui, sans-serif;
+}
+
+/* The headline uses the display family already loaded by the site.
+   A more confident weight, tighter leading and balanced line breaks. */
+.hero h1 {
+  font-family: var(--aureum-hero-type) !important;
+  font-weight: 600 !important;
+  font-size: clamp(3.25rem, 5.2vw, 5.125rem) !important;
+  line-height: 1.075 !important;
+  letter-spacing: -.049em !important;
+  max-width: 17ch !important;
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(6, 19, 31, .14);
+}
+
+/* Never desaturate or recolor the customer's original destination images. */
+.dcard > .ph,
+.dcard .ph,
+.dcard:hover > .ph,
+.dcard:focus-visible > .ph {
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Darken only the caption area. Photo colors remain intact above it. */
+.dcard::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 19, 30, 0) 0%,
+    rgba(7, 19, 30, 0) 38%,
+    rgba(7, 19, 30, .07) 53%,
+    rgba(7, 19, 30, .34) 74%,
+    rgba(7, 19, 30, .78) 100%
+  ) !important;
+}
+
+/* Text contrast without an opaque overlay across the photograph. */
+.dcard-body h3,
+.dcard-body p,
+.dcard-key {
+  text-shadow: 0 1px 10px rgba(4, 14, 24, .26);
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(2.75rem, 7.25vw, 4.25rem) !important;
+    max-width: 16ch !important;
+    letter-spacing: -.045em !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(2.4rem, 9.15vw, 3.35rem) !important;
+    line-height: 1.085 !important;
+    max-width: 16ch !important;
+    letter-spacing: -.042em !important;
+  }
+  .dcard::before {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 30%,
+      rgba(7, 19, 30, .12) 48%,
+      rgba(7, 19, 30, .49) 77%,
+      rgba(7, 19, 30, .83) 100%
+    ) !important;
+  }
+}
