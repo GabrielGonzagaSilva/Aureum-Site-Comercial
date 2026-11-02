@@ -49,7 +49,7 @@ const hero=String.raw`
       </a>
     </div>
     <figure class="hero-visual" aria-label="Vídeo de Londres">
-      ` + '${originalVideo[0]}' + `
+      ${originalVideo[0]}
     </figure>
   </div>
 </section>`;
