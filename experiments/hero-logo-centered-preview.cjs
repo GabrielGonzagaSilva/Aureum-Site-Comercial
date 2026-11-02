@@ -27,11 +27,12 @@ check(oldHeroBody.includes('hero-commitments') && oldHeroBody.includes('hero-sub
 const heroBody=String.raw`
 <div class="wrap hero-c">
   <img class="hero-brand-center" src="/assets/brand/aureum-logo-white.svg" alt="Aureum" width="592" height="140" decoding="async" fetchpriority="high">
-  <h1>Vistos e mobilidade internacional.</h1>
+  <h1>Cidadania e vistos</h1>
   <div class="hero-actions">
     <a class="btn btn-light" href="#contato">Solicitar análise<svg aria-hidden="true" class="i"><use href="#i-arrow"></use></svg></a>
   </div>
 </div>
+<a class="hero-scroll-hint" href="#orientacao" aria-label="Rolar para conhecer a Aureum"><span>ROLE PARA EXPLORAR</span><span class="hero-scroll-arrow" aria-hidden="true">↓</span></a>
 `;
 html=html.slice(0,start)+heroBody+html.slice(end);
 html=html.replace('</head>','<link rel="stylesheet" href="/assets/css/aureum-logo-centered-preview.css">\n</head>');
@@ -90,6 +91,43 @@ const css=String.raw`/* Aureum: hero minimalist composition — original officia
   gap:12px;
   min-height:54px;
 }
+#home .hero-logo-centered-test .hero-film video.hero-video {
+  filter:blur(2.5px);
+  transform:scale(1.035);
+  transform-origin:center center;
+}
+#home .hero-logo-centered-test .hero-scroll-hint {
+  position:absolute;
+  z-index:4;
+  bottom:clamp(22px,4vh,42px);
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  text-decoration:none;
+  white-space:nowrap;
+  font:600 10px/1.4 Manrope,Arial,sans-serif;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.86);
+  transition:color .2s ease;
+}
+#home .hero-logo-centered-test .hero-scroll-hint:hover,
+#home .hero-logo-centered-test .hero-scroll-hint:focus-visible { color:#fff; }
+#home .hero-logo-centered-test .hero-scroll-hint:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+#home .hero-logo-centered-test .hero-scroll-arrow {
+  font-size:23px;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:0;
+  animation:aureum-scroll-prompt 2.5s ease-in-out infinite;
+}
+@keyframes aureum-scroll-prompt {
+  0%,100% {translate:0 0;opacity:.7;}
+  55% {translate:0 5px;opacity:1;}
+}
 #home .hero-logo-centered-test .hero-film::after {
   background:linear-gradient(180deg,rgba(4,15,26,.36) 0%,rgba(4,15,26,.43) 44%,rgba(4,15,26,.63) 100%)!important;
 }
@@ -121,10 +159,12 @@ const css=String.raw`/* Aureum: hero minimalist composition — original officia
   #home .hero-logo-centered-test .hero-film video.hero-video{
     object-position:56% center!important;
   }
+  #home .hero-logo-centered-test .hero-scroll-hint { bottom:24px; font-size:9px; }
 }
 @media(prefers-reduced-motion:reduce){
   #home .hero-logo-centered-test .hero-c,
-  #home .hero-logo-centered-test .hero-brand-center {animation:none!important;}
+  #home .hero-logo-centered-test .hero-brand-center,
+  #home .hero-logo-centered-test .hero-scroll-arrow {animation:none!important;}
 }
 `;
 fs.mkdirSync(path.dirname(cssFile),{recursive:true});
@@ -134,8 +174,10 @@ const newHero=html.slice(html.indexOf(minimalHero),html.indexOf('</section>',htm
 check((newHero.match(/class="hero-brand-center"/g)||[]).length===1,'official hero logo not unique');
 check((newHero.match(/class="btn btn-light"/g)||[]).length===1,'expected one primary CTA');
 check(!newHero.includes('hero-commitments')&&!newHero.includes('hero-sub')&&!newHero.includes('btn-ghost-light')&&!newHero.includes('hero-cap'),'old content not removed');
-check(newHero.includes('<h1>Vistos e mobilidade internacional.</h1>'),'hero heading missing');
+check(newHero.includes('<h1>Cidadania e vistos</h1>'),'hero heading missing');
+check(newHero.includes('class="hero-scroll-hint"')&&newHero.includes('href="#orientacao"'),'scroll indicator missing');
+check(css.includes('filter:blur(2.5px)'),'subtle video blur missing');
 check(html.includes('hero-tower-bridge.mp4'),'video changed');
 check(html.includes('id="contato"'),'contact section missing');
 check(css.includes('@media(max-width:767px)'),'mobile rules missing');
-console.log('AUREUM MINIMAL CENTERED LOGO QA PASS: single official logo, short heading and one CTA; video, contact, chat, WhatsApp, destinations and all other sections preserved.');
+console.log('AUREUM MINIMAL HERO QA PASS: official logo, Cidadania e vistos, single CTA, scroll prompt and 2.5px video blur; all other sections preserved.');
