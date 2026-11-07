@@ -1,0 +1,275 @@
+/* AUREUM — official brand palette, 2026-11-06
+   Color-only refinement. Existing layout, typography, imagery and motion are preserved.
+   The approved V4 layout sheet is loaded from the immutable production deployment below. */
+@import url("https://aureum-site-comercial-xhhxz7lg7-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-layout-v4-20261106.css?origin=1");
+
+:root {
+  --aureum-ivory: #E9DDCD;
+  --aureum-sage: #768774;
+  --aureum-emerald: #1C4C3C;
+  --aureum-forest: #0A211B;
+  --aureum-antique-gold: #A37A42;
+}
+
+:root[data-theme="light"] {
+  --white: var(--aureum-ivory);
+  --bg: var(--aureum-ivory);
+  --sand: var(--aureum-ivory);
+  --sand-2: rgba(118, 135, 116, .12);
+  --ink: var(--aureum-forest);
+  --ink-2: var(--aureum-emerald);
+  --ink-3: var(--aureum-emerald);
+  --line: rgba(118, 135, 116, .34);
+  --line-2: rgba(10, 33, 27, .28);
+  --navy: var(--aureum-forest);
+  --navy-2: var(--aureum-emerald);
+  --navy-3: var(--aureum-forest);
+  --on-navy: var(--aureum-ivory);
+  --on-navy-2: rgba(233, 221, 205, .86);
+  --on-navy-3: rgba(233, 221, 205, .68);
+  --navy-line: rgba(233, 221, 205, .18);
+  --brass: var(--aureum-antique-gold);
+  --brass-2: var(--aureum-antique-gold);
+  --brass-light: var(--aureum-emerald);
+  --card: var(--aureum-ivory);
+  --field: var(--aureum-ivory);
+  --shadow: 0 1px 2px rgba(10, 33, 27, .06), 0 10px 30px -12px rgba(10, 33, 27, .18);
+  --shadow-lg: 0 2px 6px rgba(10, 33, 27, .06), 0 30px 60px -24px rgba(10, 33, 27, .26);
+}
+
+:root:not([data-theme="light"]),
+:root[data-theme="dark"] {
+  --white: var(--aureum-ivory);
+  --bg: var(--aureum-forest);
+  --sand: var(--aureum-forest);
+  --sand-2: var(--aureum-emerald);
+  --ink: var(--aureum-ivory);
+  --ink-2: rgba(233, 221, 205, .88);
+  --ink-3: rgba(233, 221, 205, .74);
+  --line: rgba(233, 221, 205, .17);
+  --line-2: rgba(233, 221, 205, .30);
+  --navy: var(--aureum-forest);
+  --navy-2: var(--aureum-emerald);
+  --navy-3: var(--aureum-forest);
+  --on-navy: var(--aureum-ivory);
+  --on-navy-2: rgba(233, 221, 205, .86);
+  --on-navy-3: rgba(233, 221, 205, .68);
+  --navy-line: rgba(233, 221, 205, .18);
+  --brass: var(--aureum-antique-gold);
+  --brass-2: var(--aureum-antique-gold);
+  --brass-light: var(--aureum-antique-gold);
+  --card: var(--aureum-emerald);
+  --field: var(--aureum-forest);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .30), 0 10px 30px -12px rgba(0, 0, 0, .48);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, .30), 0 30px 60px -24px rgba(0, 0, 0, .58);
+}
+
+/* Primary actions retain strong text contrast in both themes. */
+:root:not([data-theme="light"]) .btn-primary {
+  color: var(--aureum-forest) !important;
+  background: var(--aureum-ivory) !important;
+  border-color: var(--aureum-ivory) !important;
+}
+:root:not([data-theme="light"]) .btn-primary:hover {
+  color: var(--aureum-forest) !important;
+  background: var(--aureum-ivory) !important;
+  border-color: var(--aureum-ivory) !important;
+  filter: brightness(.96);
+}
+:root[data-theme="light"] .btn-primary {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-emerald) !important;
+  border-color: var(--aureum-emerald) !important;
+}
+:root[data-theme="light"] .btn-primary:hover {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-forest) !important;
+  border-color: var(--aureum-forest) !important;
+}
+.site-hdr:not(.solid) .btn-hdr {
+  color: var(--aureum-ivory) !important;
+  background: rgba(233, 221, 205, .12) !important;
+  border-color: rgba(233, 221, 205, .62) !important;
+}
+.site-hdr.solid .btn-hdr {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-emerald) !important;
+  border-color: var(--aureum-emerald) !important;
+}
+
+/* The cinematic hero now uses the forest green instead of the previous blue-black. */
+.hero-bg::after {
+  background:
+    linear-gradient(180deg, rgba(10, 33, 27, .70) 0%, rgba(10, 33, 27, .10) 30%, rgba(10, 33, 27, .18) 48%, rgba(10, 33, 27, .92) 100%),
+    linear-gradient(90deg, rgba(10, 33, 27, .58) 0%, rgba(10, 33, 27, .12) 68%, rgba(10, 33, 27, .12) 100%) !important;
+}
+#home .hero.hero-editorial-test {
+  background: var(--aureum-forest) !important;
+}
+#home .hero-editorial-test .over {
+  color: var(--aureum-ivory) !important;
+}
+#home .hero-editorial-test .over::before {
+  background: var(--aureum-antique-gold) !important;
+}
+#home .hero-editorial-test h1 {
+  color: var(--aureum-ivory) !important;
+}
+#home .hero-editorial-test .hero-sub {
+  color: rgba(233, 221, 205, .90) !important;
+}
+.site-hdr.solid {
+  box-shadow: 0 1px 0 rgba(10, 33, 27, .16), 0 14px 30px -32px rgba(10, 33, 27, .20) !important;
+}
+.mega {
+  box-shadow: 0 24px 42px -32px rgba(10, 33, 27, .35) !important;
+}
+
+/* Language selector: same editorial component, now aligned to the official palette. */
+.aureum-locale__trigger {
+  color: var(--aureum-ivory) !important;
+  border-color: rgba(233, 221, 205, .38) !important;
+  background: rgba(10, 33, 27, .20) !important;
+}
+.aureum-locale--header .aureum-locale__trigger:hover,
+.aureum-locale--header[open] .aureum-locale__trigger {
+  background: rgba(233, 221, 205, .12) !important;
+  border-color: rgba(233, 221, 205, .66) !important;
+}
+.site-hdr.solid .aureum-locale--header .aureum-locale__trigger {
+  color: var(--aureum-forest) !important;
+  border-color: rgba(10, 33, 27, .22) !important;
+  background: rgba(118, 135, 116, .08) !important;
+}
+.site-hdr.solid .aureum-locale--header .aureum-locale__trigger:is(:hover, :focus-visible),
+.site-hdr.solid .aureum-locale--header[open] .aureum-locale__trigger {
+  background: rgba(118, 135, 116, .16) !important;
+  border-color: rgba(10, 33, 27, .40) !important;
+}
+.aureum-locale__panel {
+  color: var(--aureum-forest) !important;
+  background: var(--aureum-ivory) !important;
+  border-color: rgba(118, 135, 116, .38) !important;
+  box-shadow: 0 18px 42px rgba(10, 33, 27, .18) !important;
+}
+.aureum-locale__panel a,
+.aureum-locale__panel button,
+.aureum-locale__panel [role="option"] {
+  color: var(--aureum-forest) !important;
+}
+.aureum-locale__panel a:hover,
+.aureum-locale__panel button:hover,
+.aureum-locale__panel [role="option"]:hover {
+  background: rgba(118, 135, 116, .14) !important;
+}
+.aureum-locale__trigger:focus-visible {
+  outline: 2px solid var(--aureum-antique-gold) !important;
+  box-shadow: 0 0 0 6px rgba(10, 33, 27, .35) !important;
+}
+.site-hdr.solid .aureum-locale__trigger:focus-visible {
+  outline-color: var(--aureum-emerald) !important;
+  box-shadow: 0 0 0 6px rgba(118, 135, 116, .18) !important;
+}
+
+/* Refined editorial sections: warm ivory surfaces, forest typography and emerald actions. */
+.aureum-refined {
+  --ink: var(--aureum-forest);
+  --muted: var(--aureum-emerald);
+  --gold: var(--aureum-antique-gold);
+  --line: rgba(118, 135, 116, .36);
+  --warm: var(--aureum-ivory);
+  --navy: var(--aureum-forest);
+  color: var(--aureum-forest) !important;
+  background: var(--aureum-ivory) !important;
+}
+.aureum-refined.ar-start,
+.aureum-refined.ar-services {
+  background: var(--aureum-ivory) !important;
+}
+.aureum-refined .eyebrow,
+.aureum-refined .ar-kicker,
+.aureum-refined .section-kicker {
+  color: var(--aureum-emerald) !important;
+}
+.aureum-refined a:focus-visible {
+  outline-color: var(--aureum-emerald) !important;
+}
+
+/* V4 service, transparency and "why Aureum" components. */
+.aureum-refined.ae-section {
+  --gold: var(--aureum-antique-gold);
+  --muted: var(--aureum-emerald);
+  --line: rgba(118, 135, 116, .36);
+  --navy: var(--aureum-forest);
+}
+.ae-section .ae-step,
+.ae-section .ae-role {
+  color: var(--aureum-forest);
+  background: var(--aureum-ivory) !important;
+  border-color: rgba(118, 135, 116, .36) !important;
+}
+.ae-section.ae-transparency {
+  color: var(--aureum-forest);
+  background: var(--aureum-ivory) !important;
+}
+.ae-section .ae-icon,
+.ae-section .ae-label,
+.ae-section .ae-number,
+.ae-section .ae-check {
+  color: var(--aureum-emerald) !important;
+}
+.ae-section .ae-expectation,
+.ae-section.ae-why {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-forest) !important;
+}
+.ae-section .ae-expectation > .ae-icon,
+.ae-section.ae-why .eyebrow,
+.ae-section.ae-why .ae-icon {
+  color: var(--aureum-antique-gold) !important;
+}
+.ae-section .ae-expectation p,
+.ae-section.ae-why .page-intro,
+.ae-section.ae-why .card-description,
+.ae-section .ae-footer-copy p {
+  color: rgba(233, 221, 205, .86) !important;
+}
+.ae-section .section-divider {
+  background: rgba(118, 135, 116, .58) !important;
+}
+.ae-section .ae-reason {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-emerald) !important;
+  border-color: rgba(233, 221, 205, .24) !important;
+}
+.ae-section .ae-reason * {
+  color: var(--aureum-ivory) !important;
+}
+.ae-section a.ae-button {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-emerald) !important;
+  border-color: var(--aureum-emerald) !important;
+}
+.ae-section a.ae-button:hover {
+  color: var(--aureum-ivory) !important;
+  background: var(--aureum-forest) !important;
+  border-color: var(--aureum-forest) !important;
+}
+.ae-section a.ae-button-light {
+  color: var(--aureum-forest) !important;
+  background: var(--aureum-ivory) !important;
+  border-color: var(--aureum-ivory) !important;
+}
+.ae-section a.ae-button-light:hover {
+  color: var(--aureum-forest) !important;
+  background: rgba(118, 135, 116, .14) !important;
+  border-color: var(--aureum-sage) !important;
+}
+.ae-section a:focus-visible {
+  outline-color: var(--aureum-emerald) !important;
+}
+.ae-section.ae-why a:focus-visible {
+  outline-color: var(--aureum-antique-gold) !important;
+}
+
+/* The Mia portrait button and WhatsApp brand mark remain untouched intentionally. */
