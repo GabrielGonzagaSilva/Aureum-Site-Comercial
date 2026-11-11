@@ -47,6 +47,8 @@ O núcleo foi movido para `server/` e apenas o import do handler foi ajustado. O
 
 ## Configuração de ambientes
 
+CSS e JavaScript recebem URLs com um hash do conteúdo durante o build. Assim, os navegadores deixam de reutilizar os endereços sem versão que deployments manuais anteriores permitiam armazenar por uma hora. O manifesto descreve os bytes finais de `dist/`, incluindo as URLs versionadas nas páginas.
+
 A validação também encontrou respostas da Mia em português na página em inglês. O núcleo preserva o prompt privado e recebe uma instrução adicional de idioma a partir da página de origem do mesmo domínio. Essa correção é coberta por teste do payload enviado ao provedor; os hashes acima identificam a fonte original antes dessa alteração localizada.
 
 O projeto Vercel existente já estava conectado ao repositório correto: `main` para Production e todas as demais branches para Preview. O desvio vinha de uploads manuais e aliases, não da ausência dessa ligação. As variáveis `GEMINI_API_KEY`, `BLOB_READ_WRITE_TOKEN` e `AUREUM_ASSISTANT_PROMPT` foram verificadas somente por nome e ambiente, sem recuperar ou publicar seus valores.

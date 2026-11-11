@@ -16,13 +16,27 @@ const video = Buffer.concat(videoParts);
 if (video.length !== media.bytes || createHash('sha256').update(video).digest('hex') !== media.sha256) throw new Error('Recovered video checksum mismatch');
 await mkdir('public/assets', { recursive: true });
 await writeFile(media.output, video);
-const verification = await verify('public');
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
 await cp('public', 'dist', { recursive: true });
+const outputFiles = await filesUnder('dist');
+const versions = new Map();
+for (const file of outputFiles.filter(file => /\.(?:js|css)$/.test(file))) {
+  const hash = createHash('sha256').update(await readFile(file)).digest('hex').slice(0, 12);
+  versions.set('/' + file.slice('dist/'.length), hash);
+}
+for (const file of outputFiles.filter(file => file.endsWith('.html'))) {
+  const html = await readFile(file, 'utf8');
+  const versioned = html.replace(/\b(href|src)=(['"])(\/[^'"?]+\.(?:js|css))\2/g, (match, attribute, quote, url) => {
+    const version = versions.get(url);
+    return version ? `${attribute}=${quote}${url}?v=${version}${quote}` : match;
+  });
+  await writeFile(file, versioned);
+}
+const verification = await verify('dist');
 const assets = {};
-for (const file of await filesUnder('public')) {
-  assets[file.slice('public/'.length)] = createHash('sha256').update(await readFile(file)).digest('hex');
+for (const file of outputFiles) {
+  assets[file.slice('dist/'.length)] = createHash('sha256').update(await readFile(file)).digest('hex');
 }
 await writeFile('dist/release.json', JSON.stringify({
   commit: process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || null,
