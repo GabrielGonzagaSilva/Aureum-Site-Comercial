@@ -3,11 +3,15 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "build": "npm test && node build.mjs",
     "test": "node --test tests/*.test.mjs",
     "check": "node scripts/verify.mjs"
   },
-  "dependencies": { "@vercel/blob": "2.8.2" }
+  "dependencies": {
+    "@vercel/blob": "2.8.2"
+  }
 }

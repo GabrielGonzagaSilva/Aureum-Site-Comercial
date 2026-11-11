@@ -38,6 +38,17 @@ O núcleo foi movido para `server/` e apenas o import do handler foi ajustado. O
 
 ## Configuração preservada
 
+## Validação do Preview gerado pelo GitHub
+
+- Deployment `dpl_CzTzXZWdhCSR9fyfwKft2FsfBykc`, commit `d9bfe76c9474d50746e5de4cf861d85ffefa9dce`: READY.
+- As 51 rotas responderam HTTP 200 e seus bytes corresponderam à base local validada.
+- O manifesto publicado identificou corretamente a branch e o commit, e os hashes dos 112 arquivos corresponderam ao build local.
+- A Mia respondeu GET 200 e POST 200, com a origem do próprio Preview, preservando o registro privado do handler recuperado.
+- Chrome: header sem texto indevido, Inter aplicada e painel responsivo observado com largura CSS de 545 px por zoom do navegador, sem rolagem horizontal e com o botão de fechar e campo de mensagem dentro da área visível.
+- Não executados: Safari, aparelhos físicos e teclado virtual móvel real.
+
+## Configuração de ambientes
+
 O projeto Vercel existente já estava conectado ao repositório correto: `main` para Production e todas as demais branches para Preview. O desvio vinha de uploads manuais e aliases, não da ausência dessa ligação. As variáveis `GEMINI_API_KEY`, `BLOB_READ_WRITE_TOKEN` e `AUREUM_ASSISTANT_PROMPT` foram verificadas somente por nome e ambiente, sem recuperar ou publicar seus valores.
 
 O número oficial de WhatsApp estava vazio. O formulário principal prepara a mensagem para revisão e não faz envio automático. Facebook, LinkedIn, termos e cookies estavam pendentes de configuração; a recuperação preserva esses estados sem inventar canais ou integrações.
