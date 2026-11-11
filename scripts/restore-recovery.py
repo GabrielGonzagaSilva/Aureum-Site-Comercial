@@ -8,6 +8,8 @@ from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
 root = Path(__file__).resolve().parent.parent
+if (root / 'public/index.html').exists():
+    raise SystemExit('Recovery already materialized. Refusing to overwrite versioned source.')
 manifest = json.loads((root / 'docs/recovery/source-manifest.json').read_text())
 allowed_hosts = {
     'aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app',

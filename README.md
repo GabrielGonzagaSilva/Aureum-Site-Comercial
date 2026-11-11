@@ -16,6 +16,8 @@ npm run build
 
 O build valida links, arquivos essenciais e sintaxe dos scripts e copia exclusivamente os arquivos versionados para `dist/`. Não baixa conteúdo de deployments anteriores. `release.json` informa o commit e os hashes dos arquivos publicados.
 
+O vídeo original é armazenado em partes binárias em `media/hero-tower-bridge/`, devido ao limite de transferência do conector. O build o recompõe sem perda e confere o SHA-256 antes de publicar.
+
 As credenciais existentes continuam configuradas na Vercel. `.env.example` lista somente os nomes. Nunca coloque segredos em `public/`, commits ou logs. O WhatsApp oficial não tinha número configurado na versão recuperada; seus controles continuam informando essa situação sem inventar um contato.
 
 `docs/recovery/` registra os deployments consultados e os hashes dos arquivos originais. `scripts/restore-recovery.py` é um instrumento de recuperação histórica e não faz parte do build normal.

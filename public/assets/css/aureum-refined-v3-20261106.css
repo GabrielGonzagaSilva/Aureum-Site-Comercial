@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "AureumRefinedInter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/assets/fonts/aureum-refined-inter-400.woff") format("woff");
+}
+@font-face {
+  font-family: "AureumRefinedInter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("/assets/fonts/aureum-refined-inter-500.woff") format("woff");
+}
+@font-face {
+  font-family: "AureumRefinedInter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("/assets/fonts/aureum-refined-inter-700.woff") format("woff");
+}
+.aureum-refined {
+  color-scheme: light;
+  --ink: #112a3d;
+  --muted: #5f697b;
+  --gold: #99703b;
+  --line: #d6d0c7;
+  --warm: #f7f5f0;
+  --navy: #15243c;
+}
+.aureum-refined *, .aureum-refined *::before, .aureum-refined *::after { box-sizing: border-box; }
+.aureum-refined {
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+  font-family: "AureumRefinedInter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  font-optical-sizing: none;
+  -webkit-font-smoothing: antialiased;
+}
+.aureum-refined.ar-services { background: var(--warm); }
+.aureum-refined h1, .aureum-refined h2, .aureum-refined p { margin: 0; }
+.aureum-refined a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.aureum-refined img { display: block; max-width: none; }
+.aureum-refined a:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+@media  (hover: hover) {.aureum-refined a:hover .action-label { text-decoration: underline; text-underline-offset: 4px; }}
+.aureum-refined .aureum-page {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 36px;
+}
+.aureum-refined .page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  column-gap: 120px;
+  align-items: end;
+}
+.aureum-refined .heading-group { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.aureum-refined .eyebrow { color: var(--gold); font-size: 12px; font-weight: 700; line-height: 18px; }
+.aureum-refined .page-title { font-size: 52px; font-weight: 500; line-height: 60px; letter-spacing: -1.8px; }
+.aureum-refined .page-intro { font-size: 17px; line-height: 28px; }
+.aureum-refined .section-divider { width: 100%; height: 1px; background: var(--line); flex: none; }
+.aureum-refined .scenario-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.aureum-refined .scenario-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  min-width: 0;
+}
+.aureum-refined .scenario-card > * { width: calc(100% + 1.6666667px); }
+.aureum-refined .scenario-tag { color: var(--gold); font-size: 11px; line-height: 18px; letter-spacing: 1.3px; }
+.aureum-refined .scenario-copy { display: flex; flex-direction: column; gap: 16px; min-height: 150px; }
+.aureum-refined .card-title { font-size: 25px; font-weight: 500; line-height: 32px; letter-spacing: -0.5px; }
+.aureum-refined .card-description { color: var(--muted); font-size: 16px; line-height: 26px; }
+.aureum-refined .card-divider { height: 1px; background: var(--line); flex: none; }
+.aureum-refined .card-action { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: none; min-height: 48px; }
+.aureum-refined .action-label { font-size: 14px; font-weight: 700; line-height: 22px; }
+.aureum-refined .scenario-card .action-label { width: calc(100% - 40px); }
+.aureum-refined .service-card .action-label { width: calc(100% - 48px); }
+.aureum-refined .citizenship .action-label { width: 180px; }
+.aureum-refined .action-arrow { display: block; flex: 0 0 24px; width: 24px; font-size: 20px; line-height: 26px; }
+.aureum-refined .helper-note { padding: 20px; color: var(--muted); background: var(--warm); font-size: 14px; line-height: 22px; }
+.aureum-refined .service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.aureum-refined .service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  min-width: 0;
+}
+.aureum-refined .service-card > :not(.service-icon) { width: calc(100% + 2px); }
+.aureum-refined .service-icon { flex: 0 0 auto; width: 22px; height: 22px; }
+.aureum-refined .service-card .card-description { min-height: 52px; }
+.aureum-refined .service-card .card-action { min-height: 44px; }
+.aureum-refined .service-card .action-arrow, .aureum-refined .citizenship .action-arrow { font-weight: 700; }
+.aureum-refined .citizenship {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 32px;
+  border-radius: 6px;
+  color: #fff;
+  background: var(--navy);
+  min-width: 0;
+}
+.aureum-refined .citizenship-copy { flex: 0 1 860px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.aureum-refined .citizenship .card-title { font-size: 28px; line-height: 36px; }
+.aureum-refined .citizenship .card-description { max-width: 820px; color: var(--line); }
+.aureum-refined .citizenship .card-action { flex: 0 0 220px; width: 220px; }
+.aureum-refined .service-footer { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.aureum-refined .service-footer-copy { flex: 0 1 880px; color: var(--muted); font-size: 17px; line-height: 28px; }
+.aureum-refined .primary-button {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 0 0 auto;
+  width: 280px;
+  padding: 16px;
+  border-radius: 4px;
+  color: #fff;
+  background: var(--ink);
+}
+.aureum-refined .primary-button .action-label { flex: 0 0 200px; font-weight: 400; }
+.aureum-refined .primary-button .action-arrow { line-height: 22px; }
+@media  (min-width: 1280px) {.aureum-refined .page-header { height: 158px; }
+.aureum-refined .page-title { height: 120px; }
+.aureum-refined .scenario-card { height: 335px; }
+.aureum-refined .service-card { height: 256px; }
+.aureum-refined .citizenship { height: 164px; }
+.aureum-refined .service-footer { height: 56px; }}
+.aureum-refined .service-card:nth-child(1) { grid-column: 1; grid-row: 1; }
+.aureum-refined .service-card:nth-child(2) { grid-column: 2; grid-row: 1; }
+.aureum-refined .service-card:nth-child(3) { grid-column: 1; grid-row: 2; }
+.aureum-refined .service-card:nth-child(4) { grid-column: 2; grid-row: 2; }
+.aureum-refined .citizenship { grid-column: 1 / 3; grid-row: 3; }
+@media  (max-width: 1279px) {.aureum-refined .aureum-page { padding: 56px 48px; }
+.aureum-refined .page-header { column-gap: 64px; grid-template-columns: minmax(0, 1fr) minmax(280px, 36%); }
+.aureum-refined .page-title { font-size: 46px; line-height: 54px; letter-spacing: -1.5px; }
+.aureum-refined .scenario-grid { gap: 20px; }
+.aureum-refined .scenario-card { padding: 24px; }
+.aureum-refined .scenario-copy { min-height: 190px; }
+.aureum-refined .scenario-card > *, .aureum-refined .service-card > :not(.service-icon) { width: 100%; }
+.aureum-refined .citizenship-copy { flex: 1 1 auto; }
+.aureum-refined .service-footer-copy { flex: 1 1 auto; }}
+@media  (max-width: 1023px) {.aureum-refined .page-header { grid-template-columns: minmax(0, 1fr); row-gap: 24px; }
+.aureum-refined .page-intro { max-width: 640px; }
+.aureum-refined .scenario-grid { grid-template-columns: minmax(0, 1fr); }
+.aureum-refined .scenario-copy { min-height: 0; }
+.aureum-refined .scenario-card { gap: 20px; }
+.aureum-refined .card-title { font-size: 24px; }
+.aureum-refined .citizenship { flex-wrap: wrap; gap: 24px; }
+.aureum-refined .citizenship-copy { flex-basis: calc(100% - 46px); }
+.aureum-refined .citizenship .card-action { margin-left: 46px; }}
+@media  (max-width: 767px) {.aureum-refined .aureum-page { padding: 40px 24px; gap: 28px; }
+.aureum-refined .heading-group { gap: 16px; }
+.aureum-refined .page-title { font-size: 36px; line-height: 42px; letter-spacing: -1.1px; }
+.aureum-refined .page-intro { font-size: 16px; line-height: 26px; }
+.aureum-refined .service-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.aureum-refined .service-card:nth-child(n), .aureum-refined .citizenship { grid-column: 1; grid-row: auto; }
+.aureum-refined .scenario-card, .aureum-refined .service-card { padding: 24px; }
+.aureum-refined .service-card .card-description { min-height: 0; }
+.aureum-refined .card-title { font-size: 23px; line-height: 30px; }
+.aureum-refined .card-action { min-height: 48px; }
+.aureum-refined .citizenship { display: grid; grid-template-columns: 22px minmax(0, 1fr); align-items: start; padding: 24px; gap: 20px; }
+.aureum-refined .citizenship .service-icon { margin-top: 5px; }
+.aureum-refined .citizenship .card-title { font-size: 25px; line-height: 32px; }
+.aureum-refined .citizenship .card-action { grid-column: 2; width: 100%; margin: 0; }
+.aureum-refined .service-footer { flex-direction: column; align-items: stretch; gap: 24px; }
+.aureum-refined .service-footer-copy { flex: auto; font-size: 16px; line-height: 26px; }
+.aureum-refined .primary-button { flex: auto; width: 100%; justify-content: space-between; }
+.aureum-refined .primary-button .action-label { flex: 1 1 auto; }
+.aureum-refined .helper-note { font-size: 13px; line-height: 21px; }}
+@media  (prefers-reduced-motion: reduce) {.aureum-refined *, .aureum-refined *::before, .aureum-refined *::after { scroll-behavior: auto !important; }}
+.aureum-refined { box-sizing:border-box; line-height:normal; font-family:"AureumRefinedInter",sans-serif; font-style:normal; font-synthesis:none; font-optical-sizing:none; letter-spacing:normal; text-transform:none; }
+.aureum-refined h2, .aureum-refined h3 { font-family:inherit; text-transform:none; text-wrap:wrap; }
+.aureum-refined h3 { margin:0; }
+.aureum-refined .page-title { font-family:inherit; }
+.aureum-refined a { transition:none; }
+.aureum-refined .service-icon { object-fit:contain; }
+.aureum-refined .heading-group, .aureum-refined .page-intro { min-width:0; }
+.aureum-refined.ar-start { background:#fff; }
+.aureum-refined.ar-services { background:#f7f5f0; }
+/* Translated copy can wrap without clipping at desktop sizes. */
+html:not([lang="pt-BR"]) .aureum-refined .page-header { height:auto; min-height:158px; }
+html:not([lang="pt-BR"]) .aureum-refined .page-title { height:auto; min-height:120px; }
+html:not([lang="pt-BR"]) .aureum-refined .scenario-card { height:auto; min-height:335px; }
+html:not([lang="pt-BR"]) .aureum-refined .scenario-copy { min-height:150px; }
+html:not([lang="pt-BR"]) .aureum-refined .service-card { height:auto; min-height:256px; }
+html:not([lang="pt-BR"]) .aureum-refined .citizenship { height:auto; min-height:164px; }
+@media (max-width:1023px) {
+ html:not([lang="pt-BR"]) .aureum-refined .page-header { min-height:0; }
+ html:not([lang="pt-BR"]) .aureum-refined .page-title { min-height:0; }
+ html:not([lang="pt-BR"]) .aureum-refined .scenario-card { min-height:0; }
+ html:not([lang="pt-BR"]) .aureum-refined .scenario-copy { min-height:0; }
+}
+@media (max-width:767px) {
+ html:not([lang="pt-BR"]) .aureum-refined .service-card { min-height:0; }
+ html:not([lang="pt-BR"]) .aureum-refined .citizenship { min-height:0; }
+}

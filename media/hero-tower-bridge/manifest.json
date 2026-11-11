@@ -1,0 +1,49 @@
+{
+  "output": "public/assets/hero-tower-bridge.mp4",
+  "bytes": 57670974,
+  "sha256": "ae1105ac022ec6838019b9897c25b0b8ee2ba63547f32b71014a8e10e83f3121",
+  "parts": [
+    {
+      "path": "media/hero-tower-bridge/part-000.bin",
+      "bytes": 9437184,
+      "sha256": "9db76b3c498175d5b19954bc973f9e66f65345a7e9209393281ac096df8fffa5",
+      "gitBlobSha": "5a4d2029f9099b4f990085d0222687bd8f4eff6d"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-001.bin",
+      "bytes": 9437184,
+      "sha256": "72fe9958e7015895c800ede324a95f10e0c938416c3ff73338d1ce87ee510835",
+      "gitBlobSha": "18bd7b573562a0845a8025810568290d5bc6ee97"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-002.bin",
+      "bytes": 9437184,
+      "sha256": "12ffa7ccb342b93e433f13b9c7687b5a6b1837bb51119abcb9e0d441887f227a",
+      "gitBlobSha": "569750040982b3ef492818c88e64962f2330ab81"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-003.bin",
+      "bytes": 9437184,
+      "sha256": "8e13d9a1dcdcf00c78c326983075b48fdddb5fa742499d9b0521b5743164d848",
+      "gitBlobSha": "a80ba17a1d023333ab8ec0de23db71014d85ff8c"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-004.bin",
+      "bytes": 9437184,
+      "sha256": "cb01a48d54a176ade383e4b72b41f80674d75afe2118e39c6f0a7fdfae27194d",
+      "gitBlobSha": "03ee29069879cb01678be17b9528b0f5685bc942"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-005.bin",
+      "bytes": 9437184,
+      "sha256": "2430700dab3622d0162d6990ef63a6b55ac2d78ea417bb451817b42708c1958f",
+      "gitBlobSha": "1a6b9438a919cd6e6452bbafd83afeabfeac0cf2"
+    },
+    {
+      "path": "media/hero-tower-bridge/part-006.bin",
+      "bytes": 1047870,
+      "sha256": "882a2d1ba94d5df1212d7e6a7c574d317f5cb70ac72279caa7f3b3abb5235de1",
+      "gitBlobSha": "f527428a525a70782f9c6e10b305d6270a0bb5de"
+    }
+  ]
+}

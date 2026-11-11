@@ -87,6 +87,8 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Preservadas as 36 rotas traduzidas ausentes no Preview mais recente.
 - Recuperadas as funções originais da Mia e o arquivo privado de conversas, com hashes conferidos contra a origem.
 - Incorporados os ajustes de Mia, header, botões e paleta de 10–11/11.
+- Corrigida a disputa de observadores que sobrescrevia o idioma da identidade da Mia e da identificação do Reino Unido.
+- Retirado o rewrite de `/api/chat` para um deployment antigo, que causava erro 403 de origem no domínio principal.
 - Removido o texto literal de escape no header e scripts da barra Vercel capturados em cópias antigas.
 - Substituído o build que copiava deployments por build local e determinístico, sem dependência de URLs de Preview.
 - Unificada a publicação na integração GitHub → Vercel; configuração anterior de GitHub Pages preservada como registro, fora dos workflows ativos.

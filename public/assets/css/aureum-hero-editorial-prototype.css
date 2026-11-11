@@ -1,0 +1,201 @@
+/* Aureum — Homepage A/B design exploration: editorial split composition.
+   Logo remains ONLY in original header. Video, CTAs, copy and service integrations unchanged.
+   In this preview, focus the opening in a narrower left editorial column while
+   preserving the cinematic footage unobscured on the right. */
+#home .hero.hero-editorial-test {
+  min-height: max(790px, 100svh);
+  background: #0d2233;
+}
+#home .hero-editorial-test .hero-c {
+  width: 100%;
+  min-height: max(790px, 100svh);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: clamp(145px, 16vh, 185px);
+  padding-bottom: clamp(46px, 6vh, 75px);
+}
+#home .hero-editorial-test .over {
+  display: inline-flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .19em;
+  color: #e9d7b8 !important;
+}
+#home .hero-editorial-test .over::before {
+  content: "";
+  width: 45px;
+  height: 1px;
+  flex: 0 0 auto;
+  background: #d7bd91;
+}
+#home .hero-editorial-test h1 {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: clamp(62px, 5.65vw, 85px);
+  font-weight: 400;
+  letter-spacing: -.052em;
+  line-height: 1.02;
+  max-width: 690px;
+  max-inline-size: min(100%, 690px) !important;
+  margin-top: 25px !important;
+  text-wrap: balance;
+  color: #fffdf7;
+}
+#home .hero-editorial-test .hero-sub {
+  max-width: 565px;
+  max-inline-size: min(100%, 565px);
+  margin-top: clamp(20px, 2vw, 26px);
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.68;
+  color: rgba(255,255,255,.91);
+  text-wrap: pretty;
+}
+#home .hero-editorial-test .hero-actions {
+  margin-top: 33px;
+  gap: 12px;
+  align-items: center;
+}
+#home .hero-editorial-test .hero-actions .btn {
+  min-height: 56px;
+}
+#home .hero-editorial-test .hero-commitments {
+  width: min(100%, 680px);
+  max-width: 680px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  margin-top: clamp(40px, 5.5vh, 64px);
+  padding-bottom: 0;
+  border-top: 1px solid rgba(255,255,255,.34);
+}
+#home .hero-editorial-test .hero-commitments div,
+#home .hero-editorial-test .hero-commitments div + div {
+  padding: 20px 16px 14px 0;
+  gap: 11px;
+}
+#home .hero-editorial-test .hero-commitments div + div {
+  padding-left: 18px;
+}
+#home .hero-editorial-test .hero-commitments span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+#home .hero-editorial-test .hero-cap {
+  right: max(var(--layout-inset, 24px), calc((100vw - var(--wrap, 1336px))/2 + var(--layout-inset,24px)));
+  bottom: 32px;
+  color: rgba(255,255,255,.80);
+}
+/* Background masks should support text legibility but not obscure Tower Bridge. */
+#home .hero-editorial-test .hero-film::after {
+  background:
+    linear-gradient(90deg,
+      rgba(5,17,28,.87) 0%,
+      rgba(5,17,28,.75) 32%,
+      rgba(5,17,28,.29) 66%,
+      rgba(5,17,28,.06) 100%),
+    linear-gradient(0deg,
+      rgba(5,17,28,.68) 0%,
+      rgba(5,17,28,.05) 48%,
+      rgba(5,17,28,.31) 100%) !important;
+}
+@media (min-width: 1024px) {
+  #home .hero-editorial-test .hero-film video.hero-video {
+    object-position: 59% center !important;
+  }
+  #home .hero-editorial-test .hero-film {
+    background-position: 59% center !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #home .hero.hero-editorial-test { min-height: max(780px, 100svh); }
+  #home .hero-editorial-test .hero-c {
+    min-height: max(780px, 100svh);
+    padding-top: 136px;
+    padding-bottom: 50px;
+  }
+  #home .hero-editorial-test h1 {
+    max-width: 610px;
+    max-inline-size: min(100%, 610px) !important;
+    font-size: clamp(57px, 7.5vw, 72px);
+  }
+  #home .hero-editorial-test .hero-commitments {
+    width: min(100%, 610px);
+    margin-top: 42px;
+  }
+  #home .hero-editorial-test .hero-film::after {
+    background: linear-gradient(90deg,rgba(5,17,28,.88),rgba(5,17,28,.62) 56%,rgba(5,17,28,.15)),
+                linear-gradient(0deg,rgba(5,17,28,.54),transparent 50%) !important;
+  }
+}
+@media (max-width: 767px) {
+  #home .hero.hero-editorial-test { min-height: max(805px, 100svh); }
+  #home .hero-editorial-test .hero-c {
+    min-height: max(805px, 100svh);
+    padding-top: 126px;
+    padding-bottom: 36px;
+    justify-content: flex-end;
+  }
+  #home .hero-editorial-test .over {
+    font-size: 10px;
+    letter-spacing: .16em;
+    gap: 12px;
+  }
+  #home .hero-editorial-test .over::before { width: 27px; }
+  #home .hero-editorial-test h1 {
+    max-width: 100%;
+    max-inline-size: 100% !important;
+    font-size: clamp(39px, 9vw, 51px);
+    line-height: 1.04;
+    margin-top: 17px !important;
+    letter-spacing: -.044em;
+  }
+  #home .hero-editorial-test .hero-sub {
+    max-inline-size: 100%;
+    font-size: 15.5px;
+    line-height: 1.59;
+    margin-top: 18px;
+  }
+  #home .hero-editorial-test .hero-actions {
+    margin-top: 25px;
+    width: 100%;
+    gap: 10px;
+  }
+  #home .hero-editorial-test .hero-actions .btn {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 51px;
+  }
+  #home .hero-editorial-test .hero-commitments {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+    padding-bottom: 0;
+    border-top-color: rgba(255,255,255,.33);
+  }
+  #home .hero-editorial-test .hero-commitments div,
+  #home .hero-editorial-test .hero-commitments div + div {
+    padding: 8px 0 !important;
+    border-left: 0 !important;
+  }
+  #home .hero-editorial-test .hero-commitments div:first-child { padding-top: 15px !important; }
+  #home .hero-editorial-test .hero-commitments span { font-size: 12px; }
+  #home .hero-editorial-test .hero-film::after {
+    background:linear-gradient(180deg,rgba(5,17,28,.47) 0%,rgba(5,17,28,.36) 34%,rgba(5,17,28,.75) 75%,rgba(5,17,28,.90) 100%),
+               linear-gradient(90deg,rgba(5,17,28,.38),rgba(5,17,28,.18)) !important;
+  }
+  #home .hero-editorial-test .hero-film video.hero-video {
+    object-position: 58% center !important;
+  }
+}
+@media (max-width: 380px) {
+  #home .hero.hero-editorial-test,
+  #home .hero-editorial-test .hero-c { min-height: 830px; }
+  #home .hero-editorial-test h1 { font-size: clamp(35px, 9.2vw, 40px); }
+  #home .hero-editorial-test .hero-sub { font-size: 14.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #home .hero-editorial-test .hero-c,
+  #home .hero-editorial-test h1 { animation: none !important; }
+}

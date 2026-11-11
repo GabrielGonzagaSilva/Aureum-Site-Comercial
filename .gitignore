@@ -1,5 +1,6 @@
 node_modules/
 dist/
+public/assets/hero-tower-bridge.mp4
 .vercel/
 .env*
 !.env.example

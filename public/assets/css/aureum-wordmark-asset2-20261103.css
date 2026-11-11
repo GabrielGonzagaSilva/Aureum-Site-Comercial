@@ -1,0 +1,10 @@
+/* AUREUM — user-provided text-only horizontal lockup, excluding central cinematic hero. */
+.logo .logo-img {
+  aspect-ratio:776.909 / 235.805!important;
+  width:100%;height:auto;object-fit:contain;
+  image-rendering:auto!important;
+}
+/* Existing white/ink logo visibility continues to follow the current theme and header state. */
+@media(max-width:640px){
+  .site-hdr .logo,.mmenu .logo{max-width:177px;}
+}

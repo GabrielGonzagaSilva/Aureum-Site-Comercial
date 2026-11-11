@@ -1,0 +1,21 @@
+/* Aureum / Mia — exact profile asset, shared by chat header and floating launcher. */
+#aureum-contact-hub #launch-assistant.ai-launcher {
+  background:#ebe6dc;
+  border-color:#c6ab81;
+  color:#272623;
+  padding:0;
+}
+#aureum-contact-hub #launch-assistant.ai-launcher:hover {
+  background:#ebe6dc;
+  border-color:#c6ab81;
+}
+#aureum-contact-hub #launch-assistant.ai-launcher .mia-fab-avatar {
+  display:block;
+  width:100%;height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  flex:none;
+  pointer-events:none;
+  user-select:none;
+}
+/* Pre-existing hover, alternating soft halos, open-panel and keyboard focus remain intact. */

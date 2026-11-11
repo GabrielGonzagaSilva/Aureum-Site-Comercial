@@ -1,0 +1,136 @@
+
+/* Aureum · refinement 2026-11-07 | production light mode
+   Green identity, readable text, white surfaces.  No content/behavior changes. */
+html:root:not([data-theme="light"]),
+html:root[data-theme="light"]{
+  color-scheme:light;
+  --white:#FFFFFF;--bg:#FFFFFF;--sand:#F7F9F6;--sand-2:#EEF2EC;
+  --ink:#0A211B;--ink-2:#385247;--ink-3:#52665B;
+  --line:#E2E9E3;--line-2:#CBD7CE;
+  --navy:#1C4C3C;--navy-2:#245D47;--navy-3:#0A211B;
+  --on-navy:#FFFFFF;--on-navy-2:#DEE9E1;--on-navy-3:#C0D4C8;--navy-line:rgba(255,255,255,.2);
+  --brass:#A37A42;--brass-2:#E0C59A;
+  --card:#FFFFFF;--field:#FFFFFF;--ok:#276645;--err:#AD3127;
+  --shadow:0 8px 30px -20px rgba(10,33,27,.20);
+  --shadow-lg:0 20px 56px -32px rgba(10,33,27,.25);
+  --r:10px;
+  --brand-deep:#0A211B;--brand-night:#0A211B;--brand-ivory:#FFFFFF;
+  --brand-cream:#F7F9F6;--brand-metal:#A37A42;--brand-border:#CBD7CE;
+  --sage:#768774;--emerald:#1C4C3C;--forest:#0A211B;--ivory:#FFFFFF;--antique-gold:#A37A42;
+}
+html,body{background:#FFF;color:#0A211B}
+::selection{background:#1C4C3C;color:#FFF}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:2px solid #1C4C3C!important;outline-offset:3px}
+a{text-underline-offset:.2em}
+:where(.sec,.ux-paths,.ux-expect,.ux-review) :is(.h2,h3){color:#0A211B}
+:where(.sec,.ux-paths,.ux-expect,.ux-review) :is(.lead,p){color:inherit}
+.sec{color:#0A211B}
+.sec.sand{background:#F7F9F6}
+.sec .lead,.sec-head p,.svc-card p,.ux-paths-head p,.ux-expect-grid p{color:#385247}
+.sec .over,.ux-path-n,.ux-expect-number{color:#795629}
+.svc-card,.route,.ux-path,.fcard{background:#FFF;color:#0A211B}
+.svc-card,.route{border-radius:12px}
+.svc-ic{background:#EEF2EC;color:#1C4C3C}
+.more,.ux-path-action,.text-link{color:#1C4C3C}
+.ux-path-grid,.ux-expect-grid,.faq-item{border-color:#CBD7CE}
+.ux-path:hover,.ux-path:focus-visible{background:#F7F9F6}
+.ux-flow-context{background:#EEF2EC!important;color:#0A211B!important;border-left:2px solid #768774!important}
+/* Header stays cinematic over the hero, then becomes truly white. */
+.site-hdr.solid,.site-hdr.solid .navbar{
+  background:#FFF!important;color:#0A211B!important;
+  border-color:#E2E9E3!important;
+}
+.site-hdr.solid{box-shadow:0 1px 0 #E2E9E3,0 8px 30px -26px rgba(10,33,27,.24)!important}
+.site-hdr.solid :is(.nav a,.nav button,.aureum-locale__trigger){color:#0A211B!important}
+.site-hdr.solid .logo-img--ink,.mmenu .logo-img--ink{display:block!important}
+.site-hdr.solid .logo-img--white,.mmenu .logo-img--white{display:none!important}
+.site-hdr.solid .menu-btn,.mmenu-top .menu-btn{
+  color:#0A211B!important;border:1px solid #CBD7CE!important;
+  background:#F7F9F6!important;border-radius:10px!important;
+}
+.site-hdr.solid .btn-hdr{background:#1C4C3C!important;color:#FFF!important;border-radius:8px!important}
+.site-hdr.solid .btn-hdr:hover{background:#0A211B!important}
+.mmenu,.mega,.aureum-locale__panel{background:#FFF!important;color:#0A211B!important}
+.mmenu nav a,.mmenu nav h4{color:#0A211B!important}
+.mmenu-top{border-color:#E2E9E3!important}
+/* Dark colors belong to image-backed hero, destination banners and footer. */
+.hero,.dhero,.band,.foot{background-color:#0A211B!important}
+.hero,.dhero,.band{color:#FFF!important}
+.hero-bg::after{
+  background:linear-gradient(180deg,rgba(10,33,27,.62) 0%,rgba(10,33,27,.12) 29%,rgba(10,33,27,.28) 56%,rgba(10,33,27,.88) 100%),
+             linear-gradient(90deg,rgba(10,33,27,.47) 0%,rgba(10,33,27,0) 62%)!important;
+}
+.dhero::after{
+  background:linear-gradient(180deg,rgba(10,33,27,.60),rgba(10,33,27,.12) 32%,rgba(10,33,27,.34) 56%,rgba(10,33,27,.89)),
+             linear-gradient(90deg,rgba(10,33,27,.47),transparent 65%)!important;
+}
+.dcard::before{background:linear-gradient(180deg,rgba(10,33,27,.34),transparent 38%,rgba(10,33,27,.87))!important}
+.band::after{background:linear-gradient(90deg,rgba(10,33,27,.89),rgba(10,33,27,.62) 55%,rgba(10,33,27,.20))!important}
+.band :is(.h2,p),.dhero :is(h1,p),.on-dark .h2{color:#FFF!important}
+.band .over,.on-dark .over,.foot h4{color:#E0C59A!important}
+.foot{color:#DEE9E1!important}
+.foot p,.foot nav a,.foot a{color:#DEE9E1!important}
+.foot nav a:hover,.foot a:hover{color:#FFF!important}
+/* Buttons and interactive state */
+.btn-primary,.site-hdr.solid .btn-hdr{background:#1C4C3C!important;color:#FFF!important;border-color:#1C4C3C!important}
+.btn-primary:hover,.site-hdr.solid .btn-hdr:hover{background:#0A211B!important;border-color:#0A211B!important;color:#FFF!important}
+.btn-light{background:#FFF!important;border-color:#FFF!important;color:#0A211B!important}
+.btn-ghost-light{border-color:rgba(255,255,255,.75)!important;background:rgba(10,33,27,.19)!important;color:#FFF!important}
+.btn-line{color:#1C4C3C;border-color:#768774}
+.btn-line:hover{border-color:#1C4C3C}
+/* Contact area: white form on a pale surface, no inverted inherited color. */
+#contato.sec{background:#F7F9F6!important;color:#0A211B!important}
+#contato .contact{background:transparent!important;color:#0A211B!important}
+#contato .contact :is(.h2,h3){color:#0A211B!important}
+#contato .contact .over{color:#795629!important}
+#contato .contact :is(.lead,p){color:#385247!important}
+#contato .ux-contact-intro{border-color:#CBD7CE!important}
+#contato .ux-contact-points span{color:#0A211B!important}
+#contato .ux-contact-points span::before{background:#768774!important}
+.fcard{
+  background:#FFF!important;color:#0A211B!important;
+  border:1px solid #DEE7DF!important;border-radius:14px!important;
+  box-shadow:none!important;
+}
+.fcard :is(h2,h3){color:#0A211B!important;letter-spacing:-.025em}
+.fcard .f-intro,.fcard p:not(.err){color:#385247!important}
+.fcard .form{row-gap:18px}
+.fcard .f label,.fcard label.consent{color:#173D2F!important}
+.fcard .f label span,.fcard .f-note{color:#52665B!important}
+.fcard .f :is(input,select,textarea){
+  color:#0A211B!important;background:#FFF!important;
+  border:1px solid #BFCFC3!important;
+  border-radius:9px!important;font-size:16px!important;
+}
+.fcard .f :is(input,select){height:52px}
+.fcard .f textarea{min-height:120px}
+.fcard .f :is(input,textarea)::placeholder{color:#69756D!important;opacity:1}
+.fcard .f :is(input,select,textarea):focus{
+  outline:2px solid #1C4C3C!important;outline-offset:2px;
+  border-color:#1C4C3C!important;box-shadow:none!important
+}
+.fcard input[type="checkbox"]{accent-color:#1C4C3C}
+.fcard .err{color:#AD3127!important}
+.fcard .done,.fcard .done p{color:#0A211B!important}
+.fcard .done .d-ic{color:#1C4C3C!important}
+/* Inline help and form controls remain legible on country pages. */
+.ux-review textarea{background:#FFF!important;color:#0A211B!important;border-color:#CBD7CE!important}
+.ux-review .ux-copy-status{color:#1C4C3C!important}
+@media(max-width:760px){
+  .site-hdr.solid .navbar .wrap{min-height:66px}
+  #contato .contact{gap:28px!important}
+  #contato .contact .h2{font-size:clamp(29px,7.2vw,38px);line-height:1.18}
+  #contato .ux-contact-intro{margin-top:22px;padding:20px 0}
+  .fcard{padding:clamp(20px,5vw,28px)!important;border-radius:12px!important}
+  .fcard h3{font-size:clamp(23px,6vw,28px)!important;line-height:1.22!important}
+  .fcard .f-intro{margin-bottom:18px!important}
+  .contact-actions{right:12px!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;gap:10px!important}
+  .contact-actions .contact-launcher{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important}
+  .contact-actions .mia-fab-avatar{width:52px!important;height:52px!important}
+  body:has(#contato :is(input,textarea,select):focus) .contact-actions{
+    opacity:0!important;pointer-events:none!important
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .site-hdr.solid{transition:none}
+}

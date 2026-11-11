@@ -1,5 +1,17 @@
 # Arquitetura do site comercial da Aureum
 
+## Estrutura vigente desde 11/11/2026
+
+- `public/`: fonte estática oficial recuperada, com 51 páginas em cinco idiomas, fotos, fontes e identidade vetorial.
+- `media/hero-tower-bridge/`: partes binárias e manifesto do vídeo original; o build recompõe o MP4 e verifica o SHA-256, sem baixar nenhum deployment.
+- `api/chat.mjs`: entrada pública da Mia, com arquivo privado de conversas; `server/chat-core.mjs` contém o núcleo recuperado. A API executa no mesmo deployment do site, sem rewrite para versões antigas.
+- `build.mjs`: validação de integridade, sintaxe e rotas; saída em `dist/`; metadados verificáveis em `release.json`.
+- `vercel.json`: configuração de build e cache; integração Git no projeto existente, com `main` em Production e outras branches em Preview.
+- `archive/github-20261106/`: arquivos anteriores do GitHub, preservados como histórico e excluídos da saída pública.
+- `docs/recovery/`: proveniência e hashes da recuperação. Nenhum script de recuperação é executado no fluxo normal de publicação.
+
+O build de produção também executa os testes da API. As credenciais permanecem na Vercel e não fazem parte do repositório. As seções abaixo registram a arquitetura anterior; os caminhos ativos são os listados acima.
+
 ## Objetivo
 
 Manter o site comercial completamente separado do Hub interno e permitir expansão para novos destinos com baixo custo de manutenção.

@@ -1,0 +1,140 @@
+/* AUREUM / Card de destino — integrated from user's LEIAME.md component.
+   Original component structure, dimensions, blur, focus, typography and motion.
+   Eight existing user photos and original destination links preserved. */
+.dc {
+  --dc-ratio: 444 / 591;
+  --dc-radius: 24px;
+  --dc-night: 9 16 24;
+  --dc-blur: 12px;
+  --dc-blur-height: 42%;
+  --dc-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --dc-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --dc-pad: clamp(18px, 6.3cqi, 28px);
+  --dc-pad-bottom: clamp(16px, 5cqi, 22px);
+  position:relative;
+  container-type:inline-size;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  width:100%;
+  aspect-ratio:var(--dc-ratio);
+  border-radius:var(--dc-radius);
+  overflow:hidden;
+  isolation:isolate;
+  color:#fff;
+  font-family:var(--dc-sans);
+  -webkit-font-smoothing:antialiased;
+  box-shadow:0 1px 2px rgb(var(--dc-night) / .08),
+             0 14px 28px -10px rgb(var(--dc-night) / .22),
+             0 44px 80px -28px rgb(var(--dc-night) / .34);
+}
+.dc, .dc *, .dc *::before, .dc *::after {box-sizing:border-box;}
+.dc :where(h2,h3,h4,p,ul,li) {margin:0;padding:0;}
+.dc img {max-width:none;}
+.dc::after {
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgb(255 255 255 / .1);pointer-events:none;
+}
+.dc__photo {
+  position:absolute;inset:0;z-index:-3;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+  filter:none!important;-webkit-filter:none!important;
+}
+.dc__blur {
+  position:absolute;inset:auto 0 0; height:var(--dc-blur-height);z-index:-2;
+  -webkit-backdrop-filter:blur(var(--dc-blur));
+  backdrop-filter:blur(var(--dc-blur));
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 55%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 55%);
+  pointer-events:none;
+}
+.dc__scrim {
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,rgb(var(--dc-night) / .28) 0%,rgb(var(--dc-night) / 0) 22%),
+    linear-gradient(to bottom,rgb(var(--dc-night) / 0) 38%,rgb(var(--dc-night) / .5) 62%,rgb(var(--dc-night) / .82) 82%,rgb(var(--dc-night) / .94) 100%);
+}
+.dc__tags {
+  position:absolute;top:var(--dc-pad);left:var(--dc-pad);right:var(--dc-pad);
+  display:flex;flex-wrap:wrap;gap:6px;list-style:none;
+}
+.dc__tags li {
+  height:28px;display:inline-flex;align-items:center;padding:0 12px;border-radius:8px;
+  background:rgb(var(--dc-night) / .28);border:1px solid rgb(255 255 255 / .26);
+  -webkit-backdrop-filter:blur(12px) saturate(140%);
+  backdrop-filter:blur(12px) saturate(140%);
+  font-size:12.5px;font-weight:500;letter-spacing:.01em;line-height:1;white-space:nowrap;
+}
+.dc__body {padding:0 var(--dc-pad) var(--dc-pad-bottom);}
+.dc__title {
+  display:flex;align-items:center;gap:12px;margin-bottom:8px;
+  font-family:var(--dc-serif);font-optical-sizing:auto;
+  font-size:clamp(28px,8.56cqi,38px);
+  line-height:1.1;font-weight:400;letter-spacing:-.01em;
+  color:#fff;
+}
+.dc__flag {
+  width:24px;height:16px;flex:none;object-fit:cover;border-radius:3px;
+  box-shadow:0 0 0 1px rgb(255 255 255 / .28);
+}
+.dc__text {
+  font-size:clamp(14px,3.6cqi,16px);line-height:1.5;
+  color:rgb(255 255 255 / .76);
+  padding-bottom:var(--dc-pad-bottom);
+  border-bottom:1px solid rgb(255 255 255 / .16);
+}
+.dc__cta {
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-top:16px;font-size:clamp(14px,3.4cqi,15px);
+  line-height:20px;font-weight:500;color:#fff;text-decoration:none;
+}
+.dc__cta::after {
+  content:"";position:absolute;inset:0;z-index:1;border-radius:var(--dc-radius);
+}
+.dc__arrow {
+  width:38px;height:38px;display:grid;place-items:center;flex:none;
+  border-radius:50%;border:1px solid rgb(255 255 255 / .32);
+  transition:background-color .25s ease,color .25s ease,border-color .25s ease;
+}
+.dc__arrow svg {width:18px;height:18px;}
+.dc__sr {
+  position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
+  white-space:nowrap;
+}
+@media (hover:hover) {
+  .dc:hover .dc__photo {transform:scale(1.04);}
+  .dc:hover .dc__arrow {background:#fff;border-color:#fff;color:rgb(var(--dc-night));}
+}
+.dc__cta:focus-visible {outline:none;}
+.dc__cta:focus-visible::after {box-shadow:inset 0 0 0 2px #fff;}
+.dc__cta:focus-visible .dc__arrow {background:#fff;border-color:#fff;color:rgb(var(--dc-night));}
+@media (prefers-reduced-motion:reduce){
+  .dc__photo,.dc__arrow {transition:none;}
+  .dc:hover .dc__photo {transform:none;}
+}
+/* Aureum grid integration: preserves 4×2 desktop, 2-column tablet, 1-column mobile. */
+#home #destinos .dgrid.dc-grid {
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  align-items:stretch!important;gap:clamp(14px,1.6vw,24px)!important;
+}
+#home #destinos .dgrid.dc-grid > .dc {
+  grid-column:auto!important;grid-row:auto!important;
+  min-width:0!important;max-width:none!important;
+  min-height:0!important;height:auto!important;
+  aspect-ratio:var(--dc-ratio)!important;
+}
+@media (max-width:1199px) {
+  #home #destinos .dgrid.dc-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+@media (max-width:639px){
+  #home #destinos .dgrid.dc-grid {grid-template-columns:minmax(0,1fr)!important;gap:18px!important;}
+}
+
+/* AUREUM_IMAGE_RELIABILITY_20261106 */
+.dc__photo{z-index:0!important;display:block!important;visibility:visible!important;opacity:1!important}
+.dc__blur{z-index:1!important}
+.dc__scrim{z-index:2!important}
+.dc__tags{z-index:3!important}
+.dc__body{position:relative;z-index:3!important}
+.dc__cta::after{z-index:4!important}

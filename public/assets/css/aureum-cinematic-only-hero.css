@@ -1,0 +1,29 @@
+/* Cinematic-first Aureum hero: the actual SVG identity is the only visual subject. */
+#home .hero-logo-centered-test .hero-c {
+  justify-content:center!important;
+  align-items:center!important;
+  padding-top:clamp(105px,12vh,150px)!important;
+  padding-bottom:clamp(105px,12vh,150px)!important;
+}
+#home .hero-logo-centered-test .hero-brand-center {
+  margin:0 auto!important;
+  height:auto!important;
+}
+#home .hero-logo-centered-test h1.aureum-visually-hidden-heading {
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+@media(max-width:767px) {
+  #home .hero-logo-centered-test .hero-c {
+    padding-top:clamp(90px,12vh,135px)!important;
+    padding-bottom:clamp(90px,12vh,135px)!important;
+  }
+}

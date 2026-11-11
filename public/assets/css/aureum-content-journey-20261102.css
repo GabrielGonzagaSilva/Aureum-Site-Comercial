@@ -1,0 +1,13 @@
+/* Editorial homepage order: a clear journey from need to understanding, trust and contact. */
+#home #depoimentos {padding-top:clamp(45px,5.5vw,76px);padding-bottom:clamp(55px,6vw,88px)}
+#home #depoimentos .sec-head {margin-bottom:clamp(22px,3vw,40px)}
+#home #depoimentos .ux-expect-cta {margin-top:clamp(23px,3vw,36px)}
+#home #sobre {padding-bottom:clamp(56px,6vw,92px)}
+#home #diferenciais {padding-top:clamp(58px,6vw,94px)}
+#home #contato {scroll-margin-top:92px}
+#home #orientacao, #home #servicos, #home #destinos, #home #como-funciona, #home #sobre, #home #perguntas, #home #analises {scroll-margin-top:86px}
+@media(max-width:767px){
+  #home #depoimentos {padding-top:42px;padding-bottom:55px}
+  #home #sobre {padding-bottom:56px}
+  #home #diferenciais {padding-top:56px}
+}
