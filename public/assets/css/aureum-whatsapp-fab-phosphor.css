@@ -1,0 +1,57 @@
+/* WhatsApp floating action: existing fixed contact hub & panel stay in charge of position and click. */
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp {
+  position:relative;
+  width:60px;height:60px;min-width:60px;min-height:60px;
+  display:flex;align-items:center;justify-content:center;
+  isolation:isolate;border-radius:50%;
+  background-color:#087e4a;color:#ffffff;border:1px solid #087e4a;
+  box-shadow:0 6px 24px rgba(0,0,0,.18);
+  animation:none!important;
+  transition:transform 200ms ease,background-color 200ms ease,box-shadow 200ms ease;
+}
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp .ph {
+  font-size:32px;line-height:1;display:block;pointer-events:none;color:#fff;
+}
+/* Ripple is decorative and cannot block pointer events; no layout properties are animated. */
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp::after {
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0);
+  animation:aureum-fab-ripple 6s ease-out infinite;
+}
+@keyframes aureum-fab-ripple {
+  0%,4% {transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0);}
+  6% {transform:scale(1.03);box-shadow:0 0 0 3px rgba(255,255,255,.55);}
+  18% {transform:scale(1.08);box-shadow:0 0 0 15px rgba(255,255,255,0);}
+  19%,100% {transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,0);}
+}
+@media(hover:hover){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp:hover {
+    transform:translateY(-3px) scale(1.07);background-color:#066a3e;border-color:#066a3e;
+  }
+}
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp:focus-visible {
+  outline:3px solid #ffffff;outline-offset:4px;
+  box-shadow:0 0 0 7px #10283e,0 10px 28px rgba(0,0,0,.2);
+}
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp:hover::after,
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp:focus-visible::after,
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp[aria-expanded="true"]::after,
+#aureum-contact-hub #contact-panel:not([hidden]) ~ .contact-actions #launch-whatsapp.fab-whatsapp::after {
+  animation-play-state:paused;
+  transform:scale(1);box-shadow:none;
+}
+@media(max-width:640px){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp {
+    width:56px;height:56px;min-width:56px;min-height:56px;
+  }
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp .ph {font-size:30px;}
+}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp {
+    animation:none!important;transition:none!important;
+  }
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp::after {
+    animation:none!important;box-shadow:none!important;transform:none!important;
+  }
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp:hover {transform:none!important;}
+}

@@ -1,0 +1,34 @@
+/* In the cinematic hero, the logo and consultation CTA are temporarily hidden.
+   Centre navigation independently of their reserved flex slots.
+   All rules stop applying as soon as .aureum-nav-revealed is set. */
+@media (min-width:1121px){
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .wrap {
+    position:relative;
+  }
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .nav {
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    margin-left:0!important;
+  }
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .aureum-locale--header {
+    position:absolute;
+    right:0;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
+/* At tablet width only the locale selector and hamburger remain: keep the
+   language control centered without disturbing the menu button on the right. */
+@media (min-width:761px) and (max-width:1120px){
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .wrap {
+    position:relative;
+  }
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .aureum-locale--header {
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}

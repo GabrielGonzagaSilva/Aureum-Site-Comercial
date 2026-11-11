@@ -1,0 +1,87 @@
+:root {
+  --aureum-ivory: #E9DDCD;
+  --aureum-sage: #768774;
+  --aureum-emerald: #1C4C3C;
+  --aureum-forest: #0A211B;
+  --aureum-gold: #A37A42;
+}
+.f-social { display:flex; flex-direction:column; align-items:flex-start; gap:10px; margin-top:18px; }
+.f-social-label { color:rgba(233,221,205,.72); font:500 10px/1.3 Inter, sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+.f-social-links { display:flex; align-items:center; gap:9px; }
+.f-social-link { width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(233,221,205,.24); border-radius:999px; color:var(--aureum-ivory); background:rgba(233,221,205,.045); transition:transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease; text-decoration:none; }
+.f-social-svg { width:16px; height:16px; display:block; fill:currentColor; }
+.f-social-link.is-pending { opacity:.46; cursor:default; }
+@media (hover:hover) { .f-social-link:not(.is-pending):hover { color:var(--aureum-forest); background:var(--aureum-ivory); border-color:var(--aureum-ivory); transform:translateY(-2px); } }
+.f-social-link:focus-visible { outline:2px solid var(--aureum-gold); outline-offset:3px; }
+@media (max-width:760px) { .f-social { align-items:center; } .f-social-links { justify-content:center; } }
+
+#contact-panel[data-current-view="whatsapp"] .contact-view[data-view="whatsapp"] { display:flex; flex-direction:column; gap:12px; padding:16px; overflow-y:auto; overscroll-behavior:contain; }
+.contact-options { display:grid; gap:12px; }
+.contact-option { min-width:0; padding:16px; border:1px solid rgba(10,33,27,.11); border-radius:20px; background:#fff; }
+.contact-option--primary { background:#F7F4EE; border-color:rgba(163,122,66,.25); }
+.contact-option-copy h3 { margin:0; color:var(--aureum-forest); font:600 14px/1.35 Inter, sans-serif; }
+.contact-option-copy p { margin:6px 0 13px; color:#5E625B; font:400 12px/1.5 Inter, sans-serif; }
+.contact-primary { min-height:44px; width:100%; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:0 18px; border:0; border-radius:999px !important; color:var(--aureum-ivory); background:var(--aureum-forest); font:600 12px/1 Inter, sans-serif; cursor:pointer; transition:background-color .18s ease, transform .18s ease, opacity .18s ease; }
+.contact-primary:disabled { opacity:.46; cursor:not-allowed; transform:none; }
+@media (hover:hover) { .contact-primary:not(:disabled):hover { background:var(--aureum-emerald); transform:translateY(-1px); } }
+.aureum-callback-form { display:flex; flex-direction:column; gap:8px; }
+.aureum-callback-form label { color:var(--aureum-forest); font:600 11px/1.4 Inter, sans-serif; }
+.aureum-callback-form input { width:100%; min-width:0; height:46px; padding:0 14px; border:1px solid #D8D2C7; border-radius:14px; background:#fff; color:var(--aureum-forest); font:400 13px/1 Inter, sans-serif; }
+.aureum-callback-form input:focus { border-color:var(--aureum-sage); outline:2px solid rgba(118,135,116,.18); }
+.aureum-callback-form input:disabled { opacity:.55; cursor:not-allowed; background:#F3F1EC; }
+.aureum-callback-form input[aria-invalid="true"] { border-color:#A34C3D; }
+.contact-note { margin:10px 0 0; color:#77796F; font:400 10px/1.5 Inter, sans-serif; }
+.contact-note a { color:var(--aureum-emerald); text-decoration:underline; text-underline-offset:2px; }
+.contact-status { min-height:16px; margin:8px 0 0; color:#80633B; font:500 10px/1.45 Inter, sans-serif; }
+#contact-panel[data-current-view="whatsapp"] .contact-panel-foot { display:none !important; }
+@media (max-width:640px) { #contact-panel[data-current-view="whatsapp"] { width:calc(100vw - 24px) !important; max-width:420px !important; max-height:calc(100dvh - 24px) !important; overflow:hidden !important; border-radius:22px !important; } }
+
+#contact-panel[data-current-view="assistant"] { display:flex !important; flex-direction:column !important; width:min(440px, calc(100vw - 32px)) !important; height:min(680px, calc(100dvh - 40px)) !important; max-height:calc(100dvh - 40px) !important; overflow:hidden !important; }
+#contact-panel[data-current-view="assistant"] .contact-panel-head { flex:0 0 auto; min-height:64px; padding:12px 16px !important; gap:11px; }
+#contact-panel[data-current-view="assistant"] .contact-panel-head h2,
+#contact-panel[data-current-view="assistant"] #contact-panel-title { margin:0; font:600 15px/1.25 Inter, sans-serif; color:var(--aureum-forest); }
+#contact-panel[data-current-view="assistant"] .contact-eyebrow,
+#contact-panel[data-current-view="assistant"] #contact-panel-eyebrow { margin:0 0 3px; color:var(--aureum-sage); font:600 9px/1.2 Inter, sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+#contact-panel[data-current-view="assistant"] .mia-avatar { width:42px !important; height:42px !important; flex:0 0 42px; border-radius:50% !important; object-fit:cover !important; border:1px solid rgba(10,33,27,.12); background:var(--aureum-ivory); }
+#contact-panel[data-current-view="assistant"] .contact-view[data-view="assistant"] { display:flex !important; flex:1 1 auto !important; flex-direction:column !important; min-height:0 !important; overflow:hidden !important; }
+#contact-panel[data-current-view="assistant"] .assistant-state { display:none !important; }
+#contact-panel[data-current-view="assistant"] #chat-transcript { flex:1 1 auto !important; min-height:0 !important; max-height:none !important; height:auto !important; overflow-y:auto !important; overflow-x:hidden !important; padding:16px 17px !important; overscroll-behavior:contain; scroll-behavior:smooth; }
+#contact-panel[data-current-view="assistant"] #chat-transcript p,
+#contact-panel[data-current-view="assistant"] #chat-transcript div { overflow-wrap:anywhere; }
+#contact-panel[data-current-view="assistant"] #chat-suggestions { flex:0 0 auto; display:flex; flex-wrap:wrap; gap:7px; padding:0 14px 10px; max-height:76px; overflow-y:auto; }
+#contact-panel[data-current-view="assistant"] #chat-suggestions button { min-height:32px; padding:7px 11px; border-radius:999px !important; font-size:10px; }
+#contact-panel[data-current-view="assistant"] #chat-form,
+#contact-panel[data-current-view="assistant"] .chat-form,
+#contact-panel[data-current-view="assistant"] .chat-composer { flex:0 0 auto; position:relative; display:flex; align-items:center; gap:8px; padding:11px 14px calc(11px + env(safe-area-inset-bottom)); border-top:1px solid rgba(10,33,27,.09); background:#fff; }
+#contact-panel[data-current-view="assistant"] #chat-input { flex:1 1 auto; min-width:0; max-width:100%; min-height:44px; border-radius:999px !important; }
+#contact-panel[data-current-view="assistant"] #chat-form button,
+#contact-panel[data-current-view="assistant"] .chat-form button,
+#contact-panel[data-current-view="assistant"] .chat-composer button { border-radius:999px !important; }
+#contact-panel[data-current-view="assistant"] .contact-panel-foot { display:none !important; }
+#contact-panel[data-current-view="assistant"] #aureum-chat-recording-notice { padding:0 15px 8px; color:#77796F; font-size:10px; line-height:1.4; }
+@media (max-width:640px) {
+  #contact-panel[data-current-view="assistant"] { position:fixed !important; inset:0 !important; width:100vw !important; max-width:none !important; height:var(--aureum-vh, 100dvh) !important; max-height:none !important; min-height:0 !important; margin:0 !important; border-radius:0 !important; padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
+  #contact-panel[data-current-view="assistant"] .contact-panel-head { padding-top:calc(12px + env(safe-area-inset-top)) !important; }
+  #contact-panel[data-current-view="assistant"] #chat-transcript { padding:14px 14px 10px !important; }
+  #contact-panel[data-current-view="assistant"] #chat-suggestions { flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; max-height:60px; white-space:nowrap; }
+  #contact-panel[data-current-view="assistant"] #chat-form,
+  #contact-panel[data-current-view="assistant"] .chat-form,
+  #contact-panel[data-current-view="assistant"] .chat-composer { padding-bottom:calc(10px + env(safe-area-inset-bottom)); }
+}
+body.aureum-chat-open { overflow:hidden !important; }
+
+button, .primary-button, .contact-primary, .chat-send, .dc__cta { border-radius:999px !important; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline:2px solid var(--aureum-gold) !important; outline-offset:3px; }
+.dc__photo { transition:transform .55s cubic-bezier(.2,.65,.3,1); }
+@media (hover:hover) { .dc:hover .dc__photo { transform:scale(1.025); } }
+@media (prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+
+/* AUREUM final UI patch — 2026-11-11 */
+#aureum-contact-hub #contact-panel[hidden],
+#aureum-contact-hub #contact-panel[hidden][data-current-view="assistant"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+#aureum-contact-hub #contact-panel .contact-view[hidden]{display:none!important;visibility:hidden!important}
+#hdr .logo-img,.mmenu .logo-img{aspect-ratio:auto!important;height:auto!important;max-height:66px!important;object-fit:contain!important;object-position:left center!important}
+@media(min-width:1121px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}
+@media(min-width:761px) and (max-width:1120px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}
+button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-btn,.contact-launcher,.contact-primary,.dc__cta,.chat-entry button,.chat-suggestions button{border-radius:9999px!important}
+@media(prefers-reduced-motion:reduce){#aureum-contact-hub #contact-panel[data-current-view="assistant"],#aureum-contact-hub #contact-panel[data-current-view="assistant"] .chat-message{animation:none!important;transition:none!important}}

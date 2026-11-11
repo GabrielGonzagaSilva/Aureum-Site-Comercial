@@ -1,0 +1,8 @@
+/* Destination-specific banners; no stock placeholder across countries */
+#destino-portugal .aureum-band-portugal{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/portugal-01.webp") center/cover no-repeat!important}
+#destino-australia .aureum-band-australia{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/australia-02.webp") center/cover no-repeat!important}
+#destino-brasil .aureum-band-brasil{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/brasil-03.webp") center/cover no-repeat!important}
+#destino-alemanha .aureum-band-alemanha{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/alemanha-02.webp") center/cover no-repeat!important}
+#destino-canada .aureum-band-canada{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/canada-02.webp") center/cover no-repeat!important}
+#destino-franca .aureum-band-franca{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/franca-02.webp") center/cover no-repeat!important}
+#destino-irlanda .aureum-band-irlanda{background:linear-gradient(90deg,rgba(7,18,30,.80),rgba(7,18,30,.34)),url("/assets/photos/irlanda-02.webp") center/cover no-repeat!important}

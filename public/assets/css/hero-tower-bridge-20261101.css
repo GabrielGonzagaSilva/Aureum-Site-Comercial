@@ -1,0 +1,4 @@
+#home .hero-bg.hero-film {background-image:url("/assets/hero-tower-bridge-poster.jpg") !important;background-color:#132334;background-size:cover!important;background-position:center center!important;}
+#home .hero-bg.hero-film video.hero-video{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;}
+@media(max-width:600px){#home .hero-bg.hero-film video.hero-video{object-position:56% center;}#home .hero-bg.hero-film{background-position:56% center!important;}}
+@media(prefers-reduced-motion:reduce){#home .hero-bg.hero-film video.hero-video{display:none!important;}}

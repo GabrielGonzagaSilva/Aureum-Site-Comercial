@@ -1,0 +1,79 @@
+/* AUREUM / Floating actions motion v2 — staggered, quietly noticeable, composited rings. */
+/* 14s cycle: WhatsApp ~0.8s, AI ~7.8s. No competing simultaneous pulses. */
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp,
+#aureum-contact-hub #launch-assistant.ai-launcher {
+  position:relative;isolation:isolate;overflow:visible;
+  animation:none!important;
+  transform:translate3d(0,0,0);transform-origin:center;
+  transition:transform 240ms cubic-bezier(.2,.75,.25,1),box-shadow 240ms ease,background-color 240ms ease;
+}
+/* Rings have a static shadow; only transform and opacity are animated for smooth rendering. */
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp::before,
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp::after,
+#aureum-contact-hub #launch-assistant.ai-launcher::before,
+#aureum-contact-hub #launch-assistant.ai-launcher::after {
+  content:"";position:absolute;inset:-2px;display:block;
+  border-radius:inherit;pointer-events:none;z-index:-1;
+  transform:translate3d(0,0,0) scale(.96);opacity:0;
+  transform-origin:50% 50%;
+  will-change:transform,opacity;
+}
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp::before,
+#aureum-contact-hub #launch-assistant.ai-launcher::before {
+  border:2px solid rgba(255,255,255,.88);
+  box-shadow:0 0 15px rgba(255,255,255,.30);
+  animation:aureum-fab-ring-primary 14s cubic-bezier(.2,.65,.35,1) infinite!important;
+}
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp::after,
+#aureum-contact-hub #launch-assistant.ai-launcher::after {
+  border:1.5px solid rgba(255,255,255,.65);
+  box-shadow:0 0 11px rgba(255,255,255,.19);
+  animation:aureum-fab-ring-secondary 14s cubic-bezier(.2,.65,.35,1) infinite!important;
+}
+/* Offset AI by half a cycle rather than creating a second independent timer. */
+#aureum-contact-hub #launch-assistant.ai-launcher::before,
+#aureum-contact-hub #launch-assistant.ai-launcher::after {animation-delay:-7s!important;}
+@keyframes aureum-fab-ring-primary {
+  0%,4%{opacity:0;transform:translate3d(0,0,0) scale(.96);}
+  7%{opacity:.82;transform:translate3d(0,0,0) scale(1.08);}
+  13%{opacity:.38;transform:translate3d(0,0,0) scale(1.29);}
+  19%,100%{opacity:0;transform:translate3d(0,0,0) scale(1.43);}
+}
+@keyframes aureum-fab-ring-secondary {
+  0%,7%{opacity:0;transform:translate3d(0,0,0) scale(.98);}
+  10%{opacity:.5;transform:translate3d(0,0,0) scale(1.09);}
+  17%{opacity:.18;transform:translate3d(0,0,0) scale(1.34);}
+  23%,100%{opacity:0;transform:translate3d(0,0,0) scale(1.5);}
+}
+@media(hover:hover){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp:hover,
+  #aureum-contact-hub #launch-assistant.ai-launcher:hover {
+    transform:translateY(-2px) scale(1.055);
+  }
+}
+/* Avoid attention effects while hovering, focusing, pressing, or using the panel. */
+#aureum-contact-hub #launch-whatsapp:is(:hover,:focus,:active,[aria-expanded="true"])::before,
+#aureum-contact-hub #launch-whatsapp:is(:hover,:focus,:active,[aria-expanded="true"])::after,
+#aureum-contact-hub #launch-assistant:is(:hover,:focus,:active,[aria-expanded="true"])::before,
+#aureum-contact-hub #launch-assistant:is(:hover,:focus,:active,[aria-expanded="true"])::after,
+#aureum-contact-hub #contact-panel:not([hidden]) ~ .contact-actions .contact-launcher::before,
+#aureum-contact-hub #contact-panel:not([hidden]) ~ .contact-actions .contact-launcher::after {
+  animation-play-state:paused!important;
+  opacity:0!important;
+  transform:translate3d(0,0,0) scale(1)!important;
+}
+#aureum-contact-hub #launch-whatsapp:focus-visible,
+#aureum-contact-hub #launch-assistant:focus-visible {
+  outline:3px solid #fff;outline-offset:4px;
+  box-shadow:0 0 0 7px #10283e,0 10px 28px rgba(0,0,0,.2);
+}
+@media(prefers-reduced-motion:reduce),(forced-colors:active){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp,
+  #aureum-contact-hub #launch-assistant.ai-launcher {animation:none!important;transition:none!important;transform:none!important;}
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp::before,
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp::after,
+  #aureum-contact-hub #launch-assistant.ai-launcher::before,
+  #aureum-contact-hub #launch-assistant.ai-launcher::after {
+    display:none!important;animation:none!important;
+  }
+}

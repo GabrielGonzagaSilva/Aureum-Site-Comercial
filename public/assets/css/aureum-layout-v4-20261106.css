@@ -1,0 +1,102 @@
+/* Extend the approved Aureum Figma V3 system without changing its original sections. */
+.aureum-refined.ae-section {
+  --gold: #91692f;
+  --muted: #5f697b;
+  --line: #d6d0c7;
+  --navy: #15243c;
+  isolation: isolate;
+}
+.ae-section .aureum-page { gap: 32px; }
+.aureum-refined.ae-section .page-header { height: auto; min-height: 158px; }
+.aureum-refined.ae-section .page-title { height: auto; min-height: 0; }
+.ae-section .page-header { grid-template-columns: minmax(0, 1fr) 400px; column-gap: 100px; }
+.ae-section .eyebrow { letter-spacing: 1.15px; }
+.ae-section .page-intro { color: var(--muted); }
+.ae-section .card-title { text-wrap: pretty; }
+.ae-section .ae-icon { flex: 0 0 24px; width: 24px; height: 24px; color: var(--gold); }
+.ae-section .ae-arrow { flex: 0 0 22px; width: 22px; height: 22px; }
+.ae-section .ae-label { font-size: 10px; font-weight: 700; line-height: 17px; letter-spacing: 1px; color: var(--gold); }
+.ae-section .ae-steps { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.ae-section .ae-step { grid-column: span 2; display: flex; flex-direction: column; align-items: stretch; gap: 14px; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: #fff; min-width: 0; }
+.ae-section .ae-step:nth-child(n+4) { grid-column: span 3; }
+.ae-section .ae-step-meta { display: flex; align-items: center; gap: 18px; padding-bottom: 8px; }
+.ae-section .ae-number { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; color: var(--gold); border: 1px solid var(--line); border-radius: 50%; font-size: 15px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; }
+.ae-section .ae-footer { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.ae-section .ae-footnote { display: flex; align-items: center; gap: 12px; max-width: 690px; color: var(--muted); font-size: 14px; line-height: 23px; }
+.ae-section .ae-footnote .ae-icon { width: 20px; height: 20px; flex-basis: 20px; }
+.ae-section a.ae-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; flex: 0 0 auto; min-width: 260px; min-height: 56px; padding: 16px 20px; border: 1px solid var(--ink); border-radius: 4px; color: #fff; background: var(--ink); font-size: 14px; font-weight: 500; line-height: 22px; }
+.ae-section a.ae-button:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+.ae-section.ae-transparency { background: #f7f5f0; }
+.ae-section .ae-roles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.ae-section .ae-role { display: flex; flex-direction: column; align-items: stretch; gap: 16px; min-width: 0; padding: 28px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.ae-section .ae-role-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
+.ae-section .ae-role .card-description { flex: 1 0 auto; }
+.ae-section .ae-responsibilities { display: flex; flex-direction: column; gap: 14px; padding: 20px 0 0; margin: 4px 0 0; border-top: 1px solid var(--line); list-style: none; }
+.ae-section .ae-responsibilities li { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 14px; line-height: 23px; }
+.ae-section .ae-check { flex: 0 0 16px; width: 16px; height: 16px; margin-top: 3px; color: var(--gold); }
+.ae-section .ae-expectation { display: flex; align-items: center; gap: 20px; margin: 0; padding: 28px 32px; border-radius: 6px; color: #fff; background: var(--navy); }
+.ae-section .ae-expectation > .ae-icon { color: #c6ac82; }
+.ae-section .ae-expectation > div { flex: 1 1 auto; min-width: 0; }
+.ae-section .ae-expectation h3 { margin: 0 0 8px; font-size: 19px; font-weight: 500; line-height: 27px; letter-spacing: -.25px; }
+.ae-section .ae-expectation p { max-width: 740px; color: #d6dbe3; font-size: 14px; line-height: 23px; }
+.ae-section a.ae-button-light { color: var(--ink); background: #fff; border-color: #fff; }
+.ae-section.ae-why { color: #fff; background: var(--navy); }
+.ae-section.ae-why .eyebrow, .ae-section.ae-why .ae-icon { color: #cfb58f; }
+.ae-section.ae-why .page-intro, .ae-section.ae-why .card-description { color: #d6dbe3; }
+.ae-section.ae-why .section-divider { background: #425064; }
+.ae-section .ae-reasons { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.ae-section .ae-reason { display: grid; grid-template-columns: 24px minmax(0,1fr); align-content: start; column-gap: 20px; row-gap: 14px; min-width: 0; padding: 28px; border: 1px solid #536074; border-radius: 6px; background: #1c2c44; }
+.ae-section .ae-reason .ae-icon { margin-top: 4px; }
+.ae-section .ae-reason .card-description { grid-column: 2; }
+.ae-section .ae-footer-copy h3 { margin: 0 0 6px; font-size: 20px; font-weight: 500; line-height: 28px; letter-spacing: -.25px; }
+.ae-section .ae-footer-copy p { color: #d6dbe3; font-size: 15px; line-height: 25px; }
+/* Shared rows align the descriptions and separators across the three responsibility cards. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width:1024px) {
+    .ae-section .ae-roles { row-gap: 16px; }
+    .ae-section .ae-role { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 16px; }
+  }
+}
+@media (hover:hover) {
+  .ae-section a.ae-button:hover { background: #243f53; border-color: #243f53; }
+  .ae-section a.ae-button-light:hover { background: #ece7de; border-color: #ece7de; }
+}
+@media (max-width:1279px) {
+  .ae-section .page-header { grid-template-columns: minmax(0,1fr) minmax(280px,36%); column-gap: 64px; }
+  .ae-section .ae-step, .ae-section .ae-role, .ae-section .ae-reason { padding: 24px; }
+  .ae-section .ae-expectation { flex-wrap: wrap; }
+  .ae-section .ae-expectation > div { flex-basis: calc(100% - 44px); }
+  .ae-section .ae-expectation .ae-button { margin-left: 44px; }
+}
+@media (max-width:1099px) {
+  .ae-section .ae-steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ae-section .ae-step:nth-child(n) { grid-column: auto; }
+  .ae-section .ae-step:last-child { grid-column: 1 / -1; }
+  .ae-section .ae-roles { gap: 16px; }
+}
+@media (max-width:1023px) {
+  .aureum-refined.ae-section .page-header { grid-template-columns: minmax(0,1fr); min-height: 0; }
+  .ae-section .ae-roles { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .ae-section .ae-role .card-description { flex: initial; }
+  .ae-section .ae-responsibilities { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+  .ae-section .ae-footer { flex-wrap: wrap; gap: 24px; }
+  .ae-section .ae-footnote { max-width: 100%; }
+}
+@media (max-width:767px) {
+  .ae-section .aureum-page { gap: 28px; }
+  .ae-section .ae-steps, .ae-section .ae-reasons { grid-template-columns: minmax(0,1fr); }
+  .ae-section .ae-step:last-child { grid-column: auto; }
+  .ae-section .ae-steps { gap: 16px; }
+  .ae-section .ae-step-meta { gap: 16px; }
+  .ae-section .ae-footer { flex-direction: column; align-items: stretch; }
+  .ae-section a.ae-button { min-width: 0; width: 100%; }
+  .ae-section .ae-responsibilities { display: flex; gap: 14px; }
+  .ae-section .ae-expectation { display: grid; grid-template-columns: 24px minmax(0,1fr); align-items: start; gap: 16px; padding: 24px; }
+  .ae-section .ae-expectation > .ae-icon { margin-top: 2px; }
+  .ae-section .ae-expectation .ae-button { grid-column: 1 / -1; margin-left: 0; }
+  .ae-section .ae-expectation h3 { font-size: 18px; line-height: 26px; }
+  .ae-section .ae-reason { grid-template-columns: 22px minmax(0,1fr); column-gap: 16px; }
+  .ae-section .ae-reason .ae-icon { width: 22px; height: 22px; }
+  .ae-section .ae-reason .card-description { grid-column: 1 / -1; }
+  .ae-section .ae-footer-copy h3 { font-size: 19px; line-height: 27px; }
+}

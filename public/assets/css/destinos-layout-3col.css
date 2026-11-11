@@ -1,0 +1,47 @@
+/* Aureum — 9 destinations, balanced and predictable grid.
+   Source of truth for grid placement; removed old 8-card special positions. */
+#home #destinos .dgrid.dc-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(19px, 2vw, 28px) !important;
+  align-items: stretch !important;
+  max-width: 1380px;
+  margin-inline: auto;
+}
+#home #destinos .dgrid.dc-grid > .dc:nth-child(n) {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  justify-self: stretch !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  aspect-ratio: 444 / 591 !important;
+}
+@media (max-width: 1099px) {
+  #home #destinos .dgrid.dc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(16px, 2.1vw, 26px) !important;
+  }
+  /* A single ninth card on tablet is centered, without stretching it. */
+  #home #destinos .dgrid.dc-grid > .dc:last-child:nth-child(odd) {
+    grid-column: 1 / -1 !important;
+    width: calc((100% - clamp(16px, 2.1vw, 26px)) / 2) !important;
+    justify-self: center !important;
+  }
+}
+@media (max-width: 639px) {
+  #home #destinos .dgrid.dc-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+  #home #destinos .dgrid.dc-grid > .dc:nth-child(n),
+  #home #destinos .dgrid.dc-grid > .dc:last-child:nth-child(odd) {
+    grid-column: auto !important;
+    justify-self: center !important;
+    width: 100% !important;
+    max-width: 460px !important;
+    margin-inline: auto !important;
+  }
+}

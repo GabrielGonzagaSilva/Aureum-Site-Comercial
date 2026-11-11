@@ -1,0 +1,76 @@
+/* AUREUM / Editorial typography & responsive line breaks — 2026-11-02.
+   This stylesheet changes layout and typographic wrapping only.
+   Never changes brand artwork, copy claims, colors, or images. */
+:where(main,.page,.foot,.site-hdr,.mmenu,.mega,.contact-panel)
+:is(h1,h2,h3,h4,p,li,summary,blockquote,small,label,strong,a,button){
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+:where(main,.page) :is(h1,h2,h3,h4),
+.ux-path strong,.pcard b,.acard h3,.qa summary,.dc__title,
+.contact-panel-head h2,.foot h4 {
+  text-wrap:balance;
+  hyphens:manual;
+}
+:where(main,.page) :is(p,li,blockquote),
+.hero-sub,.lead,.dc__text,.qa p,.step p,.ux-path>span:nth-of-type(2),
+.svc-card p,.acard p,.page .pcard>span:not(.more),
+.contact-panel .chat-message p {
+  text-wrap:pretty;
+}
+.h2,.contact .h2,.ux-paths-head h2,.page .h2 {
+  max-inline-size:min(100%,26ch);
+}
+.h2-sm {max-inline-size:100%}
+.hero h1{max-inline-size:min(100%,19ch)}
+.hero-sub{max-inline-size:min(100%,58ch)}
+.ux-path strong{max-inline-size:min(100%,23ch)}
+.ahero h1{max-inline-size:min(100%,28ch)}
+.sec-head>div,.ux-path,.svc-card,.why-item,.step,.acard,
+.pcard,.f-brand,.f-grid>*,.page .dgrid>*,.form>*{min-inline-size:0}
+.svc-card h3,.why-item h3,.step h3,.pcard b,.acard h3{
+  overflow-wrap:break-word;
+}
+.foot nav a{overflow-wrap:break-word;word-break:normal}
+.btn,.mbar .btn{
+  white-space:normal;
+  text-align:center;
+  text-wrap:balance;
+  line-height:1.35;
+  min-inline-size:0;
+}
+.btn .i{flex-shrink:0}
+.hero-actions,.about .actions,.why .actions,.band .actions{flex-wrap:wrap}
+.qa summary{min-inline-size:0;overflow-wrap:break-word}
+.qa summary .i{flex-shrink:0}
+.form label,.f label,.form .hint,.contact-panel-head h2{overflow-wrap:break-word}
+.done-name{overflow-wrap:anywhere}
+.page .dgrid>.pcard b{max-inline-size:100%;text-wrap:balance}
+.page .dgrid>.pcard>span:not(.more){max-inline-size:min(100%,66ch)}
+@media (max-width:900px){
+  .h2,.contact .h2,.ux-paths-head h2,.page .h2{
+    max-inline-size:min(100%,26ch);
+  }
+  .sec-head{min-inline-size:0}
+  .sec-head>div{max-inline-size:100%}
+}
+@media (max-width:640px){
+  .h2,.contact .h2,.ux-paths-head h2,.page .h2,
+  .h2-sm,.ahero h1,.ux-path strong{
+    max-inline-size:100%;
+  }
+  .hero h1{max-inline-size:min(100%,18ch)}
+  .hero-sub{max-inline-size:100%}
+  .hero-actions .btn{max-inline-size:100%}
+  .qa summary{gap:14px;line-height:1.4}
+  .svc-card h3,.step h3,.acard h3{line-height:1.3}
+  .foot nav a{max-inline-size:100%}
+  .contact-panel[data-current-view="assistant"] .contact-panel-head h2{
+    max-inline-size:100%;text-wrap:balance;
+  }
+}
+@media (max-width:380px){
+  .hero h1{max-inline-size:100%;font-size:clamp(34px,9vw,38px)}
+  .hero-actions .btn,.mbar .btn{padding-inline:14px}
+  .qa summary{font-size:16px}
+}

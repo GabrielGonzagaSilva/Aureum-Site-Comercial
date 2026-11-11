@@ -1,0 +1,8 @@
+/* Fix missing UK flag in Londres across desktop navigation, mobile navigation, footer and destination heading. */
+.country-flag.flag-gb {
+  background-image:url("/assets/flags/gb.svg")!important;
+  background-color:#012169;
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}

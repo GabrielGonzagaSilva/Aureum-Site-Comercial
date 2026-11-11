@@ -1,0 +1,8 @@
+/* The original recognisable WhatsApp vector replaces the generic icon font. */
+#aureum-contact-hub #launch-whatsapp.fab-whatsapp svg {
+  width:32px;height:32px;display:block;fill:currentColor;
+  color:#fff;flex:none;pointer-events:none;
+}
+@media(max-width:640px){
+  #aureum-contact-hub #launch-whatsapp.fab-whatsapp svg {width:30px;height:30px;}
+}

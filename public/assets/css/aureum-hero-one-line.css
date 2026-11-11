@@ -1,0 +1,23 @@
+/* The uploaded Aureum mark remains the visual headline. The sole supporting copy is intentionally discreet. */
+#home .hero-logo-centered-test h1.hero-sole-copy,
+.hero.hero-logo-centered-test h1.hero-sole-copy {
+  font-family:Inter,Arial,sans-serif!important;
+  font-size:clamp(13px,1.1vw,16px)!important;
+  font-weight:400!important;
+  line-height:1.65!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  max-width:min(650px,86vw)!important;
+  color:rgba(255,255,255,.92)!important;
+  margin:12px auto 0!important;
+  text-align:center!important;
+  text-wrap:balance!important;
+}
+@media(max-width:767px){
+  #home .hero-logo-centered-test h1.hero-sole-copy, .hero.hero-logo-centered-test h1.hero-sole-copy{
+    font-size:13px!important;
+    line-height:1.55!important;
+    max-width:min(330px,85vw)!important;
+    margin:10px auto 0!important;
+  }
+}
