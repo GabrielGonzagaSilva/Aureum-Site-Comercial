@@ -55,3 +55,7 @@ O projeto Vercel existente já estava conectado ao repositório correto: `main` 
 
 O número oficial de WhatsApp estava vazio. O formulário principal prepara a mensagem para revisão e não faz envio automático. Facebook, LinkedIn, termos e cookies estavam pendentes de configuração; a recuperação preserva esses estados sem inventar canais ou integrações.
 
+## Dependências do backend
+
+O `npm audit` do build identificou quatro alertas derivados da mesma dependência transitiva Zod 4.1.11, trazida pela configuração CLI do SDK Blob. O override fixa Zod 4.6.6, versão corrigida de GHSA-mrhx-c7xc-m3w5, preservando o SDK Blob recuperado e a mesma versão principal do validador. A correção é verificada com instalação limpa, auditoria, build e chamada real da Mia com arquivamento privado.
+
