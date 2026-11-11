@@ -1,0 +1,428 @@
+{
+  "date": "2026-11-11",
+  "originalMain": "c5d44e8e649b6564f832acbdc1ba6fc68bec5f7d",
+  "originalAlias": {
+    "domain": "aureum-site-comercial.vercel.app",
+    "id": "dpl_FpDpja8wrLEkCnadFM5CXdMizj3c"
+  },
+  "deployments": [
+    {
+      "id": "dpl_9B339A7HPCTRDqhqiQpioLCiFA6a",
+      "url": "aureum-site-comercial-exqbkg9q8-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794366083248,
+      "meta": {}
+    },
+    {
+      "id": "dpl_E9Hsveyn4SQE489Jn4e6dGvaoXLk",
+      "url": "aureum-site-comercial-gw3kldkze-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "ERROR",
+      "target": null,
+      "created": 1794365739489,
+      "meta": {}
+    },
+    {
+      "id": "dpl_3WaYMd3MgsujPuc9kuzmG9nZbAsZ",
+      "url": "aureum-site-comercial-gd6tr18gl-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794365117727,
+      "meta": {}
+    },
+    {
+      "id": "dpl_FpDpja8wrLEkCnadFM5CXdMizj3c",
+      "url": "aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794362397461,
+      "meta": {}
+    },
+    {
+      "id": "dpl_9AXAAcgG4DXaQN2nWDj2BN38BQEK",
+      "url": "aureum-site-comercial-k52yyfkfg-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794362345487,
+      "meta": {}
+    },
+    {
+      "id": "dpl_ABP48mcyGgm3j4hWYW21dsqjAhzq",
+      "url": "aureum-site-comercial-qv8ymea99-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794265271106,
+      "meta": {}
+    },
+    {
+      "id": "dpl_BJyGd99EEWmNmxiQaWRZQFGhUyLZ",
+      "url": "aureum-site-comercial-hjpgesxon-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794263929389,
+      "meta": {}
+    },
+    {
+      "id": "dpl_BRjV9dJD29Xq8QSE2DCvjAPRfqu9",
+      "url": "aureum-site-comercial-hgaf7huwn-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794097629891,
+      "meta": {}
+    },
+    {
+      "id": "dpl_GvRdGRPRriPMPhB1jEntx1nWu1mV",
+      "url": "aureum-site-comercial-18h7uyf1i-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794094430309,
+      "meta": {}
+    },
+    {
+      "id": "dpl_EBYpThoLZNVSDgRLjviVkvb2kzFz",
+      "url": "aureum-site-comercial-l1kukof5k-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "ERROR",
+      "target": "production",
+      "created": 1794094335880,
+      "meta": {}
+    },
+    {
+      "id": "dpl_7mGj8Y1prr5L5Nq1spXRwgB7E91D",
+      "url": "aureum-site-comercial-6ltxt9c2o-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794093841243,
+      "meta": {}
+    },
+    {
+      "id": "dpl_8ys5Cx8sHx3v31FFshisdJ9SUHpt",
+      "url": "aureum-site-comercial-o1ducwbyk-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794092751967,
+      "meta": {}
+    },
+    {
+      "id": "dpl_GXfMehzcrbEH3NfFL633YEgC9fU6",
+      "url": "aureum-site-comercial-414b8ppew-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794092720365,
+      "meta": {}
+    },
+    {
+      "id": "dpl_82EuTNzGeaCdtRzYsHhgSEtP62ay",
+      "url": "aureum-site-comercial-jpjzif28p-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794090018705,
+      "meta": {}
+    },
+    {
+      "id": "dpl_AZn4AzkBrvR5whdA3mQU5EPQpUyo",
+      "url": "aureum-site-comercial-jptoi3hmn-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794089953890,
+      "meta": {}
+    },
+    {
+      "id": "dpl_CvThkywVRzyCBRpARBgGCa2k514i",
+      "url": "aureum-site-comercial-ix621c32c-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794089557622,
+      "meta": {}
+    },
+    {
+      "id": "dpl_2bEpDSkn4ueBQ6bnqfbL8nbZu1PN",
+      "url": "aureum-site-comercial-1kk74cahk-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794089506217,
+      "meta": {}
+    },
+    {
+      "id": "dpl_27KGwZVjncpLfzgmuZvVzB63QKdJ",
+      "url": "aureum-site-comercial-df5sqt2s4-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794089462277,
+      "meta": {}
+    },
+    {
+      "id": "dpl_DHgi6SC86zovHiUn8k3FRy8WLJ1N",
+      "url": "aureum-site-comercial-9eeob1hox-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794019699720,
+      "meta": {}
+    },
+    {
+      "id": "dpl_5szhuxq45GHCzAVB95V4CrFkzrjx",
+      "url": "aureum-site-comercial-mznqh3w2l-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "ERROR",
+      "target": null,
+      "created": 1794019625065,
+      "meta": {}
+    },
+    {
+      "id": "dpl_6AnhrnkpiCi79Pfg1acHBv22bTbU",
+      "url": "aureum-site-comercial-kya8f80dh-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794017703070,
+      "meta": {}
+    },
+    {
+      "id": "dpl_Gu8NbXoCkCHrothHxDojhndeM6EJ",
+      "url": "aureum-site-comercial-ro3ahtdgq-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794017623399,
+      "meta": {}
+    },
+    {
+      "id": "dpl_CpHwqxtMxs2asUk9qsACpGbHEXnd",
+      "url": "aureum-site-comercial-a34tu4lgb-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794017385759,
+      "meta": {}
+    },
+    {
+      "id": "dpl_EP5HZf9ymaPPe5gaq5Vs138G2xgy",
+      "url": "aureum-site-comercial-ibf4rj1ub-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794017318220,
+      "meta": {}
+    },
+    {
+      "id": "dpl_CvQVSk3mUVDNmrG1GmnQXtBNsW2L",
+      "url": "aureum-site-comercial-dwe8xyfdr-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794016396976,
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitSha": "c5d44e8e649b6564f832acbdc1ba6fc68bec5f7d",
+        "githubCommitMessage": "Update browser theme color to official Aureum palette",
+        "githubRepo": "Aureum-Site-Comercial",
+        "githubOrg": "GabrielGonzagaSilva"
+      }
+    },
+    {
+      "id": "dpl_A7wa4mRJg8ux635Gg8wgDUR7coQu",
+      "url": "aureum-site-comercial-555gxm0lx-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1794016394729,
+      "meta": {
+        "githubCommitRef": "main",
+        "githubCommitSha": "a4d503f6d9a88e5fcd4ec952ef95548b236edefe",
+        "githubCommitMessage": "Apply official Aureum color palette",
+        "githubRepo": "Aureum-Site-Comercial",
+        "githubOrg": "GabrielGonzagaSilva"
+      }
+    },
+    {
+      "id": "dpl_8RyHPdPbftG9o1qtqe3Rse4V5uvq",
+      "url": "aureum-site-comercial-amchnhtgf-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794009973457,
+      "meta": {
+        "githubCommitRef": "brand-palette-2026-11-06",
+        "githubCommitSha": "134ac8a9241479d1f592c7d38b9f374fb8cf2f1b",
+        "githubCommitMessage": "Add official Aureum palette override stylesheet",
+        "githubRepo": "Aureum-Site-Comercial",
+        "githubOrg": "GabrielGonzagaSilva"
+      }
+    },
+    {
+      "id": "dpl_6WmmcZUBHEPvWiizRrjfPqAuVDY9",
+      "url": "aureum-site-comercial-lx84xz2z6-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1794009494641,
+      "meta": {}
+    },
+    {
+      "id": "dpl_CaHQBjxWXbX1xGopB87PFDrR4LUN",
+      "url": "aureum-site-comercial-xhhxz7lg7-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793933209967,
+      "meta": {}
+    },
+    {
+      "id": "dpl_Jx2rrtVaMVKBQazDqSPwXTX3Bh9R",
+      "url": "aureum-site-comercial-ibhc1ikde-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793933133972,
+      "meta": {}
+    },
+    {
+      "id": "dpl_HoxDBheNcjoXp1nMncLB8EGtRByG",
+      "url": "aureum-site-comercial-hrif5qrrr-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793932851543,
+      "meta": {}
+    },
+    {
+      "id": "dpl_3iCJ8LzeNrbDPSDWbKRbbfu1dxQC",
+      "url": "aureum-site-comercial-8iu5qj271-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793932660440,
+      "meta": {}
+    },
+    {
+      "id": "dpl_2c3dhs6ZmYt8S3d6rGxDwxZAwsYE",
+      "url": "aureum-site-comercial-nup34l5j2-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793932603254,
+      "meta": {}
+    },
+    {
+      "id": "dpl_9ApY21KjdG2wN19fwVan3gx6MMCU",
+      "url": "aureum-site-comercial-o9nmcidyz-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793932566163,
+      "meta": {}
+    },
+    {
+      "id": "dpl_Dakz33ASfGsaMwPLP9uyCEYgeXZB",
+      "url": "aureum-site-comercial-1jlig3wiu-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793932459094,
+      "meta": {}
+    },
+    {
+      "id": "dpl_2213punnHJC9v2w8tGqLbzgaN4yR",
+      "url": "aureum-site-comercial-321i5ffnu-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793932157145,
+      "meta": {}
+    },
+    {
+      "id": "dpl_AJQ9GU4Pz4kJKp3cjYke5WT8VSG7",
+      "url": "aureum-site-comercial-bh2dz72aq-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793932033885,
+      "meta": {}
+    },
+    {
+      "id": "dpl_GkV6QgfCkNNtL9GCKTsGevJKNA6D",
+      "url": "aureum-site-comercial-gwa5oa9lk-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793931930043,
+      "meta": {}
+    },
+    {
+      "id": "dpl_2Yxa32ufveLtF2Jammm62HkeFjVD",
+      "url": "aureum-site-comercial-gv5hze3j3-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": null,
+      "created": 1793931864248,
+      "meta": {}
+    },
+    {
+      "id": "dpl_9ifGt6wjbGDHVjPu4JQGZe9LDQc4",
+      "url": "aureum-site-comercial-1inszmqka-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793926985658,
+      "meta": {}
+    },
+    {
+      "id": "dpl_AyEuaFmYqhiZtxj11dL5tGysYDKr",
+      "url": "aureum-site-comercial-krpuicrfg-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "ERROR",
+      "target": "production",
+      "created": 1793926932439,
+      "meta": {}
+    },
+    {
+      "id": "dpl_2BAB8Y5FTXzw5p8a3ZDFP8mfKXQG",
+      "url": "aureum-site-comercial-n9isk4jkr-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793923842020,
+      "meta": {}
+    },
+    {
+      "id": "dpl_Ac2beh31REDTd2PZWTfU6wh1G1Hp",
+      "url": "aureum-site-comercial-il9sd14xa-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "staging",
+      "created": 1793923738512,
+      "meta": {}
+    },
+    {
+      "id": "dpl_GkgWJohhTZJ1514RmbNCc5Y3m5fj",
+      "url": "aureum-site-comercial-bwjtcqb2m-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "ERROR",
+      "target": "staging",
+      "created": 1793923665713,
+      "meta": {}
+    },
+    {
+      "id": "dpl_5wJTFpds99deCd2yQVi7hZD75zFV",
+      "url": "aureum-site-comercial-k2mcmbz4v-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793750022583,
+      "meta": {}
+    },
+    {
+      "id": "dpl_Frv64oLHumXoHFaKenJgNkLmfXBg",
+      "url": "aureum-site-comercial-4rpcr906o-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "staging",
+      "created": 1793749946982,
+      "meta": {}
+    },
+    {
+      "id": "dpl_4YrdbEfDVNw97HMXC6mJvGkH6ze9",
+      "url": "aureum-site-comercial-b3cyccq9o-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "staging",
+      "created": 1793749750401,
+      "meta": {}
+    },
+    {
+      "id": "dpl_GQV4Lx3nH7ubhdBHRmTmhs6EX1UU",
+      "url": "aureum-site-comercial-n6kfk27an-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793748779093,
+      "meta": {}
+    },
+    {
+      "id": "dpl_CDUbj8vB5uQs91BhCdKQpAoHBm4k",
+      "url": "aureum-site-comercial-bg5kqij9f-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "created": 1793747729826,
+      "meta": {}
+    },
+    {
+      "id": "dpl_FgBB1GxncQ7vT5WwXocsqQekEthh",
+      "url": "aureum-site-comercial-3gsxzwwry-gabrielgonzagasilvas-projects.vercel.app",
+      "state": "READY",
+      "target": "staging",
+      "created": 1793656177275,
+      "meta": {}
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+name: Recover frozen Aureum source
+on:
+  push:
+    branches: [recovery/consolidate-20261111]
+    paths: ['.github/workflows/recover-once.yml', 'scripts/restore-recovery.py']
+permissions:
+  contents: write
+concurrency:
+  group: aureum-recovery-once
+  cancel-in-progress: false
+jobs:
+  restore:
+    if: github.ref == 'refs/heads/recovery/consolidate-20261111'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: recovery/consolidate-20261111
+      - name: Recover exact reviewed source and media
+        run: python3 scripts/restore-recovery.py
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Commit recovered source files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public
+          git commit -m 'Recover complete Aureum pages, media and latest UI patches from verified snapshots'
+          git push origin HEAD:recovery/consolidate-20261111
+

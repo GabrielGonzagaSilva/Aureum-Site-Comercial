@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm ci",
+  "git": { "deploymentEnabled": true },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }]
+    },
+    {
+      "source": "/:path*.(css|js|html|json)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/assets/:path*.(webp|avif|jpg|png|svg|woff|woff2|mp4)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
+    }
+  ],
+  "redirects": [
+    { "source": "/paises/:country.html", "destination": "/destinos/:country/", "permanent": true }
+  ]
+}

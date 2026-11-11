@@ -1,0 +1,680 @@
+{
+  "originalMain": "c5d44e8e649b6564f832acbdc1ba6fc68bec5f7d",
+  "currentProductionDeployment": "dpl_FpDpja8wrLEkCnadFM5CXdMizj3c",
+  "backendDeployment": "dpl_GvRdGRPRriPMPhB1jEntx1nWu1mV",
+  "latestPatchDeployment": "dpl_9B339A7HPCTRDqhqiQpioLCiFA6a",
+  "files": [
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/",
+      "path": "public/index.html",
+      "sha256": "1d23a43187ca343cb30db64a60dfbbb028bf724303b7df269810417bd408e052",
+      "bytes": 566279
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/brand/aureum-hero-outlined-v1-white.svg",
+      "path": "public/assets/brand/aureum-hero-outlined-v1-white.svg",
+      "sha256": "6ea30aee8f6a0fe965c2c8f8fdbb45788b12d88d82076d98e03312b59168f753",
+      "bytes": 20008
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/brand/aureum-wordmark-outlined-v1-ink.svg",
+      "path": "public/assets/brand/aureum-wordmark-outlined-v1-ink.svg",
+      "sha256": "79c0e1d0b839a7e02c22ebc7f931bbd4f23130b4cdda0a52a11ccb0075ae1135",
+      "bytes": 18330
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/brand/aureum-wordmark-outlined-v1-white.svg",
+      "path": "public/assets/brand/aureum-wordmark-outlined-v1-white.svg",
+      "sha256": "9c664cccaa44544911c2a21114188ce7aca08657218d0999030edfd9e0807b37",
+      "bytes": 18372
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-cinematic-only-hero.css",
+      "path": "public/assets/css/aureum-cinematic-only-hero.css",
+      "sha256": "0f6b3f74a7ae2c98ad57e5630e7aefbab517e7a302c0b815a8e10f0c261554b1",
+      "bytes": 927
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-content-journey-20261102.css",
+      "path": "public/assets/css/aureum-content-journey-20261102.css",
+      "sha256": "27c683613f2d28fa4a42789216f6ee810abbe2c62a4b6eedacc51ed4791422d4",
+      "bytes": 780
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-core-20261102.css",
+      "path": "public/assets/css/aureum-core-20261102.css",
+      "sha256": "fa8529ba84fcb1bfab048eb53d695532623954a74c57e10b1b2d3515221ee7b9",
+      "bytes": 988169
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-country-editorial-20261102.css",
+      "path": "public/assets/css/aureum-country-editorial-20261102.css",
+      "sha256": "aa711f1e7aa632daf1fb22a9779d9915461c34f277237ff0b995964f400e77ee",
+      "bytes": 1337
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-dual-fab-motion.css",
+      "path": "public/assets/css/aureum-dual-fab-motion.css",
+      "sha256": "eb869804ceee0d1db6eb8ea90532e75e941da13a8cb4080dd50ed0d80ed19d59",
+      "bytes": 4199
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-footer-destinations-20261102.css",
+      "path": "public/assets/css/aureum-footer-destinations-20261102.css",
+      "sha256": "c4d72539807f79a6481290d57fab6933f5dde60a67415d3c1ee25237ee4b7b46",
+      "bytes": 2002
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-gb-flag-fix.css",
+      "path": "public/assets/css/aureum-gb-flag-fix.css",
+      "sha256": "fbbdff22418d05f6abfe58c7686280dbbd2a87750d6086c2d833cc5fa16ce56d",
+      "bytes": 345
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-grid-hero-20261101.css",
+      "path": "public/assets/css/aureum-grid-hero-20261101.css",
+      "sha256": "6fc014d1717b346971b05df4d989b85d83afa67f0c59c555cec29a72605bc325",
+      "bytes": 3543
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-hero-editorial-prototype.css",
+      "path": "public/assets/css/aureum-hero-editorial-prototype.css",
+      "sha256": "b91e04a2849d8557741583111bcd43b3f5dc7721c5f016c05ed34d9deb2d3bc1",
+      "bytes": 6292
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-hero-hierarchy-reveal.css",
+      "path": "public/assets/css/aureum-hero-hierarchy-reveal.css",
+      "sha256": "9f42252b17d4135409cf252392856724c438252b48377283bd32051aa137ccb4",
+      "bytes": 3097
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-hero-one-line.css",
+      "path": "public/assets/css/aureum-hero-one-line.css",
+      "sha256": "0a7fcc372104493c5547f8bf743d3507784bd5f1847c6c401e4e8d9319c29b8e",
+      "bytes": 872
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-layout-v4-20261106.css",
+      "path": "public/assets/css/aureum-layout-v4-20261106.css",
+      "sha256": "7af6f119f346df8c4b7ae67d6d2e18aa51fc48a4f7d467bde9214197b6ad859b",
+      "bytes": 7797
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-locale-editorial-v2.css",
+      "path": "public/assets/css/aureum-locale-editorial-v2.css",
+      "sha256": "a577bd557446ed39721b126f7ec8e5ca4f3ad161cbfed6b32cae35e2c82340fc",
+      "bytes": 4702
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-logo-centered-preview.css",
+      "path": "public/assets/css/aureum-logo-centered-preview.css",
+      "sha256": "34a8a6db1f601548142d8df3d7485967cf20aa2aff6c01adb21a19fbd49c410b",
+      "bytes": 4398
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-mia-fab-avatar.css",
+      "path": "public/assets/css/aureum-mia-fab-avatar.css",
+      "sha256": "6f22f776f333a9b365d6ad589e268b2bcdc86475783d83c03c7ca0133a51812e",
+      "bytes": 630
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-prehero-header-centered.css",
+      "path": "public/assets/css/aureum-prehero-header-centered.css",
+      "sha256": "368121aa050361f72988caa904aae9f33456e2a329d4d427aff36206740f9e57",
+      "bytes": 1220
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-refined-v3-20261106.css",
+      "path": "public/assets/css/aureum-refined-v3-20261106.css",
+      "sha256": "99bd37247adfd452f5fe7fb0a432a8d3aaabca57fbc72fd4fa17a66272800440",
+      "bytes": 11238
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-refinement-20261107.css",
+      "path": "public/assets/css/aureum-refinement-20261107.css",
+      "sha256": "4ea38e7988e1375083709e8c30a119cdb106866331bd3133fcf871777d86ad88",
+      "bytes": 7661
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-typography-20261102.css",
+      "path": "public/assets/css/aureum-typography-20261102.css",
+      "sha256": "d25671857ff1e9111827fac72f81176ef68fa10ed619b85ebb77e3352cb3a12a",
+      "bytes": 2754
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-whatsapp-brand-icon-restore.css",
+      "path": "public/assets/css/aureum-whatsapp-brand-icon-restore.css",
+      "sha256": "32c0ad38203f6e43b66c21fe7b1db8f4f122006668b637a27f535a0e2ccf6384",
+      "bytes": 349
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-whatsapp-fab-phosphor.css",
+      "path": "public/assets/css/aureum-whatsapp-fab-phosphor.css",
+      "sha256": "cc0c7b01c76cd1cd9246db369aeb5ca9cbb537a1609d95e0a4eac74106bd9775",
+      "bytes": 2746
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-wordmark-asset2-20261103.css",
+      "path": "public/assets/css/aureum-wordmark-asset2-20261103.css",
+      "sha256": "96d10f11cf0f133488ddcfac977d43068eace8bc03b1d394862d8c7e421d82ab",
+      "bytes": 410
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/destino-card.css",
+      "path": "public/assets/css/destino-card.css",
+      "sha256": "54d1dc6be1cfddf99509f4b100f5c555d15104f3787f0b1a48026aa53d94d574",
+      "bytes": 5709
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/destinos-layout-3col.css",
+      "path": "public/assets/css/destinos-layout-3col.css",
+      "sha256": "f676f498d0c3d1d2a2bf8800892d7ae32a57aec9b9238d4cf1491b88e05210e8",
+      "bytes": 1621
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/hero-tower-bridge-20261101.css",
+      "path": "public/assets/css/hero-tower-bridge-20261101.css",
+      "sha256": "92959c8951dcca995b45d2d86fb8a47f92ff4bee97a084b35d915d0ee6e48838",
+      "bytes": 597
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/londres-template-fix-20261101.css",
+      "path": "public/assets/css/londres-template-fix-20261101.css",
+      "sha256": "8019a452f8ef029bf85d074cd7e011988fa7632575e2b6f6383e065fd7cebc3d",
+      "bytes": 1318
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/fonts/aureum-refined-inter-400.woff",
+      "path": "public/assets/fonts/aureum-refined-inter-400.woff",
+      "sha256": "65e3fcb8d79a7a7e1aea713391aed34e01cbe8ba990c91041f850633e5c5e189",
+      "bytes": 42920
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/fonts/aureum-refined-inter-500.woff",
+      "path": "public/assets/fonts/aureum-refined-inter-500.woff",
+      "sha256": "a779a32b42a250a5eb51a73edbe98033cedae0f133da2e7b4f85f091bb1f422c",
+      "bytes": 43972
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/fonts/aureum-refined-inter-700.woff",
+      "path": "public/assets/fonts/aureum-refined-inter-700.woff",
+      "sha256": "6a04caeecd7c3011d7eb7b1be41f3a8f4535495d4038a288d3ccb2b9255499c6",
+      "bytes": 44336
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/hero-tower-bridge-poster.jpg",
+      "path": "public/assets/hero-tower-bridge-poster.jpg",
+      "sha256": "2616b64285c5d9944967fc7b03a0b034cef1ec4fd71df2402b27f5f390db341d",
+      "bytes": 240708
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/hero-tower-bridge.mp4",
+      "path": "public/assets/hero-tower-bridge.mp4",
+      "sha256": "ae1105ac022ec6838019b9897c25b0b8ee2ba63547f32b71014a8e10e83f3121",
+      "bytes": 57670974
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/js/aureum-smart-scroll.js",
+      "path": "public/assets/js/aureum-smart-scroll.js",
+      "sha256": "fb74aacf52cece67ef57bde154996cc7bb3bc3d49cfc04ac7454a06a32d5685b",
+      "bytes": 3547
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/alemanha-01.webp",
+      "path": "public/assets/photos/alemanha-01.webp",
+      "sha256": "2734f73811f92ec337d38774dd07ae6893c188fde3ec21ca87e7d877692950d5",
+      "bytes": 402694
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/alemanha-02.webp",
+      "path": "public/assets/photos/alemanha-02.webp",
+      "sha256": "cd566fa8bd86206738d89b4cd9202d11b5de668d3932605161ac0e5c1e6f8897",
+      "bytes": 383130
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/australia-01.webp",
+      "path": "public/assets/photos/australia-01.webp",
+      "sha256": "c333bde91b37c150276dfde95d317a487901cadee3c386a6b990bd3aed8b2cdd",
+      "bytes": 226954
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/australia-02.webp",
+      "path": "public/assets/photos/australia-02.webp",
+      "sha256": "40e6da7feee02a2859274557c8dbfc5922200acf0a08c16877a7dbf34944c123",
+      "bytes": 182424
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/brasil-03.webp",
+      "path": "public/assets/photos/brasil-03.webp",
+      "sha256": "de2cf1c5e23502ae86651d3d0a2553288a8d5581ee6740fc9398a5a992ba6b3b",
+      "bytes": 410556
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/brasil-04.webp",
+      "path": "public/assets/photos/brasil-04.webp",
+      "sha256": "20b7618ce94137b91b34f563026671e25741b76380ab9a3be8e518aab52d9b76",
+      "bytes": 379126
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/canada-02.webp",
+      "path": "public/assets/photos/canada-02.webp",
+      "sha256": "bd4f61793a7cb626cedc59ac7f270a6fb0d600d1d0121c15455b41928a2a0fe7",
+      "bytes": 273276
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/canada-03.webp",
+      "path": "public/assets/photos/canada-03.webp",
+      "sha256": "81c842b377dac32d520aff58609be5df0efdbc85abc2f257afa004015495d2ae",
+      "bytes": 171438
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/canada-04.webp",
+      "path": "public/assets/photos/canada-04.webp",
+      "sha256": "ac3bb81720c7489432ec5b02cc692be3424c10312033e30309f8f7ceeac32158",
+      "bytes": 409862
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/espanha-01.webp",
+      "path": "public/assets/photos/espanha-01.webp",
+      "sha256": "b9c33fb58e34ccc0e5430674c77db639f66814f572ba73ec1457c306a14ba8fe",
+      "bytes": 141684
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/franca-01.webp",
+      "path": "public/assets/photos/franca-01.webp",
+      "sha256": "7e8087799109054a4292da99325426eb4503a0aeaae4a286865b72257cfbf920",
+      "bytes": 739830
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/franca-02.webp",
+      "path": "public/assets/photos/franca-02.webp",
+      "sha256": "c5e55fa10041d40171926d1c4cb87e08853ccd3595bcaf43caaf92220be7e656",
+      "bytes": 310756
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/franca-05.webp",
+      "path": "public/assets/photos/franca-05.webp",
+      "sha256": "8af011bd885fdbc59db85492b7eeb654c00520da77e60fcf8787985ccfc02694",
+      "bytes": 569482
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/irlanda-01.webp",
+      "path": "public/assets/photos/irlanda-01.webp",
+      "sha256": "969013fee57e6d8342745ff311e6575809cf3601da2eb401eca3a738cca80e5d",
+      "bytes": 264302
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/irlanda-02.webp",
+      "path": "public/assets/photos/irlanda-02.webp",
+      "sha256": "38b42e2da3727529718bacc638172d29c63f8439f45d79e015c2ff5d8b289575",
+      "bytes": 194384
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/irlanda-03.webp",
+      "path": "public/assets/photos/irlanda-03.webp",
+      "sha256": "6729c7a00f82ac4b23f3bfa3ac52c7308942b1556a2b6c9cf9d3617bc0a1fce6",
+      "bytes": 383134
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/londres-hd-2560.webp",
+      "path": "public/assets/photos/londres-hd-2560.webp",
+      "sha256": "f9ada404ad1b1800be3970fab2b02f4aeff6382fce08388fd35d1a2f09d018ad",
+      "bytes": 367666
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/portugal-01.webp",
+      "path": "public/assets/photos/portugal-01.webp",
+      "sha256": "0e12eb0b3827fa15f2b9f19b1382d05a814b53aeb428d0832907195ce1fd6dfd",
+      "bytes": 491206
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/portugal-02.webp",
+      "path": "public/assets/photos/portugal-02.webp",
+      "sha256": "2e87fe211943873fbf462c79d5d26abe6cc2b54b44b9c78e2aff83a687e4fd8f",
+      "bytes": 632204
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/photos/portugal-03.webp",
+      "path": "public/assets/photos/portugal-03.webp",
+      "sha256": "61a6a5eeaea5758bd6e6110b179584769d8fb9fa3f537d37087eaa6a6603dc89",
+      "bytes": 429872
+    },
+    {
+      "source": "https://aureum-site-comercial-exqbkg9q8-gabrielgonzagasilvas-projects.vercel.app/aureum-enhancements.css",
+      "path": "public/aureum-enhancements.css",
+      "sha256": "56245e67a88a229ef1b8acc35a58b0ebba23664cdbde2c265c448112cf598568",
+      "bytes": 10391
+    },
+    {
+      "source": "https://aureum-site-comercial-exqbkg9q8-gabrielgonzagasilvas-projects.vercel.app/aureum-updates.js",
+      "path": "public/aureum-updates.js",
+      "sha256": "d3100c1f25b0c726a187fd5b8ce7b419af5f7d0b612be26b90d58893f6ba458d",
+      "bytes": 40147
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/",
+      "path": "public/de/index.html",
+      "sha256": "81317b2a1587e26a36655a271c602d3b74f73fd7cada006fb3c317ba17da2212",
+      "bytes": 570012
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/alemanha/",
+      "path": "public/destinos/alemanha/index.html",
+      "sha256": "6f4be555fd2fb7062f88f9708de53997379cad96ad514f7e917da76113e51927",
+      "bytes": 565745
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/australia/",
+      "path": "public/destinos/australia/index.html",
+      "sha256": "ce7e986ba8933dd5440cbbea16c2def9e25b730baad5700f206b1ecabb1e5de0",
+      "bytes": 565770
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/brasil/",
+      "path": "public/destinos/brasil/index.html",
+      "sha256": "88adcbaff459b70f7a9437934da31add1d26a0de8ca4be152763507595564765",
+      "bytes": 565723
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/canada/",
+      "path": "public/destinos/canada/index.html",
+      "sha256": "50cb882f051ca4a4e5e9b834439e3768928b4e0791555adb8a5a73ed93651f7a",
+      "bytes": 565709
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/espanha/",
+      "path": "public/destinos/espanha/index.html",
+      "sha256": "f57d232bf261b8d156e4ea906b58902121913241d5e3d45ba6492eda83b17b22",
+      "bytes": 565724
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/franca/",
+      "path": "public/destinos/franca/index.html",
+      "sha256": "f7d48294b03abc2acc78154bd4a1f812a87044aa9f06be8b6bf2cbc674c6ab06",
+      "bytes": 565703
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/irlanda/",
+      "path": "public/destinos/irlanda/index.html",
+      "sha256": "9d8c33463a16b57ad00181160eee92b5c54367a23bef8addd7a26fede2a41364",
+      "bytes": 565710
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/londres/",
+      "path": "public/destinos/londres/index.html",
+      "sha256": "dbc92cc476cc2f645098afeedc61dfac314ef71a966f65af0a3984f8bd01d739",
+      "bytes": 565730
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/destinos/portugal/",
+      "path": "public/destinos/portugal/index.html",
+      "sha256": "713ab1701f409e5c4329910f90923ca6819b3f4dbb503b5a593cb59a49eae01f",
+      "bytes": 565767
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/",
+      "path": "public/en/index.html",
+      "sha256": "072adc0f36484bcc6f6523edeed082b289b2c776c3c1461b8e1309011b020de5",
+      "bytes": 563393
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/",
+      "path": "public/es/index.html",
+      "sha256": "63930821a8cab7e758e6eb8f1e5a855fdba56c4c2e7695239571bc85b97d1aaf",
+      "bytes": 567536
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/",
+      "path": "public/fr/index.html",
+      "sha256": "e691610e9e202fcafc64fe8793b0859b1fa2cc86773fdc62200fb382aee0d4d1",
+      "bytes": 571296
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/mia-profile-picture.webp",
+      "path": "public/mia-profile-picture.webp",
+      "sha256": "62a5dadffd580be99fa4914f0af6b4652de2605dda91ed1b3e6219057378fd55",
+      "bytes": 20046
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/mia-ui.js",
+      "path": "public/mia-ui.js",
+      "sha256": "b096ec1958be080c4cd9a0fbdddec8a4add82b5cd6e1f5a8e785b8a765cb45d6",
+      "bytes": 28730
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/privacidade.html",
+      "path": "public/privacidade.html",
+      "sha256": "3ee09ae25f6b70b61e8f31f40185f6475050e51f4254786894e08f9bd22dfeba",
+      "bytes": 6752
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/css/aureum-contact-attention-white-20261102.css",
+      "path": "public/assets/css/aureum-contact-attention-white-20261102.css",
+      "sha256": "a9cc853570aa2bbc1615a28faac61e5e2df081df94faba7cb9bbc56e7bd6f58c",
+      "bytes": 2830
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/assets/flags/gb.svg",
+      "path": "public/assets/flags/gb.svg",
+      "sha256": "42f04826dd7a76e4ecdc9a55fb4a774a26e03a425ca1363628bb1c6f6ea1a87e",
+      "bytes": 553
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/alemanha/",
+      "path": "public/de/destinos/alemanha/index.html",
+      "sha256": "ae49f8f88a30be9bf18a7bdc8da951f0b946e2a82efec2756323dcf716465e08",
+      "bytes": 570045
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/australia/",
+      "path": "public/de/destinos/australia/index.html",
+      "sha256": "9bca5f0709c0af41b82cd411f5a456004815569109115987ecfd84d6344197a4",
+      "bytes": 570062
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/brasil/",
+      "path": "public/de/destinos/brasil/index.html",
+      "sha256": "fe9b3f4fc334acb1630ee5d155b6025116796e5311e37ae1095027b723c684c0",
+      "bytes": 570003
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/canada/",
+      "path": "public/de/destinos/canada/index.html",
+      "sha256": "5464973d42e66c3354e6d92a538e32cdec8f1a6a8246a85f6f51751efd072f9d",
+      "bytes": 569997
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/espanha/",
+      "path": "public/de/destinos/espanha/index.html",
+      "sha256": "e0f374ac56b4a4c1d628121ab1eb89bd1ee1017a806d4d9f44a1d0680a8bd05e",
+      "bytes": 570018
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/franca/",
+      "path": "public/de/destinos/franca/index.html",
+      "sha256": "d42bb72feb44fe87c0101417188c6a2a31908fff1235f7aa6bcc3f812bb41048",
+      "bytes": 570005
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/irlanda/",
+      "path": "public/de/destinos/irlanda/index.html",
+      "sha256": "ecbbdcd35b2e8579a98ded4ccb65aaef130bfa91d64c15301de92f06070db3da",
+      "bytes": 570016
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/londres/",
+      "path": "public/de/destinos/londres/index.html",
+      "sha256": "685d12ea82838ace9d18a8ace907eb4cf1fab664fe8a7eb0f701d70e4b6162fd",
+      "bytes": 570025
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/de/destinos/portugal/",
+      "path": "public/de/destinos/portugal/index.html",
+      "sha256": "2a498b93a75cf32b820dbbfd5cb54e847f6c53d0ca0f2f83cc942713526b3e6b",
+      "bytes": 570039
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/alemanha/",
+      "path": "public/en/destinos/alemanha/index.html",
+      "sha256": "d7353cd61cb3bdf4e31a0eee63e1aa6519cf0af9375df23b562f93db00f809ba",
+      "bytes": 563425
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/australia/",
+      "path": "public/en/destinos/australia/index.html",
+      "sha256": "a26e817e88b0aff43853f27465a5befad151537013efd2f816cc1c653c43154b",
+      "bytes": 563448
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/brasil/",
+      "path": "public/en/destinos/brasil/index.html",
+      "sha256": "6bfb0ad75e42541d113123f4842452cbc3cb09a8cab0e966a722be1e7e3c153b",
+      "bytes": 563385
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/canada/",
+      "path": "public/en/destinos/canada/index.html",
+      "sha256": "3e33f6b3156ac32d1eb84b3f59702d83af21821e119faab2872f6cab8d63ebde",
+      "bytes": 563385
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/espanha/",
+      "path": "public/en/destinos/espanha/index.html",
+      "sha256": "492d2d5ce2e3b4abb404731a09a08c15339c3008a20665f3161a5ea369e41d09",
+      "bytes": 563402
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/franca/",
+      "path": "public/en/destinos/franca/index.html",
+      "sha256": "83307cba27b185bb75529dc70c68b636ef5dc507fe7b6d252c4e993eac814448",
+      "bytes": 563385
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/irlanda/",
+      "path": "public/en/destinos/irlanda/index.html",
+      "sha256": "83ce8575cc90e597c7e66dcb9914d5a55b75d36e841a5cf35b263ef5a35a0c4d",
+      "bytes": 563406
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/londres/",
+      "path": "public/en/destinos/londres/index.html",
+      "sha256": "ac425b2bf27e9ede6b7d18f241a3a354e101a84a5b90b90616c452ed0a23e610",
+      "bytes": 563407
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/en/destinos/portugal/",
+      "path": "public/en/destinos/portugal/index.html",
+      "sha256": "d428e917a083b723529298633d6ccc28ede897779d90c51a96c0236ab94ce23b",
+      "bytes": 563427
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/alemanha/",
+      "path": "public/es/destinos/alemanha/index.html",
+      "sha256": "f74fa45a2fcfd3b1fb3e90a510ec0066fe89787c9b5536cbe7869565e15905a0",
+      "bytes": 567546
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/australia/",
+      "path": "public/es/destinos/australia/index.html",
+      "sha256": "63277acbb4450e26c6999b16ecc1ec3c3aa93ecaf3650335af13cbe84c7f0f6a",
+      "bytes": 567567
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/brasil/",
+      "path": "public/es/destinos/brasil/index.html",
+      "sha256": "87b0d76640c4b1421695dca2ad6e78c82f1ef1d1b65f559c05f04df1d5edfa09",
+      "bytes": 567504
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/canada/",
+      "path": "public/es/destinos/canada/index.html",
+      "sha256": "0a60985b5aadb8aa2f45f4019b1137469062945680a0b59dab562852766fbd2b",
+      "bytes": 567506
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/espanha/",
+      "path": "public/es/destinos/espanha/index.html",
+      "sha256": "668b37b6409eaf4348f614379f2ce38bb16230c6c103a01c3e051fa94192d6b4",
+      "bytes": 567525
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/franca/",
+      "path": "public/es/destinos/franca/index.html",
+      "sha256": "6021d9f21b2d969f893588a030f9a3d2fc76854696a28d18e82c8b3be331f5ae",
+      "bytes": 567506
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/irlanda/",
+      "path": "public/es/destinos/irlanda/index.html",
+      "sha256": "32ca4e7ddec1fb39a085e1f73b70d846c4007a66f92d0b7cff90a76af9a044ef",
+      "bytes": 567525
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/londres/",
+      "path": "public/es/destinos/londres/index.html",
+      "sha256": "d903f3808134cdd383b283e242485d5324fbda6f70655f301f5cfadb540395db",
+      "bytes": 567519
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/es/destinos/portugal/",
+      "path": "public/es/destinos/portugal/index.html",
+      "sha256": "129c3c0546ba4eae11e63822f5560016bf3ff24b1c259d23c5b938c0e4146af6",
+      "bytes": 567546
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/alemanha/",
+      "path": "public/fr/destinos/alemanha/index.html",
+      "sha256": "30747cad96088e978bacd61844142c7a385da0d99ccebef0b78eef8f375c0dee",
+      "bytes": 571353
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/australia/",
+      "path": "public/fr/destinos/australia/index.html",
+      "sha256": "77462282f5114d67e995a911850fab79c2a6ee6c2e84dcf4d1c901e02150ece9",
+      "bytes": 571372
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/brasil/",
+      "path": "public/fr/destinos/brasil/index.html",
+      "sha256": "b6829470601122d04be39c64bc304264751380b093909e4dd4d356c64cb9330b",
+      "bytes": 571311
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/canada/",
+      "path": "public/fr/destinos/canada/index.html",
+      "sha256": "d355d0593a873167de4141d7fa1a8efa32579c480d51d6fa4cbe5aea0a3616cb",
+      "bytes": 571309
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/espanha/",
+      "path": "public/fr/destinos/espanha/index.html",
+      "sha256": "00d9f54226dd234bfd479661cff63c2716d8b70ee5c7e1edf6346a7feaae8e3d",
+      "bytes": 571330
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/franca/",
+      "path": "public/fr/destinos/franca/index.html",
+      "sha256": "ba7644593c2b70c38d7f40b821e99d1ed1985a4caf3168e744e89905da831a57",
+      "bytes": 571309
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/irlanda/",
+      "path": "public/fr/destinos/irlanda/index.html",
+      "sha256": "f22e262a8bcc528f49066fc2faafbb3562bd3ed08e941e259ffa310098ebd6ce",
+      "bytes": 571330
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/londres/",
+      "path": "public/fr/destinos/londres/index.html",
+      "sha256": "2cafc829ce1994e79ee2ca0b9602af04f357669980086d22133363eb24659222",
+      "bytes": 571328
+    },
+    {
+      "source": "https://aureum-site-comercial-c2wk7b3ue-gabrielgonzagasilvas-projects.vercel.app/fr/destinos/portugal/",
+      "path": "public/fr/destinos/portugal/index.html",
+      "sha256": "3a8a93c12c4311f10678932bd6313a045627e83211f117b0a7f51d620a1c735f",
+      "bytes": 571351
+    }
+  ]
+}

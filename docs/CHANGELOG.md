@@ -81,3 +81,13 @@ Todas as mudanças relevantes devem ser registradas aqui.
 
 ## [3.0.0] — 2026-08-18
 - Baseline visual editorial sofisticada aprovada para o site comercial.
+# 2026-11-11 — recuperação e consolidação de produção
+
+- Recuperadas 51 páginas em cinco idiomas e todos os arquivos estáticos referenciados, incluindo vídeo, fotos, logos e Inter.
+- Preservadas as 36 rotas traduzidas ausentes no Preview mais recente.
+- Recuperadas as funções originais da Mia e o arquivo privado de conversas, com hashes conferidos contra a origem.
+- Incorporados os ajustes de Mia, header, botões e paleta de 10–11/11.
+- Removido o texto literal de escape no header e scripts da barra Vercel capturados em cópias antigas.
+- Substituído o build que copiava deployments por build local e determinístico, sem dependência de URLs de Preview.
+- Unificada a publicação na integração GitHub → Vercel; configuração anterior de GitHub Pages preservada como registro, fora dos workflows ativos.
+
