@@ -46,10 +46,20 @@ export async function POST(req){
   if(contents.length&&contents.at(-1).role===role)contents.at(-1).parts[0].text+="\n"+txt;
   else contents.push({role,parts:[{text:txt}]});
  }
+ // Use the current same-origin page language without changing the private service prompt.
+ let pageLanguage='';
+ try{
+  const referrer=new URL(req.headers.get('referer')||'');
+  if(referrer.host===host){
+   const code=referrer.pathname.match(/^\/(en|es|fr|de)(?:\/|$)/)?.[1];
+   pageLanguage=({en:'inglês',es:'espanhol',fr:'francês',de:'alemão'})[code]||'';
+  }
+ }catch{}
+ const languageRule=pageLanguage?'Idioma desta página: '+pageLanguage+'. Responda em '+pageLanguage+', salvo pedido expresso do visitante para usar outro idioma. Esta regra de idioma tem prioridade sobre orientações de idioma do prompt personalizado; todas as regras de atendimento, privacidade e encaminhamento à equipe Aureum continuam obrigatórias.':'';
  try{
   const response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+MODEL+":generateContent",{
    method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":process.env.GEMINI_API_KEY},
-   body:JSON.stringify({systemInstruction:{parts:[{text:instructions}]},contents,generationConfig:{maxOutputTokens:900,thinkingConfig:{thinkingLevel:"minimal"}}}),
+   body:JSON.stringify({systemInstruction:{parts:[{text:[instructions,languageRule].filter(Boolean).join('\n')}]},contents,generationConfig:{maxOutputTokens:900,thinkingConfig:{thinkingLevel:"minimal"}}}),
    signal:AbortSignal.timeout(30000)
   });
   if(response.status===429)return json({error:"O limite gratuito foi atingido. Tente mais tarde."},429);

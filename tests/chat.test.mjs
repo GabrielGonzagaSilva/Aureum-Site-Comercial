@@ -26,3 +26,24 @@ test('Mia rejects an empty conversation before calling the provider', async () =
   delete process.env.GEMINI_API_KEY;
 });
 
+test('Mia keeps a localized conversation in the current page language', async () => {
+  const originalFetch = globalThis.fetch;
+  const originalKey = process.env.GEMINI_API_KEY;
+  process.env.GEMINI_API_KEY = 'local-test-value';
+  let sent;
+  globalThis.fetch = async (_url, options) => {
+    sent = JSON.parse(options.body);
+    return Response.json({candidates:[{content:{parts:[{text:'You can contact the Aureum team using the website form.'}]}}]});
+  };
+  try {
+    const response = await POST(new Request('https://aureum.test/api/chat', {method:'POST', headers:{host:'aureum.test',origin:'https://aureum.test',referer:'https://aureum.test/en/','content-type':'application/json'}, body:JSON.stringify({messages:[{role:'user',content:'How can I contact Aureum?'}]})}));
+    assert.equal(response.status, 200);
+    assert.match(sent.systemInstruction.parts[0].text, /Idioma desta página: inglês/);
+    assert.match((await response.json()).reply, /Aureum team/);
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalKey === undefined) delete process.env.GEMINI_API_KEY;
+    else process.env.GEMINI_API_KEY = originalKey;
+  }
+});
+

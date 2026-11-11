@@ -310,11 +310,11 @@
   var assistantView=panel&&panel.querySelector('.contact-view[data-view="assistant"]');
   var currentLanguage=(document.documentElement.lang||"pt").slice(0,2).toLowerCase();
   var assistantLabels={
-    pt:{role:"Assistente virtual",note:"Não envie números de documentos ou dados sensíveis.",country:"Reino Unido"},
-    en:{role:"Virtual assistant",note:"Do not send document numbers or sensitive information.",country:"United Kingdom"},
-    es:{role:"Asistente virtual",note:"No envíes números de documentos ni datos sensibles.",country:"Reino Unido"},
-    fr:{role:"Assistant virtuel",note:"N'envoyez pas de numéros de documents ni de données sensibles.",country:"Royaume-Uni"},
-    de:{role:"Virtueller Assistent",note:"Senden Sie keine Dokumentennummern oder sensiblen Daten.",country:"Vereinigtes Königreich"}
+    pt:{you:"Você",role:"Assistente virtual",note:"Não envie números de documentos ou dados sensíveis.",country:"Reino Unido"},
+    en:{you:"You",role:"Virtual assistant",note:"Do not send document numbers or sensitive information.",country:"United Kingdom"},
+    es:{you:"Tú",role:"Asistente virtual",note:"No envíes números de documentos ni datos sensibles.",country:"Reino Unido"},
+    fr:{you:"Vous",role:"Assistant virtuel",note:"N'envoyez pas de numéros de documents ni de données sensibles.",country:"Royaume-Uni"},
+    de:{you:"Sie",role:"Virtueller Assistent",note:"Senden Sie keine Dokumentennummern oder sensiblen Daten.",country:"Vereinigtes Königreich"}
   };
   var activeLabels=assistantLabels[currentLanguage]||assistantLabels.pt;
   ["mia-ui-premium","mia-avatar-centered-20261103","mia-original-svg-clean","aureum-mia-premium-v3"].forEach(function(id){var old=document.getElementById(id);if(old)old.remove();});
@@ -433,7 +433,7 @@
     var suggestions=assistantView.querySelector("#chat-suggestions");
     var note=assistantView.querySelector(".contact-note:not(#aureum-chat-recording-notice)");
     if(note)note.textContent=activeLabels.note;
-    if(transcript&&suggestions){function syncSuggestions(){suggestions.hidden=!!transcript.querySelector(".chat-user");}syncSuggestions();new MutationObserver(syncSuggestions).observe(transcript,{childList:true,subtree:true});}
+    if(transcript&&suggestions){function syncSuggestions(){suggestions.hidden=!!transcript.querySelector(".chat-user");transcript.querySelectorAll(".chat-user .chat-author").forEach(function(author){if(author.textContent!==activeLabels.you)author.textContent=activeLabels.you;});}syncSuggestions();new MutationObserver(syncSuggestions).observe(transcript,{childList:true,subtree:true});}
     var title=panel.querySelector("#contact-panel-title"),eyebrow=panel.querySelector(".contact-eyebrow");
     function syncIdentity(){if(!panel||panel.dataset.currentView!=="assistant")return;if(title&&title.textContent!=="Mia")title.textContent="Mia";if(eyebrow&&eyebrow.textContent!==activeLabels.role)eyebrow.textContent=activeLabels.role;}
     syncIdentity();new MutationObserver(function(){requestAnimationFrame(syncIdentity);}).observe(panel,{attributes:true,attributeFilter:["data-current-view"],childList:true,subtree:true});

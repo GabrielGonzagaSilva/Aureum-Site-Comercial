@@ -33,10 +33,8 @@ O núcleo foi movido para `server/` e apenas o import do handler foi ajustado. O
 
 - Build: 51 páginas, 112 arquivos e 408 scripts analisados sem erro de sintaxe.
 - Todas as referências locais verificadas, incluindo fotos, fontes, SVG e vídeo.
-- Três testes do núcleo da Mia: configuração ausente, origem recusada e histórico vazio.
+- Quatro testes do núcleo da Mia: configuração ausente, origem recusada, histórico vazio e contexto do idioma da página.
 - O manifesto do vídeo garante reconstituição byte a byte antes de qualquer build.
-
-## Configuração preservada
 
 ## Validação do Preview gerado pelo GitHub
 
@@ -48,6 +46,8 @@ O núcleo foi movido para `server/` e apenas o import do handler foi ajustado. O
 - Não executados: Safari, aparelhos físicos e teclado virtual móvel real.
 
 ## Configuração de ambientes
+
+A validação também encontrou respostas da Mia em português na página em inglês. O núcleo preserva o prompt privado e recebe uma instrução adicional de idioma a partir da página de origem do mesmo domínio. Essa correção é coberta por teste do payload enviado ao provedor; os hashes acima identificam a fonte original antes dessa alteração localizada.
 
 O projeto Vercel existente já estava conectado ao repositório correto: `main` para Production e todas as demais branches para Preview. O desvio vinha de uploads manuais e aliases, não da ausência dessa ligação. As variáveis `GEMINI_API_KEY`, `BLOB_READ_WRITE_TOKEN` e `AUREUM_ASSISTANT_PROMPT` foram verificadas somente por nome e ambiente, sem recuperar ou publicar seus valores.
 
