@@ -4,7 +4,7 @@ import { join, relative, resolve } from 'node:path';
 const LOCALES = ['pt', 'en', 'es', 'fr', 'de'];
 
 function findElementById(html, tagName, id) {
-  const openingPattern = new RegExp('<' + tagName + '\\b(?=[^>]*\\sid=["\\']' + id + '["\\'])[^>]*>', 'i');
+  const openingPattern = new RegExp("<" + tagName + "\\b(?=[^>]*\\sid=[\"']" + id + "[\"'])[^>]*>", "i");
   const opening = openingPattern.exec(html);
   if (!opening) return null;
 
