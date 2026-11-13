@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-12 — Comportamento conversacional da Mia
+
+- Ajustada a configuração privada da assistente para oferecer acolhimento e esclarecimento inicial antes de propor contato humano.
+- Priorizado atendimento consultivo, com explicações de profundidade intermediária e encaminhamento contextualizado, sem repetição automática de convites comerciais.
+- Preservados os limites de privacidade, informação migratória, elegibilidade, promessas comerciais, escopo verificado de serviços e idiomas.
+- Instruções privadas continuam restritas à variável de ambiente da Vercel; este registro não contém o prompt.
+- A implantação exige novo build de produção e teste de resposta real com o Gemini.
+
 ## [4.0.5] — 2026-10-17
 
 ### Impeccable quality gate
