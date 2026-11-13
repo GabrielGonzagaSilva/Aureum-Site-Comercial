@@ -59,7 +59,7 @@ export function adaptNavigationMarkup(markup, locale, routeSuffix = null) {
   let output = markup;
 
   output = output.replace(
-    /(<a\b(?=[^>]*\sclass=["'][^"']*\blog\b[^"']*["'])[^>]*\shref=["'])#top(["'])/gi,
+    /(<a(?=\s)[^>]*\sclass=["']logo["'][^>]*\shref=["'])#top(["'])/gi,
     function (_match, prefix, suffix) { return prefix + homeHref + suffix; }
   );
 
