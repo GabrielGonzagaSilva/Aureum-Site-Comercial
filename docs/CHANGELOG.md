@@ -2,6 +2,15 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-12 — Sprint 1: headers, identidade visual e navegação
+
+- Criado `scripts/shared-header.mjs` para normalizar o header desktop e o menu mobile no build, usando a versão localizada da home como referência de conteúdo para as páginas daquele idioma.
+- Mantidos os textos aprovados em PT, EN, ES, FR e DE; links de logo, seções e seletor de idioma são adaptados à rota atual sem alterar o conteúdo das páginas.
+- Centralizado em `public/aureum-enhancements.css` o layout desktop em grid, o header compacto para tablet, o menu mobile e a alternância explícita entre os SVGs branco e escuro.
+- Preservado o comportamento especial do header sobre o hero da home e a navegação por teclado; nenhum asset de marca foi redesenhado ou removido.
+- Adicionada validação estrutural e de links para as 50 páginas com header, além de testes unitários para a adaptação de rotas.
+- Implementação em branch de revisão; publicação em produção depende da validação do preview e do merge.
+
 ## 2026-11-12 — Comportamento conversacional da Mia
 
 - Ajustada a configuração privada da assistente para oferecer acolhimento e esclarecimento inicial antes de propor contato humano.
