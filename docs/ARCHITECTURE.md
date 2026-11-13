@@ -35,6 +35,11 @@ A escala de espaçamento utiliza `clamp()` e tokens (`--pad`, `--section`, `--fl
 
 Os canais oficiais ficam em `assets/js/config.js`. Enquanto uma URL estiver vazia, o canal aparece desabilitado e não gera link falso.
 
-## Logo
+## Header e navegação compartilhados
 
-Quando a marca final for recebida, substituir o wordmark textual por um componente de logo compartilhado no header e no footer. Preservar `aria-label` e dimensões responsivas.
+- `scripts/shared-header.mjs` aplica um único componente de header e navegação mobile durante o build. As páginas iniciais de cada idioma fornecem as strings localizadas aprovadas; o build normaliza as 50 páginas com header sem reescrever o conteúdo principal.
+- Em páginas de destino, o componente adapta somente os destinos dos links: logo e âncoras de seção retornam à home do mesmo idioma, e o seletor de idioma mantém o destino atual.
+- O CSS responsivo global fica em `public/aureum-enhancements.css`; não criar correções isoladas por página.
+- Os SVGs branco e escuro são variantes intencionais do mesmo wordmark, não duas marcas para exibição simultânea: branco sobre o hero transparente, escuro quando o header fica sólido e escuro no menu mobile.
+- Faixas: navegação completa a partir de 1201px; header compacto entre 761px e 1200px; menu mobile até 760px. A navegação centralizada do hero inicial da home é preservada antes da revelação do header.
+- `scripts/verify.mjs` valida um header, um menu mobile, um par de variantes de logo e os links localizados em todas as 50 páginas. `public/privacidade.html` permanece como página independente sem header.
