@@ -51,3 +51,14 @@ Os canais oficiais ficam em `assets/js/config.js`. Enquanto uma URL estiver vazi
 - Os títulos de cards fotográficos são explicitamente brancos em `.dc__title` e `.dcard-body h3`, evitando que a regra genérica de títulos das seções aplique a cor escura sobre fotografias.
 - Os hovers existentes, a animação das setas e o movimento das fotografias são preservados. O estado pressionado usa deslocamento discreto; foco visível e `prefers-reduced-motion` continuam respeitados.
 - As correções são exclusivamente de CSS: fotos, links, textos, estrutura e destinos não são reescritos.
+
+
+## Hierarquia editorial, responsividade e espaçamento (Sprint 3)
+
+- Os cabeçalhos das seções editoriais (.page-header) usam uma única coluna em todos os tamanhos de tela: identificação e título primeiro; descrição logo abaixo, antes do divisor e do conteúdo.
+- Alturas fixas e mínimas dos cabeçalhos e títulos são removidas na camada compartilhada, evitando espaços vazios quando o texto traduzido ocupa mais linhas.
+- As quebras editoriais aprovadas nos títulos são mantidas no desktop; até 1023 px, os <br> dos títulos deixam de forçar a composição e o navegador distribui o texto naturalmente. Os parágrafos de descrição não usam quebras manuais.
+- O texto explicativo de Destinos permanece em um único parágrafo, com largura máxima de 74ch e quebra tipográfica natural (text-wrap: pretty).
+- O espaçamento das páginas editoriais usa tokens fluidos com clamp() para cabeçalho, conteúdo e padding, com ajustes próprios para tablet e mobile.
+- As regras ficam em public/aureum-enhancements.css, carregada depois dos estilos específicos das páginas. A correção alcança as 50 páginas com header e os cinco idiomas sem duplicar CSS por rota.
+- A verificação de build valida a ordem da folha compartilhada, a estrutura dos cinco cabeçalhos editoriais, a ausência de quebras manuais nas descrições e a presença das regras responsivas.

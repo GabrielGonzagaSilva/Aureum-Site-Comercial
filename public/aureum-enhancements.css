@@ -275,3 +275,95 @@ button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-bt
     transform:none!important;
   }
 }
+
+/* Sprint 3 — responsive editorial hierarchy and spacing. */
+.aureum-refined {
+  --aureum-editorial-header-gap:clamp(16px,1.8vw,24px);
+  --aureum-editorial-section-gap:clamp(24px,2.3vw,32px);
+}
+
+.aureum-refined .page-header,
+.aureum-refined.ae-section .page-header,
+.ae-section .page-header {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  column-gap:0!important;
+  row-gap:var(--aureum-editorial-header-gap)!important;
+  align-items:start!important;
+  height:auto!important;
+  min-height:0!important;
+}
+
+.aureum-refined .heading-group,
+.aureum-refined .page-intro {
+  min-width:0;
+}
+
+.aureum-refined .page-title {
+  height:auto!important;
+  min-height:0!important;
+  max-width:min(100%,26ch);
+  text-wrap:balance;
+}
+
+.aureum-refined .page-intro {
+  width:100%;
+  max-width:min(100%,72ch)!important;
+  margin:0!important;
+  line-height:1.65;
+  text-wrap:pretty;
+}
+
+.aureum-refined .aureum-page {
+  padding-block:clamp(48px,5.2vw,72px)!important;
+  padding-inline:clamp(24px,5.55vw,80px)!important;
+  gap:var(--aureum-editorial-section-gap)!important;
+}
+
+/* Keep the destination explanation flowing as one readable paragraph. */
+#home #destinos .sec-head .lead {
+  max-width:min(100%,74ch)!important;
+  margin-top:clamp(14px,1.4vw,20px)!important;
+  text-wrap:pretty;
+}
+#home #destinos .sec-head {
+  margin-bottom:clamp(26px,3.4vw,44px);
+}
+
+@media (max-width:1279px) {
+  .aureum-refined .aureum-page {
+    padding-block:clamp(44px,5.2vw,60px)!important;
+    padding-inline:clamp(32px,4.7vw,56px)!important;
+  }
+}
+
+@media (max-width:1023px) {
+  /* Keep editorial line breaks on desktop; let titles wrap naturally on tablets and phones. */
+  .aureum-refined .page-title br {
+    display:none;
+  }
+  .aureum-refined .page-title {
+    font-size:clamp(36px,4.5vw,46px);
+    line-height:1.15;
+  }
+}
+
+@media (max-width:767px) {
+  .aureum-refined {
+    --aureum-editorial-header-gap:16px;
+    --aureum-editorial-section-gap:clamp(22px,5vw,28px);
+  }
+  .aureum-refined .aureum-page {
+    padding-block:clamp(36px,7vw,48px)!important;
+    padding-inline:clamp(20px,5.5vw,28px)!important;
+  }
+  .aureum-refined .page-title {
+    font-size:clamp(32px,8vw,36px);
+    line-height:1.18;
+    letter-spacing:-.04em;
+  }
+  .aureum-refined .page-intro {
+    font-size:16px;
+    line-height:1.65;
+  }
+}

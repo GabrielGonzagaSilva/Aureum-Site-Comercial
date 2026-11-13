@@ -55,6 +55,33 @@ export async function verify(root = 'public') {
         if (!/href=["']\/aureum-enhancements\.css(?:[?#][^"']*)?["']/i.test(content)) {
           failures.push(file + ': missing shared header stylesheet');
         }
+        const sharedStylesheet = /<link\b(?=[^>]*href=["']\/aureum-enhancements\.css(?:[?#][^"']*)?["'])[^>]*>/i.exec(content);
+        const lastInlineStyle = content.lastIndexOf('</style>');
+        if (sharedStylesheet && sharedStylesheet.index < lastInlineStyle) {
+          failures.push(file + ': shared override stylesheet must load after inline page styles');
+        }
+        const editorialHeaders = [...content.matchAll(/<header\b(?=[^>]*class=["'][^"']*\bpage-header\b[^"']*["'])[^>]*>([\s\S]*?)<\/header>/gi)];
+        if (content.includes('id="home"') && editorialHeaders.length !== 5) {
+          failures.push(file + ': expected five editorial section headers; found ' + editorialHeaders.length);
+        }
+        for (const [, block] of editorialHeaders) {
+          if (!/<div\b(?=[^>]*class=["'][^"']*\bheading-group\b[^"']*["'])[^>]*>[\s\S]*?<\/div>\s*<p\b(?=[^>]*class=["'][^"']*\bpage-intro\b[^"']*["'])/i.test(block)) {
+            failures.push(file + ': editorial description must follow its heading group');
+          }
+          const intro = block.match(/<p\b(?=[^>]*class=["'][^"']*\bpage-intro\b[^"']*["'])[^>]*>([\s\S]*?)<\/p>/i);
+          if (intro && /<br\s*\/?>/i.test(intro[1])) {
+            failures.push(file + ': editorial descriptions must not contain forced line breaks');
+          }
+        }
+        const destinationStart = content.search(/<section\b(?=[^>]*\bid=["']destinos["'])/i);
+        if (destinationStart >= 0) {
+          const destinationEnd = content.indexOf('</section>', destinationStart);
+          const destinationSection = content.slice(destinationStart, destinationEnd >= 0 ? destinationEnd : content.length);
+          const destinationLead = destinationSection.match(/<p\b(?=[^>]*class=["'][^"']*\blead\b[^"']*["'])[^>]*>([\s\S]*?)<\/p>/i);
+          if (destinationLead && /<br\s*\/?>/i.test(destinationLead[1])) {
+            failures.push(file + ': destination description must remain a continuous paragraph');
+          }
+        }
 
         if (builtOutput) {
           const hasHeaderMarker = /data-aureum-component=["']shared-header["']/.test(headerOpen);
@@ -137,6 +164,21 @@ export async function verify(root = 'public') {
   ];
   for (const rule of requiredSprint2Rules) {
     if (!sharedHeaderCss.includes(rule)) failures.push('Missing Sprint 2 UI rule: ' + rule);
+  }
+  const requiredSprint3Rules = [
+    '/* Sprint 3 — responsive editorial hierarchy and spacing. */',
+    '.aureum-refined .page-header',
+    'grid-template-columns:minmax(0,1fr)!important',
+    '.aureum-refined .page-title',
+    '#home #destinos .sec-head .lead',
+    '--aureum-editorial-header-gap:clamp',
+    '--aureum-editorial-section-gap:clamp',
+    'text-wrap:pretty',
+    '@media (max-width:1023px)',
+    '@media (max-width:767px)',
+  ];
+  for (const rule of requiredSprint3Rules) {
+    if (!sharedHeaderCss.includes(rule)) failures.push('Missing Sprint 3 editorial rule: ' + rule);
   }
   if (headerPages !== 50) failures.push('Expected 50 pages with a shared header; found ' + headerPages);
   if (builtOutput && sharedHeaderPages !== 50) failures.push('Expected 50 build-generated shared headers; found ' + sharedHeaderPages);
