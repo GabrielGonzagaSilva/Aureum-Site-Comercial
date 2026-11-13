@@ -85,3 +85,145 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 @media(min-width:761px) and (max-width:1120px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}
 button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-btn,.contact-launcher,.contact-primary,.dc__cta,.chat-entry button,.chat-suggestions button{border-radius:9999px!important}
 @media(prefers-reduced-motion:reduce){#aureum-contact-hub #contact-panel[data-current-view="assistant"],#aureum-contact-hub #contact-panel[data-current-view="assistant"] .chat-message{animation:none!important;transition:none!important}}
+
+
+/* Sprint 1 — shared header component: predictable layout and one visible wordmark. */
+#hdr .navbar .wrap {
+  display:grid!important;
+  grid-template-columns:minmax(0,clamp(166px,18vw,225px)) minmax(0,1fr) auto auto!important;
+  align-items:center!important;
+  gap:clamp(10px,1.35vw,20px)!important;
+  height:76px!important;
+  min-width:0;
+}
+#hdr .navbar .logo {
+  width:100%!important;
+  max-width:225px!important;
+  min-width:0!important;
+  flex:0 1 auto!important;
+  line-height:0;
+}
+#hdr .logo-img {
+  display:block;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:56px!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+}
+#hdr .logo-img--white { display:block!important; }
+#hdr .logo-img--ink { display:none!important; }
+#hdr.solid .logo-img--white { display:none!important; }
+#hdr.solid .logo-img--ink { display:block!important; }
+#mmenu .logo-img--white { display:none!important; }
+#mmenu .logo-img--ink { display:block!important; }
+
+#hdr .navbar .nav {
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-width:0;
+  margin:0!important;
+  margin-inline-start:0!important;
+  gap:clamp(0px,.25vw,4px)!important;
+}
+#hdr .navbar .nav>a,
+#hdr .navbar .nav>button {
+  min-width:0;
+  padding-inline:clamp(5px,.65vw,10px)!important;
+  font-size:clamp(12px,.9vw,13px)!important;
+  white-space:nowrap;
+}
+#hdr .aureum-locale--header {
+  display:block!important;
+  min-width:0;
+  margin:0!important;
+  justify-self:end;
+}
+#hdr .hdr-cta {
+  display:flex!important;
+  align-items:center;
+  min-width:0;
+  margin:0!important;
+  gap:0!important;
+  justify-self:end;
+}
+#hdr .hdr-cta>.btn-hdr {
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding-inline:clamp(12px,1.2vw,18px)!important;
+  white-space:nowrap;
+}
+#hdr .hdr-cta>.menu-btn { display:none!important; }
+
+/* Tablet: remove the full navigation before it can collide with the wordmark. */
+@media(max-width:1200px) {
+  #hdr .navbar .wrap {
+    display:flex!important;
+    height:76px!important;
+    gap:clamp(12px,2vw,22px)!important;
+  }
+  #hdr .navbar .logo {
+    width:clamp(156px,18vw,190px)!important;
+    max-width:calc(100% - 150px)!important;
+  }
+  #hdr .navbar .nav { display:none!important; }
+  #hdr .aureum-locale--header {
+    margin-inline-start:auto!important;
+    margin-inline-end:0!important;
+    flex:none!important;
+  }
+  #hdr .hdr-cta {
+    margin-inline-start:0!important;
+    gap:0!important;
+    flex:none!important;
+  }
+  #hdr .hdr-cta>.btn-hdr { display:none!important; }
+  #hdr .hdr-cta>.menu-btn {
+    display:inline-flex!important;
+    width:44px;
+    height:44px;
+    flex:none;
+  }
+  html.aureum-nav-managed.aureum-nav-revealed #hdr .navbar .logo {
+    width:clamp(156px,18vw,190px)!important;
+    max-width:190px!important;
+  }
+}
+
+/* Keep the intentional centered navigation during the homepage's unrevealed hero. */
+@media(min-width:1121px) and (max-width:1200px) {
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .nav {
+    display:flex!important;
+  }
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .hdr-cta>.menu-btn {
+    display:none!important;
+  }
+}
+
+/* Mobile: wordmark, language access inside the drawer, and one menu control. */
+@media(max-width:760px) {
+  #hdr .navbar .wrap {
+    height:66px!important;
+    gap:12px!important;
+  }
+  #hdr .navbar .logo {
+    width:clamp(140px,42vw,177px)!important;
+    max-width:calc(100% - 60px)!important;
+  }
+  html.aureum-nav-managed.aureum-nav-revealed #hdr .navbar .logo {
+    width:clamp(140px,42vw,177px)!important;
+    max-width:177px!important;
+  }
+  #hdr .aureum-locale--header { display:none!important; }
+  #hdr .hdr-cta { margin-inline-start:auto!important; }
+  #hdr .hdr-cta>.menu-btn {
+    width:44px;
+    height:44px;
+  }
+}
