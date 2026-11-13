@@ -43,3 +43,11 @@ Os canais oficiais ficam em `assets/js/config.js`. Enquanto uma URL estiver vazi
 - Os SVGs branco e escuro são variantes intencionais do mesmo wordmark, não duas marcas para exibição simultânea: branco sobre o hero transparente, escuro quando o header fica sólido e escuro no menu mobile.
 - Faixas: navegação completa a partir de 1201px; header compacto entre 761px e 1200px; menu mobile até 760px. A navegação centralizada do hero inicial da home é preservada antes da revelação do header.
 - `scripts/verify.mjs` valida um header, um menu mobile, um par de variantes de logo e os links localizados em todas as 50 páginas. `public/privacidade.html` permanece como página independente sem header.
+
+## Botões e cards compartilhados
+
+- `public/aureum-enhancements.css` concentra os ajustes globais de botões e cards de destino, aplicados às 50 páginas com header nos cinco idiomas.
+- O CTA do header em estado sólido recebe um override explícito para manter o raio de pílula apesar da regra legada de 8px; botões editoriais e de ação usam o mesmo raio. Controles de menu icon-only permanecem circulares sem alteração de dimensão.
+- Os títulos de cards fotográficos são explicitamente brancos em `.dc__title` e `.dcard-body h3`, evitando que a regra genérica de títulos das seções aplique a cor escura sobre fotografias.
+- Os hovers existentes, a animação das setas e o movimento das fotografias são preservados. O estado pressionado usa deslocamento discreto; foco visível e `prefers-reduced-motion` continuam respeitados.
+- As correções são exclusivamente de CSS: fotos, links, textos, estrutura e destinos não são reescritos.

@@ -125,6 +125,19 @@ export async function verify(root = 'public') {
   for (const rule of requiredHeaderRules) {
     if (!sharedHeaderCss.includes(rule)) failures.push('Missing shared header rule: ' + rule);
   }
+  const requiredSprint2Rules = [
+    '/* Sprint 2 — buttons, cards and component states. */',
+    '.site-hdr.solid .btn-hdr',
+    '.ae-section a.ae-button',
+    '.aureum-refined .primary-button',
+    '.dc .dc__title',
+    '.dcard .dcard-body h3',
+    ':active:not(:disabled)',
+    '@media (prefers-reduced-motion:reduce)',
+  ];
+  for (const rule of requiredSprint2Rules) {
+    if (!sharedHeaderCss.includes(rule)) failures.push('Missing Sprint 2 UI rule: ' + rule);
+  }
   if (headerPages !== 50) failures.push('Expected 50 pages with a shared header; found ' + headerPages);
   if (builtOutput && sharedHeaderPages !== 50) failures.push('Expected 50 build-generated shared headers; found ' + sharedHeaderPages);
   if (htmlFiles.length !== 51) failures.push(`Expected 51 recovered pages; found ${htmlFiles.length}`);
