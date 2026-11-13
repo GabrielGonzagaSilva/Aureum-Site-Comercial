@@ -227,3 +227,51 @@ button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-bt
     height:44px;
   }
 }
+
+
+/* Sprint 2 — buttons, cards and component states. */
+:where(button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"],a.btn,a.ae-button,a.primary-button) {
+  border-radius:9999px!important;
+}
+
+/* Explicitly outrank legacy component rules with higher selector specificity. */
+.btn,
+.site-hdr .btn-hdr,
+.site-hdr.solid .btn-hdr,
+.hero .btn,
+.dhero .btn,
+.mbar .btn,
+.ae-section a.ae-button,
+.aureum-refined .primary-button,
+.contact-primary {
+  border-radius:9999px!important;
+}
+
+/* Icon-only menu controls stay fully rounded without changing their dimensions. */
+.site-hdr.solid .menu-btn,
+.mmenu-top .menu-btn {
+  border-radius:50%!important;
+}
+
+/* Keep the approved color changes smooth on the two editorial CTA families. */
+.ae-section a.ae-button,
+.aureum-refined .primary-button {
+  transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+
+/* A restrained pressed response; hover colors and arrow/photo motion remain unchanged. */
+:is(button,.btn,.ae-button,.primary-button,.contact-primary):active:not(:disabled) {
+  transform:translateY(1px);
+}
+
+/* A section-level heading rule was overriding these photo-card titles with dark ink. */
+.dc .dc__title,
+.dcard .dcard-body h3 {
+  color:#fff!important;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  :is(button,.btn,.ae-button,.primary-button,.contact-primary):active:not(:disabled) {
+    transform:none!important;
+  }
+}
