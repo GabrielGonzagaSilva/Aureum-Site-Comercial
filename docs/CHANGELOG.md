@@ -2,6 +2,15 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-13 — Sprint 2: botões, cards e padronização de componentes
+
+- Padronizado o raio de pílula nos botões recorrentes, com override explícito para o CTA do header sólido e os botões editoriais que tinham regras mais específicas.
+- Mantidos os controles de menu icon-only circulares, preservando suas dimensões e função.
+- Corrigida a especificidade dos títulos de cards fotográficos: nomes de destinos permanecem brancos em `.dc` e `.dcard`, inclusive dentro de seções cujo estilo genérico de heading usa tinta escura.
+- Adicionado feedback pressionado discreto e transição suave para CTAs editoriais; hovers, animações de seta/fotografia, foco visível e `prefers-reduced-motion` preservados.
+- Adicionados testes automatizados para raio, contraste dos títulos e movimento reduzido, além de verificações no build para a presença das regras globais.
+- Implementação em branch de revisão; publicação depende do CI, preview e integração na `main`.
+
 ## 2026-11-12 — Sprint 1: headers, identidade visual e navegação
 
 - Criado `scripts/shared-header.mjs` para normalizar o header desktop e o menu mobile no build, usando a versão localizada da home como referência de conteúdo para as páginas daquele idioma.
