@@ -9,7 +9,7 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Centralizado em `public/aureum-enhancements.css` o layout desktop em grid, o header compacto para tablet, o menu mobile e a alternância explícita entre os SVGs branco e escuro.
 - Preservado o comportamento especial do header sobre o hero da home e a navegação por teclado; nenhum asset de marca foi redesenhado ou removido.
 - Adicionada validação estrutural e de links para as 50 páginas com header, além de testes unitários para a adaptação de rotas.
-- Implementação em branch de revisão; publicação em produção depende da validação do preview e do merge.
+- Preview Vercel e CI aprovados; PR #4 integrado à `main` e implementação publicada em produção no commit `6f1a45f`.
 
 ## 2026-11-12 — Comportamento conversacional da Mia
 
