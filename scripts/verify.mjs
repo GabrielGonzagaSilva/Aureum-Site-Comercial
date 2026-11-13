@@ -38,9 +38,9 @@ export async function verify(root = 'public') {
         if (headerIds.length !== 1 || headerBlocks.length !== 1) failures.push(file + ': expected exactly one shared header');
         const header = headerBlocks[0]?.[0] ?? '';
         const headerOpen = header.match(/<header\b[^>]*>/i)?.[0] ?? '';
-        const logoAnchors = [...header.matchAll(/<a\b(?=[^>]*\sclass=["'][^"']*\blog\b[^"']*["'])[^>]*>/gi)];
-        const whiteVariants = (header.match(/class=["'][^"']*\blogo-img--white\b[^"']*["']/gi) || []).length;
-        const inkVariants = (header.match(/class=["'][^"']*\blogo-img--ink\b[^"']*["']/gi) || []).length;
+        const logoAnchors = [...header.matchAll(/<a(?=\s)[^>]*\sclass=["']logo["'][^>]*>/gi)];
+        const whiteVariants = (header.match(/class=["'][^"']*logo-img--white[^"']*["']/gi) || []).length;
+        const inkVariants = (header.match(/class=["'][^"']*logo-img--ink[^"']*["']/gi) || []).length;
         if (logoAnchors.length !== 1) failures.push(file + ': expected one desktop logo link');
         if (whiteVariants !== 1 || inkVariants !== 1) failures.push(file + ': expected one white and one ink logo variant');
 
@@ -48,8 +48,8 @@ export async function verify(root = 'public') {
         const menuOpen = content.match(/<div\b(?=[^>]*\sid=["']mmenu["'])[^>]*>/i)?.[0] ?? '';
         const menuStart = content.search(/<div\b(?=[^>]*\sid=["']mmenu["'])[^>]*>/i);
         const menuSnippet = menuStart >= 0 ? content.slice(menuStart, menuStart + 1600) : '';
-        const menuWhite = (menuSnippet.match(/class=["'][^"']*\blogo-img--white\b[^"']*["']/gi) || []).length;
-        const menuInk = (menuSnippet.match(/class=["'][^"']*\blogo-img--ink\b[^"']*["']/gi) || []).length;
+        const menuWhite = (menuSnippet.match(/class=["'][^"']*logo-img--white[^"']*["']/gi) || []).length;
+        const menuInk = (menuSnippet.match(/class=["'][^"']*logo-img--ink[^"']*["']/gi) || []).length;
         if (menuIds.length !== 1) failures.push(file + ': expected exactly one mobile navigation container');
         if (menuWhite !== 1 || menuInk !== 1) failures.push(file + ': expected one white and one ink logo variant in mobile navigation');
         if (!/href=["']\/aureum-enhancements\.css(?:[?#][^"']*)?["']/i.test(content)) {
