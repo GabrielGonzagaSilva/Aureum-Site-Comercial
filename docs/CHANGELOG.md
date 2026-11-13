@@ -2,6 +2,17 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-13 — Sprint 3: responsividade, hierarquia e espaçamento
+
+- Reauditadas as Sprints 1 e 2 na versão publicada: navegação compartilhada, variantes do wordmark, links localizados, botões em pílula, estados de interação e títulos dos cards preservados.
+- Os cinco cabeçalhos editoriais passam a organizar título e descrição em uma única coluna em todos os tamanhos de tela, seguindo a hierarquia da seção Destinos.
+- Removidas alturas fixas/mínimas dos cabeçalhos e títulos que podiam criar áreas vazias, inclusive nas traduções.
+- Ajustada a largura da descrição de Destinos para 74ch e mantida como parágrafo contínuo, sem quebra manual.
+- Mantidas as quebras editoriais dos títulos no desktop; em telas de até 1023px, os títulos passam a quebrar naturalmente.
+- Refinado o ritmo vertical com tokens fluidos para cabeçalho, conteúdo e padding, com ajustes para tablet e mobile.
+- Ampliada a validação automatizada para estrutura editorial, cinco idiomas, continuidade dos parágrafos e presença/ordem dos estilos compartilhados.
+
+
 ## 2026-11-13 — Sprint 2: botões, cards e padronização de componentes
 
 - Padronizado o raio de pílula nos botões recorrentes, com override explícito para o CTA do header sólido e os botões editoriais que tinham regras mais específicas.
