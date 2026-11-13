@@ -9,7 +9,7 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Corrigida a especificidade dos títulos de cards fotográficos: nomes de destinos permanecem brancos em `.dc` e `.dcard`, inclusive dentro de seções cujo estilo genérico de heading usa tinta escura.
 - Adicionado feedback pressionado discreto e transição suave para CTAs editoriais; hovers, animações de seta/fotografia, foco visível e `prefers-reduced-motion` preservados.
 - Adicionados testes automatizados para raio, contraste dos títulos e movimento reduzido, além de verificações no build para a presença das regras globais.
-- Implementação em branch de revisão; publicação depende do CI, preview e integração na `main`.
+- CI e preview aprovados; PR #5 integrado à `main` e Sprint 2 publicada em produção no commit `321075f` (deployment `97VjEaBMwDQF11uVnpcs55PgdRc8`).
 
 ## 2026-11-12 — Sprint 1: headers, identidade visual e navegação
 
