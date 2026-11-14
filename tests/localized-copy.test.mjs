@@ -52,7 +52,7 @@ test('Portuguese editorial title and contact copy are corrected without changing
   const output = transformLocalizedHtml(source, 'pt');
   assert.ok(output.includes('Destinos, projetos e contextos diferentes.'));
   assert.ok(!output.includes('Destinos. Projetos e contextos diferentes.'));
-  assert.ok(output.includes('Fale com a nossa equipe.'));
+  assert.match(output, /Fale com a nossa equipe<\/a>\./);
   assert.equal([...output.matchAll(/\bdata-intent=(["']).*?\1/g)].length, 48);
 });
 
