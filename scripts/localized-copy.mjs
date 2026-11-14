@@ -180,7 +180,7 @@ const INTENTS = {
 const COPY = {
   pt: [
     ['Destinos. Projetos e contextos diferentes.', 'Destinos, projetos e contextos diferentes.'],
-    ['Jornadas acadêmicas inseridas em um projeto internacional.', 'Projetos de estudo que integram uma iniciativa de mobilidade internacional.'],
+    ['Assessoria para jornadas acadêmicas inseridas em um projeto internacional.', 'Assessoria para projetos de estudo que integram uma iniciativa de mobilidade internacional.'],
     ['Jornadas acadêmicas inseridas em um projeto mais amplo de mobilidade internacional.', 'Percursos de estudo integrados a um projeto mais amplo de mobilidade internacional.'],
     ['Solicitar análise para Espanha', 'Solicitar análise para a Espanha'],
     ['Solicitar análise para Austrália', 'Solicitar análise para a Austrália'],
