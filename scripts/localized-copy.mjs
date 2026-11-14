@@ -345,7 +345,7 @@ const COPY = {
     ['Evaluación inicial de situaciones relacionadas con el trabajo, relaciones profesionales y permiso de estancia en el Reino Unido.', 'Evaluación inicial de situaciones relacionadas con el trabajo, los vínculos profesionales y los permisos de residencia en el Reino Unido.'],
     ['¿Necesita orientación para Londres?', '¿Necesitas orientación para Londres?'],
     ['¿Estás pensando en estudiar, trabajar o vivir en Irlanda? Empiece por aclarar su objetivo y qué documentos ya tiene.', '¿Estás pensando en estudiar, trabajar o vivir en Irlanda? Empieza por aclarar tu objetivo y qué documentos tienes.'],
-    ['La finalidad de la entrada, la duración de la estadía y los vínculos reportados cambian los requisitos que deben investigarse.', 'El motivo de entrada, la duración de la estancia y los vínculos que indiques determinan qué requisitos deben comprobarse.'],
+    ['El propósito de la entrada, la duración de la estadía y los vínculos reportados cambian los requisitos que deben investigarse.', 'El motivo de entrada, la duración de la estancia y los vínculos que indiques determinan qué requisitos deben comprobarse.'],
     ['Encuesta de relaciones y situaciones de dependencia.', 'Revisión de vínculos familiares y situaciones de dependencia.'],
     ['Permanencia</', 'Residencia a largo plazo</'],
     ['¿Necesita orientación para Irlanda?', '¿Necesitas orientación para Irlanda?'],
