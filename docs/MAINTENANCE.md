@@ -27,7 +27,7 @@ Não publicar no site comercial:
 
 Quando for necessário explicar como é trabalhar com a Aureum, priorizar linguagem de **experiência e resultado percebido pelo cliente** — por exemplo: atendimento individual, clareza, atualização, responsabilidade e acompanhamento — sem revelar a mecânica interna que produz esses resultados.
 
-## Localização e conteúdo multilíngue\n- Centralizar correções de copy em `scripts/localized-copy.mjs`; não replicar manualmente o mesmo texto nas páginas geradas.\n- O build aplica as correções às 50 páginas localizadas em `dist/`, antes da normalização do header.\n- Manter os valores de `data-intent` no idioma da página para que a mensagem preparada corresponda à experiência apresentada.\n- Não alterar afirmações migratórias, textos de privacidade, elegibilidade, requisitos, prazos, preços ou garantias sem fonte oficial e validação da responsável técnica.\n\n## Depois de alterar
+## Localização e conteúdo multilíngue\n- Centralizar correções de copy em `scripts/localized-copy.mjs`; não replicar manualmente o mesmo texto nas páginas geradas.\n- O build aplica as correções às 50 páginas localizadas em `dist/`, antes da normalização do header.\n- Manter os valores de `data-intent` e `data-subject` no idioma da página para que a mensagem preparada corresponda à experiência apresentada.\n- Não alterar afirmações migratórias, textos de privacidade, elegibilidade, requisitos, prazos, preços ou garantias sem fonte oficial e validação da responsável técnica.\n\n## Depois de alterar
 - Validar links relativos.
 - Testar menu mobile, foco por teclado, formulário e FAQ.
 - Testar largura de 360px, 430px, 768px, 1024px, 1440px e 1920px.
