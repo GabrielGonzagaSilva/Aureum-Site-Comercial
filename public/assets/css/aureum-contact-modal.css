@@ -43,9 +43,10 @@
     backdrop-filter: blur(4px);
   }
 }
+/* WebKit can stall opacity transitions when a dialog enters the top layer.
+   Keep content and backdrop readable from the first frame; animate only position. */
 @starting-style {
-  .aureum-lead-dialog[open] { opacity: 0; transform: translateY(6px); }
-  .aureum-lead-dialog[open]::backdrop { opacity: 0; }
+  .aureum-lead-dialog[open] { transform: translateY(6px); }
 }
 .aureum-lead-dialog[open].is-closing { opacity: 0; transform: translateY(4px); }
 .aureum-lead-dialog.is-closing::backdrop { opacity: 0; }

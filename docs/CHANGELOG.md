@@ -9,6 +9,7 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Adicionada alternativa de conversa pelo WhatsApp, com ícone oficial já existente, tradução em cinco idiomas e link externo com `noopener noreferrer`. A mensagem inicial é genérica: nenhum nome, e-mail, telefone ou texto preenchido no formulário é incluído no link.
 - O botão lê a configuração existente `AUREUM_INTEGRATIONS.whatsappNumber`. Sem um número válido, apresenta estado indisponível e orienta para o formulário; nenhum número fictício é publicado.
 - Mantidos o formulário único, os dados digitados, a navegação por teclado, as duas colunas no desktop e a coluna única em telas menores. A coleta online de leads permanece desativada.
+- A entrada mantém conteúdo e backdrop visíveis desde o primeiro frame. Removida a transição inicial de opacidade, que o CI reproduziu travando no WebKit; mantidos deslocamento sutil, saída e movimento reduzido.
 - Acrescentados testes de identidade visual, logo, estados do WhatsApp, abertura em nova aba sem envio de dados do formulário e acessibilidade.
 
 ## 2026-11-14 — Modal de contato: estabilidade, vidro e layout responsivo
