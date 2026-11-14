@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { relative } from 'node:path';
 import { filesUnder } from '../scripts/verify.mjs';
