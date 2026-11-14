@@ -185,10 +185,6 @@ const COPY = {
     ['Solicitar análise para Espanha', 'Solicitar análise para a Espanha'],
     ['Solicitar análise para Austrália', 'Solicitar análise para a Austrália'],
     ['Solicitar análise para Brasil', 'Solicitar análise para o Brasil'],
-    ['Solicitar análise para Alemanha', 'Solicitar análise para a Alemanha'],
-    ['Solicitar análise para Canadá', 'Solicitar análise para o Canadá'],
-    ['Solicitar análise para França', 'Solicitar análise para a França'],
-    ['Solicitar análise para Irlanda', 'Solicitar análise para a Irlanda'],
     ['Você está em', 'Você está aqui'],
   ],
   en: [
