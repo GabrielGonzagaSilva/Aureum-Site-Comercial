@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Serviços: três categorias no mesmo componente dos países
+
+- Recriada a seção com exatamente três categorias: Vistos, Cidadania e Passaporte e documentos. Adicionadas descrições introdutórias curtas em PT, EN, ES, FR e DE, prontas para receber o conteúdo definitivo.
+- Reutilizado o componente real dos cards de países: fotografia de fundo inteiro, tratamento escuro na base, título e descrição brancos, divisor e CTA com seta. As fotografias já pertencem à biblioteca do site.
+- Mantidas três colunas no desktop, duas com o último card centralizado no tablet e uma no celular. O restante da página e os cards de países permanecem preservados.
+- Cada botão abre o modal existente com a categoria correspondente. Nenhuma lógica de formulário, integração ou coleta de dados foi alterada.
+- Validação: build de 51 páginas e 35 testes unitários; cobertura Playwright de seis larguras em Chromium e WebKit, acessibilidade e abertura dos três serviços nos cinco idiomas.
+
 ## 2026-11-14 — Serviços: cards com foto parcial e transição para branco
 
 - Aplicado aos cinco serviços atuais o formato vertical inspirado nos cards de destinos: fotografia na metade superior, máscara em degradê fluido para branco, título e descrição em área limpa e CTA alinhado ao rodapé.
