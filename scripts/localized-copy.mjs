@@ -392,7 +392,7 @@ const COPY = {
     ['Maison, travail, études et famille.', 'Résidence, travail, études et famille.'],
     ['Le but de l’entrée, le statut migratoire et les liens guident la collecte d’informations et de documents pertinents.', 'Le motif de l’entrée, votre statut migratoire et vos attaches personnelles orientent la collecte des informations et des documents utiles.'],
     ['Régularisation d’entrée, de séjour et d’immigration.', 'Régularisation de la situation migratoire.'],
-    ['Travail et qualification', 'Emploi et qualifications professionnelles'],
+    ['<h3>Travail et qualification</h3>', '<h3>Emploi et qualifications professionnelles</h3>'],
     ['Des projets qui considèrent l’entrée et la permanence dans le temps.', 'Des projets qui prennent en compte l’entrée et le séjour à long terme.'],
     ['La disponibilité des soins et leurs modalités doivent être confirmées lors de l’analyse initiale.', 'La disponibilité de la prestation et ses modalités doivent être confirmées lors de la première évaluation.'],
     ['L’objectif du voyage, les liens, l’historique et la documentation disponible guident la première conversation. Il n\'est pas possible d\'indiquer une modalité appropriée sans considérer le cas.', 'L’objectif du voyage, vos attaches personnelles, votre parcours et les documents disponibles orientent le premier échange. Il n’est pas possible d’identifier une catégorie de visa adaptée sans examiner votre situation.'],
