@@ -9,6 +9,7 @@ import {
   localizedCopyReplacements,
   localizedIntentSources,
   localizedIntentTranslations,
+  localizedSubjectTranslations,
 } from '../scripts/localized-copy.mjs';
 
 const allFiles = await filesUnder('public');
@@ -31,6 +32,7 @@ test('localized copy covers all 50 public pages in five locales', async () => {
     const localized = transformLocalizedHtml(original, locale);
 
     assert.equal([...localized.matchAll(/\bdata-intent=(["']).*?\1/g)].length, 48, file + ': intent count must be preserved');
+    assert.equal([...localized.matchAll(/\bdata-subject=(["']).*?\1/g)].length, 55, file + ': contact subject count must be preserved');
 
     for (const [source, replacement] of localizedCopyReplacements[locale]) {
       if (source === replacement) continue;
@@ -43,6 +45,9 @@ test('localized copy covers all 50 public pages in five locales', async () => {
       const translatedValues = new Set(Object.values(localizedIntentTranslations[locale]));
       assert.ok(values.every((value) => translatedValues.has(value)), file + ': every intent must be localized');
       assert.ok(values.every((value) => !localizedIntentSources.includes(value)), file + ': Portuguese intent leaked into localized page');
+      const subjects = [...localized.matchAll(/\bdata-subject=(["'])(.*?)\1/g)].map((match) => match[2]);
+      const translatedSubjects = new Set(Object.values(localizedSubjectTranslations[locale]));
+      assert.ok(subjects.every((value) => translatedSubjects.has(value)), file + ': every contact subject must be localized');
     }
   }
 });
@@ -54,6 +59,7 @@ test('Portuguese editorial title and contact copy are corrected without changing
   assert.ok(!output.includes('Destinos. Projetos e contextos diferentes.'));
   assert.match(output, /Fale com a nossa equipe<\/a>\./);
   assert.equal([...output.matchAll(/\bdata-intent=(["']).*?\1/g)].length, 48);
+  assert.equal([...output.matchAll(/\bdata-subject=(["']).*?\1/g)].length, 55);
 });
 
 test('all non-Portuguese intent labels have complete, one-to-one translations', () => {
