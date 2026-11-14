@@ -516,5 +516,6 @@ export async function applyLocalizedCopy(root = 'dist') {
   return { pages: processed, changed };
 }
 
+export const localizedCopyReplacements = COPY;
 export const localizedIntentSources = PORTUGUESE_INTENTS;
 export const localizedIntentTranslations = INTENTS;
