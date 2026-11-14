@@ -44,6 +44,14 @@ Os canais oficiais ficam em `assets/js/config.js`. Enquanto uma URL estiver vazi
 - Faixas: navegação completa a partir de 1201px; header compacto entre 761px e 1200px; menu mobile até 760px. A navegação centralizada do hero inicial da home é preservada antes da revelação do header.
 - `scripts/verify.mjs` valida um header, um menu mobile, um par de variantes de logo e os links localizados em todas as 50 páginas. `public/privacidade.html` permanece como página independente sem header.
 
+## Localização editorial e conteúdo multilíngue
+
+- As correções de linguagem e localização ficam centralizadas em `scripts/localized-copy.mjs`, em vez de serem replicadas manualmente nas 50 páginas públicas.
+- O build aplica essa camada à saída `dist/` antes de gerar os headers compartilhados. Assim, os textos usados como template de navegação também chegam localizados à etapa de normalização.
+- A localidade é identificada pela rota (PT, EN, ES, FR ou DE). Os atributos `data-intent` que alimentam as mensagens de contato também são traduzidos para manter a coerência do idioma.
+- `tests/localized-copy.test.mjs` verifica a cobertura das 50 páginas, a preservação dos campos de intenção e as correções de conteúdo e acessibilidade.
+- Alterações de conteúdo migratório, privacidade, elegibilidade, requisitos, prazos, preços ou escopo de serviços exigem fonte oficial e validação da responsável técnica; a revisão linguística não substitui essa aprovação.
+
 ## Botões e cards compartilhados
 
 - `public/aureum-enhancements.css` concentra os ajustes globais de botões e cards de destino, aplicados às 50 páginas com header nos cinco idiomas.
