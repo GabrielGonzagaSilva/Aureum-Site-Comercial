@@ -31,10 +31,13 @@
 **Status:** Validação automatizada e publicação concluídas; validação manual de navegador pendente.
 
 ### Evidências automatizadas
+- 32/32 testes aprovados; `npm audit --omit=dev --audit-level=high` sem vulnerabilidades.
 - 51 páginas HTML no total: 50 páginas de marketing e a página de privacidade.
 - 50 headers compartilhados e 500 formulários preservados no build.
 - Testes de navegação, cinco idiomas, botões, cards, hierarquia editorial, formulários, validação, segurança da Mia e bloqueio de recebimento não aprovado.
 - Build executado no GitHub Actions e deployment de produção confirmado.
+- Smoke test do domínio: apex HTTP 200; cinco homepages e cinco rotas de Portugal em PT/EN/ES/FR/DE HTTP 200; CSS/JS compartilhados HTTP 200; `www` redireciona ao apex com HTTP 308.
+- `/api/leads` permanece desabilitado (`enabled: false`) por decisão de privacidade. `/api/chat` GET retorna `ready`, mas uma resposta real do Gemini ainda não foi validada.
 - Auditoria de dependências adicionada ao CI.
 - Testes estáticos de metadados SEO, idioma, viewport, heading principal e headers de segurança adicionados.
 

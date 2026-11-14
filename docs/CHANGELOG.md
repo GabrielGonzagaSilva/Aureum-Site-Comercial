@@ -4,13 +4,14 @@ Todas as mudanças relevantes devem ser registradas aqui.
 
 ## 2026-11-14 — Sprint 6: regressão automatizada, segurança e publicação
 
-- Reexecutada a suíte automatizada: 29 testes passaram, sem falhas; o build gerou 51 páginas e 114 arquivos a partir do Git.
+- Suíte automatizada final: 32/32 testes aprovados, sem falhas; o build gerou 51 páginas e 114 arquivos a partir do Git.
 - Confirmada a estrutura de 50 páginas de marketing em cinco idiomas, 50 headers compartilhados e 500 formulários transformados (10 por página).
 - Confirmados os testes de localização, navegação, botões/cards, hierarquia editorial, formulário internacional, validação E.164, consentimento, privacidade, rate limiting e bloqueio do endpoint antes da leitura do corpo.
-- O `npm ci` auditou 32 pacotes e reportou zero vulnerabilidades no baseline anterior. A verificação `npm audit --omit=dev --audit-level=high` passa a ser obrigatória no CI.
+- `npm ci` e `npm audit --omit=dev --audit-level=high` concluíram com zero vulnerabilidades; a auditoria de produção permanece obrigatória no CI.
 - Acrescentada auditoria estática de metadados SEO, idioma do documento, viewport, heading principal e preservação da página de privacidade.
 - Reforçados os headers globais de segurança: nosniff, Referrer-Policy, proteção contra framing, HSTS e Permissions-Policy.
-- A publicação permanece pelo fluxo GitHub → Vercel. A validação visual manual em navegadores e resoluções reais não foi simulada: depende de uma sessão de navegador conectada e continua pendente.
+- O deployment de produção ficou READY e o domínio apex respondeu HTTP 200. As cinco homepages, as cinco versões da página de Portugal e os três assets compartilhados de navegação/formulário responderam HTTP 200; `www` redireciona para o domínio apex com HTTP 308.
+- O endpoint `/api/leads` respondeu `enabled: false`, conforme o bloqueio de privacidade esperado. `/api/chat` respondeu `ready` no GET; isso confirma configuração, não uma resposta real do Gemini. A validação visual manual em navegadores e resoluções reais continua pendente.
 - O teste de recebimento real de leads permanece bloqueado até a aprovação documentada da Sprint 5. A conversa real com Gemini/Mia também requer smoke test de produção; os testes automatizados atuais cobrem o núcleo com provedor simulado.
 
 ## 2026-11-13 — Sprint 5: formulário de contato e preparação das integrações
