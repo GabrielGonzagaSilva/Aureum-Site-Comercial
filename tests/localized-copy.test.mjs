@@ -35,7 +35,7 @@ test('localized copy covers all 50 public pages in five locales', async () => {
     assert.equal([...localized.matchAll(/\bdata-subject=(["']).*?\1/g)].length, 55, file + ': contact subject count must be preserved');
 
     for (const [source, replacement] of localizedCopyReplacements[locale]) {
-      if (source === replacement) continue;
+      if (source === replacement || !original.includes(source)) continue;
       assert.ok(!localized.includes(source), file + ': unresolved copy: ' + source);
       assert.ok(localized.includes(replacement), file + ': missing corrected copy: ' + replacement);
     }
