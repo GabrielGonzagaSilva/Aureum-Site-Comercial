@@ -48,7 +48,7 @@ Os canais oficiais ficam em `assets/js/config.js`. Enquanto uma URL estiver vazi
 
 - As correções de linguagem e localização ficam centralizadas em `scripts/localized-copy.mjs`, em vez de serem replicadas manualmente nas 50 páginas públicas.
 - O build aplica essa camada à saída `dist/` antes de gerar os headers compartilhados. Assim, os textos usados como template de navegação também chegam localizados à etapa de normalização.
-- A localidade é identificada pela rota (PT, EN, ES, FR ou DE). Os atributos `data-intent` que alimentam as mensagens de contato também são traduzidos para manter a coerência do idioma.
+- A localidade é identificada pela rota (PT, EN, ES, FR ou DE). Os atributos `data-intent` e `data-subject` que alimentam as mensagens de contato também são traduzidos para manter a coerência do idioma.
 - `tests/localized-copy.test.mjs` verifica a cobertura das 50 páginas, a preservação dos campos de intenção e as correções de conteúdo e acessibilidade.
 - Alterações de conteúdo migratório, privacidade, elegibilidade, requisitos, prazos, preços ou escopo de serviços exigem fonte oficial e validação da responsável técnica; a revisão linguística não substitui essa aprovação.
 
