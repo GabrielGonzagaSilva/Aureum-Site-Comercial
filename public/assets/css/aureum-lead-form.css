@@ -118,3 +118,16 @@
   font-size: 13px;
   line-height: 1.5;
 }
+
+.phone-input-group.has-other-code [name="whatsapp"] {
+  grid-column: 1 / -1;
+}
+.phone-input-group.has-other-code {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+@media (max-width: 520px) {
+  .phone-input-group.has-other-code {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

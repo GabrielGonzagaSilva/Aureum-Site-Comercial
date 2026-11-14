@@ -11,7 +11,7 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Preparada a API \`/api/leads\` para persistência privada no Vercel Blob, com identificador idempotente, validação same-origin e expiração automática configurável.
 - **Recebimento online permanece desabilitado.** O texto atual de consentimento ainda descreve apenas a preparação da mensagem; não houve aprovação do novo aviso, finalidade, acesso e prazo de retenção. Nesse estado, o navegador não envia dados pessoais ao endpoint e apenas prepara a mensagem localmente.
 - Nenhuma integração de e-mail ou WhatsApp foi ativada ou simulada. A confirmação de recebimento só poderá aparecer após gravação privada real.
-- Adicionados testes de transformação multilíngue, opcionalidade dos contatos, formato E.164, sanitização, ativação condicionada à privacidade e rate limiting.
+- Adicionados testes de transformação multilíngue, opcionalidade dos contatos, formato E.164, sanitização, ativação condicionada à privacidade, rate limiting e bloqueio do endpoint antes da leitura de dados pessoais.
 
 ## 2026-11-13 — Sprint 4: revisão linguística e localização
 

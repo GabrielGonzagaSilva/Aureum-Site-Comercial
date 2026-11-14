@@ -201,8 +201,10 @@
 
     if (message) {
       var label = document.createElement('label');
-      label.textContent = text.reviewTitle;
+      label.textContent = text.message;
       var preview = document.createElement('textarea');
+      preview.id = 'aureum-lead-preview-' + (form.id || uuid());
+      label.htmlFor = preview.id;
       preview.readOnly = true;
       preview.value = message;
       preview.setAttribute('aria-label', text.reviewTitle);
@@ -242,6 +244,8 @@
         result.remove();
         form.reset();
         if (otherCode) { otherCode.hidden = true; otherCode.value = ''; }
+        var group = form.querySelector('.phone-input-group');
+        if (group) group.classList.remove('has-other-code');
         form.dataset.submissionId = uuid();
         form.hidden = false;
         var nameField = form.querySelector('[name="nome"]');
@@ -274,7 +278,11 @@
       codeSelect.addEventListener('change', function () {
         otherCode.hidden = codeSelect.value !== 'other';
         if (otherCode.hidden) otherCode.value = '';
+        var group = form.querySelector('.phone-input-group');
+        if (group) group.classList.toggle('has-other-code', !otherCode.hidden);
         clearError(phoneField);
+        clearError(codeSelect);
+        clearError(otherCode);
       });
     }
     [phoneField, emailField, nameField, consent, otherCode, codeSelect].forEach(function (field) {
@@ -305,8 +313,8 @@
         firstInvalid = firstInvalid || emailField;
       }
       if (phoneField && phoneField.value.trim() && !phone.valid) {
-        setError(phoneField, text.phoneError);
         var codeField = codeSelect && codeSelect.value === 'other' ? otherCode : (codeSelect && !codeSelect.value ? codeSelect : phoneField);
+        setError(codeField || phoneField, text.phoneError);
         firstInvalid = firstInvalid || codeField || phoneField;
       }
       if (consent && !consent.checked) {
