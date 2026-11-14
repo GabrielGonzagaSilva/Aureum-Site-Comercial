@@ -2,6 +2,15 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Corrigir logo mobile e abrir contato em modal
+
+- Identificada a causa da duplicação visual: o JavaScript de atualizações injetava tardiamente display:block!important em todas as imagens de logo, anulando a alternância de cores. Corrigida a regra na origem e explicitada a versão adequada ao fundo, inclusive no menu móvel.
+- CTAs de contato abrem um diálogo nativo responsivo com desfoque leve, botão de fechar, Escape, foco controlado e rolagem interna. Links comuns de navegação continuam funcionando.
+- O cartão do formulário principal existente é movido temporariamente para o diálogo e devolvido ao ponto original no fechamento, sem clonar formulários, IDs ou listeners.
+- Preservados contexto e seleção de destino/objetivo dos CTAs.
+- Mantida a preparação local da mensagem e a API de leads desativada até aprovação da privacidade; nenhum envio automático foi ativado.
+- Adicionados testes de regressão para o cabeçalho e o modal nos cinco idiomas.
+
 ## 2026-11-14 — Sprint 6: regressão automatizada, segurança e publicação
 
 - Suíte automatizada final: 32/32 testes aprovados, sem falhas; o build gerou 51 páginas e 114 arquivos a partir do Git.

@@ -47,6 +47,8 @@ test('all public lead forms receive the same international contact controls in f
     }
     assert.match(output, /href=["']\/assets\/css\/aureum-lead-form\.css["']/i);
     assert.match(output, /src=["']\/assets\/js\/aureum-lead-form\.js["']/i);
+    assert.match(output, /href=["']\/assets\/css\/aureum-contact-modal\.css["']/i);
+    assert.match(output, /src=["']\/assets\/js\/aureum-contact-modal\.js["']/i);
     assert.equal(transformLeadFormsHtml(output, locale), output, file + ': transformation must be idempotent');
   }
 

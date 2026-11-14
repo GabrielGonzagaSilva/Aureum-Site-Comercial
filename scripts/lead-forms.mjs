@@ -187,6 +187,8 @@ export function transformLeadFormsHtml(html, locale = 'pt') {
 
   const stylesheet = '<link rel="stylesheet" href="/assets/css/aureum-lead-form.css">';
   const script = '<script defer src="/assets/js/aureum-lead-form.js"></script>';
+  const modalStylesheet = '<link rel="stylesheet" href="/assets/css/aureum-contact-modal.css">';
+  const modalScript = '<script defer src="/assets/js/aureum-contact-modal.js"></script>';
   if (!/href=["']\/assets\/css\/aureum-lead-form\.css(?:[?#][^"']*)?["']/i.test(output)) {
     if (!output.includes('</head>')) throw new Error('Cannot inject Aureum lead form stylesheet: missing </head>.');
     output = output.replace('</head>', stylesheet + '\n</head>');
@@ -194,6 +196,12 @@ export function transformLeadFormsHtml(html, locale = 'pt') {
   if (!/src=["']\/assets\/js\/aureum-lead-form\.js(?:[?#][^"']*)?["']/i.test(output)) {
     if (!output.includes('</body>')) throw new Error('Cannot inject Aureum lead form script: missing </body>.');
     output = output.replace('</body>', script + '\n</body>');
+  }
+  if (!/href=["']\/assets\/css\/aureum-contact-modal\.css(?:[?#][^"']*)?["']/i.test(output)) {
+    output = output.replace('</head>', modalStylesheet + '\n</head>');
+  }
+  if (!/src=["']\/assets\/js\/aureum-contact-modal\.js(?:[?#][^"']*)?["']/i.test(output)) {
+    output = output.replace('</body>', modalScript + '\n</body>');
   }
   return output;
 }
