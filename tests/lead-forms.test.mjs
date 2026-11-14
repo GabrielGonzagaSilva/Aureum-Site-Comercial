@@ -41,14 +41,17 @@ test('all public lead forms receive the same international contact controls in f
       assert.match(form, /contact-method-note/, file + ': at-least-one-contact guidance missing');
       assert.match(form, /name=["']website["']/, file + ': honeypot missing');
       assert.match(form, /name=["']consentimento["']|data-rule=["']consent["']/i, file + ': consent control must be preserved');
+      assert.match(form, /name=["']codigo_pais["'][^>]*aria-describedby=/i, file + ': country code selector needs an accessible description');
+      assert.match(form, /name=["']codigo_pais_outro["'][^>]*aria-label=/i, file + ': custom country code needs an accessible name');
+      assert.match(form, /consent-error["'][^>]*role=["']alert["']/i, file + ': consent error must be announced');
     }
     assert.match(output, /href=["']\/assets\/css\/aureum-lead-form\.css["']/i);
     assert.match(output, /src=["']\/assets\/js\/aureum-lead-form\.js["']/i);
     assert.equal(transformLeadFormsHtml(output, locale), output, file + ': transformation must be idempotent');
   }
 
-  assert.ok(pagesWithForms > 0, 'at least one public page should contain a lead form');
-  assert.ok(totalForms > 0, 'at least one public lead form should be transformed');
+  assert.equal(pagesWithForms, 50, 'all 50 marketing pages should expose contact forms');
+  assert.equal(totalForms, 500, 'the 10 existing contact forms per page must be preserved');
 });
 
 test('localized contact guidance is available in all supported languages', () => {

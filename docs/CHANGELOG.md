@@ -2,13 +2,26 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Sprint 6: regressão automatizada, segurança e publicação
+
+- Reexecutada a suíte automatizada: 29 testes passaram, sem falhas; o build gerou 51 páginas e 114 arquivos a partir do Git.
+- Confirmada a estrutura de 50 páginas de marketing em cinco idiomas, 50 headers compartilhados e 500 formulários transformados (10 por página).
+- Confirmados os testes de localização, navegação, botões/cards, hierarquia editorial, formulário internacional, validação E.164, consentimento, privacidade, rate limiting e bloqueio do endpoint antes da leitura do corpo.
+- O `npm ci` auditou 32 pacotes e reportou zero vulnerabilidades no baseline anterior. A verificação `npm audit --omit=dev --audit-level=high` passa a ser obrigatória no CI.
+- Acrescentada auditoria estática de metadados SEO, idioma do documento, viewport, heading principal e preservação da página de privacidade.
+- Reforçados os headers globais de segurança: nosniff, Referrer-Policy, proteção contra framing, HSTS e Permissions-Policy.
+- A publicação permanece pelo fluxo GitHub → Vercel. A validação visual manual em navegadores e resoluções reais não foi simulada: depende de uma sessão de navegador conectada e continua pendente.
+- O teste de recebimento real de leads permanece bloqueado até a aprovação documentada da Sprint 5. A conversa real com Gemini/Mia também requer smoke test de produção; os testes automatizados atuais cobrem o núcleo com provedor simulado.
+
 ## 2026-11-13 — Sprint 5: formulário de contato e preparação das integrações
+
+**Situação:** implementação publicada; encerramento funcional pendente de aprovação de privacidade e teste real de recebimento.
 
 - Centralizada no build a transformação dos formulários existentes nas 50 páginas localizadas, sem duplicar markup nas páginas de origem.
 - E-mail e telefone/WhatsApp passam a ser individualmente opcionais; a validação exige pelo menos um meio de contato.
 - Adicionado seletor de código internacional, alternativa para códigos não listados e entrada do número nacional com DDD/código de área. A normalização do telefone gera formato E.164 antes do envio.
 - Implementadas validações no navegador e no servidor, mensagens localizadas em PT/EN/ES/FR/DE, estados acessíveis, honeypot e proteção complementar contra envios automatizados.
-- Preparada a API \`/api/leads\` para persistência privada no Vercel Blob, com identificador idempotente, validação same-origin e expiração automática configurável.
+- Preparada a API `/api/leads` para persistência privada no Vercel Blob, com identificador idempotente, validação same-origin e expiração automática configurável.
 - **Recebimento online permanece desabilitado.** O texto atual de consentimento ainda descreve apenas a preparação da mensagem; não houve aprovação do novo aviso, finalidade, acesso e prazo de retenção. Nesse estado, o navegador não envia dados pessoais ao endpoint e apenas prepara a mensagem localmente.
 - Nenhuma integração de e-mail ou WhatsApp foi ativada ou simulada. A confirmação de recebimento só poderá aparecer após gravação privada real.
 - Adicionados testes de transformação multilíngue, opcionalidade dos contatos, formato E.164, sanitização, ativação condicionada à privacidade, rate limiting e bloqueio do endpoint antes da leitura de dados pessoais.
