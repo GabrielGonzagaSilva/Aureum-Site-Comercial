@@ -420,7 +420,7 @@ const COPY = {
     ['Fermer le service', 'Fermer le panneau de contact'],
     ['Canaux de services', 'Canaux de contact'],
     ['Démarrer une demande WhatsApp (ouvre un formulaire)', 'Démarrer une demande via WhatsApp (ouvre un formulaire)'],
-    ['WhatsApp — démarrer l’analyse', 'WhatsApp — démarrer une demande'],
+    ['WhatsApp — démarrer l\'analyse', 'WhatsApp — démarrer une demande'],
     ['Menus', 'Menu'],
   ],
   de: [
