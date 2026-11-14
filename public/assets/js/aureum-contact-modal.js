@@ -4,34 +4,54 @@
 
   var COPY = {
     pt: {
-      eyebrow: 'PRIMEIRO CONTATO',
       title: 'Conte sobre o seu projeto',
       detail: 'Preencha os dados para preparar sua mensagem à Aureum.',
-      close: 'Fechar formulário de contato'
+      close: 'Fechar formulário de contato',
+      whatsapp: "Conversar no WhatsApp",
+      whatsappDetail: "Abra o WhatsApp para falar com a equipe.",
+      whatsappUnavailable: "WhatsApp indisponível",
+      whatsappFallback: "Você pode preparar sua mensagem no formulário abaixo.",
+      whatsappMessage: "Olá! Gostaria de conversar com a equipe da Aureum sobre uma assessoria internacional."
     },
     en: {
-      eyebrow: 'FIRST CONTACT',
       title: 'Tell us about your plans',
       detail: 'Fill in the details to prepare your message to Aureum.',
-      close: 'Close contact form'
+      close: 'Close contact form',
+      whatsapp: "Chat on WhatsApp",
+      whatsappDetail: "Open WhatsApp to talk with our team.",
+      whatsappUnavailable: "WhatsApp unavailable",
+      whatsappFallback: "You can prepare your message using the form below.",
+      whatsappMessage: "Hello! I would like to speak with the Aureum team about international advisory services."
     },
     es: {
-      eyebrow: 'PRIMER CONTACTO',
       title: 'Cuéntanos sobre tu proyecto',
       detail: 'Completa los datos para preparar tu mensaje a Aureum.',
-      close: 'Cerrar formulario de contacto'
+      close: 'Cerrar formulario de contacto',
+      whatsapp: "Hablar por WhatsApp",
+      whatsappDetail: "Abre WhatsApp para hablar con el equipo.",
+      whatsappUnavailable: "WhatsApp no disponible",
+      whatsappFallback: "Puedes preparar tu mensaje con el formulario de abajo.",
+      whatsappMessage: "Hola. Me gustaría hablar con el equipo de Aureum sobre asesoría internacional."
     },
     fr: {
-      eyebrow: 'PREMIER CONTACT',
       title: 'Parlez-nous de votre projet',
       detail: 'Renseignez les informations pour préparer votre message à Aureum.',
-      close: 'Fermer le formulaire de contact'
+      close: 'Fermer le formulaire de contact',
+      whatsapp: "Échanger sur WhatsApp",
+      whatsappDetail: "Ouvrez WhatsApp pour échanger avec notre équipe.",
+      whatsappUnavailable: "WhatsApp indisponible",
+      whatsappFallback: "Vous pouvez préparer votre message avec le formulaire ci-dessous.",
+      whatsappMessage: "Bonjour. Je souhaite échanger avec l’équipe Aureum au sujet de l’accompagnement international."
     },
     de: {
-      eyebrow: 'ERSTE KONTAKTAUFNAHME',
       title: 'Erzählen Sie uns von Ihrem Vorhaben',
       detail: 'Füllen Sie die Angaben aus, um Ihre Nachricht an Aureum vorzubereiten.',
-      close: 'Kontaktformular schließen'
+      close: 'Kontaktformular schließen',
+      whatsapp: "Über WhatsApp schreiben",
+      whatsappDetail: "Öffnen Sie WhatsApp, um mit unserem Team zu sprechen.",
+      whatsappUnavailable: "WhatsApp nicht verfügbar",
+      whatsappFallback: "Sie können Ihre Nachricht mit dem Formular unten vorbereiten.",
+      whatsappMessage: "Hallo. Ich möchte mit dem Aureum-Team über internationale Beratung sprechen."
     }
   };
 
@@ -54,16 +74,12 @@
     heading.className = 'aureum-lead-dialog__heading';
     var headCopy = document.createElement('div');
     headCopy.className = 'aureum-lead-dialog__heading-copy';
-    var eyebrow = document.createElement('p');
-    eyebrow.className = 'aureum-lead-dialog__eyebrow';
-    eyebrow.textContent = copy.eyebrow;
     var title = document.createElement('h2');
     title.id = 'aureum-lead-dialog-title';
     title.textContent = copy.title;
     var detail = document.createElement('p');
     detail.id = 'aureum-lead-dialog-detail';
     detail.textContent = copy.detail;
-    headCopy.appendChild(eyebrow);
     headCopy.appendChild(title);
     headCopy.appendChild(detail);
     var close = document.createElement('button');
@@ -72,11 +88,64 @@
     close.className = 'aureum-lead-dialog__close';
     close.setAttribute('aria-label', copy.close);
     close.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>';
+    var masthead = document.createElement('div');
+    masthead.className = 'aureum-lead-dialog__masthead';
+    var logo = document.createElement('img');
+    logo.className = 'aureum-lead-dialog__logo';
+    logo.src = '/assets/brand/aureum-wordmark-outlined-v1-ink.svg';
+    logo.alt = 'Aureum';
+    logo.width = 777;
+    logo.height = 236;
+    masthead.appendChild(logo);
+    masthead.appendChild(close);
+
+    var alternative = document.createElement('div');
+    alternative.className = 'aureum-lead-dialog__alternative';
+    var whatsapp = document.createElement('a');
+    whatsapp.className = 'aureum-lead-dialog__whatsapp';
+    whatsapp.setAttribute('aria-describedby', 'aureum-lead-whatsapp-detail');
+    whatsapp.target = '_blank';
+    whatsapp.rel = 'noopener noreferrer';
+    var whatsappIcon = document.querySelector('#launch-whatsapp svg');
+    if (whatsappIcon) {
+      // Reuse only the brand icon; the one existing contact form is never cloned.
+      var icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      icon.setAttribute('viewBox', whatsappIcon.getAttribute('viewBox') || '0 0 24 24');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML = whatsappIcon.innerHTML;
+      whatsapp.appendChild(icon);
+    }
+    var whatsappLabel = document.createElement('span');
+    whatsapp.appendChild(whatsappLabel);
+    var whatsappDetail = document.createElement('p');
+    whatsappDetail.id = 'aureum-lead-whatsapp-detail';
+    alternative.appendChild(whatsapp);
+    alternative.appendChild(whatsappDetail);
     heading.appendChild(headCopy);
-    heading.appendChild(close);
+    heading.appendChild(alternative);
+
+    function updateWhatsApp() {
+      var number = String((window.AUREUM_INTEGRATIONS || {}).whatsappNumber || '').replace(/\D/g, '');
+      var available = /^[1-9]\d{9,14}$/.test(number);
+      whatsappLabel.textContent = available ? copy.whatsapp : copy.whatsappUnavailable;
+      whatsappDetail.textContent = available ? copy.whatsappDetail : copy.whatsappFallback;
+      if (available) {
+        whatsapp.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(copy.whatsappMessage);
+        whatsapp.removeAttribute('aria-disabled');
+        whatsapp.removeAttribute('tabindex');
+        whatsapp.removeAttribute('role');
+      } else {
+        whatsapp.removeAttribute('href');
+        whatsapp.setAttribute('role', 'link');
+        whatsapp.setAttribute('aria-disabled', 'true');
+        whatsapp.setAttribute('tabindex', '-1');
+      }
+    }
+    updateWhatsApp();
 
     var container = document.createElement('div');
     container.className = 'aureum-lead-dialog__content';
+    modal.appendChild(masthead);
     modal.appendChild(heading);
     modal.appendChild(container);
     document.body.appendChild(modal);
@@ -209,6 +278,7 @@
         document.getElementById('mm-close').click();
         selectedTrigger = document.getElementById('mm-open');
       }
+      updateWhatsApp();
       selectContext(trigger);
       var box = card.getBoundingClientRect();
       lockPageScroll();

@@ -2,6 +2,15 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Contato: superfície branca, marca e alternativa WhatsApp
+
+- Substituído o marfim do modal e dos campos por branco, preservando a Inter local, os tons floresta/esmeralda, o backdrop e as correções de rolagem existentes.
+- Integrado o wordmark vetorial oficial ao topo. A faixa da marca e do fechamento permanece sticky; apresentação e formulário rolam normalmente, inclusive em janelas baixas.
+- Adicionada alternativa de conversa pelo WhatsApp, com ícone oficial já existente, tradução em cinco idiomas e link externo com `noopener noreferrer`. A mensagem inicial é genérica: nenhum nome, e-mail, telefone ou texto preenchido no formulário é incluído no link.
+- O botão lê a configuração existente `AUREUM_INTEGRATIONS.whatsappNumber`. Sem um número válido, apresenta estado indisponível e orienta para o formulário; nenhum número fictício é publicado.
+- Mantidos o formulário único, os dados digitados, a navegação por teclado, as duas colunas no desktop e a coluna única em telas menores. A coleta online de leads permanece desativada.
+- Acrescentados testes de identidade visual, logo, estados do WhatsApp, abertura em nova aba sem envio de dados do formulário e acessibilidade.
+
 ## 2026-11-14 — Modal de contato: estabilidade, vidro e layout responsivo
 
 - Corrigida a restauração que herdava `scroll-behavior: smooth`; a posição é capturada antes de mover o formulário ou chamar `showModal()` e restaurada instantaneamente, sem alterar URL, hash ou histórico.

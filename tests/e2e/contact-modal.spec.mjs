@@ -217,3 +217,47 @@ test('200 percent viewport zoom/reflow and pointer drag do not lose the form', a
   await expect(page.locator('#lead-main-msg')).toHaveValue('Mensagem preservada');
   await dismiss(page, 'Escape');
 });
+
+for (const configured of [false, true]) {
+  test(`white brand surface and WhatsApp ${configured ? 'configured' : 'unavailable'}`, async ({ page, context }) => {
+    await load(page);
+    await position(page, .5);
+    await page.evaluate(configured => {
+      window.AUREUM_INTEGRATIONS.whatsappNumber = configured ? '+1 202 555 0147' : '';
+    }, configured);
+    await open(page);
+    await expect(dialog(page)).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    const logo = dialog(page).getByRole('img', { name: 'Aureum', exact: true });
+    await expect(logo).toBeVisible();
+    expect(await logo.evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
+    const link = page.locator('.aureum-lead-dialog__whatsapp');
+    if (configured) {
+      await expect(link).toHaveAttribute('href', /^https:\/\/wa\.me\/12025550147\?text=/);
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      await page.locator('#lead-main-name').fill('Private form name');
+      await page.locator('#lead-main-email').fill('private@example.com');
+      await page.locator('#lead-main-msg').fill('Private message');
+      const href = await link.getAttribute('href');
+      expect(decodeURIComponent(href)).not.toMatch(/Private|private@example/);
+      // Exercise the real anchor and new tab without contacting WhatsApp.
+      await context.route('https://wa.me/**', route => route.fulfill({ contentType: 'text/html', body: '<title>Navigation test</title>' }));
+      const tabPromise = context.waitForEvent('page');
+      await link.click();
+      const tab = await tabPromise;
+      await tab.waitForLoadState('domcontentloaded');
+      expect(tab.url()).toBe(href);
+      expect(await tab.evaluate(() => window.opener)).toBe(null);
+      await tab.close();
+      await expect(dialog(page)).toBeVisible();
+      await expect(page.locator('#lead-main-name')).toHaveValue('Private form name');
+    } else {
+      await expect(link).toHaveAttribute('aria-disabled', 'true');
+      await expect(link).not.toHaveAttribute('href');
+      await expect(link).toHaveText('WhatsApp indisponível');
+      await expect(page.locator('#aureum-lead-whatsapp-detail')).toContainText('formulário abaixo');
+    }
+    const results = await new AxeBuilder({ page }).include('#aureum-lead-dialog').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
+    expect(results.violations).toEqual([]);
+    await dismiss(page, 'Escape');
+  });
+}

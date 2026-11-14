@@ -15,9 +15,11 @@
   margin: auto;
   overflow: auto;
   overscroll-behavior: contain;
-  border: 1px solid rgba(233, 221, 205, .65);
+  scroll-padding-top: 84px;
+  scroll-padding-bottom: 16px;
+  border: 0;
   border-radius: 22px;
-  background: #F3EEE6;
+  background: #FFF;
   color: #0A211B;
   box-shadow: 0 24px 72px rgba(10, 33, 27, .28), 0 2px 8px rgba(10, 33, 27, .12);
   scrollbar-width: thin;
@@ -33,9 +35,7 @@
 }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .aureum-lead-dialog[open] {
-    background: rgba(245, 241, 233, .96);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    background: #FFF;
   }
   .aureum-lead-dialog::backdrop {
     background: rgba(10, 33, 27, .58);
@@ -49,29 +49,70 @@
 }
 .aureum-lead-dialog[open].is-closing { opacity: 0; transform: translateY(4px); }
 .aureum-lead-dialog.is-closing::backdrop { opacity: 0; }
-.aureum-lead-dialog__heading {
+.aureum-lead-dialog__masthead {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 24px 30px 20px;
-  border-bottom: 1px solid rgba(118, 135, 116, .25);
-  background: #F3EEE6;
+  gap: 20px;
+  padding: 18px 30px 12px;
+  background: #FFF;
 }
-.aureum-lead-dialog__heading-copy { min-width: 0; }
-.aureum-lead-dialog__eyebrow {
-  margin: 0 0 7px;
-  color: #785B32;
-  font: 650 10px/1.4 "AureumRefinedInter", Inter, sans-serif;
-  letter-spacing: .16em;
+.aureum-lead-dialog__logo {
+  display: block;
+  width: 142px;
+  height: auto;
+  aspect-ratio: 777 / 236;
+  object-fit: contain;
+}
+.aureum-lead-dialog__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 12px 30px 22px;
+  border-bottom: 1px solid #E3EAE5;
+  background: #FFF;
+}
+.aureum-lead-dialog__heading-copy { min-width: 0; flex: 1; }
+.aureum-lead-dialog__alternative { flex: 0 0 250px; }
+.aureum-lead-dialog__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #1C4C3C;
+  border-radius: 9999px;
+  background: #FFF;
+  color: #1C4C3C;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  transition: background-color .16s ease, color .16s ease;
+}
+.aureum-lead-dialog__whatsapp[href]:hover { background: #EFF5F1; color: #0A211B; }
+.aureum-lead-dialog__whatsapp[href]:active { background: #E2EDE6; }
+.aureum-lead-dialog__whatsapp[aria-disabled] { color: #52665B; border-color: #A5B2A6; cursor: not-allowed; }
+.aureum-lead-dialog__whatsapp svg { width: 20px; height: 20px; flex: none; fill: currentColor; }
+.aureum-lead-dialog__alternative p {
+  margin: 7px 0 0;
+  color: #52665B;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
 }
 .aureum-lead-dialog__heading h2 {
   margin: 0;
   color: #0A211B;
-  font: 600 clamp(23px, 2.4vw, 30px)/1.2 "AureumRefinedInter", Inter, sans-serif;
+  font: 600 clamp(23px, 2.2vw, 28px)/1.2 "AureumRefinedInter", Inter, sans-serif;
   letter-spacing: -.035em;
   text-wrap: balance;
 }
@@ -92,14 +133,14 @@
   padding: 0;
   border: 1px solid #A5B2A6;
   border-radius: 9999px !important;
-  background: #FAF8F4;
+  background: #FFF;
   color: #0A211B;
   cursor: pointer;
   transition: background-color .16s ease, border-color .16s ease;
 }
 .aureum-lead-dialog__close svg { width: 19px; height: 19px; }
 .aureum-lead-dialog__close:hover { background: #E4E9E1; border-color: #768774; }
-.aureum-lead-dialog :focus-visible { outline: 2px solid #1C4C3C; outline-offset: 3px; }
+.aureum-lead-dialog :focus-visible { outline: 2px solid #1C4C3C !important; outline-offset: 3px; }
 .aureum-lead-dialog__content { padding: 22px 30px 24px; }
 .aureum-lead-dialog__content > .fcard {
   width: 100%;
@@ -128,8 +169,8 @@
 }
 .aureum-lead-dialog .form > [hidden] { display: none !important; }
 .aureum-lead-dialog .f :is(input, select, textarea) {
-  border-color: #768774 !important;
-  background: #FDFCF9 !important;
+  border-color: #83998B !important;
+  background: #FFF !important;
   font-family: "AureumRefinedInter", Inter, Arial, sans-serif;
 }
 .aureum-lead-dialog .f :is(input, select) { height: 46px; min-height: 46px; }
@@ -146,20 +187,29 @@ body.aureum-lead-dialog-open { overflow: hidden !important; }
   .aureum-lead-dialog .form > .f.full:has([name="nome"]),
   .aureum-lead-dialog .form > .f.full:has([name="destino"]) { grid-column: auto; }
 }
+@media (max-width: 799px) {
+  .aureum-lead-dialog__heading { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .aureum-lead-dialog__alternative { flex: none; width: 100%; }
+  .aureum-lead-dialog__whatsapp { width: auto; min-width: 230px; }
+  .aureum-lead-dialog__alternative p { text-align: left; }
+}
 @media (max-width: 600px) {
   .aureum-lead-dialog[open] {
     --dialog-gap: 10px;
     width: calc(100% - 2 * var(--dialog-gap) - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
     border-radius: 18px;
   }
-  .aureum-lead-dialog__heading { padding: 18px 18px 16px; gap: 10px; }
+  .aureum-lead-dialog__masthead { padding: 14px 18px 10px; }
+  .aureum-lead-dialog__logo { width: 126px; }
+  .aureum-lead-dialog__heading { padding: 10px 18px 20px; }
+  .aureum-lead-dialog__whatsapp { width: 100%; }
   .aureum-lead-dialog__heading h2 { font-size: 23px; }
   .aureum-lead-dialog__heading #aureum-lead-dialog-detail { font-size: 12px; }
   .aureum-lead-dialog__content { padding: 18px; }
   .aureum-lead-dialog .f textarea { min-height: 100px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .aureum-lead-dialog[open], .aureum-lead-dialog::backdrop, .aureum-lead-dialog__close {
+  .aureum-lead-dialog[open], .aureum-lead-dialog::backdrop, .aureum-lead-dialog__close, .aureum-lead-dialog__whatsapp {
     transition: none;
     transform: none;
   }
