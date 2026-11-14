@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { applySharedHeader } from './scripts/shared-header.mjs';
 import { applyLeadForms } from './scripts/lead-forms.mjs';
+import { applyServiceCards } from './scripts/service-cards.mjs';
 import { applyLocalizedCopy } from './scripts/localized-copy.mjs';
 import { verify, filesUnder } from './scripts/verify.mjs';
 
@@ -27,6 +28,8 @@ console.log('Applied localized copy to ' + localizedCopy.pages + ' pages (' + lo
 await applySharedHeader('dist');
 const leadForms = await applyLeadForms('dist');
 console.log('Prepared ' + leadForms.forms + ' lead forms on ' + leadForms.pages + ' pages.');
+const serviceCards = await applyServiceCards('dist');
+console.log('Applied service photo cards to ' + serviceCards.pages + ' pages.');
 const outputFiles = await filesUnder('dist');
 const versions = new Map();
 for (const file of outputFiles.filter(file => /\.(?:js|css)$/.test(file))) {

@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Serviços: cards com foto parcial e transição para branco
+
+- Aplicado aos cinco serviços atuais o formato vertical inspirado nos cards de destinos: fotografia na metade superior, máscara em degradê fluido para branco, título e descrição em área limpa e CTA alinhado ao rodapé.
+- Reutilizadas fotografias já versionadas do site. Os títulos, descrições, textos dos botões, IDs acessíveis, links e contextos de contato permanecem exatamente como estavam em PT, EN, ES, FR e DE.
+- Grid com três colunas no desktop, duas no tablet e uma no celular; o card de cidadania utiliza o mesmo formato dos demais. O conteúdo cresce quando uma tradução exige mais espaço, sem alturas fixas que cortem texto.
+- Alteração centralizada no build e em uma folha de estilos restrita à seção Serviços; os cards de destinos e as demais seções não foram redesenhados. Nenhuma lógica de formulário, integração ou coleta de dados foi alterada.
+- Validação local: 35 testes unitários, build de produção e verificações estáticas aprovados. Os 14 novos cenários Playwright passaram em Chromium e WebKit, cobrindo seis larguras, carregamento das fotos, proporção da imagem, ausência de cortes e acessibilidade nas cinco línguas.
+
 ## 2026-11-14 — Contato: superfície branca, marca e alternativa WhatsApp
 
 - Substituído o marfim do modal e dos campos por branco, preservando a Inter local, os tons floresta/esmeralda, o backdrop e as correções de rolagem existentes.
