@@ -202,7 +202,16 @@ export async function verify(root = 'public') {
   }
   if (headerPages !== 50) failures.push('Expected 50 pages with a shared header; found ' + headerPages);
   if (builtOutput && sharedHeaderPages !== 50) failures.push('Expected 50 build-generated shared headers; found ' + sharedHeaderPages);
-  if (htmlFiles.length !== 51) failures.push(`Expected 51 recovered pages; found ${htmlFiles.length}`);
+  if (builtOutput) {
+    for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
+      for (const service of ['vistos', 'cidadania', 'passaporte-e-documentos', 'intercambio', 'viagens-internacionais']) {
+        const expected = join(root, locale, 'servicos', service, 'index.html');
+        if (!files.includes(expected)) failures.push('Missing service route ' + expected);
+      }
+    }
+  }
+  const expectedPages = builtOutput ? 76 : 51;
+  if (htmlFiles.length !== expectedPages) failures.push(`Expected ${expectedPages} pages; found ${htmlFiles.length}`);
   if (failures.length) throw new Error([...new Set(failures)].join('\n'));
   return { pages: htmlFiles.length, files: files.length, parsedScripts: scripts, headerPages, sharedHeaderPages };
 }

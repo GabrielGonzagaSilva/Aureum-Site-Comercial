@@ -1,12 +1,12 @@
 /* Services reuse .dc, the actual destination card component, rather than a
    separate photo-and-white-panel design. Only the section grid is specialized. */
 #servicos .service-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: clamp(19px, 2vw, 28px);
   align-items: stretch;
 }
 #servicos .service-grid > .dc {
-  grid-column: auto;
+  grid-column: span 2;
   grid-row: auto;
   width: 100%;
   min-width: 0;
@@ -15,13 +15,17 @@
   min-height: 0;
   aspect-ratio: var(--dc-ratio);
 }
+#servicos .service-grid > .dc:nth-child(4) { grid-column: 2 / span 2; }
+#servicos .service-grid > .dc:nth-child(5) { grid-column: 4 / span 2; }
 /* The shared component is used in a section with legacy dark paragraph rules. */
 #servicos .dc__title,
-#servicos .dc__text,
 #servicos .dc__cta { color: #FFF !important; }
 #servicos .dc__title { display: block; overflow-wrap: break-word; }
+#servicos .dc__body { position: static; }
+#servicos .dc__cta { margin-top: 20px; border-top: 1px solid rgb(255 255 255 / .16); border-radius: 0 !important; }
 @media (max-width: 1099px) {
   #servicos .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #servicos .service-grid > .dc:nth-child(n) { grid-column: auto; }
   #servicos .service-grid > .dc:last-child:nth-child(odd) {
     grid-column: 1 / -1;
     width: calc((100% - clamp(19px, 2vw, 28px)) / 2);
@@ -30,7 +34,7 @@
 }
 @media (max-width: 639px) {
   #servicos .service-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  #servicos .service-grid > .dc,
+  #servicos .service-grid > .dc:nth-child(n),
   #servicos .service-grid > .dc:last-child:nth-child(odd) {
     grid-column: auto;
     width: 100%;

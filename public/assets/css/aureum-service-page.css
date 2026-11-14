@@ -1,0 +1,21 @@
+@font-face { font-family: Inter; src: url('/assets/fonts/aureum-refined-inter-400.woff') format('woff'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: Inter; src: url('/assets/fonts/aureum-refined-inter-500.woff') format('woff'); font-style: normal; font-weight: 500; font-display: swap; }
+:root { color-scheme: light; background: #fff; color: #0A211B; font-family: Inter, Arial, sans-serif; }
+* { box-sizing: border-box; }
+::selection { background: #1C4C3C; color: #fff; }
+body { margin: 0; min-height: 100svh; }
+a { color: inherit; text-underline-offset: .22em; }
+a:focus-visible { outline: 2px solid #1C4C3C; outline-offset: 5px; }
+.service-page-header { max-width: 1280px; margin: auto; padding: 28px clamp(24px, 5vw, 64px); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.service-page-brand { display: inline-flex; }
+.service-page-brand img { display: block; width: clamp(164px, 18vw, 220px); height: auto; }
+.service-page-header nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.service-page-header nav a { min-width: 44px; min-height: 44px; display: grid; place-items: center; font-size: 13px; text-decoration: none; border-radius: 8px; }
+.service-page-header nav a[aria-current] { background: #1C4C3C; color: #fff; }
+.service-page-header nav a:hover { text-decoration: underline; }
+main { max-width: 1280px; margin: auto; padding: clamp(64px, 12vh, 144px) clamp(24px, 5vw, 64px) 72px; }
+h1 { max-width: 18ch; margin: 0 0 24px; font-size: clamp(36px, 6vw, 76px); line-height: 1.1; font-weight: 400; letter-spacing: -.03em; text-wrap: balance; overflow-wrap: break-word; }
+p { max-width: 65ch; margin: 0; color: #1C4C3C; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; }
+.service-page-back { display: inline-flex; align-items: center; justify-content: center; gap: 24px; max-width: 100%; min-height: 48px; margin-top: 36px; padding: 12px 24px; border-radius: 999px; background: #1C4C3C; color: #fff; font-size: 15px; font-weight: 500; line-height: 1.5; text-decoration: none; }
+.service-page-back svg { width: 20px; height: 20px; flex: none; }
+.service-page-back:hover, .service-page-back:active { background: #0A211B; }
