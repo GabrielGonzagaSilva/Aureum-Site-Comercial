@@ -80,8 +80,53 @@
     document.body.appendChild(modal);
 
     var marker = null;
-    var previousOverflow = '';
+    var previousPageStyles = null;
+    var lockedScroll = null;
     var selectedTrigger = null;
+
+    function lockPageScroll() {
+      lockedScroll = {
+        x: window.scrollX || 0,
+        y: window.scrollY || 0
+      };
+      previousPageStyles = {
+        bodyPosition: document.body.style.position,
+        bodyTop: document.body.style.top,
+        bodyLeft: document.body.style.left,
+        bodyRight: document.body.style.right,
+        bodyWidth: document.body.style.width,
+        bodyPaddingRight: document.body.style.paddingRight,
+        bodyOverflow: document.body.style.overflow,
+        rootOverflow: document.documentElement.style.overflow
+      };
+
+      var scrollbarGap = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+      var currentPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = (-lockedScroll.y) + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = 'auto';
+      document.body.style.paddingRight = (currentPadding + scrollbarGap) + 'px';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function restorePageScroll() {
+      if (!previousPageStyles || !lockedScroll) return;
+      var position = lockedScroll;
+      document.body.style.position = previousPageStyles.bodyPosition;
+      document.body.style.top = previousPageStyles.bodyTop;
+      document.body.style.left = previousPageStyles.bodyLeft;
+      document.body.style.right = previousPageStyles.bodyRight;
+      document.body.style.width = previousPageStyles.bodyWidth;
+      document.body.style.paddingRight = previousPageStyles.bodyPaddingRight;
+      document.body.style.overflow = previousPageStyles.bodyOverflow;
+      document.documentElement.style.overflow = previousPageStyles.rootOverflow;
+      previousPageStyles = null;
+      lockedScroll = null;
+      window.scrollTo(position.x, position.y);
+    }
 
     function selectContext(trigger) {
       var select = form.querySelector('[name="destino"]');
@@ -116,10 +161,9 @@
         marker = document.createComment('Aureum: original lead form position');
         card.parentNode.insertBefore(marker, card);
         container.appendChild(card);
-        previousOverflow = document.body.style.overflow;
         modal.showModal();
         document.body.classList.add('aureum-lead-dialog-open');
-        document.body.style.overflow = 'hidden';
+        lockPageScroll();
       }
       close.focus({ preventScroll: true });
       return true;
@@ -144,7 +188,7 @@
       }
       marker = null;
       document.body.classList.remove('aureum-lead-dialog-open');
-      document.body.style.overflow = previousOverflow;
+      restorePageScroll();
       if (selectedTrigger && selectedTrigger.isConnected && document.activeElement === document.body) {
         selectedTrigger.focus({ preventScroll: true });
       }
@@ -160,8 +204,12 @@
 
       var isCTA = link.matches('.btn, .more, .tlink, .primary-button, [data-subject], [data-intent], #contact-full-link');
       if (!isCTA) return;
-      if (openFrom(link)) event.preventDefault();
-    });
+
+      /* Capture the CTA before any legacy hash-navigation handler can run. */
+      if (openFrom(link)) {
+        event.preventDefault();
+      }
+    }, true);
   }
 
   if (document.readyState === 'loading') {

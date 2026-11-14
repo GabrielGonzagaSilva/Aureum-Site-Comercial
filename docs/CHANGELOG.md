@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Preservar a posição da página ao abrir o modal
+
+- Ajustada a captura dos CTAs para a fase de captura do evento, impedindo que a navegação por âncora/hash aconteça antes da abertura do modal.
+- O fundo agora fica realmente travado na posição atual durante a abertura, com compensação da barra de rolagem; ao fechar, o scroll e os estilos inline anteriores são restaurados.
+- Mantida a navegação normal dos links que não são CTAs de contato.
+- Ampliados os testes de regressão para verificar captura do clique, bloqueio de navegação e restauração da posição.
+
 ## 2026-11-14 — Corrigir logo mobile e abrir contato em modal
 
 - Identificada a causa da duplicação visual: o JavaScript de atualizações injetava tardiamente display:block!important em todas as imagens de logo, anulando a alternância de cores. Corrigida a regra na origem e explicitada a versão adequada ao fundo, inclusive no menu móvel.
