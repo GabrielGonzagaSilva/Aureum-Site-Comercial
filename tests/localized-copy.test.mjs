@@ -70,6 +70,14 @@ test('all non-Portuguese intent labels have complete, one-to-one translations', 
   }
 });
 
+test('contact destination subjects have complete translations in every locale', () => {
+  const sourceCount = 11;
+  for (const locale of ['en', 'es', 'fr', 'de']) {
+    assert.equal(Object.keys(localizedSubjectTranslations[locale]).length, sourceCount);
+    assert.equal(new Set(Object.values(localizedSubjectTranslations[locale])).size, sourceCount, locale + ': contact subjects must be unique');
+  }
+});
+
 test('localized home pages use the corrected language-specific editorial and accessibility labels', async () => {
   const expected = {
     en: ['Residence, work, studies and family.', 'How we can support you in Portugal', 'aria-label="Legal"', 'You are here'],
