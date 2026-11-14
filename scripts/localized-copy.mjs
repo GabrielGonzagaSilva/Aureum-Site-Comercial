@@ -177,6 +177,61 @@ const INTENTS = {
   ],
 };
 
+const SUBJECTS = {
+  en: {
+    'Ainda não sei': 'I’m not sure yet',
+    'Espanha': 'Spain',
+    'Portugal': 'Portugal',
+    'Austrália': 'Australia',
+    'Brasil (para estrangeiros)': 'Brazil (for foreign nationals)',
+    'Brasil': 'Brazil',
+    'Alemanha': 'Germany',
+    'Canadá': 'Canada',
+    'França': 'France',
+    'Londres': 'London',
+    'Irlanda': 'Ireland',
+  },
+  es: {
+    'Ainda não sei': 'Aún no lo sé',
+    'Espanha': 'España',
+    'Portugal': 'Portugal',
+    'Austrália': 'Australia',
+    'Brasil (para estrangeiros)': 'Brasil (para personas extranjeras)',
+    'Brasil': 'Brasil',
+    'Alemanha': 'Alemania',
+    'Canadá': 'Canadá',
+    'França': 'Francia',
+    'Londres': 'Londres',
+    'Irlanda': 'Irlanda',
+  },
+  fr: {
+    'Ainda não sei': 'Je ne sais pas encore',
+    'Espanha': 'Espagne',
+    'Portugal': 'Portugal',
+    'Austrália': 'Australie',
+    'Brasil (para estrangeiros)': 'Brésil (pour les ressortissants étrangers)',
+    'Brasil': 'Brésil',
+    'Alemanha': 'Allemagne',
+    'Canadá': 'Canada',
+    'França': 'France',
+    'Londres': 'Londres',
+    'Irlanda': 'Irlande',
+  },
+  de: {
+    'Ainda não sei': 'Ich weiß es noch nicht',
+    'Espanha': 'Spanien',
+    'Portugal': 'Portugal',
+    'Austrália': 'Australien',
+    'Brasil (para estrangeiros)': 'Brasilien (für ausländische Staatsangehörige)',
+    'Brasil': 'Brasilien',
+    'Alemanha': 'Deutschland',
+    'Canadá': 'Kanada',
+    'França': 'Frankreich',
+    'Londres': 'London',
+    'Irlanda': 'Irland',
+  },
+};
+
 const COPY = {
   pt: [
     ['Destinos. Projetos e contextos diferentes.', 'Destinos, projetos e contextos diferentes.'],
@@ -463,6 +518,11 @@ export function transformLocalizedHtml(html, locale) {
       const translated = intents[value];
       return translated ? 'data-intent=' + quote + translated + quote : match;
     });
+    const subjects = SUBJECTS[locale];
+    output = output.replace(/\bdata-subject=(["'])(.*?)\1/g, (match, quote, value) => {
+      const translated = subjects[value];
+      return translated ? 'data-subject=' + quote + translated + quote : match;
+    });
   }
 
   return output;
@@ -508,4 +568,5 @@ export async function applyLocalizedCopy(root = 'dist') {
 
 export const localizedCopyReplacements = COPY;
 export const localizedIntentSources = PORTUGUESE_INTENTS;
+export const localizedSubjectTranslations = SUBJECTS;
 export const localizedIntentTranslations = INTENTS;
