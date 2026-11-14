@@ -37,6 +37,7 @@
 
   function initialize() {
     var form = document.getElementById('lead-main');
+    if (document.getElementById('aureum-lead-dialog')) return;
     if (!form || form.tagName !== 'FORM' || !form.matches('[data-aureum-lead-form="v1"]')) return;
     var card = form.closest('.fcard');
     if (!card || !card.parentNode) return;
@@ -67,6 +68,7 @@
     headCopy.appendChild(detail);
     var close = document.createElement('button');
     close.type = 'button';
+    close.autofocus = true;
     close.className = 'aureum-lead-dialog__close';
     close.setAttribute('aria-label', copy.close);
     close.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>';
@@ -79,53 +81,79 @@
     modal.appendChild(container);
     document.body.appendChild(modal);
 
+    // Associate the existing inline validation with its controls in the dialog.
+    ['nome', 'email'].forEach(function (name) {
+      var field = form.querySelector('[name="' + name + '"]');
+      var error = field && field.closest('.f').querySelector('.err');
+      if (!error) return;
+      error.id = field.id + '-error';
+      error.setAttribute('role', 'alert');
+      field.setAttribute('aria-describedby', error.id);
+    });
+
+    var originalCardMinHeight = captureStyles(card, ['min-height']);
     var marker = null;
     var previousPageStyles = null;
     var lockedScroll = null;
     var selectedTrigger = null;
 
     function lockPageScroll() {
-      lockedScroll = {
-        x: window.scrollX || 0,
-        y: window.scrollY || 0
-      };
+      var root = document.documentElement;
+      lockedScroll = { x: window.scrollX, y: window.scrollY };
       previousPageStyles = {
-        bodyPosition: document.body.style.position,
-        bodyTop: document.body.style.top,
-        bodyLeft: document.body.style.left,
-        bodyRight: document.body.style.right,
-        bodyWidth: document.body.style.width,
-        bodyPaddingRight: document.body.style.paddingRight,
-        bodyOverflow: document.body.style.overflow,
-        rootOverflow: document.documentElement.style.overflow
+        body: captureStyles(document.body, ['position', 'top', 'left', 'width', 'box-sizing', 'padding-right', 'overflow']),
+        root: captureStyles(root, ['min-height', 'scroll-behavior', 'overflow-anchor', 'overflow', 'overscroll-behavior', 'scrollbar-gutter'])
       };
+      var scrollbarGap = Math.max(0, window.innerWidth - root.clientWidth);
+      var currentPadding = parseFloat(getComputedStyle(document.body).paddingRight) || 0;
 
-      var scrollbarGap = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
-      var currentPadding = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
-      document.documentElement.style.overflow = 'hidden';
+      // Keep the document's scroll range while the body is fixed. Otherwise scrollY
+      // becomes zero and the site's scroll-driven header changes behind the dialog.
+      root.style.minHeight = root.scrollHeight + 'px';
+      root.style.scrollBehavior = 'auto';
+      root.style.overflowAnchor = 'none';
+      root.style.scrollbarGutter = 'stable';
+      root.style.overflow = 'hidden';
+      root.style.overscrollBehavior = 'none';
       document.body.style.position = 'fixed';
       document.body.style.top = (-lockedScroll.y) + 'px';
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.width = 'auto';
-      document.body.style.paddingRight = (currentPadding + scrollbarGap) + 'px';
+      document.body.style.left = (-lockedScroll.x) + 'px';
+      document.body.style.width = '100%';
+      document.body.style.boxSizing = 'border-box';
+      // Modern browsers retain the gutter, so compensate only a lost scrollbar.
+      var lostGap = Math.max(0, scrollbarGap - (window.innerWidth - root.clientWidth));
+      document.body.style.paddingRight = (currentPadding + lostGap) + 'px';
       document.body.style.overflow = 'hidden';
+    }
+
+    function captureStyles(element, properties) {
+      return {
+        hadAttribute: element.hasAttribute('style'),
+        values: properties.map(function (name) {
+          return [name, element.style.getPropertyValue(name), element.style.getPropertyPriority(name)];
+        })
+      };
+    }
+    function restoreStyle(element, snapshot) {
+      snapshot.values.forEach(function (entry) {
+        element.style.removeProperty(entry[0]);
+        if (entry[1]) element.style.setProperty(entry[0], entry[1], entry[2]);
+      });
+      if (!snapshot.hadAttribute && !element.style.cssText) element.removeAttribute('style');
     }
 
     function restorePageScroll() {
       if (!previousPageStyles || !lockedScroll) return;
+      var root = document.documentElement;
       var position = lockedScroll;
-      document.body.style.position = previousPageStyles.bodyPosition;
-      document.body.style.top = previousPageStyles.bodyTop;
-      document.body.style.left = previousPageStyles.bodyLeft;
-      document.body.style.right = previousPageStyles.bodyRight;
-      document.body.style.width = previousPageStyles.bodyWidth;
-      document.body.style.paddingRight = previousPageStyles.bodyPaddingRight;
-      document.body.style.overflow = previousPageStyles.bodyOverflow;
-      document.documentElement.style.overflow = previousPageStyles.rootOverflow;
+      restoreStyle(document.body, previousPageStyles.body);
+      restoreStyle(root, previousPageStyles.root);
+      // The global smooth-scroll rule must never animate a scroll-lock restoration.
+      root.style.setProperty('scroll-behavior', 'auto', 'important');
+      window.scrollTo({ left: position.x, top: position.y, behavior: 'instant' });
+      restoreStyle(root, previousPageStyles.root);
       previousPageStyles = null;
       lockedScroll = null;
-      window.scrollTo(position.x, position.y);
     }
 
     function selectContext(trigger) {
@@ -153,51 +181,133 @@
       }
     }
 
+    window.addEventListener('resize', function () {
+      if (!modal.open) restoreStyle(card, originalCardMinHeight);
+    });
+
+    // Safari's virtual keyboard shrinks the visual viewport, not always 100dvh.
+    function updateViewport() {
+      if (!window.visualViewport || !modal.open) return;
+      var viewport = window.visualViewport;
+      modal.style.setProperty('--lead-viewport-height', viewport.height + 'px');
+      modal.style.setProperty('--lead-viewport-top', viewport.offsetTop + 'px');
+      modal.style.setProperty('--lead-viewport-bottom', Math.max(0, window.innerHeight - viewport.height - viewport.offsetTop) + 'px');
+    }
+    window.addEventListener('resize', updateViewport);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateViewport);
+      window.visualViewport.addEventListener('scroll', updateViewport);
+    }
+
     function openFrom(trigger) {
       if (typeof modal.showModal !== 'function') return false;
+      if (modal.open) return true;
       selectedTrigger = trigger;
-      selectContext(trigger);
-      if (!modal.open) {
-        marker = document.createComment('Aureum: original lead form position');
-        card.parentNode.insertBefore(marker, card);
-        container.appendChild(card);
-        modal.showModal();
-        document.body.classList.add('aureum-lead-dialog-open');
-        lockPageScroll();
+      // Let the existing drawer controller release its own lock before ours starts.
+      var drawer = trigger.closest('#mmenu');
+      if (drawer && !drawer.hidden) {
+        document.getElementById('mm-close').click();
+        selectedTrigger = document.getElementById('mm-open');
       }
+      selectContext(trigger);
+      var box = card.getBoundingClientRect();
+      lockPageScroll();
+      // A same-size placeholder prevents section collapse and scroll anchoring when
+      // moving the one existing form (including its listeners, errors and values).
+      marker = document.createElement('div');
+      marker.setAttribute('aria-hidden', 'true');
+      marker.style.height = box.height + 'px';
+      marker.style.minWidth = '0';
+      card.parentNode.insertBefore(marker, card);
+      container.appendChild(card);
+      document.body.classList.add('aureum-lead-dialog-open');
+      modal.showModal();
+      updateViewport();
+      modal.scrollTop = 0;
       close.focus({ preventScroll: true });
       return true;
     }
 
-    close.addEventListener('click', function () {
+    // Keep the native dialog open during its short exit; cancellation never submits
+    // or clears the form. Reduced-motion users close synchronously.
+    var closing = false;
+    var closeTimer = null;
+    function finishClose() {
+      clearTimeout(closeTimer);
       modal.close();
+    }
+    function dismiss() {
+      if (closing || !modal.open) return;
+      closing = true;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        finishClose();
+      } else {
+        modal.classList.add('is-closing');
+        closeTimer = setTimeout(finishClose, 160);
+      }
+    }
+    close.addEventListener('click', dismiss);
+    modal.addEventListener('cancel', function (event) {
+      event.preventDefault();
+      dismiss();
     });
 
-    modal.addEventListener('click', function (event) {
-      if (event.target !== modal) return;
-      var box = modal.getBoundingClientRect();
-      if (event.clientX < box.left || event.clientX > box.right ||
-          event.clientY < box.top || event.clientY > box.bottom) {
-        modal.close();
+    modal.addEventListener('keydown', function (event) {
+      if (event.key !== 'Tab') return;
+      var controls = Array.prototype.filter.call(modal.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]'
+      ), function (element) {
+        return !element.disabled && element.tabIndex >= 0 && element.getClientRects().length;
+      });
+      var first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus({ preventScroll: true });
       }
     });
 
+    // Both press and release must be outside, so selecting/dragging text cannot
+    // accidentally dismiss the form on pointer release over the backdrop.
+    function outside(event) {
+      var box = modal.getBoundingClientRect();
+      return event.target === modal && (event.clientX < box.left || event.clientX > box.right ||
+        event.clientY < box.top || event.clientY > box.bottom);
+    }
+    var backdropPress = false;
+    modal.addEventListener('pointerdown', function (event) { backdropPress = outside(event); });
+    modal.addEventListener('pointercancel', function () { backdropPress = false; });
+    modal.addEventListener('click', function (event) {
+      if (backdropPress && outside(event)) dismiss();
+      backdropPress = false;
+    });
+
     modal.addEventListener('close', function () {
+      clearTimeout(closeTimer);
+      modal.classList.remove('is-closing');
+      closing = false;
       if (marker && marker.parentNode) {
+        // A shorter review/result must not shrink the page and clamp scrollY at
+        // the footer. Keep the original inline footprint until a viewport resize.
+        card.style.minHeight = marker.style.height;
         marker.parentNode.replaceChild(card, marker);
       }
       marker = null;
       document.body.classList.remove('aureum-lead-dialog-open');
       restorePageScroll();
-      if (selectedTrigger && selectedTrigger.isConnected && document.activeElement === document.body) {
+      if (selectedTrigger && selectedTrigger.isConnected && selectedTrigger.getClientRects().length) {
         selectedTrigger.focus({ preventScroll: true });
       }
       selectedTrigger = null;
     });
 
     document.addEventListener('click', function (event) {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
+          event.shiftKey || event.altKey) return;
       var link = event.target.closest && event.target.closest('a[href]');
-      if (!link) return;
+      if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
       var url;
       try { url = new URL(link.href, location.href); } catch (error) { return; }
       if (url.origin !== location.origin || url.hash !== '#contato') return;

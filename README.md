@@ -12,7 +12,11 @@ O código servido está em `public/` e a API da Mia em `api/chat.mjs`, com o nú
 npm ci
 npm test
 npm run build
+npx playwright install --with-deps chromium webkit
+npm run test:e2e
 ```
+
+Os testes Playwright exercitam o build real em Chromium e WebKit com emulação móvel: rolagem, teclado/foco, CTAs, revisão local sem envio, cinco idiomas, seis larguras e reflow equivalente a zoom de 200%. `CHROMIUM_PATH` permite usar um Chromium já instalado; `BASE_URL` permite validar um deployment existente. Emulação não substitui Safari/iOS e Chrome/Android em aparelhos físicos.
 
 O build valida links, arquivos essenciais e sintaxe dos scripts e copia exclusivamente os arquivos versionados para `dist/`. Não baixa conteúdo de deployments anteriores. `release.json` informa o commit e os hashes dos arquivos publicados.
 

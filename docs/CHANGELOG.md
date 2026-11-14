@@ -2,6 +2,19 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-14 — Modal de contato: estabilidade, vidro e layout responsivo
+
+- Corrigida a restauração que herdava `scroll-behavior: smooth`; a posição é capturada antes de mover o formulário ou chamar `showModal()` e restaurada instantaneamente, sem alterar URL, hash ou histórico.
+- Preservados o espaço original do cartão e a extensão rolável do documento durante o bloqueio com body fixo. Isso evita colapso da seção, mudanças no header dependente de scroll e deslocamento no rodapé ao fechar uma revisão mais curta. Apenas estilos de bloqueio são restaurados; propriedades de outras integrações são preservadas.
+- Compensação de scrollbar com gutter estável, sem compensação dupla. O menu móvel libera seu bloqueio antes da abertura e recupera foco no botão do menu.
+- Mantidos diálogo nativo, fundo inerte, Escape e clique externo; adicionados ciclo de Tab, fechamento externo protegido contra arraste, foco com `preventScroll`, associação dos erros aos campos e proteção contra inicialização duplicada.
+- Backdrop floresta com blur de 4px, superfície marfim discretamente translúcida, borda fina, sombra moderada, fallback opaco e transições de 160ms com movimento reduzido respeitado. Mantida a Inter local e a paleta oficial.
+- Modal de até 980px: nome/e-mail e telefone/destino em duas colunas a partir de 800px; mensagem e avisos em largura total. Em telas menores, uma coluna, campos legíveis, safe areas, fechamento sticky e rolagem interna. `visualViewport`, resize e limite em `dvh` acomodam janelas baixas e teclado virtual sem alturas fixas de conteúdo.
+- Mesmo formulário, IDs, valores, listeners, contexto dos CTAs, traduções PT/EN/ES/FR/DE, validação internacional e consentimento preservados. Nenhuma alteração na API ou ativação da coleta/persistência/notificação de leads.
+- Adicionada suíte Playwright com axe, servidor local do build e execução no CI; instruções no README. Cobertura de ciclos repetidos no topo/meio/rodapé, foco, CTAs, navegação hash, revisão local sem POST, seis larguras, altura curta, idiomas e reflow equivalente a zoom de 200%.
+- Validação local concluída: 34 testes unitários, 32 cenários Playwright em Chromium/WebKit, axe sem violações reportadas nas homepages e páginas de Portugal dos cinco idiomas, build de produção (51 páginas), verificações estáticas e auditoria de dependências de produção sem vulnerabilidades reportadas.
+- Emulação automatizada não substitui teste de teclado virtual e gestos em Safari/iOS ou Chrome/Android físicos, nem auditoria manual com leitor de tela.
+
 ## 2026-11-14 — Preservar a posição da página ao abrir o modal
 
 - Ajustada a captura dos CTAs para a fase de captura do evento, impedindo que a navegação por âncora/hash aconteça antes da abertura do modal.

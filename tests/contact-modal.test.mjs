@@ -33,11 +33,11 @@ test('modal preserves the existing form and the privacy gate instead of cloning 
   assert.match(client, /if \(openFrom\(link\)\) \{\s*event\.preventDefault\(\);/);
   assert.match(client, /document\.body\.style\.position = 'fixed'/);
   assert.match(client, /document\.body\.style\.top = \(-lockedScroll\.y\) \+ 'px'/);
-  assert.match(client, /window\.scrollTo\(position\.x, position\.y\)/);
+  assert.match(client, /behavior: 'instant'/);
   assert.match(client, /restorePageScroll\(\)/);
   assert.match(client, /trigger\.dataset\.subject/);
   assert.doesNotMatch(client, /cloneNode|fetch\(|form\.submit\(/);
   assert.match(css, /\.aureum-lead-dialog::backdrop/);
-  assert.match(css, /backdrop-filter:\s*blur\(8px\)/);
+  assert.match(css, /backdrop-filter:\s*blur\(4px\)/);
   assert.match(css, /prefers-reduced-motion/);
 });
