@@ -1,6 +1,29 @@
 # Changelog — Aureum Site Comercial
 
-Todas as mudanças relevantes devem ser registradas aqui.\n\n## 2026-11-13 — Sprint 4: revisão linguística e localização\n\n- Revisados os textos editoriais, CTAs, formulários, mensagens de estado, descrições de destino e atributos de acessibilidade nas cinco versões linguísticas.\n- Corrigidas traduções literais e falsos cognatos que alteravam o sentido em EN, ES, FR e DE; padronizada a forma de tratamento em espanhol e alemão.\n- Localizados os 32 valores de `data-intent` e os 11 valores de `data-subject` usados nas mensagens de contato, preservando os 48 e 55 atributos presentes em cada página.\n- Corrigidos rótulos acessíveis do rodapé, indicação de localização, links sociais pendentes e termos de navegação/cookies.\n- Ajustado o título da seção Destinos em PT-BR para “Destinos, projetos e contextos diferentes”.\n- Criada uma camada central de copy em `scripts/localized-copy.mjs`, aplicada às 50 páginas no build antes da geração dos headers compartilhados.\n- Nenhuma exigência migratória, elegibilidade, prazo, preço, garantia, política de privacidade ou escopo de serviço foi alterado. A validação jurídica e migratória continua pendente da responsável técnica.\n- Adicionados testes automatizados para cobertura das 50 páginas, traduções de intenção e preservação da estrutura do formulário.\n
+Todas as mudanças relevantes devem ser registradas aqui.
+
+## 2026-11-13 — Sprint 5: formulário de contato e preparação das integrações
+
+- Centralizada no build a transformação dos formulários existentes nas 50 páginas localizadas, sem duplicar markup nas páginas de origem.
+- E-mail e telefone/WhatsApp passam a ser individualmente opcionais; a validação exige pelo menos um meio de contato.
+- Adicionado seletor de código internacional, alternativa para códigos não listados e entrada do número nacional com DDD/código de área. A normalização do telefone gera formato E.164 antes do envio.
+- Implementadas validações no navegador e no servidor, mensagens localizadas em PT/EN/ES/FR/DE, estados acessíveis, honeypot e proteção complementar contra envios automatizados.
+- Preparada a API \`/api/leads\` para persistência privada no Vercel Blob, com identificador idempotente, validação same-origin e expiração automática configurável.
+- **Recebimento online permanece desabilitado.** O texto atual de consentimento ainda descreve apenas a preparação da mensagem; não houve aprovação do novo aviso, finalidade, acesso e prazo de retenção. Nesse estado, o navegador não envia dados pessoais ao endpoint e apenas prepara a mensagem localmente.
+- Nenhuma integração de e-mail ou WhatsApp foi ativada ou simulada. A confirmação de recebimento só poderá aparecer após gravação privada real.
+- Adicionados testes de transformação multilíngue, opcionalidade dos contatos, formato E.164, sanitização, ativação condicionada à privacidade e rate limiting.
+
+## 2026-11-13 — Sprint 4: revisão linguística e localização
+
+- Revisados os textos editoriais, CTAs, formulários, mensagens de estado, descrições de destino e atributos de acessibilidade nas cinco versões linguísticas.
+- Corrigidas traduções literais e falsos cognatos que alteravam o sentido em EN, ES, FR e DE; padronizada a forma de tratamento em espanhol e alemão.
+- Localizados os 32 valores de `data-intent` e os 11 valores de `data-subject` usados nas mensagens de contato, preservando os 48 e 55 atributos presentes em cada página.
+- Corrigidos rótulos acessíveis do rodapé, indicação de localização, links sociais pendentes e termos de navegação/cookies.
+- Ajustado o título da seção Destinos em PT-BR para “Destinos, projetos e contextos diferentes”.
+- Criada uma camada central de copy em `scripts/localized-copy.mjs`, aplicada às 50 páginas no build antes da geração dos headers compartilhados.
+- Nenhuma exigência migratória, elegibilidade, prazo, preço, garantia, política de privacidade ou escopo de serviço foi alterado. A validação jurídica e migratória continua pendente da responsável técnica.
+- Adicionados testes automatizados para cobertura das 50 páginas, traduções de intenção e preservação da estrutura do formulário.
+
 
 ## 2026-11-13 — Sprint 3: responsividade, hierarquia e espaçamento
 

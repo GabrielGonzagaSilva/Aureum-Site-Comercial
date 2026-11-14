@@ -117,6 +117,26 @@ export async function verify(root = 'public') {
         }
       }
     }
+    if (builtOutput) {
+      const leadForms = [...content.matchAll(/<form\b[^>]*>[\s\S]*?<\/form>/gi)].filter((match) => {
+        const open = match[0].match(/^<form\b[^>]*>/i)?.[0] ?? '';
+        return /\bclass=["'][^"']*\blead\b[^"']*["']/i.test(open);
+      });
+      for (const [index, match] of leadForms.entries()) {
+        const form = match[0];
+        const open = form.match(/^<form\b[^>]*>/i)?.[0] ?? '';
+        if (!/data-aureum-lead-form=["']v1["']/i.test(open)) failures.push(file + ': lead form ' + index + ' was not transformed');
+        if (!/<select\b(?=[^>]*\bname=["']codigo_pais["'])/i.test(form)) failures.push(file + ': lead form ' + index + ' is missing the country code selector');
+        if (!/<input\b(?=[^>]*\bname=["']whatsapp["'])(?=[^>]*\btype=["']text["'])/i.test(form)) failures.push(file + ': lead form ' + index + ' is missing the international phone input');
+        if (/<input\b(?=[^>]*\bname=["']email["'])(?=[^>]*\brequired\b)/i.test(form)) failures.push(file + ': email must remain optional');
+        if (!/contact-method-note/.test(form)) failures.push(file + ': lead form ' + index + ' is missing the contact requirement');
+        if (!/name=["']website["']/.test(form)) failures.push(file + ': lead form ' + index + ' is missing the spam honeypot');
+      }
+      if (leadForms.length) {
+        if (!/href=["']\/assets\/css\/aureum-lead-form\.css(?:[?#][^"']*)?["']/i.test(content)) failures.push(file + ': missing shared lead form stylesheet');
+        if (!/src=["']\/assets\/js\/aureum-lead-form\.js(?:[?#][^"']*)?["']/i.test(content)) failures.push(file + ': missing shared lead form script');
+      }
+    }
     const references = [
       ...content.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^"']+)["']/gi),
       ...content.matchAll(/url\(\s*["']?([^\s)"']+)/gi),
@@ -137,7 +157,7 @@ export async function verify(root = 'public') {
       if (!files.includes(expected)) failures.push(`Missing recovered route ${expected}`);
     }
   }
-  const critical = ['assets/hero-tower-bridge.mp4', 'assets/brand/aureum-wordmark-outlined-v1-white.svg', 'assets/brand/aureum-wordmark-outlined-v1-ink.svg', 'assets/fonts/aureum-refined-inter-400.woff', 'assets/fonts/aureum-refined-inter-500.woff', 'assets/fonts/aureum-refined-inter-700.woff', 'mia-profile-picture.webp', 'mia-ui.js', 'aureum-updates.js'];
+  const critical = ['assets/hero-tower-bridge.mp4', 'assets/brand/aureum-wordmark-outlined-v1-white.svg', 'assets/brand/aureum-wordmark-outlined-v1-ink.svg', 'assets/fonts/aureum-refined-inter-400.woff', 'assets/fonts/aureum-refined-inter-500.woff', 'assets/fonts/aureum-refined-inter-700.woff', 'mia-profile-picture.webp', 'mia-ui.js', 'aureum-updates.js', 'assets/js/aureum-lead-form.js', 'assets/css/aureum-lead-form.css'];
   for (const asset of critical) if (!files.includes(join(root, asset))) failures.push(`Missing critical asset ${asset}`);
   const sharedHeaderCss = await readFile(join(root, 'aureum-enhancements.css'), 'utf8').catch(() => '');
   const requiredHeaderRules = [

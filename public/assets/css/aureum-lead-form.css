@@ -1,0 +1,120 @@
+/* AUREUM — shared contact form enhancement. Applied only to existing lead forms. */
+.phone-input-group {
+  display: grid;
+  grid-template-columns: minmax(118px, .78fr) minmax(0, 1.42fr);
+  gap: 10px;
+  min-width: 0;
+}
+.phone-input-group > * {
+  min-width: 0;
+  width: 100%;
+}
+.phone-field .field-hint,
+.contact-method-note {
+  display: block;
+  margin: 7px 0 0;
+  color: #6e716a;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.phone-field .err[hidden] {
+  display: none !important;
+}
+.phone-field .err:not([hidden]) {
+  display: block;
+  margin-top: 5px;
+  color: #9c3c32;
+}
+.phone-input-group :focus-visible,
+.aureum-lead-result :focus-visible {
+  outline: 3px solid rgba(163, 122, 66, .38);
+  outline-offset: 2px;
+}
+.aureum-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+.aureum-lead-status {
+  min-height: 1.45em;
+  margin: 10px 0 0;
+  color: #6e716a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.aureum-lead-result {
+  margin-top: 24px;
+  padding: clamp(18px, 3vw, 26px);
+  border: 1px solid rgba(118, 135, 116, .35);
+  border-radius: 16px;
+  background: #fbfaf7;
+  color: #0A211B;
+}
+.aureum-lead-result h3 {
+  margin: 0 0 9px;
+  color: #0A211B;
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.25;
+}
+.aureum-lead-result p {
+  margin: 0 0 16px;
+  color: #555d55;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.aureum-lead-result label {
+  display: block;
+  margin: 14px 0 7px;
+  color: #0A211B;
+  font-size: 13px;
+  font-weight: 600;
+}
+.aureum-lead-result textarea {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  padding: 13px;
+  border: 1px solid #d8d1c5;
+  border-radius: 8px;
+  background: #fff;
+  color: #252923;
+  font: 400 14px/1.6 Inter, sans-serif;
+  resize: vertical;
+}
+.aureum-lead-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 13px;
+}
+.aureum-lead-result .aureum-lead-status {
+  margin-top: 12px;
+}
+@media (max-width: 520px) {
+  .phone-input-group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .aureum-lead-result-actions > button {
+    flex: 1 1 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aureum-lead-result,
+  .phone-input-group :focus-visible {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
+
+.aureum-lead-result .consent-error,
+.consent-error:not([hidden]) {
+  display: block;
+  margin: 5px 0 0;
+  color: #9c3c32;
+  font-size: 13px;
+  line-height: 1.5;
+}
