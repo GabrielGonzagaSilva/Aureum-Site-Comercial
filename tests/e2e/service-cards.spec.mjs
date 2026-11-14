@@ -3,6 +3,8 @@ import AxeBuilder from '@axe-core/playwright';
 const cards = page => page.locator('#servicos .service-grid > .dc');
 test.beforeEach(async ({ page }) => {
   await page.route(/https:\/\/fonts\.(googleapis|gstatic)\.com\//, r => r.abort());
+  // These tests cover service photos and navigation, not the unrelated hero video.
+  await page.route(/\/assets\/hero-tower-bridge\.mp4(?:\?.*)?$/, r => r.abort());
   await page.route(/\/api\/leads(?:\?.*)?$/, r => r.request().method() === 'GET' ? r.continue() : r.abort());
 });
 for (const width of [360, 430, 768, 1024, 1440, 1920]) {
@@ -38,9 +40,8 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
     }
   });
 }
-test('five service cards navigate to their own pages in all five languages', async ({ page }) => {
-  test.setTimeout(120000);
-  for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
+for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
+  test(`five service cards navigate to their own pages in ${locale || 'pt/'}`, async ({ page }) => {
     await page.goto('/' + locale, { waitUntil: 'domcontentloaded' });
     await page.evaluate(() => document.fonts.ready);
     await expect(cards(page)).toHaveCount(5);
@@ -56,6 +57,7 @@ test('five service cards navigate to their own pages in all five languages', asy
       if (index % 2 === 0) await card.click({ position: { x: 40, y: 40 } });
       else await link.click();
       await expect(page).toHaveURL(new RegExp(target + '$'));
+      await page.waitForLoadState('domcontentloaded');
       await expect(page.locator('h1')).toHaveText(category);
       await expect(page.locator('form, #aureum-lead-dialog')).toHaveCount(0);
       if (index === 0) {
@@ -65,7 +67,8 @@ test('five service cards navigate to their own pages in all five languages', asy
       }
       await page.locator('.service-page-back').click();
       await expect(page).toHaveURL(new RegExp('/' + locale + '#servicos$'));
+      await page.waitForLoadState('domcontentloaded');
       await expect(cards(page)).toHaveCount(5);
     }
-  }
-});
+  });
+}

@@ -8,7 +8,8 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Removidas as descrições. Cada card apresenta apenas o título e o CTA “Conhecer serviço”, com traduções em EN, ES, FR e DE. Toda a área do card é clicável.
 - Os links agora navegam para rotas individuais estáveis de serviço, em vez de abrir o contato. Criadas páginas iniciais mínimas com marca, idioma, título, aviso de conteúdo em preparação e retorno aos serviços; os conteúdos definitivos serão preparados depois. Essas páginas permanecem fora da indexação até serem concluídas.
 - Grid com três cards na primeira linha e dois centralizados na segunda no desktop; duas colunas no tablet e uma no celular. Fotografias e tratamento visual preservados, com duas fotos adicionais da biblioteca existente.
-- Validação local: 36 testes unitários e 14 cenários Playwright aprovados, cobrindo os cinco serviços nos cinco idiomas, navegação pelos cards e CTAs, retorno, acessibilidade e seis larguras em Chromium/WebKit. Build com 76 páginas; os 50 headers e 500 formulários existentes permanecem preservados.
+- Validação local: 36 testes unitários e 22 cenários Playwright aprovados, cobrindo os cinco serviços nos cinco idiomas, navegação pelos cards e CTAs, retorno, acessibilidade e seis larguras em Chromium/WebKit. Build com 76 páginas; os 50 headers e 500 formulários existentes permanecem preservados.
+- A navegação é verificada em cenários independentes por idioma, aguardando o documento de destino para respeitar o orçamento de tempo do CI. O vídeo do hero é bloqueado apenas nessa suíte de serviços; as fotos dos cards e todas as verificações de navegação/acessibilidade permanecem reais.
 
 ## 2026-11-14 — Serviços: três categorias no mesmo componente dos países
 
