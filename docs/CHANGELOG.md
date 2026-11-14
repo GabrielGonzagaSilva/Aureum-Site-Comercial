@@ -1,6 +1,6 @@
 # Changelog — Aureum Site Comercial
 
-Todas as mudanças relevantes devem ser registradas aqui.
+Todas as mudanças relevantes devem ser registradas aqui.\n\n## 2026-11-13 — Sprint 4: revisão linguística e localização\n\n- Revisados os textos editoriais, CTAs, formulários, mensagens de estado, descrições de destino e atributos de acessibilidade nas cinco versões linguísticas.\n- Corrigidas traduções literais e falsos cognatos que alteravam o sentido em EN, ES, FR e DE; padronizada a forma de tratamento em espanhol e alemão.\n- Localizados os 32 valores de `data-intent` usados para preparar mensagens de contato, preservando os 48 atributos presentes em cada página.\n- Corrigidos rótulos acessíveis do rodapé, indicação de localização, links sociais pendentes e termos de navegação/cookies.\n- Ajustado o título da seção Destinos em PT-BR para “Destinos, projetos e contextos diferentes”.\n- Criada uma camada central de copy em `scripts/localized-copy.mjs`, aplicada às 50 páginas no build antes da geração dos headers compartilhados.\n- Nenhuma exigência migratória, elegibilidade, prazo, preço, garantia, política de privacidade ou escopo de serviço foi alterado. A validação jurídica e migratória continua pendente da responsável técnica.\n- Adicionados testes automatizados para cobertura das 50 páginas, traduções de intenção e preservação da estrutura do formulário.\n
 
 ## 2026-11-13 — Sprint 3: responsividade, hierarquia e espaçamento
 
