@@ -180,7 +180,6 @@ const INTENTS = {
 const COPY = {
   pt: [
     ['Destinos. Projetos e contextos diferentes.', 'Destinos, projetos e contextos diferentes.'],
-    ['Não encontrou o que procurava? Fale com a nossa equipe .', 'Não encontrou o que procurava? Fale com a nossa equipe.'],
     ['Jornadas acadêmicas inseridas em um projeto internacional.', 'Projetos de estudo que integram uma iniciativa de mobilidade internacional.'],
     ['Jornadas acadêmicas inseridas em um projeto mais amplo de mobilidade internacional.', 'Percursos de estudo integrados a um projeto mais amplo de mobilidade internacional.'],
     ['Solicitar análise para Espanha', 'Solicitar análise para a Espanha'],
@@ -194,7 +193,6 @@ const COPY = {
   ],
   en: [
     ['Home, work, studies and family.', 'Residence, work, studies and family.'],
-    ['Still have questions? Talk to our team .', 'Still have questions? Talk to our team.'],
     ['The appropriate modality depends on the country of destination, the reason for the trip and the circumstances of your case. Initial guidance helps you identify what information and requirements need to be verified.', 'The appropriate visa category depends on the destination country, the reason for travel and the circumstances of your case. Initial guidance helps you identify which information and requirements need to be checked.'],
     ['Aureum provides guidance and monitoring within the scope of the contracted service.', 'Aureum provides guidance and support within the scope of the agreed service.'],
     ['Before hiring, the scope, values ​​and responsibilities need to be presented and clarified.', 'Before you engage our services, the scope, fees and responsibilities should be clearly explained.'],
@@ -244,7 +242,6 @@ const COPY = {
   ],
   es: [
     ['Hogar, trabajo, estudios y familia.', 'Residencia, trabajo, estudios y familia.'],
-    ['¿Tienes más preguntas? Habla con nuestro equipo .', '¿Tienes más preguntas? Habla con nuestro equipo.'],
     ['La modalidad adecuada depende del país de destino, el motivo del viaje y las circunstancias de su caso. La orientación inicial le ayuda a identificar qué información y requisitos deben verificarse.', 'El tipo de visado adecuado depende del país de destino, el motivo del viaje y las circunstancias de tu caso. La orientación inicial te ayuda a identificar qué información y requisitos deben verificarse.'],
     ['No. La decisión sobre visas y permisos corresponde exclusivamente a las autoridades competentes. Aureum proporciona orientación y seguimiento dentro del alcance del servicio contratado.', 'No. La decisión sobre visados y autorizaciones corresponde exclusivamente a las autoridades competentes. Aureum ofrece orientación y acompañamiento dentro del alcance del servicio contratado.'],
     ['El precio depende de las actividades incluidas en el servicio. Antes de contratar es necesario presentar y aclarar el alcance, los valores y las responsabilidades.', 'El precio depende de las actividades incluidas en el servicio. Antes de contratar, deben quedar claros el alcance, los honorarios y las responsabilidades.'],
@@ -321,7 +318,6 @@ const COPY = {
   ],
   fr: [
     ['Maison, travail, études et famille.', 'Résidence, travail, études et famille.'],
-    ['Vous avez d’autres questions ? Contactez notre équipe .', 'Vous avez d’autres questions ? Contactez notre équipe.'],
     ['La modalité appropriée dépend du pays de destination, du motif du voyage et des circonstances de votre cas. Les conseils initiaux vous aident à identifier les informations et les exigences qui doivent être vérifiées.', 'Le type de visa adapté dépend du pays de destination, du motif du voyage et des circonstances de votre situation. Les premiers conseils vous aident à identifier les informations et les exigences à vérifier.'],
     ['Aureum fournit des conseils et un suivi dans le cadre du service sous-traité.', 'Aureum fournit des conseils et un accompagnement dans le cadre de la prestation convenue.'],
     ['Avant l’embauche, le périmètre, les valeurs et les responsabilités doivent être présentés et clarifiés.', 'Avant tout engagement, le périmètre de la prestation, les tarifs et les responsabilités doivent être clairement présentés.'],
@@ -378,7 +374,6 @@ const COPY = {
   ],
   de: [
     ['Zuhause, Arbeit, Studium und Familie.', 'Aufenthalt, Arbeit, Studium und Familie.'],
-    ['Noch Fragen? Sprechen Sie mit unserem Team .', 'Noch Fragen? Sprechen Sie mit unserem Team.'],
     ['Die geeignete Modalität hängt vom Zielland, dem Grund der Reise und den Umständen Ihres Falles ab. Mithilfe der ersten Anleitung können Sie ermitteln, welche Informationen und Anforderungen überprüft werden müssen.', 'Welche Visumkategorie infrage kommt, hängt vom Zielland, dem Reisezweck und den Umständen Ihres Falls ab. Eine erste Beratung hilft Ihnen festzustellen, welche Informationen und Anforderungen geprüft werden müssen.'],
     ['Aureum übernimmt die Beratung und Überwachung im Rahmen der vertraglich vereinbarten Leistung.', 'Aureum bietet Beratung und Begleitung im Rahmen der vereinbarten Leistung.'],
     ['Die Dokumentation variiert je nach Land, Art der Anfrage und individueller Situation.', 'Die erforderlichen Unterlagen hängen vom Land, der Art des Antrags und Ihrer persönlichen Situation ab.'],
