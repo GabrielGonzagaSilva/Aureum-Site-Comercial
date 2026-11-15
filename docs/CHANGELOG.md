@@ -2,7 +2,6 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
-
 ## 2026-11-15 — Logo móvel: um controlador de visibilidade e variantes estáticas
 
 - Reproduzida em produção a duplicação entre o logo central do hero e o wordmark do cabeçalho abaixo de 761px. O runtime desativava o gerenciamento no mobile, enquanto um segundo controlador inline continuava alterando `inert` e `aria-hidden`.
@@ -10,7 +9,8 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Centralizadas na folha compartilhada as variantes branca/escura e a visibilidade inicial, evitando dependência de CSS injetado tardiamente. Preservados SVGs, conteúdo e idiomas. A imagem mantém sua proporção ao atingir a altura máxima; a geometria do wordmark fica reservada e respeita movimento reduzido.
 - Corrigida a posição do botão do menu no tablet enquanto o seletor de idioma está centralizado sobre o hero.
 - Substituído o teste de correspondência de strings por 14 cenários de navegador: seis larguras (360/430/768/1024/1440/1920px), home e Portugal nos cinco idiomas, carregamento lento do runtime, mudanças de breakpoint, preferência escura do dispositivo, movimento reduzido, teclado e axe no cabeçalho. Cada cenário roda em Chromium e WebKit móvel no CI.
-- Validação local: 35 testes unitários, build de 76 páginas, verificação estática e `git diff --check` aprovados. A execução local dos navegadores foi impedida pelas restrições do ambiente; a validação de navegação acontece no CI antes da liberação em produção.
+- Validação: 35 testes unitários, build de 76 páginas, verificação estática, `git diff --check` e auditoria de dependências de produção aprovados. O [CI 43678600057](https://github.com/GabrielGonzagaSilva/Aureum-Site-Comercial/actions/runs/43678600057), no commit de implementação `b1f88374b868240972b2a683dc90ae9e6237fee0`, aprovou os 86 cenários em Chromium e WebKit (28 do logo e 58 de regressão dos serviços e contato). A execução local dos navegadores foi impedida pelas restrições do ambiente; a matriz completa foi executada no GitHub.
+- A validação móvel usa emulação; teclado virtual, gestos e renderização em aparelho físico não foram verificados nesta entrega.
 
 ## 2026-11-14 — Serviços: cinco cards com título e navegação própria
 
