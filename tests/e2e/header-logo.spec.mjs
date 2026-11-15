@@ -15,9 +15,16 @@ async function load(page, path = '/') {
 }
 
 async function scrollPastHero(page) {
-  await hero(page).evaluate(element => scrollTo({
-    top: element.getBoundingClientRect().bottom + scrollY,
-    behavior: 'instant',
+  // WebKit mobile can expose scrollY before queued scroll/render work settles.
+  // Wait for that real event and the controller's render frames before checking
+  // visibility; all logo, focus and geometry assertions below remain unchanged.
+  await hero(page).evaluate(element => new Promise(resolve => {
+    const top = element.getBoundingClientRect().bottom + scrollY;
+    if (Math.abs(scrollY - top) < 1) { resolve(); return; }
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => requestAnimationFrame(resolve));
+    }, { once: true });
+    scrollTo({ top, behavior: 'instant' });
   }));
   await expect(logo(page)).toBeVisible();
   await expect(logo(page)).toHaveCSS('opacity', '1');

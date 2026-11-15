@@ -18,6 +18,7 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Corrigido o espaço entre palavras junto à quebra de linha do título de Serviços nos cinco idiomas, preservando a composição do desktop e a leitura natural no celular.
 - Verificação de regressão ampliada para altura responsiva, carregamento das imagens específicas e texto do título sem palavras coladas.
 - Validação local: 35 testes unitários, 22 cenários dos serviços em Chromium/WebKit, build de 76 páginas e 148 arquivos, verificação estática e revisão visual em desktop/celular aprovados. Mantidas as correções mais recentes do cabeçalho e as páginas de serviço em preparação.
+- A verificação do cabeçalho aguarda o evento real de rolagem e os frames do controlador antes de conferir o logo. Isso sincroniza o cenário amplo da emulação WebKit com a atualização visual, mantendo todas as verificações de visibilidade, foco e geometria. O cenário de 1920 px passou em cinco repetições locais consecutivas.
 
 ## 2026-11-14 — Serviços: cinco cards com título e navegação própria
 
