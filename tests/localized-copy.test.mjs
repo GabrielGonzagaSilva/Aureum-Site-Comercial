@@ -58,6 +58,8 @@ test('Portuguese editorial title and contact copy are corrected without changing
   assert.ok(output.includes('Destinos, projetos e contextos diferentes.'));
   assert.ok(!output.includes('Destinos. Projetos e contextos diferentes.'));
   assert.match(output, /Fale com a nossa equipe<\/a>\./);
+  const title = output.match(/<h2\b[^>]*id="aureum-services-title"[^>]*>([\s\S]*?)<\/h2>/)[1];
+  assert.equal(title.replace(/<br\s*\/?>/g, ''), 'Qual é o seu projeto internacional?');
   assert.equal([...output.matchAll(/\bdata-intent=(["']).*?\1/g)].length, 48);
   assert.equal([...output.matchAll(/\bdata-subject=(["']).*?\1/g)].length, 55);
 });

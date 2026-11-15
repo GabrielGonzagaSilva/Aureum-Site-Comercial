@@ -11,6 +11,13 @@ Todas as mudanças relevantes devem ser registradas aqui.
 - Substituído o teste de correspondência de strings por 14 cenários de navegador: seis larguras (360/430/768/1024/1440/1920px), home e Portugal nos cinco idiomas, carregamento lento do runtime, mudanças de breakpoint, preferência escura do dispositivo, movimento reduzido, teclado e axe no cabeçalho. Cada cenário roda em Chromium e WebKit móvel no CI.
 - Validação: 35 testes unitários, build de 76 páginas, verificação estática, `git diff --check` e auditoria de dependências de produção aprovados. O [CI 43678600057](https://github.com/GabrielGonzagaSilva/Aureum-Site-Comercial/actions/runs/43678600057), no commit de implementação `b1f88374b868240972b2a683dc90ae9e6237fee0`, aprovou os 86 cenários em Chromium e WebKit (28 do logo e 58 de regressão dos serviços e contato). A execução local dos navegadores foi impedida pelas restrições do ambiente; a matriz completa foi executada no GitHub.
 - A validação móvel usa emulação; teclado virtual, gestos e renderização em aparelho físico não foram verificados nesta entrega.
+## 2026-11-15 — Serviços: imagens por categoria e cards mais compactos no celular
+
+- Substituídas as cinco paisagens por fotografias de documentação, vínculos familiares, passaporte, estudantes e bagagem em aeroporto. Imagens em WebP hospedadas no site, com fontes, autores e licenças em `docs/SERVICE-PHOTOS.md`.
+- Cards quadrados abaixo de 640 px, aproximadamente 25% mais baixos que o formato vertical anterior. Mantidos título, CTA, área inteira clicável, ordem e rotas dos cinco serviços. O degradê móvel começa mais cedo para preservar a leitura dos títulos longos.
+- Corrigido o espaço entre palavras junto à quebra de linha do título de Serviços nos cinco idiomas, preservando a composição do desktop e a leitura natural no celular.
+- Verificação de regressão ampliada para altura responsiva, carregamento das imagens específicas e texto do título sem palavras coladas.
+- Validação local: 35 testes unitários, 22 cenários dos serviços em Chromium/WebKit, build de 76 páginas e 148 arquivos, verificação estática e revisão visual em desktop/celular aprovados. Mantidas as correções mais recentes do cabeçalho e as páginas de serviço em preparação.
 
 ## 2026-11-14 — Serviços: cinco cards com título e navegação própria
 

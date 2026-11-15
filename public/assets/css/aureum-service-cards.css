@@ -23,6 +23,10 @@
 #servicos .dc__title { display: block; overflow-wrap: break-word; }
 #servicos .dc__body { position: static; }
 #servicos .dc__cta { margin-top: 20px; border-top: 1px solid rgb(255 255 255 / .16); border-radius: 0 !important; }
+#servicos [data-service="citizenship"] .dc__photo { object-position: 42% center; }
+#servicos [data-service="documents"] .dc__photo { object-position: 85% center; }
+#servicos [data-service="exchange"] .dc__photo { object-position: 55% center; }
+#servicos [data-service="travel"] .dc__photo { object-position: 45% center; }
 @media (max-width: 1099px) {
   #servicos .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #servicos .service-grid > .dc:nth-child(n) { grid-column: auto; }
@@ -39,6 +43,15 @@
     grid-column: auto;
     width: 100%;
     max-width: 460px;
+    aspect-ratio: 1 / 1;
     justify-self: center;
+  }
+  /* Earlier shading keeps longer titles readable in the shorter mobile card. */
+  #servicos .dc__scrim {
+    background: linear-gradient(to bottom,
+      rgb(var(--dc-night) / .08) 15%,
+      rgb(var(--dc-night) / .14) 32%,
+      rgb(var(--dc-night) / .70) 55%,
+      rgb(var(--dc-night) / .96) 100%);
   }
 }

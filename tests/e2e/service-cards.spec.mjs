@@ -15,6 +15,7 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
     await expect(cards(page)).toHaveCount(5);
     await expect(page.locator('#servicos .dc__title')).toHaveText(['Vistos', 'Cidadania', 'Passaporte e documentos', 'Intercâmbio', 'Viagens internacionais']);
     await expect(cards(page).locator('p')).toHaveCount(0);
+    expect(await page.locator('#aureum-services-title').innerText()).toContain(width < 1024 ? 'seu projeto' : 'seu');
     const positions = await cards(page).evaluateAll(es => es.map(e => { const r = e.getBoundingClientRect(); return { x: Math.round(r.x), y: Math.round(r.y), width: r.width }; }));
     expect(positions.filter(p => p.y === positions[0].y)).toHaveLength(width < 640 ? 1 : width < 1100 ? 2 : 3);
     if (width >= 1100) {
@@ -28,7 +29,7 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
         const rect = e.getBoundingClientRect();
         const image = e.querySelector('.dc__photo').getBoundingClientRect();
         const body = e.querySelector('.dc__body').getBoundingClientRect();
-        return { width: e.clientWidth, scrollWidth: e.scrollWidth, height: e.clientHeight, scrollHeight: e.scrollHeight, imageHeight: image.height, imageWidth: image.width, bodyTop: body.top - rect.top, bodyBottom: body.bottom - rect.top };
+        return { width: e.clientWidth, scrollWidth: e.scrollWidth, height: e.clientHeight, scrollHeight: e.scrollHeight, imageHeight: image.height, imageWidth: image.width, bodyTop: body.top - rect.top, bodyBottom: body.bottom - rect.top, photo: e.querySelector('img').getAttribute('src') };
       });
       expect(layout.scrollWidth).toBeLessThanOrEqual(layout.width + 1);
       expect(layout.scrollHeight).toBeLessThanOrEqual(layout.height + 1);
@@ -36,6 +37,8 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
       expect(layout.imageWidth).toBeGreaterThanOrEqual(layout.width - 1);
       expect(layout.bodyTop).toBeGreaterThanOrEqual(0);
       expect(layout.bodyBottom).toBeLessThanOrEqual(layout.height + 1);
+      expect(layout.height / layout.width).toBeCloseTo(width < 640 ? 1 : 591 / 444, 2);
+      expect(layout.photo).toMatch(/^\/assets\/photos\/services\//);
       await expect(card.locator('.dc__title')).toHaveCSS('color', 'rgb(255, 255, 255)');
     }
   });

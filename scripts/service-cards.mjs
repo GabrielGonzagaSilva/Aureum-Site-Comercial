@@ -31,11 +31,11 @@ const COPY = {
   },
 };
 const SERVICES = [
-  { id: 'visas', slug: 'vistos', photo: '/assets/photos/australia-01.webp' },
-  { id: 'citizenship', slug: 'cidadania', photo: '/assets/photos/portugal-02.webp' },
-  { id: 'documents', slug: 'passaporte-e-documentos', photo: '/assets/photos/franca-01.webp' },
-  { id: 'exchange', slug: 'intercambio', photo: '/assets/photos/canada-03.webp' },
-  { id: 'travel', slug: 'viagens-internacionais', photo: '/assets/photos/londres-hd-2560.webp' },
+  { id: 'visas', slug: 'vistos', photo: '/assets/photos/services/vistos.webp' },
+  { id: 'citizenship', slug: 'cidadania', photo: '/assets/photos/services/cidadania.webp' },
+  { id: 'documents', slug: 'passaporte-e-documentos', photo: '/assets/photos/services/passaporte-documentos.webp' },
+  { id: 'exchange', slug: 'intercambio', photo: '/assets/photos/services/intercambio.webp' },
+  { id: 'travel', slug: 'viagens-internacionais', photo: '/assets/photos/services/viagens-internacionais.webp' },
 ];
 const GRID = /<div\b(?=[^>]*\bclass="service-grid")[^>]*>[\s\S]*?<\/div>(?=\s*<footer\b[^>]*\bclass="service-footer")/;
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
