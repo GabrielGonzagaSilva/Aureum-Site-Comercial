@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-15 — Serviços: fotografias fornecidas pelo usuário em alta resolução
+
+- Substituídas as cinco fotografias pelos arquivos de `Archive.zip`, associados aos serviços conforme sua nomenclatura. Mantida a grade com cinco serviços e o sexto card verde de orientação.
+- Adicionadas três resoluções WebP por fotografia, com qualidade 92, escolha responsiva pelo navegador e dimensões declaradas. Os nomes incluem a identificação do original para atualizar o cache imediatamente.
+- Aplicadas a orientação dos originais e a conversão de cor para sRGB; ajustados os pontos focais em desktop e celular para preservar rostos, documentos e a bandeira.
+- Mapeamento dos arquivos, dimensões e tratamento registrados em `docs/SERVICE-PHOTOS.md`. Testes verificam os 15 arquivos responsivos e o carregamento da variante selecionada em navegador.
+- Validação local: 35 testes unitários, 22 cenários em Chromium/WebKit, build de 76 páginas, verificação estática e revisão dos enquadramentos em desktop e celular Retina aprovados.
+
 ## 2026-11-15 — Serviços: orientação integrada à grade de seis cards
 
 - Convertidos o texto e o botão soltos abaixo dos serviços em um sexto card de orientação, com fundo verde Aureum, título branco, explicação e CTA “Falar com a equipe”. A grade fica com três cards por linha no desktop, duas colunas no tablet e uma no celular.

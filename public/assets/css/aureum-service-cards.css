@@ -21,10 +21,11 @@
 #servicos .dc__title { display: block; overflow-wrap: break-word; }
 #servicos .dc__body { position: static; }
 #servicos .dc__cta { margin-top: 20px; border-top: 1px solid rgb(255 255 255 / .16); border-radius: 0 !important; }
-#servicos [data-service="citizenship"] .dc__photo { object-position: 42% center; }
-#servicos [data-service="documents"] .dc__photo { object-position: 85% center; }
-#servicos [data-service="exchange"] .dc__photo { object-position: 55% center; }
-#servicos [data-service="travel"] .dc__photo { object-position: 45% center; }
+#servicos [data-service="visas"] .dc__photo { object-position: center 75%; }
+#servicos [data-service="citizenship"] .dc__photo { object-position: 55% center; }
+#servicos [data-service="documents"] .dc__photo { object-position: center 70%; }
+#servicos [data-service="exchange"] .dc__photo { object-position: center 35%; }
+#servicos [data-service="travel"] .dc__photo { object-position: center 45%; }
 #servicos .service-guidance { background: #1C4C3C; }
 #servicos .service-guidance .dc__body {
   display: flex;
@@ -53,6 +54,10 @@
     aspect-ratio: 1 / 1;
     justify-self: center;
   }
+  #servicos [data-service="visas"] .dc__photo { object-position: center 90%; }
+  #servicos [data-service="documents"] .dc__photo { object-position: center 100%; }
+  #servicos [data-service="exchange"] .dc__photo { object-position: center 65%; }
+  #servicos [data-service="travel"] .dc__photo { object-position: center 40%; }
   /* Earlier shading keeps longer titles readable in the shorter mobile card. */
   #servicos .dc__scrim {
     background: linear-gradient(to bottom,

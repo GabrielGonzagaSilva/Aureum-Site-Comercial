@@ -36,12 +36,24 @@ const COPY = {
     guidance: ['Unsicher, welche Leistung passt?', 'Erzählen Sie unserem Team von Ihrem Vorhaben.', 'Mit dem Team sprechen'],
   },
 };
+function servicePhoto(stem, originalWidth, originalHeight, widths = [720, 1440, 2160]) {
+  const path = '/assets/photos/services/' + stem;
+  return {
+    photo: path + '-' + widths[1] + '.webp',
+    srcset: widths.map(width => path + '-' + width + '.webp ' + width + 'w').join(', '),
+    width: widths[1], height: Math.round(originalHeight * widths[1] / originalWidth),
+    // The landscape citizenship photo needs extra pixels for its portrait crop.
+    sizes: originalWidth > originalHeight
+      ? '(max-width:639px) 135vw, (max-width:1099px) 88vw, (max-width:1439px) 58vw, 820px'
+      : '(max-width:639px) 90vw, (max-width:1099px) 44vw, (max-width:1439px) 29vw, 410px',
+  };
+}
 const SERVICES = [
-  { id: 'visas', slug: 'vistos', photo: '/assets/photos/services/vistos.webp' },
-  { id: 'citizenship', slug: 'cidadania', photo: '/assets/photos/services/cidadania.webp' },
-  { id: 'documents', slug: 'passaporte-e-documentos', photo: '/assets/photos/services/passaporte-documentos.webp' },
-  { id: 'exchange', slug: 'intercambio', photo: '/assets/photos/services/intercambio.webp' },
-  { id: 'travel', slug: 'viagens-internacionais', photo: '/assets/photos/services/viagens-internacionais.webp' },
+  { id: 'visas', slug: 'vistos', ...servicePhoto('vistos-6ebed6b9', 5504, 8256) },
+  { id: 'citizenship', slug: 'cidadania', ...servicePhoto('cidadania-a628ae67', 6000, 4000, [960, 1920, 2880]) },
+  { id: 'documents', slug: 'passaporte-e-documentos', ...servicePhoto('passaporte-documentos-6183616b', 4480, 6720) },
+  { id: 'exchange', slug: 'intercambio', ...servicePhoto('intercambio-65e0c973', 4343, 5906) },
+  { id: 'travel', slug: 'viagens-internacionais', ...servicePhoto('viagens-internacionais-451d389a', 4115, 5849) },
 ];
 // Replace the old grid and detached footer together; the marker makes the
 // generated six-card region unambiguous and safe to transform more than once.
@@ -60,7 +72,7 @@ function renderGrid(locale) {
     // Reuse the destination card's actual component, including image, scrim,
     // frosted lower layer, typography, focus treatment and full-card CTA.
     return `<article class="dc service-category" data-service="${service.id}" aria-labelledby="service-${service.id}-title">
-<img class="dc__photo" src="${service.photo}" alt="" loading="lazy" decoding="async">
+<img class="dc__photo" src="${service.photo}" srcset="${service.srcset}" sizes="${service.sizes}" width="${service.width}" height="${service.height}" alt="" loading="lazy" decoding="async">
 <div class="dc__blur" aria-hidden="true"></div><div class="dc__scrim" aria-hidden="true"></div>
 <div class="dc__body"><h3 class="dc__title" id="service-${service.id}-title">${escape(title)}</h3>
 <a class="dc__cta" href="${servicePath(locale, service)}">${escape(copy.cta)}<span class="dc__sr">: ${escape(title)}</span><span class="dc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>`;

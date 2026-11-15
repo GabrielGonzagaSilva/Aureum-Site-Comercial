@@ -34,6 +34,22 @@ test('five services and one guidance card replace the old grid and footer on all
   assert.equal(pages, 50);
   const home = applyServiceCardStyles(await readFile('public/index.html', 'utf8'));
   assert.deepEqual([...home.match(grid)[0].matchAll(/<h3\b[^>]*>([^<]+)<\/h3>/g)].map(m => m[1]), ['Vistos', 'Cidadania', 'Passaporte e documentos', 'Intercâmbio', 'Viagens internacionais', 'Não sabe qual serviço escolher?']);
+  // Every responsive candidate must exist; the static verifier only follows src.
+  const photos = [...home.match(grid)[0].matchAll(/<img class="dc__photo"[^>]*srcset="([^"]+)"/g)];
+  assert.equal(photos.length, 5);
+  const stems = ['vistos-6ebed6b9', 'cidadania-a628ae67', 'passaporte-documentos-6183616b', 'intercambio-65e0c973', 'viagens-internacionais-451d389a'];
+  for (const [index, photo] of photos.entries()) {
+    const candidates = photo[1].split(', ');
+    assert.equal(candidates.length, 3);
+    for (const candidate of candidates) {
+      const [path, descriptor] = candidate.split(' ');
+      assert.ok(path.includes(stems[index]), 'uploaded filename must map to the right service');
+      assert.match(descriptor, /^\d+w$/);
+      const bytes = await readFile('public' + path);
+      assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
+      assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
+    }
+  }
 });
 
 test('every service link has a localized arrival page with a return path and no invented service content', async () => {

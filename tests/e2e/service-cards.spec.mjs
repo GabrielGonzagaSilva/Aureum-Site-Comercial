@@ -30,6 +30,8 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
     for (const card of await cards(page).all()) {
       await card.scrollIntoViewIfNeeded();
       await expect.poll(() => card.locator('img').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+      await expect(card.locator('img')).toHaveAttribute('srcset', /\d+w, .*\d+w, .*\d+w/);
+      expect(await card.locator('img').evaluate(img => img.currentSrc)).toMatch(/-[a-f0-9]{8}-\d+\.webp$/);
       const layout = await card.evaluate(e => {
         const rect = e.getBoundingClientRect();
         const image = e.querySelector('.dc__photo').getBoundingClientRect();
