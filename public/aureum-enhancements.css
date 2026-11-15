@@ -103,7 +103,7 @@ button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-bt
 }
 #hdr .logo-img {
   display:block;
-  width:100%!important;
+  width:auto!important;
   height:auto!important;
   max-width:100%!important;
   max-height:56px!important;
