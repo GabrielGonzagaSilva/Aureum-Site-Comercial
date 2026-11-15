@@ -2474,47 +2474,7 @@ document.querySelectorAll('[href^="#destino-"]').forEach(function(a){if(!a.datas
  window.addEventListener('pageshow',update);
  update();
 })();
-</script><script>(function(){
-  'use strict';
-  var html=document.documentElement;
-  var hero=document.querySelector('#home .hero-logo-centered-test');
-  var header=document.querySelector('#hdr');
-  var navLogo=header&&header.querySelector('.navbar .logo');
-  var headerCTA=header&&header.querySelector('.navbar .hdr-cta > .btn-hdr');
-  if(!hero||!header||!navLogo||!headerCTA){
-    html.classList.remove('aureum-nav-managed');
-    return;
-  }
-  var pending=false;
-  function update(){
-    pending=false;
-    var home=document.getElementById('home');
-    var homeVisible=!!home&&home.getClientRects().length>0&&getComputedStyle(home).display!=='none';
-    var headerHeight=header.getBoundingClientRect().height||78;
-    var passed= !homeVisible || hero.getBoundingClientRect().bottom<=headerHeight+4;
-    html.classList.toggle('aureum-nav-revealed',passed);
-    navLogo.inert=!passed;
-    headerCTA.inert=!passed;
-    navLogo.setAttribute('aria-hidden',passed?'false':'true');
-    headerCTA.setAttribute('aria-hidden',passed?'false':'true');
-  }
-  function schedule(){
-    if(pending)return;
-    pending=true;
-    requestAnimationFrame(update);
-  }
-  update();
-  addEventListener('scroll',schedule,{passive:true});
-  addEventListener('resize',schedule,{passive:true});
-  addEventListener('hashchange',schedule);
-  addEventListener('pageshow',schedule);
-  document.addEventListener('visibilitychange',schedule);
-  if('ResizeObserver' in window){
-    var ro=new ResizeObserver(schedule);
-    ro.observe(hero);
-    ro.observe(header);
-  }
-})();</script>
+</script>
 <script id="aureum-locale-v2-script">
 (function(){
  'use strict';

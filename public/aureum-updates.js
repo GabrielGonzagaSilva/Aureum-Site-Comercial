@@ -351,18 +351,8 @@
       "#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-entry button{display:grid!important;flex:0 0 42px!important;place-items:center!important;width:42px!important;height:42px!important;min-width:42px!important;padding:0!important;border:0!important;border-radius:9999px!important;background:#1C4C3C!important;color:#fff!important;box-shadow:none!important}",
       "#aureum-contact-hub #contact-panel[data-current-view='assistant'] .contact-note{flex:0 0 auto!important;margin:0!important;padding:0 14px 5px!important;background:#FCFBF8!important;color:#6A7169!important;font:400 9px/1.4 Inter,system-ui,sans-serif!important}",
       "#aureum-contact-hub #contact-panel[data-current-view='assistant'] .contact-panel-foot{display:none!important}",
-      "#hdr .logo-img,.mmenu .logo-img{width:100%!important;height:auto!important;max-height:66px!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:left center!important;image-rendering:auto!important;transform:none!important}",
-      "#hdr .navbar .logo .logo-img--white{display:block!important}",
-      "#hdr .navbar .logo .logo-img--ink{display:none!important}",
-      "#hdr.solid .navbar .logo .logo-img--white{display:none!important}",
-      "#hdr.solid .navbar .logo .logo-img--ink{display:block!important}",
-      "#mmenu .mmenu-top .logo .logo-img--white{display:none!important}",
-      "#mmenu .mmenu-top .logo .logo-img--ink{display:block!important}",
-      "#hdr .navbar .logo,#hdr .navbar .hdr-cta>.btn-hdr{transition:opacity .22s ease,visibility .22s ease!important}",
-      "@media(min-width:1121px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}",
-      "@media(min-width:761px) and (max-width:1120px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}",
       "button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-btn,.contact-launcher,.contact-primary,.dc__cta,.chat-entry button,.chat-suggestions button{border-radius:9999px!important}",
-      "@media(max-width:640px){#aureum-contact-hub #contact-panel[data-current-view='assistant']{position:fixed!important;inset:0!important;width:100vw!important;max-width:none!important;height:var(--aureum-vh,100dvh)!important;max-height:none!important;min-height:0!important;margin:0!important;border-radius:0!important;padding-top:env(safe-area-inset-top)!important;padding-bottom:env(safe-area-inset-bottom)!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .contact-panel-head{min-height:62px!important;padding:calc(9px + env(safe-area-inset-top)) 56px 9px 14px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .mia-avatar{width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;flex-basis:40px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-transcript{padding:12px 14px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-entry{margin:0 12px calc(8px + env(safe-area-inset-bottom))!important}#hdr .logo-img,.mmenu .logo-img{max-height:54px!important}}",
+      "@media(max-width:640px){#aureum-contact-hub #contact-panel[data-current-view='assistant']{position:fixed!important;inset:0!important;width:100vw!important;max-width:none!important;height:var(--aureum-vh,100dvh)!important;max-height:none!important;min-height:0!important;margin:0!important;border-radius:0!important;padding-top:env(safe-area-inset-top)!important;padding-bottom:env(safe-area-inset-bottom)!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .contact-panel-head{min-height:62px!important;padding:calc(9px + env(safe-area-inset-top)) 56px 9px 14px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .mia-avatar{width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;flex-basis:40px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-transcript{padding:12px 14px!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-entry{margin:0 12px calc(8px + env(safe-area-inset-bottom))!important}}",
       "@media(prefers-reduced-motion:reduce){#aureum-contact-hub #contact-panel[data-current-view='assistant'],#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-message{animation:none!important;transition:none!important}#aureum-contact-hub #contact-panel[data-current-view='assistant'] .chat-transcript{scroll-behavior:auto!important}}"
     ].join("\n");
     document.head.appendChild(style);
@@ -387,6 +377,7 @@
     },true);
   }
 
+  /* Shared reveal controller for every viewport; logo variants live in CSS. */
   (function repairHeader(){
     var header=document.getElementById("hdr");
     var hero=document.querySelector("#home .hero-logo-centered-test");
@@ -396,10 +387,6 @@
     var raf=0;
     function update(){
       raf=0;
-      if(window.matchMedia("(max-width:760px)").matches){
-        html.classList.remove("aureum-nav-managed");html.classList.remove("aureum-nav-revealed");
-        logo.inert=false;cta.inert=false;logo.removeAttribute("aria-hidden");cta.removeAttribute("aria-hidden");return;
-      }
       html.classList.add("aureum-nav-managed");
       var home=document.getElementById("home");
       var visible=!!home&&home.getClientRects().length>0&&getComputedStyle(home).display!=="none";

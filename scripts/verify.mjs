@@ -163,9 +163,9 @@ export async function verify(root = 'public') {
   const requiredHeaderRules = [
     '/* Sprint 1 — shared header component',
     '#hdr .navbar .wrap',
-    '#hdr .logo-img--white',
-    '#hdr.solid .logo-img--ink',
-    '#mmenu .logo-img--ink',
+    '#hdr .navbar .logo .logo-img--white',
+    '#hdr.solid .navbar .logo .logo-img--ink',
+    '#mmenu .mmenu-top .logo .logo-img--ink',
     '@media(max-width:1200px)',
     '@media(max-width:760px)',
   ];

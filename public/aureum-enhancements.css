@@ -81,8 +81,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 #aureum-contact-hub #contact-panel[hidden][data-current-view="assistant"]{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
 #aureum-contact-hub #contact-panel .contact-view[hidden]{display:none!important;visibility:hidden!important}
 #hdr .logo-img,.mmenu .logo-img{aspect-ratio:auto!important;height:auto!important;max-height:66px!important;object-fit:contain!important;object-position:left center!important}
-@media(min-width:1121px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}
-@media(min-width:761px) and (max-width:1120px){html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr{visibility:hidden!important;opacity:0!important;pointer-events:none!important}}
 button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-btn,.contact-launcher,.contact-primary,.dc__cta,.chat-entry button,.chat-suggestions button{border-radius:9999px!important}
 @media(prefers-reduced-motion:reduce){#aureum-contact-hub #contact-panel[data-current-view="assistant"],#aureum-contact-hub #contact-panel[data-current-view="assistant"] .chat-message{animation:none!important;transition:none!important}}
 
@@ -113,12 +111,30 @@ button,.btn,.btn-primary,.btn-line,.btn-light,.btn-ghost-light,.btn-hdr,.menu-bt
   object-fit:contain!important;
   object-position:left center!important;
 }
-#hdr .logo-img--white { display:block!important; }
-#hdr .logo-img--ink { display:none!important; }
-#hdr.solid .logo-img--white { display:none!important; }
-#hdr.solid .logo-img--ink { display:block!important; }
-#mmenu .logo-img--white { display:none!important; }
-#mmenu .logo-img--ink { display:block!important; }
+/* One static owner for logo variants, including before deferred scripts load. */
+#hdr .navbar .logo .logo-img--white { display:block!important; }
+#hdr .navbar .logo .logo-img--ink { display:none!important; }
+#hdr.solid .navbar .logo .logo-img--white { display:none!important; }
+#hdr.solid .navbar .logo .logo-img--ink { display:block!important; }
+#mmenu .mmenu-top .logo .logo-img--white { display:none!important; }
+#mmenu .mmenu-top .logo .logo-img--ink { display:block!important; }
+
+/* Keep the hero's central logo exclusive at every width. Reserve the header
+   geometry so revealing the wordmark never shifts the language/menu controls. */
+html.aureum-nav-managed #hdr .navbar .logo,
+html.aureum-nav-managed #hdr .navbar .hdr-cta>.btn-hdr {
+  transition:opacity .22s ease,visibility .22s ease!important;
+}
+html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .logo,
+html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .navbar .hdr-cta>.btn-hdr {
+  visibility:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+@media(prefers-reduced-motion:reduce) {
+  html.aureum-nav-managed #hdr .navbar .logo,
+  html.aureum-nav-managed #hdr .navbar .hdr-cta>.btn-hdr { transition:none!important; }
+}
 
 #hdr .navbar .nav {
   display:flex!important;

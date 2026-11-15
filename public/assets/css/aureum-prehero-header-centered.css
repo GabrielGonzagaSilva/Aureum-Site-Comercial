@@ -31,4 +31,7 @@
     margin-left:0!important;
     margin-right:0!important;
   }
+  html.aureum-nav-managed:not(.aureum-nav-revealed) #hdr .hdr-cta {
+    margin-inline-start:auto!important;
+  }
 }
