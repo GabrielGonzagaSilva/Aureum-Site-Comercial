@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-const cards = page => page.locator('#servicos .service-grid > .dc');
+const cards = page => page.locator('#servicos .service-grid > .service-category');
+const allCards = page => page.locator('#servicos .service-grid > .dc');
 test.beforeEach(async ({ page }) => {
   await page.route(/https:\/\/fonts\.(googleapis|gstatic)\.com\//, r => r.abort());
   // These tests cover service photos and navigation, not the unrelated hero video.
@@ -13,14 +14,18 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await page.evaluate(() => document.fonts.ready);
     await expect(cards(page)).toHaveCount(5);
-    await expect(page.locator('#servicos .dc__title')).toHaveText(['Vistos', 'Cidadania', 'Passaporte e documentos', 'Intercâmbio', 'Viagens internacionais']);
+    await expect(allCards(page)).toHaveCount(6);
+    await expect(cards(page).locator('.dc__title')).toHaveText(['Vistos', 'Cidadania', 'Passaporte e documentos', 'Intercâmbio', 'Viagens internacionais']);
+    await expect(page.locator('#servicos .service-footer')).toHaveCount(0);
     await expect(cards(page).locator('p')).toHaveCount(0);
     expect(await page.locator('#aureum-services-title').innerText()).toContain(width < 1024 ? 'seu projeto' : 'seu');
-    const positions = await cards(page).evaluateAll(es => es.map(e => { const r = e.getBoundingClientRect(); return { x: Math.round(r.x), y: Math.round(r.y), width: r.width }; }));
+    const positions = await allCards(page).evaluateAll(es => es.map(e => { const r = e.getBoundingClientRect(); return { x: Math.round(r.x), y: Math.round(r.y), width: r.width }; }));
     expect(positions.filter(p => p.y === positions[0].y)).toHaveLength(width < 640 ? 1 : width < 1100 ? 2 : 3);
     if (width >= 1100) {
-      expect(positions[3].x).toBeGreaterThan(positions[0].x);
-      expect(positions[4].x).toBeLessThan(positions[2].x);
+      expect(positions[3].x).toBe(positions[0].x);
+      expect(positions[4].x).toBe(positions[1].x);
+      expect(positions[5].x).toBe(positions[2].x);
+      expect(positions[5].y).toBe(positions[3].y);
     }
     for (const card of await cards(page).all()) {
       await card.scrollIntoViewIfNeeded();
@@ -41,6 +46,11 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
       expect(layout.photo).toMatch(/^\/assets\/photos\/services\//);
       await expect(card.locator('.dc__title')).toHaveCSS('color', 'rgb(255, 255, 255)');
     }
+    const guidance = allCards(page).last();
+    await expect(guidance).toHaveCSS('background-color', 'rgb(28, 76, 60)');
+    await expect(guidance.locator('img')).toHaveCount(0);
+    expect(await guidance.evaluate(e => e.scrollHeight <= e.clientHeight + 1 && e.scrollWidth <= e.clientWidth + 1)).toBe(true);
+    expect(await guidance.evaluate(e => Math.round(e.getBoundingClientRect().height))).toBe(Math.round(positions[0].width * (width < 640 ? 1 : 591 / 444)));
   });
 }
 for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
@@ -73,5 +83,15 @@ for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
       await page.waitForLoadState('domcontentloaded');
       await expect(cards(page)).toHaveCount(5);
     }
+    const guidance = page.locator('#servicos .service-guidance');
+    const contact = guidance.locator('a');
+    const before = page.url();
+    await guidance.click({ position: { x: 40, y: 40 } });
+    await expect(page.locator('#aureum-lead-dialog')).toBeVisible();
+    await expect(page.locator('#lead-main [name=objetivo]')).toHaveValue(await contact.getAttribute('data-intent'));
+    expect(page.url()).toBe(before);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('body')).not.toHaveClass(/aureum-lead-dialog-open/);
+    await expect(contact).toBeFocused();
   });
 }

@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-15 — Serviços: orientação integrada à grade de seis cards
+
+- Convertidos o texto e o botão soltos abaixo dos serviços em um sexto card de orientação, com fundo verde Aureum, título branco, explicação e CTA “Falar com a equipe”. A grade fica com três cards por linha no desktop, duas colunas no tablet e uma no celular.
+- Mantidos os cinco serviços, suas imagens, ordem, títulos e páginas individuais. O card de orientação utiliza o contato existente com o contexto de ajuda para escolher um serviço, preservando o modal, foco e posição da página.
+- Removido o rodapé antigo da seção e traduzido o novo card em PT, EN, ES, FR e DE. Cobertura de regressão inclui alinhamento das duas linhas, ausência de duplicação, acesso ao contato e retorno do foco nos cinco idiomas.
+- A verificação de geometria do logo repete as mesmas exigências de largura e proporção até estabilizar a troca de variante no WebKit; a execução anterior do CI podia medir largura zero entre frames, mesmo após carregar o SVG.
+- Validação local: 35 testes unitários, 22 cenários dos serviços em Chromium/WebKit, build de 76 páginas, verificação estática e revisão visual em desktop/celular aprovados. O cenário de geometria do logo em alemão também passou em três repetições no WebKit.
+
 ## 2026-11-15 — Logo móvel: um controlador de visibilidade e variantes estáticas
 
 - Reproduzida em produção a duplicação entre o logo central do hero e o wordmark do cabeçalho abaixo de 761px. O runtime desativava o gerenciamento no mobile, enquanto um segundo controlador inline continuava alterando `inert` e `aria-hidden`.

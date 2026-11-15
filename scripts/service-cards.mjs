@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { filesUnder } from './verify.mjs';
+import { localizedIntentTranslations } from './localized-copy.mjs';
 
 // Approved category order and localized navigation. Service content comes later.
 const COPY = {
@@ -8,26 +9,31 @@ const COPY = {
     lang: 'pt-BR', cta: 'Conhecer serviço', home: 'Página inicial', languages: 'Idioma',
     pending: 'Estamos preparando o conteúdo desta página.', back: 'Voltar aos serviços',
     cards: ['Vistos', 'Cidadania', 'Passaporte e documentos', 'Intercâmbio', 'Viagens internacionais'],
+    guidance: ['Não sabe qual serviço escolher?', 'Conte seu objetivo à nossa equipe.', 'Falar com a equipe'],
   },
   en: {
     lang: 'en', cta: 'Explore service', home: 'Home', languages: 'Language',
     pending: 'We are preparing the content for this page.', back: 'Back to services',
     cards: ['Visas', 'Citizenship', 'Passports and documents', 'Study abroad', 'International travel'],
+    guidance: ['Not sure which service to choose?', 'Tell our team about your goals.', 'Talk to our team'],
   },
   es: {
     lang: 'es', cta: 'Conocer el servicio', home: 'Inicio', languages: 'Idioma',
     pending: 'Estamos preparando el contenido de esta página.', back: 'Volver a los servicios',
     cards: ['Visados', 'Ciudadanía', 'Pasaportes y documentos', 'Intercambio', 'Viajes internacionales'],
+    guidance: ['¿No sabes qué servicio elegir?', 'Cuéntale tu objetivo a nuestro equipo.', 'Hablar con el equipo'],
   },
   fr: {
     lang: 'fr', cta: 'Découvrir le service', home: 'Accueil', languages: 'Langue',
     pending: 'Nous préparons le contenu de cette page.', back: 'Retour aux services',
     cards: ['Visas', 'Citoyenneté', 'Passeports et documents', 'Échange international', 'Voyages internationaux'],
+    guidance: ['Vous hésitez sur le service à choisir ?', 'Présentez votre projet à notre équipe.', 'Parler à notre équipe'],
   },
   de: {
     lang: 'de', cta: 'Leistung ansehen', home: 'Startseite', languages: 'Sprache',
     pending: 'Wir bereiten den Inhalt dieser Seite vor.', back: 'Zurück zu den Leistungen',
     cards: ['Visa', 'Staatsangehörigkeit', 'Reisepässe und Dokumente', 'Auslandsaufenthalte', 'Internationale Reisen'],
+    guidance: ['Unsicher, welche Leistung passt?', 'Erzählen Sie unserem Team von Ihrem Vorhaben.', 'Mit dem Team sprechen'],
   },
 };
 const SERVICES = [
@@ -37,14 +43,19 @@ const SERVICES = [
   { id: 'exchange', slug: 'intercambio', photo: '/assets/photos/services/intercambio.webp' },
   { id: 'travel', slug: 'viagens-internacionais', photo: '/assets/photos/services/viagens-internacionais.webp' },
 ];
-const GRID = /<div\b(?=[^>]*\bclass="service-grid")[^>]*>[\s\S]*?<\/div>(?=\s*<footer\b[^>]*\bclass="service-footer")/;
+// Replace the old grid and detached footer together; the marker makes the
+// generated six-card region unambiguous and safe to transform more than once.
+const GRID = /<div\b(?=[^>]*\bclass="service-grid")[^>]*>[\s\S]*?(?:<footer\b(?=[^>]*\bclass="service-footer")[^>]*>[\s\S]*?<\/footer>|<!-- aureum-service-cards:end -->)/;
 const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const homePath = locale => locale === 'pt' ? '/' : '/' + locale + '/';
 const servicePath = (locale, service) => homePath(locale) + 'servicos/' + service.slug + '/';
 
 function renderGrid(locale) {
   const copy = COPY[locale] || COPY.pt;
-  return '<div class="service-grid" data-aureum-service-cards="v3">' + SERVICES.map((service, index) => {
+  const [guidanceTitle, guidanceText, guidanceCTA] = copy.guidance;
+  const intentSource = 'Preciso de ajuda para identificar o serviço';
+  const intent = localizedIntentTranslations[locale]?.[intentSource] || intentSource;
+  return '<div class="service-grid" data-aureum-service-cards="v4">' + SERVICES.map((service, index) => {
     const title = copy.cards[index];
     // Reuse the destination card's actual component, including image, scrim,
     // frosted lower layer, typography, focus treatment and full-card CTA.
@@ -53,7 +64,11 @@ function renderGrid(locale) {
 <div class="dc__blur" aria-hidden="true"></div><div class="dc__scrim" aria-hidden="true"></div>
 <div class="dc__body"><h3 class="dc__title" id="service-${service.id}-title">${escape(title)}</h3>
 <a class="dc__cta" href="${servicePath(locale, service)}">${escape(copy.cta)}<span class="dc__sr">: ${escape(title)}</span><span class="dc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>`;
-  }).join('\n') + '</div>';
+  }).join('\n') + `
+<article class="dc service-guidance" aria-labelledby="service-guidance-title">
+<div class="dc__body"><div class="service-guidance__intro"><h3 class="dc__title" id="service-guidance-title">${escape(guidanceTitle)}</h3><p class="service-guidance__copy">${escape(guidanceText)}</p></div>
+<a class="dc__cta" href="#contato" data-intent="${escape(intent)}">${escape(guidanceCTA)}<span class="dc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></article>
+</div><!-- aureum-service-cards:end -->`;
 }
 
 export function applyServiceCardStyles(html) {

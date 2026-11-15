@@ -39,13 +39,18 @@ async function oneLoadedVariant(parent, variant) {
   await expect(parent.locator('.logo-img--' + (variant === 'ink' ? 'white' : 'ink'))).toBeHidden();
   const image = parent.locator('.logo-img--' + variant);
   await expect.poll(() => image.evaluate(e => e.complete && e.naturalWidth > 0)).toBe(true);
-  const size = await image.evaluate(e => ({
-    width: e.getBoundingClientRect().width,
-    height: e.getBoundingClientRect().height,
-    ratio: e.naturalWidth / e.naturalHeight,
-  }));
-  expect(size.width).toBeGreaterThan(100);
-  expect(size.width / size.height).toBeCloseTo(size.ratio, 1);
+  // A loaded SVG can briefly have zero rendered size during a WebKit variant
+  // change. Recheck the same geometry requirements until layout has settled.
+  await expect(async () => {
+    await expect(image).toBeVisible();
+    const size = await image.evaluate(e => ({
+      width: e.getBoundingClientRect().width,
+      height: e.getBoundingClientRect().height,
+      ratio: e.naturalWidth / e.naturalHeight,
+    }));
+    expect(size.width).toBeGreaterThan(100);
+    expect(size.width / size.height).toBeCloseTo(size.ratio, 1);
+  }).toPass({ timeout: 5000 });
 }
 
 for (const width of [360, 430, 768, 1024, 1440, 1920]) {
