@@ -183,11 +183,6 @@
 .aureum-lead-dialog .aureum-lead-status:empty { display: none; }
 .aureum-lead-dialog .f-note { font-size: 12px; line-height: 1.5; }
 body.aureum-lead-dialog-open { overflow: hidden !important; }
-@media (min-width: 800px) {
-  .aureum-lead-dialog .form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aureum-lead-dialog .form > .f.full:has([name="nome"]),
-  .aureum-lead-dialog .form > .f.full:has([name="destino"]) { grid-column: auto; }
-}
 @media (max-width: 799px) {
   .aureum-lead-dialog__heading { align-items: flex-start; flex-direction: column; gap: 18px; }
   .aureum-lead-dialog__alternative { flex: none; width: 100%; }

@@ -1,4 +1,8 @@
 /* AUREUM — shared contact form enhancement. Applied only to existing lead forms. */
+form[data-aureum-lead-form] > .f:has([name="email"]),
+form[data-aureum-lead-form] > .phone-field {
+  grid-column: 1 / -1;
+}
 .phone-input-group {
   display: grid;
   grid-template-columns: minmax(118px, .78fr) minmax(0, 1.42fr);

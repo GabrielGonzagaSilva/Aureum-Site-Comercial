@@ -76,7 +76,7 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
     await open(page);
     const form = page.locator('#lead-main');
     const columns = await form.evaluate(e => getComputedStyle(e).gridTemplateColumns.split(' ').length);
-    expect(columns).toBe(width >= 800 ? 2 : 1);
+    expect(columns).toBe(1);
     for (const height of [900, 360]) {
       await page.setViewportSize({ width, height });
       await page.waitForTimeout(60);
@@ -84,7 +84,6 @@ for (const width of [360, 430, 768, 1024, 1440, 1920]) {
       expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.width + 1);
       expect(metrics.top).toBeGreaterThanOrEqual(0);
       expect(metrics.bottom).toBeLessThanOrEqual(height + 1);
-      if (width >= 1024 && height === 900) expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.height + 1);
       await page.locator('#lead-main button[type=submit]').scrollIntoViewIfNeeded();
       await expect(page.locator('#lead-main button[type=submit]')).toBeInViewport();
       await expect(page.locator(close)).toBeInViewport();

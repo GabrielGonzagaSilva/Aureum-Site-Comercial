@@ -2,6 +2,11 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-16 — E-mail e telefone em linhas separadas
+
+- E-mail passa a ocupar uma linha inteira, com telefone/WhatsApp na linha seguinte nos formulários compartilhados.
+- O modal usa uma coluna em todas as larguras, mantendo a ordem de leitura e a rolagem natural em telas baixas. Preservados rótulos, validação e campos de código do país e número.
+
 ## 2026-11-16 — Revisão de identidade, tipografia, espaçamento e movimento
 
 - Unificados tamanhos e pesos por função, cores verdes da marca, contraste do dourado, margens e larguras de conteúdo nas 50 páginas de marketing. Reduzidos os espaços entre seções e removida a soma de padding externo e interno.
