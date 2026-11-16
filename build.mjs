@@ -4,6 +4,7 @@ import { applySharedHeader } from './scripts/shared-header.mjs';
 import { applyLeadForms } from './scripts/lead-forms.mjs';
 import { applyServiceCards, applyServicePages } from './scripts/service-cards.mjs';
 import { applyLocalizedCopy } from './scripts/localized-copy.mjs';
+import { applySiteRefinement } from './scripts/site-refinement.mjs';
 import { verify, filesUnder } from './scripts/verify.mjs';
 
 // Builds use only versioned source. No deployment, URL, or network is a build input.
@@ -32,6 +33,8 @@ const serviceCards = await applyServiceCards('dist');
 console.log('Applied service photo cards to ' + serviceCards.pages + ' pages.');
 const servicePages = await applyServicePages('dist');
 console.log('Prepared ' + servicePages.pages + ' localized service arrival pages.');
+const siteRefinement = await applySiteRefinement('dist');
+console.log('Applied the shared visual and motion system to ' + siteRefinement.pages + ' marketing pages.');
 const outputFiles = await filesUnder('dist');
 const versions = new Map();
 for (const file of outputFiles.filter(file => /\.(?:js|css)$/.test(file))) {

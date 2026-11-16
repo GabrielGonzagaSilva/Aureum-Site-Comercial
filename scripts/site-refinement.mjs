@@ -1,0 +1,52 @@
+import {readFile, writeFile} from 'node:fs/promises';
+import {relative} from 'node:path';
+import {filesUnder} from './verify.mjs';
+import {localeFromPath} from './localized-copy.mjs';
+import {serviceNavigation} from './service-cards.mjs';
+
+const COPY = {
+  pt: {title:'Conheça nossos serviços', cta:'Ver serviços'},
+  en: {title:'Explore our services', cta:'View services'},
+  es: {title:'Conoce nuestros servicios', cta:'Ver servicios'},
+  fr: {title:'Découvrez nos services', cta:'Voir les services'},
+  de: {title:'Unsere Leistungen', cta:'Leistungen ansehen'},
+};
+const escape = text => text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+export function refineSiteHtml(html, locale) {
+  const services=serviceNavigation(locale),copy=COPY[locale];
+  const home=locale==='pt'?'/':'/'+locale+'/';
+  let output=html.replace(/<link\b[^>]*href=["']https:\/\/fonts\.(?:googleapis|gstatic)\.com[^"']*["'][^>]*>\s*/gi,'');
+  // Keep the same vector flags without a third-party request for every card.
+  output=output.replace(/https:\/\/flagcdn\.com\/(pt|ca|gb|ie|es|au|de|fr|br)\.svg/g,'/assets/flags/$1.svg');
+  if(!output.includes('href="/assets/css/aureum-site-system.css"')) {
+    output=output.replace('</head>','<link rel="stylesheet" href="/assets/css/aureum-site-system.css">\n<script src="/assets/js/aureum-site-system.js" defer></script>\n</head>');
+  }
+  // Keep the footer in sync with the same service catalog used by the cards.
+  output=output.replace(/<footer\b(?=[^>]*\bclass=["']foot["'])[^>]*>[\s\S]*?<\/footer>/gi, footer =>
+    footer.replace(/<nav\b[^>]*><h4>[^<]+<\/h4>(?:<a href="(?:\/(?:(?:en|es|fr|de)\/)?)?#servicos">[^<]+<\/a>)+<\/nav>/g, nav => {
+      const heading=nav.match(/<h4>[^<]+<\/h4>/)[0];
+      const opening=nav.match(/^<nav\b[^>]*>/)[0];
+      return opening+heading+services.map(s=>'<a href="'+s.href+'">'+escape(s.title)+'</a>').join('')+'</nav>';
+    })
+  );
+  // Replace the obsolete programme teaser with a truthful route to the catalog.
+  output=output.replace(/<a class="pcard" href="(?:\/(?:(?:en|es|fr|de)\/)?)?#destinos" style="justify-content:flex-end">[\s\S]*?<\/a>/g,
+    '<a class="pcard site-service-overview" href="'+home+'#servicos"><b>'+escape(copy.title)+'</b><span>'+services.map(s=>escape(s.title)).join(' · ')+'.</span><span class="more">'+escape(copy.cta)+'<svg aria-hidden="true" class="i"><use href="#i-arrow"></use></svg></span></a>');
+  // A malformed incoming fragment must not stop routing and the page controls.
+  output=output.replace('var id = decodeURIComponent(location.hash.slice(1));',
+    "var id = ''; try { id = decodeURIComponent(location.hash.slice(1)); } catch (error) { id = ''; }");
+  return output;
+}
+
+export async function applySiteRefinement(root='dist') {
+  let pages=0;
+  for(const file of (await filesUnder(root)).filter(file=>file.endsWith('.html'))) {
+    const html=await readFile(file,'utf8');
+    if(!/\sid=["']hdr["']/i.test(html)) continue;
+    const locale=localeFromPath(relative(root,file).replace(/\\/g,'/'));
+    await writeFile(file,refineSiteHtml(html,locale));pages++;
+  }
+  if(pages!==50) throw Error('Expected to refine 50 marketing pages; found '+pages);
+  return {pages};
+}

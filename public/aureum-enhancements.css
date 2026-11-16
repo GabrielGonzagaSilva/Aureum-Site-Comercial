@@ -74,7 +74,7 @@ button, .primary-button, .contact-primary, .chat-send, .dc__cta { border-radius:
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline:2px solid var(--aureum-gold) !important; outline-offset:3px; }
 .dc__photo { transition:transform .55s cubic-bezier(.2,.65,.3,1); }
 @media (hover:hover) { .dc:hover .dc__photo { transform:scale(1.025); } }
-@media (prefers-reduced-motion:reduce) { *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto !important; } }
 
 /* AUREUM final UI patch — 2026-11-11 */
 #aureum-contact-hub #contact-panel[hidden],

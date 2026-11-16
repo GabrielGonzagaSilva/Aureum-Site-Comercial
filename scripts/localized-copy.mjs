@@ -513,9 +513,9 @@ export function transformLocalizedHtml(html, locale) {
     output = output.split(source).join(replacement);
   }
 
-  // The editorial line break is hidden on mobile. Preserve a real word separator
-  // so titles such as "seu<br>projeto" do not become "seuprojeto".
-  output = output.replace(/(<h2\b[^>]*\bid=["']aureum-services-title["'][^>]*>)([\s\S]*?)(<\/h2>)/gi,
+  // Editorial breaks are hidden on mobile. Every section title needs a real
+  // word separator, including the planning, process and responsibility titles.
+  output = output.replace(/(<h2\b(?=[^>]*\bclass=["'][^"']*\bpage-title\b)[^>]*>)([\s\S]*?)(<\/h2>)/gi,
     (_match, open, title, close) => open + title.replace(/(\S)(<br\s*\/?>)(?=\S)/gi, '$1 $2') + close);
 
   if (locale !== 'pt') {

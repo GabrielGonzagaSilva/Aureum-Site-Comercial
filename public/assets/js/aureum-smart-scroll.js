@@ -69,10 +69,17 @@
   });
   function initial(){
     if(!window.location.hash)return;
+    var initialHash=window.location.hash;
+    var initialScroll=window.scrollY;
     window.requestAnimationFrame(function(){
-      window.requestAnimationFrame(function(){alignHash(true);});
+      window.requestAnimationFrame(function(){
+        // Never override navigation or scrolling that happened while the page
+        // was becoming ready. Images and video may keep window.load pending.
+        if(window.location.hash!==initialHash||Math.abs(window.scrollY-initialScroll)>2)return;
+        alignHash(true);
+      });
     });
   }
-  if(document.readyState==='complete')initial();
-  else window.addEventListener('load',initial,{once:true});
+  if(document.readyState!=='loading')initial();
+  else document.addEventListener('DOMContentLoaded',initial,{once:true});
 })();

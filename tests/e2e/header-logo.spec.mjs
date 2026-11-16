@@ -96,7 +96,13 @@ for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
     await oneLoadedVariant(logo(page), 'ink');
     await load(page, '/' + locale + 'destinos/portugal/');
     await oneLoadedVariant(logo(page), 'white');
-    await page.evaluate(() => scrollTo({ top: 500, behavior: 'instant' }));
+    // Wait for WebKit's scroll event and variant swap, as on the home page.
+    await page.evaluate(() => new Promise(resolve => {
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+      }, { once: true });
+      scrollTo({ top: 500, behavior: 'instant' });
+    }));
     await oneLoadedVariant(logo(page), 'ink');
     await expect(logo(page)).toHaveAccessibleName(/Aureum/);
     await page.locator('#mm-open').click();

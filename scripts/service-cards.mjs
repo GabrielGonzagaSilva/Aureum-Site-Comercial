@@ -62,6 +62,11 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;
 const homePath = locale => locale === 'pt' ? '/' : '/' + locale + '/';
 const servicePath = (locale, service) => homePath(locale) + 'servicos/' + service.slug + '/';
 
+export function serviceNavigation(locale) {
+  const copy = COPY[locale] || COPY.pt;
+  return SERVICES.map((service, index) => ({ title: copy.cards[index], href: servicePath(locale, service) }));
+}
+
 function renderGrid(locale) {
   const copy = COPY[locale] || COPY.pt;
   const [guidanceTitle, guidanceText, guidanceCTA] = copy.guidance;

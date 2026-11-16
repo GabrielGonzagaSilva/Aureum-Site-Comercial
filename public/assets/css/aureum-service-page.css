@@ -13,9 +13,11 @@ a:focus-visible { outline: 2px solid #1C4C3C; outline-offset: 5px; }
 .service-page-header nav a { min-width: 44px; min-height: 44px; display: grid; place-items: center; font-size: 13px; text-decoration: none; border-radius: 8px; }
 .service-page-header nav a[aria-current] { background: #1C4C3C; color: #fff; }
 .service-page-header nav a:hover { text-decoration: underline; }
-main { max-width: 1280px; margin: auto; padding: clamp(64px, 12vh, 144px) clamp(24px, 5vw, 64px) 72px; }
-h1 { max-width: 18ch; margin: 0 0 24px; font-size: clamp(36px, 6vw, 76px); line-height: 1.1; font-weight: 400; letter-spacing: -.03em; text-wrap: balance; overflow-wrap: break-word; }
+main { max-width: 1280px; margin: auto; padding: clamp(40px, 6vh, 72px) clamp(24px, 5vw, 64px) 56px; }
+h1 { max-width: 18ch; margin: 0 0 24px; font-size: clamp(36px, 5vw, 64px); line-height: 1.16; font-weight: 500; letter-spacing: -.03em; text-wrap: balance; overflow-wrap: break-word; }
 p { max-width: 65ch; margin: 0; color: #1C4C3C; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; }
 .service-page-back { display: inline-flex; align-items: center; justify-content: center; gap: 24px; max-width: 100%; min-height: 48px; margin-top: 36px; padding: 12px 24px; border-radius: 999px; background: #1C4C3C; color: #fff; font-size: 15px; font-weight: 500; line-height: 1.5; text-decoration: none; }
 .service-page-back svg { width: 20px; height: 20px; flex: none; }
 .service-page-back:hover, .service-page-back:active { background: #0A211B; }
+.service-page-back { transition: background-color 160ms ease; }
+@media(prefers-reduced-motion:reduce) { .service-page-back { transition-duration: 100ms; } }

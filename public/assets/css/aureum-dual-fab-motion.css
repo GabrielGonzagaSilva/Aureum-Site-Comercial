@@ -16,7 +16,6 @@
   border-radius:inherit;pointer-events:none;z-index:-1;
   transform:translate3d(0,0,0) scale(.96);opacity:0;
   transform-origin:50% 50%;
-  will-change:transform,opacity;
 }
 #aureum-contact-hub #launch-whatsapp.fab-whatsapp::before,
 #aureum-contact-hub #launch-assistant.ai-launcher::before {

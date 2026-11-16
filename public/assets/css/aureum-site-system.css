@@ -1,0 +1,222 @@
+/* Static shared corrections: loaded before paint instead of injected by JS. */
+:root{--aureum-ivory:#E9DDCD;--aureum-sage:#768774;--aureum-emerald:#1C4C3C;--aureum-forest:#0A211B;--aureum-gold:#A37A42}
+#hdr{border-top:0!important}
+#hdr::before,#hdr::after,#hdr .navbar::before,#hdr .navbar::after{content:none!important;display:none!important}
+#hdr .topbar,#hdr .announcement-bar,#hdr .header-strip{display:none!important}
+.site-hdr .btn-hdr{border-radius:999px!important;transition:transform .22s ease,background-color .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease!important}
+.site-hdr.solid .btn-hdr,.site-hdr.solid .btn-hdr:hover,.site-hdr.solid .btn-hdr:focus-visible{background:#1C4C3C!important;color:#fff!important;border-color:#1C4C3C!important}
+.site-hdr:not(.solid) .btn-hdr:hover{background:#fff!important;color:#0A211B!important;border-color:rgba(255,255,255,.45)!important}
+.aureum-refined .citizenship{background:#1C4C3C!important;border-color:#1C4C3C!important;color:#fff!important;transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease!important}
+.aureum-refined .citizenship :is(.card-title,.card-description,.card-action,.action-label,.action-arrow){color:#fff!important}
+.aureum-refined .primary-button{background:#1C4C3C!important;border:1px solid #1C4C3C!important;color:#fff!important;border-radius:999px!important;transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease!important}
+.aureum-refined .primary-button .action-label,.aureum-refined .primary-button .action-arrow{color:#fff!important}
+.ae-section a.ae-button{background:#1C4C3C!important;border-color:#1C4C3C!important;color:#fff!important;border-radius:999px!important;transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease!important}
+.ae-section a.ae-button-light{background:#fff!important;border-color:#fff!important;color:#0A211B!important;border-radius:999px!important;transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease!important}
+.btn-primary:hover,.site-hdr.solid .btn-hdr:hover,.aureum-refined .primary-button:hover,.aureum-refined .citizenship:hover,.ae-section a.ae-button:hover{background:#1C4C3C!important;border-color:#1C4C3C!important;color:#fff!important;transform:translateY(-1px)!important;box-shadow:0 9px 22px rgba(10,33,27,.13)!important}
+.ae-section a.ae-button-light:hover{background:#fff!important;border-color:#fff!important;color:#0A211B!important;transform:translateY(-1px)!important;box-shadow:0 8px 20px rgba(10,33,27,.09)!important}
+#sobre .actions .btn-primary:hover{background:#1C4C3C!important;border-color:#1C4C3C!important;color:#fff!important}
+#sobre .actions .btn-line:hover{background:transparent!important;border-color:#768774!important;color:#1C4C3C!important;transform:translateY(-1px)!important}
+:is(.btn,.btn-primary,.btn-line,.btn-light,.btn-hdr,.btn-sm,.btn-wa,.primary-button,.ae-button,.ae-button-light,.contact-primary,.dc__cta){border-radius:999px!important}
+#destinos .dc__title,#destinos .dc__title *{color:#fff!important}
+#destinos .dc__title{text-shadow:0 2px 12px rgba(0,0,0,.25)}
+#destinos .dc__text,#destinos .dc__cta{color:rgba(255,255,255,.92)!important}
+.aureum-refined.ae-section.ae-why{background:#E9DDCD!important;color:#0A211B!important}
+.aureum-refined.ae-section.ae-why .page-title,.aureum-refined.ae-section.ae-why .card-title,.aureum-refined.ae-section.ae-why .ae-footer-copy h3{color:#0A211B!important}
+.aureum-refined.ae-section.ae-why .eyebrow,.aureum-refined.ae-section.ae-why .ae-icon{color:#A37A42!important}
+.aureum-refined.ae-section.ae-why .page-intro,.aureum-refined.ae-section.ae-why .card-description,.aureum-refined.ae-section.ae-why .ae-footer-copy p{color:#1C4C3C!important}
+.aureum-refined.ae-section.ae-why .section-divider{background:rgba(10,33,27,.18)!important}
+.aureum-refined.ae-section.ae-why .ae-reason{background:#fff!important;border:1px solid rgba(10,33,27,.14)!important;color:#0A211B!important;box-shadow:0 8px 24px rgba(10,33,27,.05)!important;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease!important}
+.aureum-refined.ae-section.ae-why .ae-reason .card-title{color:#0A211B!important}
+.aureum-refined.ae-section.ae-why .ae-reason .card-description{color:#1C4C3C!important}
+.aureum-refined.ae-section.ae-why .ae-reason .ae-icon{color:#A37A42!important;stroke:currentColor!important}
+.aureum-refined.ae-section.ae-why .ae-reason:hover{background:#fff!important;border-color:#768774!important;transform:translateY(-2px)!important;box-shadow:0 12px 28px rgba(10,33,27,.09)!important}
+.aureum-refined.ae-section.ae-why .ae-footer .ae-button{background:#1C4C3C!important;border-color:#1C4C3C!important;color:#fff!important}
+.foot{background:#1C4C3C!important;color:#E9DDCD!important}
+.foot p,.foot .disc,.foot nav a,.foot .f-bottom,.foot .f-social-label{color:#E9DDCD!important}
+.foot h4{color:#E9DDCD!important}
+.foot nav a:hover,.foot a:hover{color:#fff!important}
+.foot .f-bottom{border-top:1px solid rgba(233,221,205,.28)!important}
+.foot .f-bottom nav{display:flex!important;align-items:center!important;gap:20px!important}
+.foot .f-bottom nav>a,.foot .f-bottom nav>span{display:inline-flex!important;align-items:center!important;min-height:24px!important;padding:0!important;margin:0!important;line-height:1.4!important;vertical-align:middle!important}
+#contact-panel[data-current-view='assistant'] .contact-panel-head{position:relative!important;z-index:30!important}
+#contact-panel[data-current-view='assistant'] .contact-panel-head::after{pointer-events:none!important}
+#contact-panel[data-current-view='assistant'] .contact-close{position:absolute!important;top:12px!important;right:12px!important;z-index:50!important;display:grid!important;place-items:center!important;pointer-events:auto!important;cursor:pointer!important;touch-action:manipulation!important}
+@media(hover:hover){.site-hdr .btn-hdr:hover,.aureum-refined .primary-button:hover,.aureum-refined .citizenship:hover,.ae-section a.ae-button:hover,.ae-section a.ae-button-light:hover{transform:translateY(-1px)!important}}
+@media(prefers-reduced-motion:reduce){.site-hdr .btn-hdr,.aureum-refined .primary-button,.aureum-refined .citizenship,.ae-section a.ae-button,.ae-section a.ae-button-light,.aureum-refined.ae-section.ae-why .ae-reason{transition:none!important;transform:none!important}}
+
+/* Aureum shared system — one scale for every marketing route and locale. */
+:root {
+  --aureum-surface: #FFF;
+  --aureum-surface-soft: #F7F9F6;
+  --aureum-ink: #0A211B;
+  --aureum-muted: #385247;
+  --aureum-border: #DEE7DF;
+  --aureum-gold-text: #795629;
+  --aureum-heading: clamp(32px, 3.62vw, 52px);
+  --aureum-card-heading: clamp(21px, 1.74vw, 25px);
+  --aureum-section-space: clamp(36px, 4.5vw, 64px);
+  --aureum-header-gap: clamp(16px, 1.4vw, 20px);
+  --aureum-content-gap: clamp(22px, 2vw, 28px);
+  --aureum-ease: cubic-bezier(.16, 1, .3, 1);
+  --aureum-feedback: 160ms;
+  --aureum-state: 220ms;
+  --wrap: 1440px;
+  --gutter: clamp(24px, 5.5556vw, 80px);
+}
+body .aureum-refined,
+body .aureum-refined.ae-section {
+  --ink: var(--aureum-ink);
+  --muted: var(--aureum-muted);
+  --gold: var(--aureum-gold-text);
+  --line: var(--aureum-border);
+  --warm: var(--aureum-surface-soft);
+  --navy: var(--aureum-emerald);
+  --aureum-editorial-header-gap: var(--aureum-header-gap);
+  --aureum-editorial-section-gap: var(--aureum-content-gap);
+}
+body .wrap,
+body .aureum-refined .aureum-page {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter) !important;
+}
+/* Outer sections own the rhythm. Refined sections delegate it to their wrapper. */
+body .page > .sec { padding-block: var(--aureum-section-space) !important; }
+body .page > .aureum-refined { padding-block: 0 !important; }
+body .aureum-refined .aureum-page {
+  padding-block: var(--aureum-section-space) !important;
+  gap: var(--aureum-content-gap) !important;
+}
+body .page > .band > .wrap { padding-block: var(--aureum-section-space) !important; }
+body .aureum-refined .heading-group { gap: 16px; }
+body .aureum-refined .page-header { row-gap: var(--aureum-header-gap) !important; }
+body .page :is(.page-title,.h2,.h2-sm),
+body .page #contato .contact .h2 {
+  font-size: var(--aureum-heading) !important;
+  font-weight: 500 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.03em !important;
+  max-inline-size: min(100%,26ch);
+  height: auto !important;
+  min-height: 0 !important;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  color: var(--aureum-ink);
+}
+body .page .band .h2 { color: #FFF !important; }
+body .page .h2-sm { max-inline-size: 100%; }
+body .page .dhero h1 { letter-spacing: -.04em; }
+body .page :is(.card-title,.route h3,.fcard h3,.ux-contact-intro h3) {
+  font-size: var(--aureum-card-heading) !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -.02em !important;
+}
+body .page :is(.page-intro,.sec-head .lead,.about .lead,.contact .lead) {
+  font-size: clamp(16px,1.18vw,17px) !important;
+  line-height: 1.65 !important;
+  color: var(--aureum-muted);
+  max-inline-size: min(100%,72ch);
+}
+body .page .sec-head { margin-bottom: var(--aureum-content-gap) !important; }
+body #home #destinos .sec-head { margin-bottom: var(--aureum-content-gap) !important; }
+body .aureum-refined.ar-services { background: var(--aureum-surface); }
+body .aureum-refined.ae-section.ae-why,
+body .aureum-refined.ae-section.ae-transparency { background: var(--aureum-surface-soft) !important; }
+body .aureum-refined :is(.eyebrow,.scenario-tag,.ae-label),
+body .aureum-refined.ae-section.ae-why .eyebrow { color: var(--aureum-gold-text) !important; }
+body .aureum-refined .scenario-card { height: auto !important; min-height: 0; padding: 24px; }
+body .aureum-refined .scenario-card > * { width: 100%; }
+body .aureum-refined .scenario-copy { min-height: 0; flex: 1; }
+body .aureum-refined .helper-note { background: var(--aureum-surface-soft); }
+body .aureum-refined :is(.scenario-card,.ae-step,.ae-role,.ae-reason) { border-radius: 12px; }
+body .page .dgrid > .dcard { border-radius: 24px; overflow: hidden; }
+body .site-service-overview { border-radius: 12px; gap: 12px; }
+body .site-service-overview .more { margin-top: 8px; }
+body .page .route .more,
+body .page .breadcrumbs a { display: inline-flex; align-items: center; min-height: 44px; }
+body .foot nav a { display: inline-flex; align-items: center; min-height: 32px; }
+body .foot .f-grid > nav { display: flex; flex-direction: column; align-items: flex-start; }
+body .f-social-link { width: 44px; height: 44px; }
+body .aureum-locale__option { min-height: 44px; }
+body .aureum-locale__option-code,
+body .aureum-locale__eyebrow { color: #52665B; }
+body .aureum-locale__option.is-current { background: #EEF2EC !important; color: var(--aureum-ink) !important; }
+body :is(input,textarea) { caret-color: var(--aureum-emerald); }
+body .page :is(.clock,[data-tz]) { font-variant-numeric: tabular-nums; }
+::selection { background: #1C4C3C; color: #FFF; }
+:where(a,button,input,select,textarea,summary):focus-visible {
+  outline: 2px solid var(--aureum-emerald) !important;
+  outline-offset: 4px;
+}
+body .foot :is(a,button):focus-visible,
+body .band a:focus-visible { outline-color: #FFF !important; }
+
+/* Motion: the cinematic hero/header handoff stays the focal sequence.
+   Supporting motion explains controls and open states; content stays visible. */
+body :is(.btn,.btn-hdr,.primary-button,.ae-button,.contact-primary,.f-social-link),
+body .aureum-refined.ae-section.ae-why .ae-reason {
+  transition: background-color var(--aureum-feedback) ease,
+              border-color var(--aureum-feedback) ease,
+              color var(--aureum-feedback) ease,
+              transform var(--aureum-feedback) var(--aureum-ease),
+              box-shadow var(--aureum-feedback) ease !important;
+}
+body .dc .dc__photo { transition: transform 420ms var(--aureum-ease); }
+body .dc .dc__arrow { transition: background-color var(--aureum-feedback) ease, color var(--aureum-feedback) ease, border-color var(--aureum-feedback) ease; }
+body .qa summary .i { transition: transform var(--aureum-feedback) var(--aureum-ease); }
+body .qa summary { min-height: 44px; }
+body #mmenu:not([hidden]),
+body #mega:not([hidden]),
+body .aureum-locale[open] .aureum-locale__panel {
+  animation: aureum-open var(--aureum-state) var(--aureum-ease) both;
+}
+@keyframes aureum-open {
+  from { opacity: .7; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes aureum-open-reduced { from { opacity: .85; } to { opacity: 1; } }
+html[data-aureum-motion="paused"] #aureum-contact-hub :is(#launch-whatsapp,#launch-assistant)::before,
+html[data-aureum-motion="paused"] #aureum-contact-hub :is(#launch-whatsapp,#launch-assistant)::after {
+  animation-play-state: paused !important;
+  opacity: 0 !important;
+}
+@media (max-width:767px) {
+  :root { --aureum-section-space: 36px; }
+  body .foot nav a { min-height: 44px; }
+  body .page :is(.page-title,.h2,.h2-sm) { max-inline-size: 100%; }
+  body .aureum-refined .scenario-card { padding: 22px; }
+}
+@media (hover:none) {
+  body :is(.btn,.btn-hdr,.primary-button,.ae-button):hover,
+  body .aureum-refined.ae-section.ae-why .ae-reason:hover { transform: none !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto !important; }
+  body :is(.btn,.btn-hdr,.primary-button,.ae-button,.contact-primary,.f-social-link),
+  body .aureum-refined.ae-section.ae-why .ae-reason,
+  body .dc .dc__arrow,
+  body .aureum-locale__trigger,
+  body .aureum-locale__option {
+    transition: color 100ms ease, background-color 100ms ease, border-color 100ms ease !important;
+    transform: none !important;
+  }
+  body .dc .dc__photo,
+  body .qa summary .i { transition: none !important; transform: none !important; }
+  body #mmenu:not([hidden]),
+  body #mega:not([hidden]),
+  body .aureum-locale[open] .aureum-locale__panel {
+    animation: aureum-open-reduced 120ms ease both !important;
+  }
+}
+
+/* The privacy document is a reading surface; legal content is unchanged. */
+body.aureum-document { background: #FFF; color: var(--aureum-ink); }
+body.aureum-document main { padding: clamp(36px,5vw,64px) 24px; max-width: 800px; }
+body.aureum-document h1 { color: var(--aureum-ink); font-size: var(--aureum-heading); line-height: 1.16; font-weight: 500; letter-spacing: -.03em; text-wrap: balance; }
+body.aureum-document h2 { color: var(--aureum-ink); font-size: 24px; line-height: 1.3; font-weight: 500; margin: 32px 0 12px; }
+body.aureum-document :is(p,li) { color: var(--aureum-muted); line-height: 1.7; }
+body.aureum-document p { margin-block: 16px; }
+body.aureum-document a { color: var(--aureum-emerald); }
+body.aureum-document footer a { display: inline-flex; align-items: center; min-height: 44px; }

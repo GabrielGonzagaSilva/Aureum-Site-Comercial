@@ -2,6 +2,17 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-16 — Revisão de identidade, tipografia, espaçamento e movimento
+
+- Unificados tamanhos e pesos por função, cores verdes da marca, contraste do dourado, margens e larguras de conteúdo nas 50 páginas de marketing. Reduzidos os espaços entre seções e removida a soma de padding externo e interno.
+- Movidas as correções globais de identidade do JavaScript para CSS estático; fontes locais carregam com `swap` e links de fontes externas redundantes são removidos do build.
+- Corrigidas palavras que se juntavam nos títulos móveis, serviços desatualizados no rodapé, teaser antigo de programas e falha de navegação com fragmentos malformados.
+- Corrigido um salto de rolagem reproduzido no WebKit: o alinhamento inicial de links com fragmento aguardava imagens e vídeo terminarem de carregar e podia devolver o visitante ao topo depois que ele já havia rolado. O alinhamento agora ocorre ao preparar o DOM e respeita mudanças de posição.
+- Padronizadas transições, mantido o movimento focal do hero, pausados efeitos de atenção em segundo plano e durante interações. Redução de movimento mantém feedback de cor sem deslocamentos. Menu móvel isola o fundo, mantém o foco por teclado e o restaura ao fechar.
+- Bandeiras vetoriais dos cards passam a ser servidas pelo próprio site, preservando os símbolos e eliminando a dependência de carregamento de terceiros.
+- Ajustadas as margens das páginas iniciais dos serviços e a apresentação da página de privacidade, preservando seus textos e o recebimento desativado dos formulários.
+- Validação: 36 testes unitários, cobertura de 114 cenários em Chromium/WebKit, varredura de 50 páginas em desktop/celular, auditorias axe nos cinco idiomas e 106 links internos sem destino ausente. A regressão de rolagem e seus fluxos afetados passaram novamente nos dois navegadores após a correção. Evidências e limites em `docs/SITE-REVIEW-20261116.md`.
+
 ## 2026-11-16 — Título e subtítulo da seção de serviços
 
 - Atualizado o título em português para “Conheça nossos serviços”.
