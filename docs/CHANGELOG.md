@@ -2,6 +2,11 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-16 — Título e subtítulo da seção de serviços
+
+- Atualizado o título em português para “Conheça nossos serviços”.
+- Inserida uma quebra de linha no subtítulo antes de “Cada caso é avaliado individualmente pela equipe Aureum.” nas páginas em português que reutilizam a seção.
+
 ## 2026-11-15 — Serviços: fotografias fornecidas pelo usuário em alta resolução
 
 - Substituídas as cinco fotografias pelos arquivos de `Archive.zip`, associados aos serviços conforme sua nomenclatura. Mantida a grade com cinco serviços e o sexto card verde de orientação.

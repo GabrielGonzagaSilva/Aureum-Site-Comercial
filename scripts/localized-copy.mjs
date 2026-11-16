@@ -234,6 +234,8 @@ const SUBJECTS = {
 
 const COPY = {
   pt: [
+    ['Qual é o seu<br>projeto internacional?', 'Conheça nossos serviços'],
+    ['Encontre a assessoria de acordo com o seu objetivo. Cada caso é avaliado individualmente pela equipe Aureum.', 'Encontre a assessoria de acordo com o seu objetivo.<br>Cada caso é avaliado individualmente pela equipe Aureum.'],
     ['Destinos. Projetos e contextos diferentes.', 'Destinos, projetos e contextos diferentes.'],
     ['Assessoria para jornadas acadêmicas inseridas em um projeto internacional.', 'Assessoria para projetos de estudo que integram uma iniciativa de mobilidade internacional.'],
     ['Jornadas acadêmicas inseridas em um projeto mais amplo de mobilidade internacional.', 'Percursos de estudo integrados a um projeto mais amplo de mobilidade internacional.'],

@@ -69,7 +69,11 @@ export async function verify(root = 'public') {
             failures.push(file + ': editorial description must follow its heading group');
           }
           const intro = block.match(/<p\b(?=[^>]*class=["'][^"']*\bpage-intro\b[^"']*["'])[^>]*>([\s\S]*?)<\/p>/i);
-          if (intro && /<br\s*\/?>/i.test(intro[1])) {
+          // The Portuguese services subtitle intentionally separates its two sentences.
+          const serviceIntroBreak = /\bid=["']aureum-services-title["']/i.test(block)
+            && /<html\b[^>]*\blang=["']pt(?:-[^"']+)?["']/i.test(content)
+            && (intro?.[1].match(/<br\s*\/?>/gi) || []).length === 1;
+          if (intro && /<br\s*\/?>/i.test(intro[1]) && !serviceIntroBreak) {
             failures.push(file + ': editorial descriptions must not contain forced line breaks');
           }
         }
