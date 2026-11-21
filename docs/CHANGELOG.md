@@ -2,6 +2,10 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Favicon oficial da Aureum
+
+- Substituído o ícone da aba pelo SVG fornecido pela marca. O build inclui a assinatura do arquivo na URL do favicon em todos os idiomas.
+
 ## 2026-11-21 — Clique em toda a área dos cards de destinos
 
 - Fotos, etiquetas, textos e setas dos nove destinos acionam o mesmo link nativo em cada idioma. A área de foco acompanha o card inteiro por meio da regra compartilhada com Serviços.

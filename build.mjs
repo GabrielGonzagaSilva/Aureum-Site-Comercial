@@ -37,13 +37,13 @@ const siteRefinement = await applySiteRefinement('dist');
 console.log('Applied the shared visual and motion system to ' + siteRefinement.pages + ' marketing pages.');
 const outputFiles = await filesUnder('dist');
 const versions = new Map();
-for (const file of outputFiles.filter(file => /\.(?:js|css)$/.test(file))) {
+for (const file of outputFiles.filter(file => /\.(?:js|css)$/.test(file) || file === 'dist/assets/brand/favicon-aureum.svg')) {
   const hash = createHash('sha256').update(await readFile(file)).digest('hex').slice(0, 12);
   versions.set('/' + file.slice('dist/'.length), hash);
 }
 for (const file of outputFiles.filter(file => file.endsWith('.html'))) {
   const html = await readFile(file, 'utf8');
-  const versioned = html.replace(/\b(href|src)=(['"])(\/[^'"?]+\.(?:js|css))\2/g, (match, attribute, quote, url) => {
+  const versioned = html.replace(/\b(href|src)=(['"])(\/[^'"?]+\.(?:js|css)|\/assets\/brand\/favicon-aureum\.svg)\2/g, (match, attribute, quote, url) => {
     const version = versions.get(url);
     return version ? `${attribute}=${quote}${url}?v=${version}${quote}` : match;
   });
