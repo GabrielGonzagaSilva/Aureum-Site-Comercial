@@ -215,7 +215,7 @@ export async function verify(root = 'public') {
       }
     }
   }
-  const expectedPages = builtOutput ? 76 : 51;
+  const expectedPages = builtOutput ? 81 : 56;
   if (htmlFiles.length !== expectedPages) failures.push(`Expected ${expectedPages} pages; found ${htmlFiles.length}`);
   if (failures.length) throw new Error([...new Set(failures)].join('\n'));
   return { pages: htmlFiles.length, files: files.length, parsedScripts: scripts, headerPages, sharedHeaderPages };
