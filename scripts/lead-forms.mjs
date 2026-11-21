@@ -26,6 +26,7 @@ const COPY = {
     contactNote: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
     contactError: 'Informe um e-mail válido ou um telefone com código do país.',
     honeypotLabel: 'Deixe este campo vazio', consentError: 'Marque a autorização para continuar.',
+    privacyLinkHref: '/privacidade-atendimento.html', privacyLinkLabel: 'Leia o aviso de privacidade do formulário.',
   },
   en: {
     emailLabel: 'Email (optional)', phoneLabel: 'Phone / WhatsApp', codeLabel: 'Country calling code',
@@ -35,6 +36,7 @@ const COPY = {
     contactNote: 'Provide at least one way to reach you: email or phone/WhatsApp.',
     contactError: 'Enter a valid email address or a phone number with its country code.',
     honeypotLabel: 'Leave this field empty', consentError: 'Please confirm your consent to continue.',
+    privacyLinkHref: '/en/contact-privacy.html', privacyLinkLabel: 'Read the contact form privacy notice.',
   },
   es: {
     emailLabel: 'Correo electrónico (opcional)', phoneLabel: 'Teléfono / WhatsApp', codeLabel: 'Código de país',
@@ -44,6 +46,7 @@ const COPY = {
     contactNote: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
     contactError: 'Introduce un correo válido o un teléfono con el código del país.',
     honeypotLabel: 'Deja este campo vacío', consentError: 'Confirma la autorización para continuar.',
+    privacyLinkHref: '/es/privacidad-contacto.html', privacyLinkLabel: 'Lee el aviso de privacidad del formulario.',
   },
   fr: {
     emailLabel: 'E-mail (facultatif)', phoneLabel: 'Téléphone / WhatsApp', codeLabel: 'Indicatif du pays',
@@ -53,6 +56,7 @@ const COPY = {
     contactNote: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
     contactError: 'Saisissez une adresse e-mail valide ou un numéro avec son indicatif pays.',
     honeypotLabel: 'Laissez ce champ vide', consentError: 'Confirmez votre autorisation pour continuer.',
+    privacyLinkHref: '/fr/confidentialite-contact.html', privacyLinkLabel: 'Consultez l’avis de confidentialité du formulaire.',
   },
   de: {
     emailLabel: 'E-Mail (optional)', phoneLabel: 'Telefon / WhatsApp', codeLabel: 'Ländervorwahl',
@@ -62,6 +66,7 @@ const COPY = {
     contactNote: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
     contactError: 'Geben Sie eine gültige E-Mail-Adresse oder eine Telefonnummer mit Ländervorwahl ein.',
     honeypotLabel: 'Lassen Sie dieses Feld leer', consentError: 'Bestätigen Sie Ihre Zustimmung, um fortzufahren.',
+    privacyLinkHref: '/de/datenschutzhinweis-kontakt.html', privacyLinkLabel: 'Lesen Sie den Datenschutzhinweis zum Kontaktformular.',
   },
 };
 
@@ -157,6 +162,11 @@ function transformForm(form, locale, index) {
   const consentBlock = /<label\b(?=[^>]*\bclass=["'][^"']*\bconsent\b)[^>]*>[\s\S]*?<\/label>/i;
   if (consentBlock.test(form) && !/class=["'][^"']*\bconsent-error\b/i.test(form)) {
     form = form.replace(consentBlock, (label) => label + '<span class="err consent-error" id="' + formId + '-consent-error" role="alert" hidden>' + copy.consentError + '</span>');
+  }
+
+  if (consentBlock.test(form) && !form.includes('aureum-privacy-link')) {
+    const privacyLink = '<p class="aureum-privacy-link" id="' + formId + '-privacy-link" hidden><a href="' + copy.privacyLinkHref + '">' + copy.privacyLinkLabel + '</a></p>';
+    form = form.replace(consentBlock, (label) => label + privacyLink);
   }
 
   const consentInput = /<input\b(?=[^>]*\bname=["']consentimento["'])[^>]*\/?\s*>/i.exec(form);

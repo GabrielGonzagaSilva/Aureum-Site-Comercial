@@ -135,3 +135,24 @@ form[data-aureum-lead-form] > .phone-field {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.aureum-privacy-link {
+  margin: 6px 0 0 28px;
+  color: #59645a;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.aureum-privacy-link[hidden] {
+  display: none !important;
+}
+.aureum-privacy-link a {
+  color: #1C4C3C;
+  text-decoration: underline;
+  text-decoration-color: rgba(28, 76, 60, .45);
+  text-underline-offset: 3px;
+}
+.aureum-privacy-link a:focus-visible {
+  outline: 2px solid #A37A42;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
