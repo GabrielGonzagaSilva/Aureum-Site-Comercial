@@ -2,6 +2,10 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Nascer do sol na prévia
+
+- O sol emerge de um horizonte invisível em 1,24 s. O nome e a assinatura completam a entrada em 1,92 s. O SVG usa os traçados originais e fundo transparente.
+
 ## 2026-11-21 — Prévia da marca animada na abertura
 
 - O vídeo de abertura recebe a animação branca em SVG nas cinco páginas iniciais. A preferência de movimento reduzido seleciona a marca estática desde o carregamento.

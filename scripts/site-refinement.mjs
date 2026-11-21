@@ -31,7 +31,7 @@ export function refineSiteHtml(html, locale) {
       .replace(/width="\d+"/,'width="764"')
       .replace(/height="\d+"/,full?'height="524"':'height="186"');
     if (!full) return logo;
-    return '<picture class="hero-brand-picture"><source media="(prefers-reduced-motion: no-preference)" srcset="/assets/brand/aureum-motion-branco.svg">' + logo + '</picture>';
+    return '<picture class="hero-brand-picture"><source media="(prefers-reduced-motion: no-preference)" srcset="/assets/brand/aureum-motion-branco.svg?v=nascer-do-sol">' + logo + '</picture>';
   });
   // Keep the footer in sync with the same service catalog used by the cards.
   output=output.replace(/<footer\b(?=[^>]*\bclass=["']foot["'])[^>]*>[\s\S]*?<\/footer>/gi, footer =>
