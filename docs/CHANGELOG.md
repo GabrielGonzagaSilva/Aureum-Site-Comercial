@@ -2,6 +2,11 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-20 — Atualização das logos oficiais
+- Incluídos os seis SVGs oficiais. A abertura usa a marca completa branca, o rodapé usa a reduzida bege e a navegação alterna as reduzidas branca e preta conforme o fundo.
+- Aplicada a reduzida preta às páginas de serviço, à política de privacidade e ao modal de contato. O ícone da aba usa o “A” do novo arquivo sobre verde-floresta.
+- Ajustadas as proporções das imagens, preservando os controles de visibilidade do cabeçalho e do menu móvel.
+
 ## 2026-11-20 — Integração de notificação de leads preparada
 
 - Implementado envio server-side de notificações transacionais pelo Resend após a persistência privada no Vercel Blob.
