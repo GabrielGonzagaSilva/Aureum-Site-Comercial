@@ -6,6 +6,7 @@ import {
   LeadValidationError,
   normalizeLeadPayload,
 } from '../server/leads-core.mjs';
+import { sendLeadNotification } from '../server/lead-notifications.mjs';
 
 // Intentionally closed until the approved consent copy and privacy notice are versioned.
 // Do not set the Vercel feature flags while this value is empty.
@@ -101,6 +102,7 @@ export async function POST(request) {
     ...lead,
   };
 
+  let stored = true;
   try {
     await put(
       'leads/' + datePath + '/' + requestId + '.json',
@@ -115,10 +117,23 @@ export async function POST(request) {
     );
   } catch (error) {
     const status = Number(error?.statusCode || error?.status || 0);
-    if (status === 409) return json({ ok: true, duplicate: true, requestId }, 200);
-    console.error('Aureum lead storage failed:', error?.name || 'unknown');
-    return json({ error: 'Não foi possível registrar a solicitação com segurança. Tente novamente.' }, 503);
+    if (status === 409) {
+      stored = false;
+    } else {
+      console.error('Aureum lead storage failed:', error?.name || 'unknown');
+      return json({ error: 'Não foi possível registrar a solicitação com segurança. Tente novamente.' }, 503);
+    }
   }
 
-  return json({ ok: true, requestId }, 201);
+  try {
+    await sendLeadNotification(lead, requestId);
+  } catch (error) {
+    console.error('Aureum lead notification failed:', Number(error?.status) || error?.name || 'unknown');
+    return json({
+      error: 'Sua solicitação foi registrada, mas a equipe ainda não foi notificada. Tente novamente em alguns minutos.',
+      code: 'notification_failed',
+    }, 503);
+  }
+
+  return json({ ok: true, requestId, duplicate: !stored }, stored ? 201 : 200);
 }

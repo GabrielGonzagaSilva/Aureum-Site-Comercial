@@ -14,6 +14,10 @@ const validEnvironment = {
   AUREUM_LEADS_PRIVACY_NOTICE_VERSION: version,
   AUREUM_LEADS_RETENTION_DAYS: '30',
   BLOB_READ_WRITE_TOKEN: 'test-token',
+  AUREUM_LEADS_NOTIFICATION_ENABLED: 'true',
+  AUREUM_LEADS_NOTIFICATION_TO: 'contato.aureum@outlook.com',
+  AUREUM_LEADS_NOTIFICATION_FROM: 'Aureum <notificacoes@mail.aureumassessoria.com.br>',
+  RESEND_API_KEY: 're_test_key',
 };
 
 function payload(overrides = {}) {
@@ -39,6 +43,9 @@ test('lead intake stays disabled unless every privacy and retention gate is sati
   assert.equal(getLeadIntakeConfig({ ...validEnvironment, AUREUM_LEADS_RETENTION_DAYS: '' }, version).enabled, false);
   assert.equal(getLeadIntakeConfig({ ...validEnvironment, AUREUM_LEADS_PRIVACY_NOTICE_VERSION: 'old' }, version).enabled, false);
   assert.equal(getLeadIntakeConfig(validEnvironment, version).enabled, true);
+  assert.equal(getLeadIntakeConfig({ ...validEnvironment, AUREUM_LEADS_NOTIFICATION_ENABLED: 'false' }, version).enabled, false);
+  assert.equal(getLeadIntakeConfig({ ...validEnvironment, RESEND_API_KEY: '' }, version).enabled, false);
+  assert.equal(getLeadIntakeConfig({ ...validEnvironment, AUREUM_LEADS_NOTIFICATION_TO: 'not-an-email' }, version).enabled, false);
 });
 
 test('server accepts email-only, phone-only and combined contact details', () => {

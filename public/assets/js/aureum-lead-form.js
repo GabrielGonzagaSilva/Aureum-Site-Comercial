@@ -14,7 +14,7 @@
       copy: 'Copiar mensagem', edit: 'Editar dados', copied: 'Mensagem copiada. Encaminhe-a pelo canal oficial da Aureum.',
       copyFailed: 'Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.',
       successTitle: 'Solicitação registrada', successText: 'Sua solicitação foi registrada com segurança. A equipe da Aureum poderá consultar os dados informados para dar continuidade ao atendimento.',
-      newRequest: 'Enviar outra solicitação', error: 'Não foi possível registrar agora. Tente novamente ou utilize um canal oficial de contato.',
+      newRequest: 'Enviar outra solicitação', error: 'Não foi possível registrar agora. Tente novamente ou utilize um canal oficial de contato.', notificationError: 'Sua solicitação foi registrada, mas a equipe ainda não foi notificada. Tente novamente em alguns minutos.',
       contactError: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
       emailError: 'Confira o e-mail informado.', phoneError: 'Confira o código do país, o DDD/código de área e o número.',
       nameError: 'Informe seu nome.', consentError: 'Confirme a autorização para continuar.',
@@ -28,7 +28,7 @@
       copy: 'Copy message', edit: 'Edit details', copied: 'Message copied. Forward it through an official Aureum contact channel.',
       copyFailed: 'Automatic copying failed. Select the text and copy it manually.',
       successTitle: 'Enquiry received', successText: 'Your enquiry has been securely recorded. The Aureum team can access the details provided to continue the conversation.',
-      newRequest: 'Send another enquiry', error: 'We could not record your enquiry. Please try again or use an official contact channel.',
+      newRequest: 'Send another enquiry', error: 'We could not record your enquiry. Please try again or use an official contact channel.', notificationError: 'Your request was saved, but the team has not been notified yet. Please try again in a few minutes.',
       contactError: 'Provide at least one way to reach you: email or phone/WhatsApp.',
       emailError: 'Check the email address.', phoneError: 'Check the country code, area code and phone number.',
       nameError: 'Enter your name.', consentError: 'Please confirm your consent to continue.',
@@ -42,7 +42,7 @@
       copy: 'Copiar mensaje', edit: 'Editar datos', copied: 'Mensaje copiado. Envíalo por un canal oficial de Aureum.',
       copyFailed: 'No se pudo copiar automáticamente. Selecciona el texto y cópialo manualmente.',
       successTitle: 'Solicitud recibida', successText: 'Tu solicitud se ha registrado de forma segura. El equipo de Aureum podrá consultar los datos para continuar la atención.',
-      newRequest: 'Enviar otra solicitud', error: 'No se pudo registrar la solicitud. Inténtalo de nuevo o utiliza un canal oficial.',
+      newRequest: 'Enviar otra solicitud', error: 'No se pudo registrar la solicitud. Inténtalo de nuevo o utiliza un canal oficial.', notificationError: 'Tu solicitud se ha guardado, pero el equipo aún no ha recibido la notificación. Inténtalo de nuevo en unos minutos.',
       contactError: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
       emailError: 'Comprueba el correo electrónico.', phoneError: 'Comprueba el código del país, el prefijo de área y el número.',
       nameError: 'Indica tu nombre.', consentError: 'Confirma la autorización para continuar.',
@@ -56,7 +56,7 @@
       copy: 'Copier le message', edit: 'Modifier les informations', copied: 'Message copié. Transmettez-le par un canal officiel d’Aureum.',
       copyFailed: 'La copie automatique a échoué. Sélectionnez le texte et copiez-le manuellement.',
       successTitle: 'Demande enregistrée', successText: 'Votre demande a été enregistrée de manière sécurisée. L’équipe Aureum pourra consulter les informations fournies pour poursuivre les échanges.',
-      newRequest: 'Envoyer une autre demande', error: 'Impossible d’enregistrer la demande. Réessayez ou utilisez un canal officiel.',
+      newRequest: 'Envoyer une autre demande', error: 'Impossible d’enregistrer la demande. Réessayez ou utilisez un canal officiel.', notificationError: 'Votre demande a été enregistrée, mais l’équipe n’a pas encore été notifiée. Réessayez dans quelques minutes.',
       contactError: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
       emailError: 'Vérifiez l’adresse e-mail.', phoneError: 'Vérifiez l’indicatif du pays, l’indicatif régional et le numéro.',
       nameError: 'Indiquez votre nom.', consentError: 'Confirmez votre autorisation pour continuer.',
@@ -70,7 +70,7 @@
       copy: 'Nachricht kopieren', edit: 'Angaben bearbeiten', copied: 'Nachricht kopiert. Senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
       copyFailed: 'Automatisches Kopieren nicht möglich. Markieren und kopieren Sie den Text bitte manuell.',
       successTitle: 'Anfrage registriert', successText: 'Ihre Anfrage wurde sicher gespeichert. Das Aureum-Team kann die angegebenen Daten einsehen, um den Kontakt fortzusetzen.',
-      newRequest: 'Weitere Anfrage senden', error: 'Die Anfrage konnte nicht gespeichert werden. Versuchen Sie es erneut oder nutzen Sie einen offiziellen Kontaktkanal.',
+      newRequest: 'Weitere Anfrage senden', error: 'Die Anfrage konnte nicht gespeichert werden. Versuchen Sie es erneut oder nutzen Sie einen offiziellen Kontaktkanal.', notificationError: 'Ihre Anfrage wurde gespeichert, aber das Team wurde noch nicht benachrichtigt. Bitte versuchen Sie es in einigen Minuten erneut.',
       contactError: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
       emailError: 'Bitte prüfen Sie die E-Mail-Adresse.', phoneError: 'Bitte prüfen Sie Ländervorwahl, Ortsvorwahl und Rufnummer.',
       nameError: 'Bitte geben Sie Ihren Namen ein.', consentError: 'Bestätigen Sie die Zustimmung, um fortzufahren.',
@@ -366,7 +366,8 @@
         }).then(function (response) {
           return response.json().catch(function () { return {}; }).then(function (body) {
             if (!response.ok || body.ok !== true) {
-              var error = new Error(body.error || text.error);
+              var message = body.code === 'notification_failed' ? text.notificationError : (body.error || text.error);
+              var error = new Error(message);
               error.status = response.status;
               throw error;
             }
