@@ -5,6 +5,7 @@
   padding-top:clamp(105px,12vh,150px)!important;
   padding-bottom:clamp(105px,12vh,150px)!important;
 }
+.hero-brand-picture { display: contents; }
 #home .hero-logo-centered-test .hero-brand-center {
   margin:0 auto!important;
   height:auto!important;

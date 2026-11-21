@@ -27,9 +27,11 @@ export function refineSiteHtml(html, locale) {
   output=output.replace(/<img\b[^>]*src="\/assets\/brand\/aureum-(?:hero|wordmark)-outlined-v1-(?:white|ink)\.svg"[^>]*>/g, image => {
     const full=image.includes('aureum-hero-outlined');
     const color=image.includes('-ink.svg')?'preto':'branco';
-    return image.replace(/src="[^"]+"/,'src="/assets/brand/logo-'+(full?'completa':'reduzida')+'-'+color+'.svg"')
+    const logo = image.replace(/src="[^"]+"/,'src="/assets/brand/logo-'+(full?'completa':'reduzida')+'-'+color+'.svg"')
       .replace(/width="\d+"/,'width="764"')
       .replace(/height="\d+"/,full?'height="524"':'height="186"');
+    if (!full) return logo;
+    return '<picture class="hero-brand-picture"><source media="(prefers-reduced-motion: no-preference)" srcset="/assets/brand/aureum-motion-branco.svg">' + logo + '</picture>';
   });
   // Keep the footer in sync with the same service catalog used by the cards.
   output=output.replace(/<footer\b(?=[^>]*\bclass=["']foot["'])[^>]*>[\s\S]*?<\/footer>/gi, footer =>

@@ -2,6 +2,10 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Prévia da marca animada na abertura
+
+- O vídeo de abertura recebe a animação branca em SVG nas cinco páginas iniciais. A preferência de movimento reduzido seleciona a marca estática desde o carregamento.
+
 ## 2026-11-21 — Isolamento de dados e controles de privacidade
 
 - Conversas da Mia passam a ser arquivadas somente em Production; Preview e Development não gravam no Blob de produção.
