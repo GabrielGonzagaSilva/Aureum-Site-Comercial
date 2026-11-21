@@ -1,6 +1,6 @@
 /* AUREUM — user-provided text-only horizontal lockup, excluding central cinematic hero. */
 .logo .logo-img {
-  aspect-ratio:776.909 / 235.805!important;
+  aspect-ratio:auto!important;
   width:100%;height:auto;object-fit:contain;
   image-rendering:auto!important;
 }

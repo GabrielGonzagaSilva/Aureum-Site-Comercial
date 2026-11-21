@@ -92,10 +92,10 @@
     masthead.className = 'aureum-lead-dialog__masthead';
     var logo = document.createElement('img');
     logo.className = 'aureum-lead-dialog__logo';
-    logo.src = '/assets/brand/aureum-wordmark-outlined-v1-ink.svg';
+    logo.src = '/assets/brand/logo-reduzida-preto.svg';
     logo.alt = 'Aureum';
-    logo.width = 777;
-    logo.height = 236;
+    logo.width = 764;
+    logo.height = 186;
     masthead.appendChild(logo);
     masthead.appendChild(close);
 

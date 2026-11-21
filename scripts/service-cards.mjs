@@ -126,10 +126,11 @@ export async function applyServicePages(root = 'dist') {
       const html = `<!doctype html>
 <html lang="${copy.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escape(title)} | Aureum</title><meta name="description" content="${escape(title + '. ' + copy.pending)}"><meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-aureum.svg">
 <link rel="canonical" href="https://aureumassessoria.com.br${route}">${alternates}
 <link rel="preload" href="/assets/fonts/aureum-refined-inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/css/aureum-service-page.css"></head>
-<body><header class="service-page-header"><a class="service-page-brand" href="${homePath(locale)}" aria-label="Aureum — ${escape(copy.home)}"><img src="/assets/brand/aureum-wordmark-outlined-v1-ink.svg" alt="Aureum" width="220" height="64"></a><nav aria-label="${escape(copy.languages)}">${languages}</nav></header>
+<body><header class="service-page-header"><a class="service-page-brand" href="${homePath(locale)}" aria-label="Aureum — ${escape(copy.home)}"><img src="/assets/brand/logo-reduzida-preto.svg" alt="Aureum" width="764" height="186"></a><nav aria-label="${escape(copy.languages)}">${languages}</nav></header>
 <main><h1>${escape(title)}</h1><p>${escape(copy.pending)}</p><a class="service-page-back" href="${homePath(locale)}#servicos">${escape(copy.back)}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></main>
 </body></html>\n`;
       await mkdir(folder, { recursive: true });

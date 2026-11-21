@@ -22,9 +22,19 @@ export function refineSiteHtml(html, locale) {
   if(!output.includes('href="/assets/css/aureum-site-system.css"')) {
     output=output.replace('</head>','<link rel="stylesheet" href="/assets/css/aureum-site-system.css">\n<script src="/assets/js/aureum-site-system.js" defer></script>\n</head>');
   }
+  // The recovered marketing templates share one set of brand assets at build time.
+  output=output.replace(/<link\b[^>]*\brel="icon"[^>]*>/g,'<link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-aureum.svg">');
+  output=output.replace(/<img\b[^>]*src="\/assets\/brand\/aureum-(?:hero|wordmark)-outlined-v1-(?:white|ink)\.svg"[^>]*>/g, image => {
+    const full=image.includes('aureum-hero-outlined');
+    const color=image.includes('-ink.svg')?'preto':'branco';
+    return image.replace(/src="[^"]+"/,'src="/assets/brand/logo-'+(full?'completa':'reduzida')+'-'+color+'.svg"')
+      .replace(/width="\d+"/,'width="764"')
+      .replace(/height="\d+"/,full?'height="524"':'height="186"');
+  });
   // Keep the footer in sync with the same service catalog used by the cards.
   output=output.replace(/<footer\b(?=[^>]*\bclass=["']foot["'])[^>]*>[\s\S]*?<\/footer>/gi, footer =>
-    footer.replace(/<nav\b[^>]*><h4>[^<]+<\/h4>(?:<a href="(?:\/(?:(?:en|es|fr|de)\/)?)?#servicos">[^<]+<\/a>)+<\/nav>/g, nav => {
+    footer.replace('/assets/brand/logo-reduzida-branco.svg','/assets/brand/logo-reduzida-bege.svg')
+      .replace(/<nav\b[^>]*><h4>[^<]+<\/h4>(?:<a href="(?:\/(?:(?:en|es|fr|de)\/)?)?#servicos">[^<]+<\/a>)+<\/nav>/g, nav => {
       const heading=nav.match(/<h4>[^<]+<\/h4>/)[0];
       const opening=nav.match(/^<nav\b[^>]*>/)[0];
       return opening+heading+services.map(s=>'<a href="'+s.href+'">'+escape(s.title)+'</a>').join('')+'</nav>';
