@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GET, POST } from '../server/chat-core.mjs';
+import { shouldArchiveConversation } from '../api/chat.mjs';
+
+test('Mia archives conversations only in production', () => {
+  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'production' }), true);
+  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'preview' }), false);
+  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'development' }), false);
+  assert.equal(shouldArchiveConversation({}), false);
+});
 
 test('Mia reports missing configuration without leaking secrets', async () => {
   const previous = process.env.GEMINI_API_KEY;
@@ -46,4 +54,3 @@ test('Mia keeps a localized conversation in the current page language', async ()
     else process.env.GEMINI_API_KEY = originalKey;
   }
 });
-
