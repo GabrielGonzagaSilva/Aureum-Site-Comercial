@@ -52,7 +52,7 @@ export function buildLeadNotificationPayload(lead, requestId, env = process.env)
     from: sender,
     to: [recipient],
     subject: 'Nova solicitação de contato | Aureum',
-    ...(replyTo ? { reply_to: replyTo } : {}),
+    ...(replyTo ? { reply_to: [replyTo] } : {}),
     text: lines.join('\n'),
   };
 }

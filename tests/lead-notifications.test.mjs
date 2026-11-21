@@ -28,7 +28,7 @@ test('builds a plain-text notification for the configured Aureum inbox', () => {
   const payload = buildLeadNotificationPayload(lead, requestId, env);
   assert.equal(payload.to[0], 'contato.aureum@outlook.com');
   assert.equal(payload.from, env.AUREUM_LEADS_NOTIFICATION_FROM);
-  assert.equal(payload.reply_to, 'ana@example.com');
+  assert.deepEqual(payload.reply_to, ['ana@example.com']);
   assert.equal(payload.subject, 'Nova solicitação de contato | Aureum');
   assert.match(payload.text, /Ana Silva/);
   assert.match(payload.text, /Portugal/);
