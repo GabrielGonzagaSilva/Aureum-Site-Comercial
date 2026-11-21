@@ -44,7 +44,7 @@ test('all public lead forms receive the same international contact controls in f
       assert.match(form, /name=["']codigo_pais["'][^>]*aria-describedby=/i, file + ': country code selector needs an accessible description');
       assert.match(form, /name=["']codigo_pais_outro["'][^>]*aria-label=/i, file + ': custom country code needs an accessible name');
       assert.match(form, /consent-error["'][^>]*role=["']alert["']/i, file + ': consent error must be announced');
-      assert.ok(form.includes('aureum-privacy-link'), file + ': hidden privacy link missing');
+      assert.match(form, /class=["'][^"']*aureum-privacy-link[^"']*["'][^>]*hidden/i, file + ': privacy link must stay hidden until intake is enabled');
     }
     assert.match(output, /href=["']\/assets\/css\/aureum-lead-form\.css["']/i);
     assert.match(output, /src=["']\/assets\/js\/aureum-lead-form\.js["']/i);
