@@ -1,6 +1,6 @@
-**Atualizado:** 20/11/2026ints
+# AUREUM — Controle de Sprints
 
-**Atualizado:** 14/11/2026  
+**Atualizado:** 20/11/2026  
 **Repositório:** `GabrielGonzagaSilva/Aureum-Site-Comercial`  
 **Branch:** `main`
 
