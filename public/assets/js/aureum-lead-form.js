@@ -242,6 +242,7 @@
       var newButton = makeButton(text.newRequest, 'btn btn-line');
       newButton.addEventListener('click', function () {
         result.remove();
+        submissionAttempted = false;
         form.reset();
         if (otherCode) { otherCode.hidden = true; otherCode.value = ''; }
         var group = form.querySelector('.phone-input-group');
@@ -260,6 +261,7 @@
 
   forms.forEach(function (form) {
     var startedAt = performance.now();
+    var submissionAttempted = false;
     form.dataset.submissionId = uuid();
     var phoneField = form.querySelector('[name="whatsapp"]');
     var codeSelect = form.querySelector('[name="codigo_pais"]');
@@ -285,10 +287,17 @@
         clearError(otherCode);
       });
     }
-    [phoneField, emailField, nameField, consent, otherCode, codeSelect].forEach(function (field) {
-      if (!field) return;
-      field.addEventListener('input', function () { clearError(field); status.textContent = ''; });
-      field.addEventListener('change', function () { clearError(field); status.textContent = ''; });
+    Array.from(form.querySelectorAll('input, select, textarea')).forEach(function (field) {
+      function handleEdit() {
+        if (submissionAttempted) {
+          form.dataset.submissionId = uuid();
+          submissionAttempted = false;
+        }
+        clearError(field);
+        status.textContent = '';
+      }
+      field.addEventListener('input', handleEdit);
+      field.addEventListener('change', handleEdit);
     });
 
     form.addEventListener('submit', function (event) {
@@ -353,6 +362,7 @@
           elapsedMs: Math.round(performance.now() - startedAt),
         };
 
+        submissionAttempted = true;
         if (submitButton) submitButton.disabled = true;
         form.setAttribute('aria-busy', 'true');
         status.textContent = text.sending;
