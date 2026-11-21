@@ -19,3 +19,6 @@
   user-select:none;
 }
 /* Pre-existing hover, alternating soft halos, open-panel and keyboard focus remain intact. */
+
+/* Temporary Mia pause (2026-11-20): hide the AI entrypoint on every locale and viewport. */
+#aureum-contact-hub #launch-assistant { display: none !important; }

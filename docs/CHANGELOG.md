@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-20 — Pausa temporária da Mia no site público
+
+- Oculto o botão flutuante da Mia em todas as páginas e idiomas via CSS compartilhado, inclusive antes do carregamento do JavaScript.
+- Desabilitado o acionador por mouse, toque e teclado e isolada a vista do assistente da navegação acessível. O painel e o contato por WhatsApp permanecem disponíveis.
+- Preservados o código da Mia, o backend `/api/chat` e os dados existentes para futura reativação. Esta pausa retira o acesso pelo site; não desliga o endpoint diretamente.
+- Adicionado teste de interface para as cinco homepages em mobile e desktop e uma página interna.
+
 ## 2026-11-16 — E-mail e telefone em linhas separadas
 
 - E-mail passa a ocupar uma linha inteira, com telefone/WhatsApp na linha seguinte nos formulários compartilhados.

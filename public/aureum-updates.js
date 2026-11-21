@@ -2,6 +2,22 @@
   "use strict";
   const panel = document.getElementById("contact-panel");
   if (!panel) return;
+  // Temporary operational pause: preserve the Mia implementation for reactivation.
+  // CSS also hides the launcher before deferred JavaScript runs.
+  const MIA_TEMPORARILY_ENABLED = false;
+  if (!MIA_TEMPORARILY_ENABLED) {
+    const miaLauncher = document.getElementById("launch-assistant");
+    if (miaLauncher) {
+      miaLauncher.disabled = true;
+      miaLauncher.hidden = true;
+      miaLauncher.setAttribute("aria-hidden", "true");
+    }
+    const miaView = panel.querySelector('.contact-view[data-view="assistant"]');
+    if (miaView) {
+      miaView.hidden = true;
+      miaView.inert = true;
+    }
+  }
   const lang = (document.documentElement.lang || "pt-BR").toLowerCase().split("-")[0];
   const copy = {
     pt: {
