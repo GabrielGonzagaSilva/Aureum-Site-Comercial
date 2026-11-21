@@ -6,6 +6,7 @@ import { filesUnder } from '../scripts/verify.mjs';
 
 const files = await filesUnder('public');
 const htmlFiles = files.filter((file) => file.endsWith('.html'));
+const marketingAndExistingPrivacyPages = htmlFiles.filter((file) => !/privacidade-atendimento|contact-privacy|privacidad-contacto|confidentialite-contact|datenschutzhinweis-kontakt/.test(file));
 const marketingPages = [];
 
 for (const file of htmlFiles) {
@@ -20,7 +21,7 @@ function localeFromFile(file) {
 }
 
 test('all 50 marketing pages retain localized document and SEO metadata', () => {
-  assert.equal(htmlFiles.length, 51, 'the recovered site must keep all 51 HTML pages');
+  assert.equal(marketingAndExistingPrivacyPages.length, 51, 'the recovered site must keep its 50 marketing pages and existing privacy page');
   assert.equal(marketingPages.length, 50, 'the site must keep 50 marketing pages');
 
   const expectedLanguage = { pt: 'pt-BR', en: 'en', es: 'es', fr: 'fr', de: 'de' };
