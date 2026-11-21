@@ -18,6 +18,7 @@
       contactError: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
       emailError: 'Confira o e-mail informado.', phoneError: 'Confira o código do país, o DDD/código de área e o número.',
       nameError: 'Informe seu nome.', consentError: 'Confirme a autorização para continuar.',
+      activeConsent: 'Ao enviar, autorizo o tratamento dos dados informados para que a Aureum avalie e responda à minha solicitação.',
       sending: 'Enviando solicitação…', retry: 'Tentar novamente',
     },
     en: {
@@ -32,6 +33,7 @@
       contactError: 'Provide at least one way to reach you: email or phone/WhatsApp.',
       emailError: 'Check the email address.', phoneError: 'Check the country code, area code and phone number.',
       nameError: 'Enter your name.', consentError: 'Please confirm your consent to continue.',
+      activeConsent: 'By submitting, I authorize Aureum to process the information I provide to review and respond to my enquiry.',
       sending: 'Submitting your enquiry…', retry: 'Try again',
     },
     es: {
@@ -46,6 +48,7 @@
       contactError: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
       emailError: 'Comprueba el correo electrónico.', phoneError: 'Comprueba el código del país, el prefijo de área y el número.',
       nameError: 'Indica tu nombre.', consentError: 'Confirma la autorización para continuar.',
+      activeConsent: 'Al enviar, autorizo a Aureum a tratar los datos que proporciono para evaluar y responder a mi solicitud.',
       sending: 'Enviando solicitud…', retry: 'Intentar de nuevo',
     },
     fr: {
@@ -60,6 +63,7 @@
       contactError: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
       emailError: 'Vérifiez l’adresse e-mail.', phoneError: 'Vérifiez l’indicatif du pays, l’indicatif régional et le numéro.',
       nameError: 'Indiquez votre nom.', consentError: 'Confirmez votre autorisation pour continuer.',
+      activeConsent: 'En envoyant ce formulaire, j’autorise Aureum à traiter les informations fournies afin d’examiner et de répondre à ma demande.',
       sending: 'Envoi de la demande…', retry: 'Réessayer',
     },
     de: {
@@ -74,6 +78,7 @@
       contactError: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
       emailError: 'Bitte prüfen Sie die E-Mail-Adresse.', phoneError: 'Bitte prüfen Sie Ländervorwahl, Ortsvorwahl und Rufnummer.',
       nameError: 'Bitte geben Sie Ihren Namen ein.', consentError: 'Bestätigen Sie die Zustimmung, um fortzufahren.',
+      activeConsent: 'Mit dem Absenden willige ich ein, dass Aureum die von mir angegebenen Daten verarbeitet, um meine Anfrage zu prüfen und zu beantworten.',
       sending: 'Anfrage wird gesendet…', retry: 'Erneut versuchen',
     },
   };
@@ -258,6 +263,15 @@
     result.focus({ preventScroll: true });
   }
 
+  function applyOnlineConsent(form, config) {
+    if (!config || config.enabled !== true) return;
+    var consentLabel = form.querySelector('label.consent');
+    var consentText = consentLabel && consentLabel.querySelector('span');
+    if (consentText) consentText.textContent = text.activeConsent;
+    var privacyLink = form.querySelector('.aureum-privacy-link');
+    if (privacyLink) privacyLink.hidden = false;
+  }
+
   forms.forEach(function (form) {
     var startedAt = performance.now();
     var submissionAttempted = false;
@@ -274,6 +288,7 @@
     status.setAttribute('role', 'status');
     status.setAttribute('aria-live', 'polite');
     form.appendChild(status);
+    configPromise.then(function (config) { applyOnlineConsent(form, config); });
 
     if (codeSelect && otherCode) {
       codeSelect.addEventListener('change', function () {

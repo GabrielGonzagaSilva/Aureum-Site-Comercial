@@ -14,6 +14,7 @@ import {
 
 const allFiles = await filesUnder('public');
 const htmlFiles = allFiles.filter((file) => file.endsWith('.html'));
+const marketingAndExistingPrivacyPages = htmlFiles.filter((file) => !/privacidade-atendimento|contact-privacy|privacidad-contacto|confidentialite-contact|datenschutzhinweis-kontakt/.test(file));
 const localizedPages = [];
 
 for (const file of htmlFiles) {
@@ -22,7 +23,7 @@ for (const file of htmlFiles) {
 }
 
 test('localized copy covers all 50 public pages in five locales', async () => {
-  assert.equal(htmlFiles.length, 51);
+  assert.equal(marketingAndExistingPrivacyPages.length, 51);
   assert.equal(localizedPages.length, 50);
 
   for (const file of localizedPages) {

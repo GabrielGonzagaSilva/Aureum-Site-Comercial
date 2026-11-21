@@ -44,11 +44,14 @@ test('all public lead forms receive the same international contact controls in f
       assert.match(form, /name=["']codigo_pais["'][^>]*aria-describedby=/i, file + ': country code selector needs an accessible description');
       assert.match(form, /name=["']codigo_pais_outro["'][^>]*aria-label=/i, file + ': custom country code needs an accessible name');
       assert.match(form, /consent-error["'][^>]*role=["']alert["']/i, file + ': consent error must be announced');
+      assert.match(form, /class=["'][^"']*aureum-privacy-link[^"']*["'][^>]*hidden/i, file + ': privacy link must stay hidden until intake is enabled');
     }
     assert.match(output, /href=["']\/assets\/css\/aureum-lead-form\.css["']/i);
     assert.match(output, /src=["']\/assets\/js\/aureum-lead-form\.js["']/i);
     assert.match(output, /href=["']\/assets\/css\/aureum-contact-modal\.css["']/i);
     assert.match(output, /src=["']\/assets\/js\/aureum-contact-modal\.js["']/i);
+    const privacyPaths = { pt: '/privacidade-atendimento.html', en: '/en/contact-privacy.html', es: '/es/privacidad-contacto.html', fr: '/fr/confidentialite-contact.html', de: '/de/datenschutzhinweis-kontakt.html' };
+    assert.ok(output.includes('href="' + (privacyPaths[locale] || privacyPaths.pt) + '"'), file + ': localized privacy notice link missing');
     assert.equal(transformLeadFormsHtml(output, locale), output, file + ': transformation must be idempotent');
   }
 
@@ -65,7 +68,7 @@ test('localized contact guidance is available in all supported languages', () =>
     de: ['E-Mail (optional)', 'Geben Sie mindestens eine Kontaktmöglichkeit an'],
   };
   for (const [locale, phrases] of Object.entries(samples)) {
-    const source = '<html><head></head><body><form id="lead-test" class="form lead"><div class="f"><label for="lead-email">E-mail</label><input id="lead-email" name="email" type="email" required></div><div class="f"><label for="lead-phone">WhatsApp</label><input id="lead-phone" name="whatsapp" data-rule="phone" type="tel"><span class="err">Invalid</span></div><label class="consent"><input name="consentimento" type="checkbox"></label></form></body></html>';
+    const source = '<html><head></head><body><form id="lead-test" class="form lead"><div class="f"><label for="lead-email">E-mail</label><input id="lead-email" name="email" type="email" required></div><div class="f"><label for="lead-phone">WhatsApp</label><input id="lead-phone" name="whatsapp" data-rule="phone" type="tel"><span class="err">Invalid</span></div><label class="consent"><input name="consentimento" type="checkbox"><span>Consent copy</span></label></form></body></html>';
     const output = transformLeadFormsHtml(source, locale);
     for (const phrase of phrases) assert.ok(output.includes(phrase), locale + ': missing ' + phrase);
   }

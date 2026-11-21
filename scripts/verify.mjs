@@ -134,6 +134,7 @@ export async function verify(root = 'public') {
         if (!/<input\b(?=[^>]*\bname=["']whatsapp["'])(?=[^>]*\btype=["']text["'])/i.test(form)) failures.push(file + ': lead form ' + index + ' is missing the international phone input');
         if (/<input\b(?=[^>]*\bname=["']email["'])(?=[^>]*\brequired\b)/i.test(form)) failures.push(file + ': email must remain optional');
         if (!/contact-method-note/.test(form)) failures.push(file + ': lead form ' + index + ' is missing the contact requirement');
+        if (!/aureum-privacy-link[^>]*hidden/i.test(form)) failures.push(file + ': lead form ' + index + ' is missing its hidden privacy notice link');
         if (!/name=["']website["']/.test(form)) failures.push(file + ': lead form ' + index + ' is missing the spam honeypot');
       }
       if (leadForms.length) {
@@ -161,7 +162,7 @@ export async function verify(root = 'public') {
       if (!files.includes(expected)) failures.push(`Missing recovered route ${expected}`);
     }
   }
-  const critical = ['assets/hero-tower-bridge.mp4', 'assets/brand/aureum-wordmark-outlined-v1-white.svg', 'assets/brand/aureum-wordmark-outlined-v1-ink.svg', 'assets/fonts/aureum-refined-inter-400.woff', 'assets/fonts/aureum-refined-inter-500.woff', 'assets/fonts/aureum-refined-inter-700.woff', 'mia-profile-picture.webp', 'mia-ui.js', 'aureum-updates.js', 'assets/js/aureum-lead-form.js', 'assets/css/aureum-lead-form.css'];
+  const critical = ['assets/hero-tower-bridge.mp4', 'assets/brand/aureum-wordmark-outlined-v1-white.svg', 'assets/brand/aureum-wordmark-outlined-v1-ink.svg', 'assets/fonts/aureum-refined-inter-400.woff', 'assets/fonts/aureum-refined-inter-500.woff', 'assets/fonts/aureum-refined-inter-700.woff', 'mia-profile-picture.webp', 'mia-ui.js', 'aureum-updates.js', 'assets/js/aureum-lead-form.js', 'assets/css/aureum-lead-form.css', 'assets/css/aureum-privacy-notice.css'];
   for (const asset of critical) if (!files.includes(join(root, asset))) failures.push(`Missing critical asset ${asset}`);
   const sharedHeaderCss = await readFile(join(root, 'aureum-enhancements.css'), 'utf8').catch(() => '');
   const requiredHeaderRules = [
@@ -214,7 +215,7 @@ export async function verify(root = 'public') {
       }
     }
   }
-  const expectedPages = builtOutput ? 76 : 51;
+  const expectedPages = builtOutput ? 81 : 56;
   if (htmlFiles.length !== expectedPages) failures.push(`Expected ${expectedPages} pages; found ${htmlFiles.length}`);
   if (failures.length) throw new Error([...new Set(failures)].join('\n'));
   return { pages: htmlFiles.length, files: files.length, parsedScripts: scripts, headerPages, sharedHeaderPages };

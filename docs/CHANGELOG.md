@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-20 — Aviso de privacidade do formulário preparado para revisão
+
+- Criados rascunhos do aviso de privacidade do formulário em PT-BR, EN, ES, FR e DE, todos com `noindex,nofollow`, alerta visível de minuta e campos pendentes de validação.
+- Adicionado link localizado ao aviso e alternância do texto de consentimento online, mas o link permanece oculto enquanto o endpoint não confirmar uma versão aprovada.
+- Documentadas as validações pendentes: identidade do controlador, hipótese legal, transferências internacionais, retenção do Blob, cópia de e-mail e logs dos fornecedores.
+- Mantidos desligados os controles de recebimento, privacidade e notificação. Nenhum dado pessoal é enviado pelo formulário nesta versão.
+
 ## 2026-11-20 — Integração de notificação de leads preparada
 
 - Implementado envio server-side de notificações transacionais pelo Resend após a persistência privada no Vercel Blob.
