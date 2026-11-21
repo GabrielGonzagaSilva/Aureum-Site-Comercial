@@ -2,6 +2,10 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Ampliação do favicon
+
+- Centralizado o sol no ícone quadrado e ajustado o enquadramento para ocupar toda a largura, preservando o desenho e as cores.
+
 ## 2026-11-21 — Favicon oficial da Aureum
 
 - Substituído o ícone da aba pelo SVG fornecido pela marca. O build inclui a assinatura do arquivo na URL do favicon em todos os idiomas.
