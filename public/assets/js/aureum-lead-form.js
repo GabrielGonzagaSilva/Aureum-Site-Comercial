@@ -242,7 +242,6 @@
       var newButton = makeButton(text.newRequest, 'btn btn-line');
       newButton.addEventListener('click', function () {
         result.remove();
-        submissionAttempted = false;
         form.reset();
         if (otherCode) { otherCode.hidden = true; otherCode.value = ''; }
         var group = form.querySelector('.phone-input-group');
@@ -384,6 +383,7 @@
             return body;
           });
         }).then(function () {
+          submissionAttempted = false;
           showResult(form, text.successTitle, text.successText, '', true);
         }).catch(function (error) {
           status.textContent = error && error.message ? error.message : text.error;
