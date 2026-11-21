@@ -19,7 +19,6 @@
 #servicos .dc__title,
 #servicos .dc__cta { color: #FFF !important; }
 #servicos .dc__title { display: block; overflow-wrap: break-word; }
-#servicos .dc__body { position: static; }
 #servicos .dc__cta { margin-top: 20px; border-top: 1px solid rgb(255 255 255 / .16); border-radius: 0 !important; }
 #servicos [data-service="visas"] .dc__photo { object-position: center 75%; }
 #servicos [data-service="citizenship"] .dc__photo { object-position: 55% center; }

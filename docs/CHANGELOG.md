@@ -2,6 +2,10 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Clique em toda a área dos cards de destinos
+
+- Fotos, etiquetas, textos e setas dos nove destinos acionam o mesmo link nativo em cada idioma. A área de foco acompanha o card inteiro por meio da regra compartilhada com Serviços.
+
 ## 2026-11-20 — Atualização das logos oficiais
 - Incluídos os seis SVGs oficiais. A abertura usa a marca completa branca, o rodapé usa a reduzida bege e a navegação alterna as reduzidas branca e preta conforme o fundo.
 - Aplicada a reduzida preta às páginas de serviço, à política de privacidade e ao modal de contato. O ícone da aba usa o “A” do novo arquivo sobre verde-floresta.
