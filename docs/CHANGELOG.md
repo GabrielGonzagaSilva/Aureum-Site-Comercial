@@ -2,6 +2,12 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-21 — Isolamento de dados e controles de privacidade
+
+- Conversas da Mia passam a ser arquivadas somente em Production; Preview e Development não gravam no Blob de produção.
+- Região de execução `iad1` explicitada em `vercel.json`.
+- Documentação atualizada com a infraestrutura, os bloqueios de ativação e a limitação de TTL da versão atual do SDK.
+
 ## 2026-11-21 — Ampliação do favicon
 
 - Centralizado o sol no ícone quadrado e ajustado o enquadramento para ocupar toda a largura, preservando o desenho e as cores.
