@@ -2,7 +2,11 @@ import {randomUUID} from 'node:crypto';
 import {put} from '@vercel/blob';
 import {GET as originalGET,POST as originalPOST} from '../server/chat-core.mjs';
 const getSessionId=(b)=>/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(b?.sessionId||''))?b.sessionId:randomUUID();
+export function shouldArchiveConversation(env=process.env){
+ return env.VERCEL_ENV==='production';
+}
 async function archive(body,response){
+ if(!shouldArchiveConversation())return;
  if(!Array.isArray(body?.messages))return;
  const last=[...body.messages].reverse().find(m=>m?.role==='user'&&typeof m.content==='string'&&m.content.trim());
  if(!last)return;
