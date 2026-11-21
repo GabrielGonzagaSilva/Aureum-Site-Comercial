@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-20 — Integração de notificação de leads preparada
+
+- Implementado envio server-side de notificações transacionais pelo Resend após a persistência privada no Vercel Blob.
+- Definidos destinatário interno e remetente Aureum por variáveis de ambiente; o e-mail do visitante é usado como `reply_to` quando informado.
+- Adicionada idempotência por identificador da solicitação e feedback localizado quando o registro é salvo, mas a notificação falha.
+- O endpoint agora exige configuração completa do Resend além dos gates já existentes de privacidade, consentimento, retenção e Blob.
+- Atualizados testes e documentação. Nenhum envio está ativo: a aprovação da responsável técnica, a verificação DNS do subdomínio e a API key ainda estão pendentes.
+
 ## 2026-11-20 — Pausa temporária da Mia no site público
 
 - Oculto o botão flutuante da Mia em todas as páginas e idiomas via CSS compartilhado, inclusive antes do carregamento do JavaScript.

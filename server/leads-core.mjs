@@ -1,4 +1,11 @@
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+function emailAddress(value) {
+  if (typeof value !== 'string') return '';
+  const candidate = value.trim();
+  const match = candidate.match(/<([^<>]+)>/);
+  return (match ? match[1] : candidate).trim();
+}
 const E164_PATTERN = /^\+[1-9]\d{6,14}$/;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -21,17 +28,27 @@ function cleanText(value, maxLength, multiline = false) {
 export function getLeadIntakeConfig(env = process.env, approvedPrivacyNoticeVersion = '') {
   const retentionDays = Number(env.AUREUM_LEADS_RETENTION_DAYS);
   const retentionConfigured = Number.isInteger(retentionDays) && retentionDays >= 1 && retentionDays <= 730;
+  const notificationTo = typeof env.AUREUM_LEADS_NOTIFICATION_TO === 'string' ? env.AUREUM_LEADS_NOTIFICATION_TO.trim() : '';
+  const notificationFrom = emailAddress(env.AUREUM_LEADS_NOTIFICATION_FROM);
+  const notificationConfigured = Boolean(
+    env.AUREUM_LEADS_NOTIFICATION_ENABLED === 'true' &&
+    typeof env.RESEND_API_KEY === 'string' && env.RESEND_API_KEY.trim() &&
+    EMAIL_PATTERN.test(notificationTo) &&
+    EMAIL_PATTERN.test(notificationFrom)
+  );
   const enabled = Boolean(
     approvedPrivacyNoticeVersion &&
     env.AUREUM_LEADS_ENABLED === 'true' &&
     env.AUREUM_LEADS_PRIVACY_APPROVED === 'true' &&
     env.AUREUM_LEADS_PRIVACY_NOTICE_VERSION === approvedPrivacyNoticeVersion &&
     retentionConfigured &&
-    env.BLOB_READ_WRITE_TOKEN
+    env.BLOB_READ_WRITE_TOKEN &&
+    notificationConfigured
   );
   return {
     enabled,
     retentionDays: retentionConfigured ? retentionDays : null,
+    notificationConfigured,
     privacyNoticeVersion: enabled ? approvedPrivacyNoticeVersion : null,
   };
 }

@@ -1,30 +1,33 @@
 # AUREUM — Controle de Sprints
 
-**Atualizado:** 14/11/2026  
+**Atualizado:** 20/11/2026  
 **Repositório:** `GabrielGonzagaSilva/Aureum-Site-Comercial`  
 **Branch:** `main`
 
 ## Sprint 5 — Formulário de contato
 
-**Status:** Implementada e publicada; encerramento funcional pendente.
+**Status:** Interface e backend preparados e publicados; ativação funcional pendente.
 
 ### Entregue
 - 500 formulários transformados no build, distribuídos pelas 50 páginas de marketing.
 - E-mail e telefone opcionais individualmente, com exigência de pelo menos um meio.
 - Código internacional, DDD/código de área e normalização E.164.
 - Validação no navegador e no servidor, mensagens nos cinco idiomas, honeypot e rate limiting complementar.
-- Endpoint preparado para persistência privada no Vercel Blob.
-- Recebimento online intencionalmente desabilitado até a aprovação de privacidade.
+- Persistência privada no Vercel Blob, protegida por gates de privacidade e retenção.
+- Integração server-side com Resend para notificação interna, com remetente/destinatário configuráveis, `reply_to` quando há e-mail e chave de idempotência.
+- Tratamento localizado para falha de notificação sem afirmar que a equipe foi avisada.
+- Destinatário e remetente configurados como variáveis Production não secretas na Vercel; API key e domínio de envio ainda não configurados.
+- Recebimento online permanece intencionalmente desabilitado.
 
 ### Pendências obrigatórias
-1. Aprovar com Katarina/responsável técnica a finalidade, o consentimento e o aviso de privacidade.
-2. Aprovar o prazo de retenção, os perfis de acesso e os procedimentos de tratamento.
-3. Validar os textos nos cinco idiomas.
-4. Atualizar a versão aprovada no código e configurar as variáveis de ativação na Vercel somente depois da aprovação.
-5. Testar um envio real, confirmar a gravação privada, a idempotência, a retenção e os erros.
-6. Definir e implementar os canais de notificação por e-mail e WhatsApp em etapa própria.
+1. Katarina/responsável técnica aprovar finalidade, consentimento, aviso de privacidade, perfis de acesso e prazo de retenção.
+2. Incluir o Resend no aviso e revisar o tratamento internacional e as condições contratuais do fornecedor.
+3. Validar os textos aprovados nos cinco idiomas e registrar a versão oficial.
+4. Criar/verificar `mail.aureumassessoria.com.br` no Resend, adicionar os registros gerados no Registro.br e criar uma API key restrita a envio.
+5. Cadastrar `RESEND_API_KEY` como Secret na Vercel; somente após as aprovações, atualizar a constante e ativar as variáveis de recebimento/notificação.
+6. Fazer um envio controlado, confirmar persistência privada, entrega real, idempotência, retenção e caminhos de falha.
 
-**Não fazer:** ativar o endpoint, alterar a versão aprovada ou declarar recebimento funcional antes dessas validações.
+**Não fazer:** ativar o endpoint, alterar a versão aprovada ou declarar o formulário funcional antes dessas validações.
 
 ## Sprint 6 — Testes, regressão e publicação
 
