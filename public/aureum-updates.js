@@ -87,6 +87,11 @@
     }
   };
   const t = copy[lang] || copy.pt;
+  const instagram = document.querySelector('footer a.f-social-link[href^="https://www.instagram.com/"]');
+  const instagramLabel = {
+    pt: 'Abrir Instagram', en: 'Open Instagram', es: 'Abrir Instagram',
+    fr: 'Ouvrir Instagram', de: 'Instagram öffnen',
+  }[lang] || 'Abrir Instagram';
   const escapeHtml = (value) => String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
   const whatsappView = panel.querySelector('.contact-view[data-view="whatsapp"]');
   if (whatsappView) {
@@ -140,7 +145,18 @@
     if (submitButton) submitButton.disabled = !active;
     if (!active) {
       if (directStatus) directStatus.textContent = t.unconfigured;
-      if (callbackStatus) callbackStatus.textContent = t.unconfigured;
+      if (form) form.closest('.contact-option').remove();
+      if (instagram && directButton) {
+        const instagramLink = document.createElement('a');
+        instagramLink.className = directButton.className;
+        instagramLink.href = instagram.href;
+        instagramLink.rel = 'noopener noreferrer';
+        instagramLink.target = '_blank';
+        instagramLink.textContent = instagramLabel;
+        directButton.replaceWith(instagramLink);
+        const description = whatsappView.querySelector('.contact-option--primary .contact-option-copy p');
+        if (description) description.textContent = instagram.getAttribute('aria-label') || instagramLabel;
+      }
     }
     if (directButton) directButton.addEventListener("click", () => openWhatsApp(t.directMessage, directStatus));
     if (form) form.addEventListener("submit", (event) => {

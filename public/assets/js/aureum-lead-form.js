@@ -11,7 +11,7 @@
       objective: 'Objetivo', message: 'Mensagem', intro: 'Olá, equipe Aureum. Gostaria de solicitar uma orientação inicial.',
       reviewTitle: 'Sua mensagem está pronta para revisão',
       reviewText: 'O recebimento online ainda não está habilitado. Nenhum dado foi enviado ou armazenado. Copie a mensagem e encaminhe pelos canais oficiais da Aureum.',
-      copy: 'Copiar mensagem', edit: 'Editar dados', copied: 'Mensagem copiada. Encaminhe-a pelo canal oficial da Aureum.',
+      copy: 'Copiar mensagem', instagram: 'Abrir Instagram', edit: 'Editar dados', copied: 'Mensagem copiada. Encaminhe-a pelo canal oficial da Aureum.',
       copyFailed: 'Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.',
       successTitle: 'Solicitação registrada', successText: 'Sua solicitação foi registrada com segurança. A equipe da Aureum poderá consultar os dados informados para dar continuidade ao atendimento.',
       newRequest: 'Enviar outra solicitação', error: 'Não foi possível registrar agora. Tente novamente ou utilize um canal oficial de contato.', notificationError: 'Sua solicitação foi registrada, mas a equipe ainda não foi notificada. Tente novamente em alguns minutos.',
@@ -25,7 +25,7 @@
       objective: 'Purpose', message: 'Message', intro: 'Hello, Aureum team. I would like to request initial guidance.',
       reviewTitle: 'Your message is ready for review',
       reviewText: 'Online submission is not enabled yet. No information was sent or stored. Copy the message and forward it through Aureum’s official contact channels.',
-      copy: 'Copy message', edit: 'Edit details', copied: 'Message copied. Forward it through an official Aureum contact channel.',
+      copy: 'Copy message', instagram: 'Open Instagram', edit: 'Edit details', copied: 'Message copied. Forward it through an official Aureum contact channel.',
       copyFailed: 'Automatic copying failed. Select the text and copy it manually.',
       successTitle: 'Enquiry received', successText: 'Your enquiry has been securely recorded. The Aureum team can access the details provided to continue the conversation.',
       newRequest: 'Send another enquiry', error: 'We could not record your enquiry. Please try again or use an official contact channel.', notificationError: 'Your request was saved, but the team has not been notified yet. Please try again in a few minutes.',
@@ -39,7 +39,7 @@
       objective: 'Objetivo', message: 'Mensaje', intro: 'Hola, equipo de Aureum. Me gustaría solicitar una orientación inicial.',
       reviewTitle: 'Tu mensaje está listo para revisar',
       reviewText: 'El envío en línea aún no está habilitado. No se ha enviado ni almacenado ningún dato. Copia el mensaje y envíalo por los canales oficiales de Aureum.',
-      copy: 'Copiar mensaje', edit: 'Editar datos', copied: 'Mensaje copiado. Envíalo por un canal oficial de Aureum.',
+      copy: 'Copiar mensaje', instagram: 'Abrir Instagram', edit: 'Editar datos', copied: 'Mensaje copiado. Envíalo por un canal oficial de Aureum.',
       copyFailed: 'No se pudo copiar automáticamente. Selecciona el texto y cópialo manualmente.',
       successTitle: 'Solicitud recibida', successText: 'Tu solicitud se ha registrado de forma segura. El equipo de Aureum podrá consultar los datos para continuar la atención.',
       newRequest: 'Enviar otra solicitud', error: 'No se pudo registrar la solicitud. Inténtalo de nuevo o utiliza un canal oficial.', notificationError: 'Tu solicitud se ha guardado, pero el equipo aún no ha recibido la notificación. Inténtalo de nuevo en unos minutos.',
@@ -53,7 +53,7 @@
       objective: 'Objectif', message: 'Message', intro: 'Bonjour, équipe Aureum. Je souhaite demander un premier accompagnement.',
       reviewTitle: 'Votre message est prêt à être vérifié',
       reviewText: 'L’envoi en ligne n’est pas encore activé. Aucune donnée n’a été envoyée ni enregistrée. Copiez le message et transmettez-le par les canaux officiels d’Aureum.',
-      copy: 'Copier le message', edit: 'Modifier les informations', copied: 'Message copié. Transmettez-le par un canal officiel d’Aureum.',
+      copy: 'Copier le message', instagram: 'Ouvrir Instagram', edit: 'Modifier les informations', copied: 'Message copié. Transmettez-le par un canal officiel d’Aureum.',
       copyFailed: 'La copie automatique a échoué. Sélectionnez le texte et copiez-le manuellement.',
       successTitle: 'Demande enregistrée', successText: 'Votre demande a été enregistrée de manière sécurisée. L’équipe Aureum pourra consulter les informations fournies pour poursuivre les échanges.',
       newRequest: 'Envoyer une autre demande', error: 'Impossible d’enregistrer la demande. Réessayez ou utilisez un canal officiel.', notificationError: 'Votre demande a été enregistrée, mais l’équipe n’a pas encore été notifiée. Réessayez dans quelques minutes.',
@@ -67,7 +67,7 @@
       objective: 'Anliegen', message: 'Nachricht', intro: 'Hallo, Aureum-Team. Ich möchte eine erste Orientierung anfragen.',
       reviewTitle: 'Ihre Nachricht kann überprüft werden',
       reviewText: 'Die Online-Übermittlung ist noch nicht aktiviert. Es wurden keine Daten gesendet oder gespeichert. Kopieren Sie die Nachricht und senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
-      copy: 'Nachricht kopieren', edit: 'Angaben bearbeiten', copied: 'Nachricht kopiert. Senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
+      copy: 'Nachricht kopieren', instagram: 'Instagram öffnen', edit: 'Angaben bearbeiten', copied: 'Nachricht kopiert. Senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
       copyFailed: 'Automatisches Kopieren nicht möglich. Markieren und kopieren Sie den Text bitte manuell.',
       successTitle: 'Anfrage registriert', successText: 'Ihre Anfrage wurde sicher gespeichert. Das Aureum-Team kann die angegebenen Daten einsehen, um den Kontakt fortzusetzen.',
       newRequest: 'Weitere Anfrage senden', error: 'Die Anfrage konnte nicht gespeichert werden. Versuchen Sie es erneut oder nutzen Sie einen offiziellen Kontaktkanal.', notificationError: 'Ihre Anfrage wurde gespeichert, aber das Team wurde noch nicht benachrichtigt. Bitte versuchen Sie es in einigen Minuten erneut.',
@@ -78,6 +78,7 @@
     },
   };
   var text = COPY[locale] || COPY.pt;
+  var instagramProfile = document.querySelector('footer a.f-social-link[href^="https://www.instagram.com/"]');
 
   function uuid() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
@@ -236,13 +237,24 @@
         var nameField = form.querySelector('[name="nome"]');
         if (nameField) nameField.focus();
       });
-      actions.append(copyButton, editButton);
+      actions.append(copyButton);
+      if (instagramProfile) {
+        var instagramLink = document.createElement('a');
+        instagramLink.className = 'btn btn-line';
+        instagramLink.href = instagramProfile.href;
+        instagramLink.target = '_blank';
+        instagramLink.rel = 'noopener noreferrer';
+        instagramLink.textContent = text.instagram;
+        actions.append(instagramLink);
+      }
+      actions.append(editButton);
       result.append(label, preview, actions, status);
     } else if (success) {
       var newButton = makeButton(text.newRequest, 'btn btn-line');
       newButton.addEventListener('click', function () {
         result.remove();
         form.reset();
+        var otherCode = form.querySelector('[name="codigo_pais_outro"]');
         if (otherCode) { otherCode.hidden = true; otherCode.value = ''; }
         var group = form.querySelector('.phone-input-group');
         if (group) group.classList.remove('has-other-code');

@@ -23,20 +23,20 @@ Esses bloqueios devem permanecer até a aprovação e os testes finais.
 - `api/leads.mjs`: endpoint same-origin, validação no servidor, honeypot, tempo mínimo de preenchimento, rate limiting complementar e persistência privada.
 - `server/leads-core.mjs`: regras puras de validação e controle de ativação.
 - `server/lead-notifications.mjs`: notificação transacional server-side pela API do Resend, sem expor credenciais no navegador.
-- Os registros de leads são gravados no Vercel Blob privado, sob o prefixo `leads/`. O código passa a opção `ttlDays`, mas a versão instalada de `@vercel/blob` no repositório é `2.8.2`; a exclusão automática por TTL foi introduzida na versão `2.9.0`. Portanto, **não considerar a expiração automática implementada** até atualizar a dependência, validar a resposta `expiresAt` e testar a exclusão real.
+- O código usa `@vercel/blob` 2.9.0 para enviar `ttlDays` e confirmar `expiresAt` antes de notificar a equipe. Os registros novos usam `leads/<id>.json` no Blob privado. Uma repetição só reutiliza um registro ativo com os mesmos dados. O teste de expiração real continua pendente, pois depende do prazo aprovado e de um armazenamento autorizado para a verificação.
 
 ## Infraestrutura e isolamento confirmados
 
 - As Vercel Functions estão fixadas na região `iad1` (Washington, D.C., Estados Unidos), também declarada em `vercel.json`.
 - O Vercel Blob conectado ao projeto é o armazenamento privado `aureum-private-conversations`, também na região `iad1`.
-- O mesmo armazenamento recebe registros de leads sob `leads/` e registros do assistente Mia sob `conversations/` e `backup/`.
-- O token do Blob fica restrito ao ambiente Production. A API da Mia arquiva conversas somente em produção; Preview e Development não gravam no armazenamento de produção.
+- O armazenamento tem os prefixos históricos `conversations/` e `backup/`. O código de recebimento online usa `leads/` quando aprovado e habilitado.
+- O token do Blob fica restrito ao ambiente Production. A API pública da Mia está pausada e responde `503` antes de ler a conversa ou chamar fornecedores.
 - Os previews e URLs de deployment geradas pela Vercel exigem autenticação Vercel; os domínios de produção continuam públicos.
 - O repositório GitHub é público. O arquivo `.env.example` contém apenas nomes de variáveis sem valores, e `.gitignore` exclui arquivos `.env*`, exceto esse modelo. Não armazenar dados de leads, conversas, documentos ou credenciais no GitHub.
 
 ### Dados do assistente Mia
 
-O endpoint `/api/chat` envia o conteúdo da conversa ao Google Gemini para gerar respostas. Em produção, o código arquiva o último texto enviado pelo visitante e a resposta da IA, além de metadados técnicos, em duas cópias privadas (`conversations/` e `backup/`). O código atual não define TTL para esses registros. O aviso público do assistente descreve esse tratamento, mas a retenção continua genérica e precisa de prazo aprovado e implementação.
+Quando a Mia estava ativa, o conteúdo da conversa passava pelo Google Gemini para gerar respostas. O código anterior arquivava em produção o último texto do visitante, a resposta e metadados técnicos, em duas cópias privadas (`conversations/` e `backup/`). Esses registros históricos precisam de um prazo aprovado e de uma regra aplicada às duas cópias. A página pública de privacidade explica o histórico e o funcionamento atual.
 
 ## Notificação por e-mail
 
@@ -58,7 +58,7 @@ A integração com **Resend** está implementada no código, mas não está ativ
 2. A revisão deve incluir Vercel, Vercel Blob, Resend, Microsoft Outlook e Google Gemini, conforme o fluxo de dados de cada funcionalidade. O aviso do assistente não substitui um aviso específico para o formulário de contato.
 3. Validar o texto aprovado nos cinco idiomas (PT/EN/ES/FR/DE). Não alterar o texto apresentado ao titular nem publicar um aviso como aprovado sem essa revisão.
 4. Atualizar `APPROVED_PRIVACY_NOTICE_VERSION` em `api/leads.mjs` com uma versão aprovada e registrada.
-5. Atualizar `@vercel/blob` para uma versão com suporte a TTL, atualizar o lockfile, testar `expiresAt` e a exclusão efetiva e, então, aprovar o prazo de retenção entre 1 e 730 dias.
+5. Aprovar o prazo de retenção entre 1 e 730 dias, validar `expiresAt` com dados sintéticos e verificar a exclusão efetiva. O SDK e a conferência da expiração no fluxo de gravação estão implementados.
 6. Definir e implementar um prazo separado ou compatível para os registros de conversas da Mia, incluindo as duas cópias privadas.
 7. Depois das aprovações e da confirmação do domínio Resend, configurar na Vercel:
    - `AUREUM_LEADS_ENABLED=true`
