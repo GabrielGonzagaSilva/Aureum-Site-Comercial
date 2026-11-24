@@ -102,7 +102,7 @@ form[data-aureum-lead-form] > .phone-field {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
   }
-  .aureum-lead-result-actions > button {
+  .aureum-lead-result-actions > .btn {
     flex: 1 1 100%;
   }
 }

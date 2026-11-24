@@ -2,6 +2,12 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-24 — Domínio oficial e encaminhamento de contato
+
+- O build publica sitemap e `robots.txt` para o domínio oficial e alinha os endereços canônicos, as versões por idioma e os metadados de compartilhamento. Páginas de serviços em preparação continuam fora do sitemap.
+- A revisão da mensagem oferece um link para o perfil da Aureum no Instagram já indicado no rodapé. A mensagem fica na página para o visitante copiar e encaminhar manualmente.
+- Após uma solicitação registrada pelo fluxo online, o botão para criar outra limpa os campos e retorna ao formulário.
+
 ## 2026-11-21 — Nascer do sol na prévia
 
 - O sol emerge de um horizonte invisível em 1,24 s. O nome e a assinatura completam a entrada em 1,92 s. O SVG usa os traçados originais e fundo transparente.

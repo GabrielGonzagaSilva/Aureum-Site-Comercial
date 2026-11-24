@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { filesUnder } from './verify.mjs';
 import { localizedIntentTranslations } from './localized-copy.mjs';
+import { siteOrigin } from './search-metadata.mjs';
 
 // Approved category order and localized navigation. Service content comes later.
 const COPY = {
@@ -122,12 +123,12 @@ export async function applyServicePages(root = 'dist') {
       const folder = join(root, route.slice(1));
       const title = copy.cards[index];
       const languages = Object.entries(COPY).map(([target, translated]) => `<a href="${servicePath(target, service)}" lang="${translated.lang}" hreflang="${translated.lang}"${target === locale ? ' aria-current="page"' : ''}>${target.toUpperCase()}</a>`).join('');
-      const alternates = Object.entries(COPY).map(([target, translated]) => `<link rel="alternate" hreflang="${translated.lang}" href="https://aureumassessoria.com.br${servicePath(target, service)}">`).join('\n');
+      const alternates = Object.entries(COPY).map(([target, translated]) => `<link rel="alternate" hreflang="${translated.lang}" href="${siteOrigin}${servicePath(target, service)}">`).join('\n');
       const html = `<!doctype html>
 <html lang="${copy.lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${escape(title)} | Aureum</title><meta name="description" content="${escape(title + '. ' + copy.pending)}"><meta name="robots" content="noindex,follow">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon-aureum.svg">
-<link rel="canonical" href="https://aureumassessoria.com.br${route}">${alternates}
+<link rel="canonical" href="${siteOrigin}${route}">${alternates}
 <link rel="preload" href="/assets/fonts/aureum-refined-inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/css/aureum-service-page.css"></head>
 <body><header class="service-page-header"><a class="service-page-brand" href="${homePath(locale)}" aria-label="Aureum — ${escape(copy.home)}"><img src="/assets/brand/logo-reduzida-preto.svg" alt="Aureum" width="764" height="186"></a><nav aria-label="${escape(copy.languages)}">${languages}</nav></header>

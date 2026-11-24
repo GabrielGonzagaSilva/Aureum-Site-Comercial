@@ -122,6 +122,9 @@ test('focus trap, restore, reduced motion, validation and local-only review', as
   await expect(review).toBeVisible();
   await expect(review.locator('textarea')).toHaveValue(/\+442079460958/);
   await expect(review).toContainText('Nenhum dado foi enviado ou armazenado');
+  const instagram = review.getByRole('link', { name: 'Abrir Instagram' });
+  await expect(instagram).toHaveAttribute('href', 'https://www.instagram.com/aureum.assessoria/');
+  await expect(instagram).toHaveAttribute('target', '_blank');
   expect(posts).toEqual([]);
   await dismiss(page, 'Escape');
   // Desktop CTA returns focus; on mobile its hidden header CTA is not focusable.
@@ -131,6 +134,35 @@ test('focus trap, restore, reduced motion, validation and local-only review', as
   await review.getByRole('button', { name: 'Editar dados' }).click();
   await expect(page.locator('#lead-main-name')).toHaveValue('Teste Aureum');
   await dismiss(page, 'X');
+});
+
+test('a recorded enquiry can be followed by a new one with clean fields', async ({ page }) => {
+  const submissions = [];
+  await page.route('**/api/leads', route => {
+    const request = route.request();
+    if (request.method() === 'GET') return route.fulfill({ json: { enabled: true, privacyNoticeVersion: 'test' } });
+    submissions.push(request.postDataJSON());
+    return route.fulfill({ json: { ok: true } });
+  });
+  await load(page);
+  await open(page);
+  const form = page.locator('#lead-main');
+  await form.locator('[name=nome]').fill('Teste Aureum');
+  await form.locator('[name=codigo_pais]').selectOption('other');
+  await form.locator('[name=codigo_pais_outro]').fill('+44');
+  await form.locator('[name=whatsapp]').fill('020 7946 0958');
+  await form.locator('[name=consentimento]').check();
+  await form.locator('button[type=submit]').click();
+  await dialog(page).getByRole('button', { name: 'Enviar outra solicitação' }).click();
+  await expect(form).toBeVisible();
+  await expect(form.locator('[name=nome]')).toBeFocused();
+  await expect(form.locator('[name=nome]')).toHaveValue('');
+  await expect(form.locator('[name=codigo_pais]')).toHaveValue('');
+  await expect(form.locator('[name=codigo_pais_outro]')).toBeHidden();
+  await expect(form.locator('[name=whatsapp]')).toHaveValue('');
+  await expect(form.locator('[name=consentimento]')).not.toBeChecked();
+  expect(submissions).toHaveLength(1);
+  await expect(form).not.toHaveAttribute('data-submission-id', submissions[0].submissionId);
 });
 
 test('all visible contact CTAs, context, mobile drawer and ordinary hash navigation', async ({ page }) => {

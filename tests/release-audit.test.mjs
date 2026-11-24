@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFile } from 'node:fs/promises';
-import { relative } from 'node:path';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { dirname, join, relative } from 'node:path';
 import { filesUnder } from '../scripts/verify.mjs';
+import { applySearchMetadata } from '../scripts/search-metadata.mjs';
+import { applyServicePages } from '../scripts/service-cards.mjs';
 
 const files = await filesUnder('public');
 const htmlFiles = files.filter((file) => file.endsWith('.html'));
@@ -46,6 +49,33 @@ test('privacy information page remains available in Brazilian Portuguese', async
   assert.match(html, /<html\b[^>]*\blang=["']pt-BR["']/i);
   assert.match(html, /<title\b[^>]*>[^<]+<\/title>/i);
   assert.match(html, /robots["'][^>]*content=["']index,follow["']/i);
+});
+
+test('search metadata uses the production domain and omits noindex pages from the sitemap', async (t) => {
+  const root = await mkdtemp(join(tmpdir(), 'aureum-search-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const pages = ['index.html', 'en/destinos/portugal/index.html', 'privacidade.html'];
+  for (const page of pages) {
+    const target = join(root, page);
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, await readFile(join('public', page)));
+  }
+  await applyServicePages(root);
+
+  await applySearchMetadata(root);
+  const origin = 'https://aureumassessoria.com.br';
+  const routes = ['/', '/en/destinos/portugal/', '/privacidade.html'];
+  for (const [index, page] of pages.entries()) {
+    const head = (await readFile(join(root, page), 'utf8')).split('</head>')[0];
+    assert.ok(head.includes(`<link rel="canonical" href="${origin}${routes[index]}">`), page);
+    assert.doesNotMatch(head, /aureum-site-comercial\.vercel\.app/);
+  }
+  const english = await readFile(join(root, pages[1]), 'utf8');
+  assert.ok(english.includes(`hreflang="pt-BR" href="${origin}/destinos/portugal/"`));
+  assert.ok(english.includes(`property="og:url" content="${origin}/en/destinos/portugal/"`));
+  const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
+  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url), routes.map(route => origin + route));
+  assert.equal(await readFile(join(root, 'robots.txt'), 'utf8'), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
 });
 
 test('production response headers include baseline transport and browser protections', async () => {
