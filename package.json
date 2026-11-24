@@ -13,7 +13,7 @@
     "test:e2e": "node build.mjs && playwright test"
   },
   "dependencies": {
-    "@vercel/blob": "2.8.2"
+    "@vercel/blob": "2.9.0"
   },
   "overrides": {
     "zod": "4.6.6"

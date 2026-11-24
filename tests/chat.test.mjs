@@ -1,13 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GET, POST } from '../server/chat-core.mjs';
-import { shouldArchiveConversation } from '../api/chat.mjs';
+import { GET as publicGet, POST as publicPost } from '../api/chat.mjs';
 
-test('Mia archives conversations only in production', () => {
-  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'production' }), true);
-  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'preview' }), false);
-  assert.equal(shouldArchiveConversation({ VERCEL_ENV: 'development' }), false);
-  assert.equal(shouldArchiveConversation({}), false);
+test('the public Mia endpoint stays paused without consuming request data', async () => {
+  const request = new Proxy({}, { get() { assert.fail('The paused endpoint must not read the request'); } });
+  for (const response of [await publicGet(), await publicPost(request)]) {
+    assert.equal(response.status, 503);
+    assert.equal(response.headers.get('cache-control'), 'no-store');
+    assert.equal((await response.json()).status, 'paused');
+  }
 });
 
 test('Mia reports missing configuration without leaking secrets', async () => {

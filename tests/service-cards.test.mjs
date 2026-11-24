@@ -52,7 +52,7 @@ test('five services and one guidance card replace the old grid and footer on all
   }
 });
 
-test('every service link has a localized arrival page with a return path and no invented service content', async () => {
+test('every service page has localized guidance, contact and service navigation', async () => {
   const root = await mkdtemp(join(tmpdir(), 'aureum-services-'));
   try {
     const { pages } = await applyServicePages(root);
@@ -61,10 +61,12 @@ test('every service link has a localized arrival page with a return path and no 
       for (const slug of ['vistos', 'cidadania', 'passaporte-e-documentos', 'intercambio', 'viagens-internacionais']) {
         const html = await readFile(join(root, locale, 'servicos', slug, 'index.html'), 'utf8');
         assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
-        assert.match(html, /name="robots" content="noindex,follow"/);
+        assert.doesNotMatch(html, /name="robots" content="noindex/);
+        assert.match(html, /<main><h1>[^<]+<\/h1><p>[^<]{70,}<\/p><p>[^<]{70,}<\/p>/);
         assert.ok(html.includes('href="/' + locale + '#servicos"'));
+        assert.ok(html.includes('href="/' + locale + '#contato"'));
         assert.ok(html.includes('href="https://aureumassessoria.com.br/' + locale + 'servicos/' + slug + '/"'));
-        assert.equal([...html.matchAll(/hreflang=/g)].length, 10);
+        assert.equal([...html.matchAll(/hreflang=/g)].length, 11);
         assert.doesNotMatch(html, /<form\b|<script\b/);
       }
     }

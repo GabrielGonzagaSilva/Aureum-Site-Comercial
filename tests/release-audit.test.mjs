@@ -61,6 +61,7 @@ test('search metadata uses the production domain and omits noindex pages from th
     await writeFile(target, await readFile(join('public', page)));
   }
   await applyServicePages(root);
+  await writeFile(join(root, 'draft.html'), '<html><head><meta name="robots" content="noindex,follow"></head></html>');
 
   await applySearchMetadata(root);
   const origin = 'https://aureumassessoria.com.br';
@@ -74,7 +75,11 @@ test('search metadata uses the production domain and omits noindex pages from th
   assert.ok(english.includes(`hreflang="pt-BR" href="${origin}/destinos/portugal/"`));
   assert.ok(english.includes(`property="og:url" content="${origin}/en/destinos/portugal/"`));
   const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
-  assert.deepEqual([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url), routes.map(route => origin + route));
+  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+  assert.equal(urls.length, 28);
+  assert.ok(routes.every(route => urls.includes(origin + route)));
+  assert.ok(urls.includes(`${origin}/servicos/vistos/`));
+  assert.doesNotMatch(sitemap, /draft\.html/);
   assert.equal(await readFile(join(root, 'robots.txt'), 'utf8'), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
 });
 
@@ -88,4 +93,5 @@ test('production response headers include baseline transport and browser protect
   assert.equal(headers.get('x-frame-options'), 'DENY');
   assert.equal(headers.get('strict-transport-security'), 'max-age=31536000');
   assert.equal(headers.get('permissions-policy'), 'camera=(), microphone=(), geolocation=()');
+  assert.match(headers.get('content-security-policy'), /frame-ancestors 'none';.*form-action 'none'/);
 });

@@ -2,6 +2,14 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-24 — Segurança, privacidade e páginas de serviços
+
+- A API da Mia acompanha a pausa da interface e bloqueia novas conversas antes de ler dados ou contatar o Google Gemini.
+- As páginas têm política de conteúdo que autoriza os scripts locais e os scripts da página assinados no build. O cabeçalho global bloqueia o uso do site em frames e o envio nativo de formulários.
+- As páginas de serviços oferecem orientação inicial e acesso ao contato nos cinco idiomas. O painel de atendimento indica o Instagram cadastrado quando o WhatsApp está indisponível.
+- A página de privacidade explica a preparação local da mensagem, o envio manual e o histórico da Mia. Os formulários orientam o visitante a limitar os dados compartilhados.
+- O Blob passou a usar SDK com expiração e a conferir o prazo retornado antes de notificar a equipe. O teste integrado de recebimento usa configuração e registros sintéticos.
+
 ## 2026-11-24 — Domínio oficial e encaminhamento de contato
 
 - O build publica sitemap e `robots.txt` para o domínio oficial e alinha os endereços canônicos, as versões por idioma e os metadados de compartilhamento. Páginas de serviços em preparação continuam fora do sitemap.

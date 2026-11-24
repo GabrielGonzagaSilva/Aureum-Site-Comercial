@@ -24,6 +24,7 @@ const COPY = {
     phonePlaceholder: 'DDD + número', phoneHint: 'Inclua DDD/código de área e número, sem o código do país.',
     phoneError: 'Confira o código do país, o DDD/código de área e o número.',
     contactNote: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
+    privacyHint: 'Descreva apenas seu objetivo. Evite incluir documentos, dados financeiros ou informações de saúde.',
     contactError: 'Informe um e-mail válido ou um telefone com código do país.',
     honeypotLabel: 'Deixe este campo vazio', consentError: 'Marque a autorização para continuar.',
   },
@@ -33,6 +34,7 @@ const COPY = {
     phonePlaceholder: 'Area code + number', phoneHint: 'Include the area code and number, without the country calling code.',
     phoneError: 'Check the country code, area code and phone number.',
     contactNote: 'Provide at least one way to reach you: email or phone/WhatsApp.',
+    privacyHint: 'Describe only your goal. Avoid sharing documents, financial details or health information.',
     contactError: 'Enter a valid email address or a phone number with its country code.',
     honeypotLabel: 'Leave this field empty', consentError: 'Please confirm your consent to continue.',
   },
@@ -42,6 +44,7 @@ const COPY = {
     phonePlaceholder: 'Prefijo de área + número', phoneHint: 'Incluye el prefijo de área y el número, sin el código del país.',
     phoneError: 'Comprueba el código del país, el prefijo de área y el número.',
     contactNote: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
+    privacyHint: 'Describe solo tu objetivo. Evita compartir documentos, datos financieros o información de salud.',
     contactError: 'Introduce un correo válido o un teléfono con el código del país.',
     honeypotLabel: 'Deja este campo vacío', consentError: 'Confirma la autorización para continuar.',
   },
@@ -51,6 +54,7 @@ const COPY = {
     phonePlaceholder: 'Indicatif régional + numéro', phoneHint: 'Indiquez l’indicatif régional et le numéro, sans l’indicatif du pays.',
     phoneError: 'Vérifiez l’indicatif du pays, l’indicatif régional et le numéro.',
     contactNote: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
+    privacyHint: 'Décrivez uniquement votre objectif. Évitez de partager des documents, des données financières ou de santé.',
     contactError: 'Saisissez une adresse e-mail valide ou un numéro avec son indicatif pays.',
     honeypotLabel: 'Laissez ce champ vide', consentError: 'Confirmez votre autorisation pour continuer.',
   },
@@ -60,6 +64,7 @@ const COPY = {
     phonePlaceholder: 'Vorwahl + Rufnummer', phoneHint: 'Geben Sie Vorwahl und Rufnummer ohne die internationale Ländervorwahl ein.',
     phoneError: 'Bitte prüfen Sie Ländervorwahl, Ortsvorwahl und Rufnummer.',
     contactNote: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
+    privacyHint: 'Beschreiben Sie nur Ihr Ziel. Vermeiden Sie es, Dokumente, Finanz- oder Gesundheitsdaten zu teilen.',
     contactError: 'Geben Sie eine gültige E-Mail-Adresse oder eine Telefonnummer mit Ländervorwahl ein.',
     honeypotLabel: 'Lassen Sie dieses Feld leer', consentError: 'Bestätigen Sie Ihre Zustimmung, um fortzufahren.',
   },
@@ -146,7 +151,7 @@ function transformForm(form, locale, index) {
   ].join('');
 
   form = form.slice(0, adjustedPhoneField.start) + phoneReplacement + form.slice(adjustedPhoneField.end);
-  form = form.replace(/(<\/div>\s*)(<label\b(?=[^>]*\bclass=["'][^"']*\bconsent\b)[^>]*>)/i, '$1<p class="contact-method-note">' + copy.contactNote + '</p>$2');
+  form = form.replace(/(<\/div>\s*)(<label\b(?=[^>]*\bclass=["'][^"']*\bconsent\b)[^>]*>)/i, '$1<p class="contact-method-note">' + copy.contactNote + ' ' + copy.privacyHint + '</p>$2');
 
   const consentMatch = /<label\b(?=[^>]*\bclass=["'][^"']*\bconsent\b)[^>]*>/i.exec(form);
   if (consentMatch && !/name=["']website["']/i.test(form)) {

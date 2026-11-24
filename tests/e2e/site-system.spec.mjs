@@ -74,6 +74,19 @@ test('malformed incoming fragments leave routing and contact usable',async({page
   expect(errors).toEqual([]);
 });
 
+test('the enforced content policy allows navigation and local contact', async ({ page }) => {
+  const violations = [];
+  await page.exposeFunction('recordPolicyViolation', directive => violations.push(directive));
+  await page.addInitScript(() => {
+    document.addEventListener('securitypolicyviolation', event => window.recordPolicyViolation(event.effectiveDirective));
+  });
+  await page.goto('/en/destinos/portugal/', { waitUntil: 'load' });
+  await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /script-src 'self' 'sha256-/);
+  await page.locator('#hdr .btn-hdr').evaluate(link => link.click());
+  await expect(page.locator('#aureum-lead-dialog')).toBeVisible();
+  expect(violations).toEqual([]);
+});
+
 test('late media loading never resets the visitor scroll position',async({page})=>{
   let release;
   const delayed=new Promise(resolve=>{release=resolve;});

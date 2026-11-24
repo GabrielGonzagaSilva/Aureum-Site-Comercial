@@ -74,6 +74,7 @@ for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
       await expect(page).toHaveURL(new RegExp(target + '$'));
       await page.waitForLoadState('domcontentloaded');
       await expect(page.locator('h1')).toHaveText(category);
+      await expect(page.locator('.service-page-contact')).toHaveAttribute('href', '/' + locale + '#contato');
       await expect(page.locator('form, #aureum-lead-dialog')).toHaveCount(0);
       if (index === 0) {
         const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();

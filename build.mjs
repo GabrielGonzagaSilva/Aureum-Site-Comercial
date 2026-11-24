@@ -6,6 +6,7 @@ import { applyServiceCards, applyServicePages } from './scripts/service-cards.mj
 import { applyLocalizedCopy } from './scripts/localized-copy.mjs';
 import { applySiteRefinement } from './scripts/site-refinement.mjs';
 import { applySearchMetadata } from './scripts/search-metadata.mjs';
+import { applyContentSecurity } from './scripts/content-security.mjs';
 import { verify, filesUnder } from './scripts/verify.mjs';
 
 // Builds use only versioned source. No deployment, URL, or network is a build input.
@@ -49,7 +50,7 @@ for (const file of outputFiles.filter(file => file.endsWith('.html'))) {
     const version = versions.get(url);
     return version ? `${attribute}=${quote}${url}?v=${version}${quote}` : match;
   });
-  await writeFile(file, versioned);
+  await writeFile(file, applyContentSecurity(versioned));
 }
 const verification = await verify('dist');
 const assets = {};
