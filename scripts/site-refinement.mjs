@@ -36,6 +36,8 @@ export function refineSiteHtml(html, locale) {
   // Keep the footer in sync with the same service catalog used by the cards.
   output=output.replace(/<footer\b(?=[^>]*\bclass=["']foot["'])[^>]*>[\s\S]*?<\/footer>/gi, footer =>
     footer.replace('/assets/brand/logo-reduzida-branco.svg','/assets/brand/logo-reduzida-bege.svg')
+      // Keep social links directly below the logo, without the brand description.
+      .replace(/(<div class="f-brand">\s*<a\b[^>]*>[\s\S]*?<\/a>)\s*<p>[\s\S]*?<\/p>(?=\s*<div class="f-social">)/, '$1\n')
       .replace(/<nav\b[^>]*><h4>[^<]+<\/h4>(?:<a href="(?:\/(?:(?:en|es|fr|de)\/)?)?#servicos">[^<]+<\/a>)+<\/nav>/g, nav => {
       const heading=nav.match(/<h4>[^<]+<\/h4>/)[0];
       const opening=nav.match(/^<nav\b[^>]*>/)[0];

@@ -2,6 +2,11 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-25 — Rodapé sem parágrafo abaixo da marca
+
+- Removido, no ajuste compartilhado do build, o parágrafo entre a logo Aureum e as redes sociais nas 50 páginas de marketing dos cinco idiomas.
+- O bloco de redes sociais passa a seguir a logo com o espaçamento existente, preservando os ícones, links, navegação e aviso geral do rodapé.
+
 ## 2026-11-24 — Segurança, privacidade e páginas de serviços
 
 - A API da Mia acompanha a pausa da interface e bloqueia novas conversas antes de ler dados ou contatar o Google Gemini.
