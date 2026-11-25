@@ -1,5 +1,13 @@
 # Changelog — Aureum Site Comercial
 
+## 2026-11-25 — Envio direto de solicitações e confirmação
+
+- Atualizado o CTA dos formulários para “Enviar pedido” em português, com equivalentes localizados em inglês, espanhol, francês e alemão.
+- O formulário envia a solicitação pelo endpoint ativo e apresenta estado de carregamento durante o processamento.
+- Após confirmação do servidor e aceitação da notificação pelo provedor, o visitante vê uma tela de sucesso com “Sua solicitação foi enviada!”, confirmação acessível e opção de iniciar outro pedido.
+- Se o recebimento estiver indisponível ou houver falha de armazenamento/notificação, o formulário permanece disponível e informa que o pedido não foi concluído; não exibe sucesso indevidamente.
+- Atualizados textos de orientação e consentimento para remover a antiga instrução de copiar e encaminhar a mensagem manualmente, preservando campos e finalidade do tratamento.
+
 Todas as mudanças relevantes devem ser registradas aqui.
 
 ## 2026-11-25 — Rodapé sem parágrafo abaixo da marca
