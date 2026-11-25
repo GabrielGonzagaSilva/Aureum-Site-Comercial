@@ -26,7 +26,7 @@ const COPY = {
     contactNote: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
     privacyHint: 'Descreva apenas seu objetivo. Evite incluir documentos, dados financeiros ou informações de saúde.',
     contactError: 'Informe um e-mail válido ou um telefone com código do país.',
-    honeypotLabel: 'Deixe este campo vazio', consentError: 'Marque a autorização para continuar.',
+    honeypotLabel: 'Deixe este campo vazio', consentError: 'Marque a autorização para continuar.', consentCopy: 'Li o <a href="/privacidade.html#contato" target="_blank" rel="noopener noreferrer">aviso de privacidade</a> e solicito que a Aureum utilize os dados informados para responder ao meu pedido de orientação.',
   },
   en: {
     emailLabel: 'Email (optional)', phoneLabel: 'Phone / WhatsApp', codeLabel: 'Country calling code',
@@ -36,7 +36,7 @@ const COPY = {
     contactNote: 'Provide at least one way to reach you: email or phone/WhatsApp.',
     privacyHint: 'Describe only your goal. Avoid sharing documents, financial details or health information.',
     contactError: 'Enter a valid email address or a phone number with its country code.',
-    honeypotLabel: 'Leave this field empty', consentError: 'Please confirm your consent to continue.',
+    honeypotLabel: 'Leave this field empty', consentError: 'Please confirm your consent to continue.', consentCopy: 'I have read the <a href="/privacidade.html#contact" target="_blank" rel="noopener noreferrer">privacy notice</a> and ask Aureum to use the information provided to respond to my enquiry.',
   },
   es: {
     emailLabel: 'Correo electrónico (opcional)', phoneLabel: 'Teléfono / WhatsApp', codeLabel: 'Código de país',
@@ -46,7 +46,7 @@ const COPY = {
     contactNote: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
     privacyHint: 'Describe solo tu objetivo. Evita compartir documentos, datos financieros o información de salud.',
     contactError: 'Introduce un correo válido o un teléfono con el código del país.',
-    honeypotLabel: 'Deja este campo vacío', consentError: 'Confirma la autorización para continuar.',
+    honeypotLabel: 'Deja este campo vacío', consentError: 'Confirma la autorización para continuar.', consentCopy: 'He leído el <a href="/privacidade.html#contacto" target="_blank" rel="noopener noreferrer">aviso de privacidad</a> y solicito que Aureum utilice los datos proporcionados para responder a mi consulta.',
   },
   fr: {
     emailLabel: 'E-mail (facultatif)', phoneLabel: 'Téléphone / WhatsApp', codeLabel: 'Indicatif du pays',
@@ -56,7 +56,7 @@ const COPY = {
     contactNote: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
     privacyHint: 'Décrivez uniquement votre objectif. Évitez de partager des documents, des données financières ou de santé.',
     contactError: 'Saisissez une adresse e-mail valide ou un numéro avec son indicatif pays.',
-    honeypotLabel: 'Laissez ce champ vide', consentError: 'Confirmez votre autorisation pour continuer.',
+    honeypotLabel: 'Laissez ce champ vide', consentError: 'Confirmez votre autorisation pour continuer.', consentCopy: 'J’ai lu la <a href="/privacidade.html#contact" target="_blank" rel="noopener noreferrer">notice de confidentialité</a> et demande à Aureum d’utiliser les informations fournies pour répondre à ma demande.',
   },
   de: {
     emailLabel: 'E-Mail (optional)', phoneLabel: 'Telefon / WhatsApp', codeLabel: 'Ländervorwahl',
@@ -66,7 +66,7 @@ const COPY = {
     contactNote: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
     privacyHint: 'Beschreiben Sie nur Ihr Ziel. Vermeiden Sie es, Dokumente, Finanz- oder Gesundheitsdaten zu teilen.',
     contactError: 'Geben Sie eine gültige E-Mail-Adresse oder eine Telefonnummer mit Ländervorwahl ein.',
-    honeypotLabel: 'Lassen Sie dieses Feld leer', consentError: 'Bestätigen Sie Ihre Zustimmung, um fortzufahren.',
+    honeypotLabel: 'Lassen Sie dieses Feld leer', consentError: 'Bestätigen Sie Ihre Zustimmung, um fortzufahren.', consentCopy: 'Ich habe die <a href="/privacidade.html#kontakt" target="_blank" rel="noopener noreferrer">Datenschutzhinweise</a> gelesen und bitte Aureum, meine Angaben zur Beantwortung meiner Anfrage zu verwenden.',
   },
 };
 
@@ -168,6 +168,8 @@ function transformForm(form, locale, index) {
   if (consentInput && /consent-error/.test(form)) {
     form = form.replace(consentInput[0], setAttribute(consentInput[0], 'aria-describedby', formId + '-consent-error'));
   }
+
+  form = form.replace(consentBlock, (label) => label.replace(/(<span\\b[^>]*>)[\\s\\S]*?(<\\/span>)/i, '$1' + copy.consentCopy + '$2'));
 
   const updatedOpen = setAttribute(open, 'data-aureum-lead-form', 'v1');
   return updatedOpen + form.slice(open.length);
