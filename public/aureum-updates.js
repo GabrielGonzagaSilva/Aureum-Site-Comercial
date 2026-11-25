@@ -147,6 +147,7 @@
       if (form) form.closest('.contact-option').remove();
       const launcher = document.getElementById('launch-whatsapp');
       if (launcher) {
+        launcher.classList.remove('fab-whatsapp');
         launcher.classList.add('ux-contact-launcher');
         launcher.textContent = t.title;
         launcher.title = t.title;
@@ -366,7 +367,7 @@
   /* Shared reveal controller for every viewport; logo variants live in CSS. */
   (function repairHeader(){
     var header=document.getElementById("hdr");
-    var hero=document.querySelector("#home .hero-logo-centered-test");
+    var hero=document.querySelector("#home .ux-hero, #home .hero-logo-centered-test");
     var logo=header&&header.querySelector(".navbar .logo");
     var cta=header&&header.querySelector(".navbar .hdr-cta > .btn-hdr");
     if(!header||!hero||!logo||!cta)return;

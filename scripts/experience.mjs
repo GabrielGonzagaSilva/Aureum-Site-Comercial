@@ -119,7 +119,7 @@ function refineHero(section, copy) {
   return '<section class="hero ux-hero" id="top" aria-label="Aureum">' + body;
 }
 
-function refineDrawer(html) {
+function refineDrawer(html, copy) {
   const menu = findElementById(html, 'div', 'mmenu');
   if (!menu) return html;
   const updated = menu.markup.replace(
@@ -128,7 +128,7 @@ function refineDrawer(html) {
       const contact = links.match(/<a href="[^"]*#contato">[^<]+<\/a>/)?.[0] || '';
       return `<div class="ux-drawer-language">${language}</div>${nav}${contact}${links.replace(contact, '')}
 <details class="ux-drawer-destinations"><summary>${destinations}</summary>${countries}</details></nav>
-<div class="mmenu-foot">${cta}</div>`;
+<div class="mmenu-foot">${cta.replace(/(>)[^<]*(<\/a>)/, '$1' + escapeHtml(copy.draft) + '$2')}</div>`;
     },
   );
   return html.slice(0, menu.start) + updated + html.slice(menu.end);
@@ -213,7 +213,7 @@ export function refineExperience(html, locale) {
   output = editSection(output, 'como-funciona', refineProcess);
   output = editSection(output, 'diferenciais', section => refinePreparation(section, copy));
   output = editSection(output, 'contato', section => refineContact(section, copy, locale));
-  output = refineDrawer(output);
+  output = refineDrawer(output, copy);
   const photo = {
     pt: 'Porto e rio Douro, Portugal', en: 'Porto and the River Douro, Portugal',
     es: 'Oporto y el río Duero, Portugal', fr: 'Porto et le Douro, Portugal', de: 'Porto und der Douro, Portugal',

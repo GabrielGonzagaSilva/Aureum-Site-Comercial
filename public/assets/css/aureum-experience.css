@@ -104,7 +104,7 @@
 .aureum-refined.ae-process .ae-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 #mmenu .mmenu-top { position: sticky; top: 0; z-index: 2; background: #fff; }
-#mmenu .ux-drawer-language { padding-block: 12px; }
+#mmenu .ux-drawer-language { padding: 12px 24px; }
 #mmenu .ux-drawer-language .aureum-locale { width: 100%; }
 #mmenu .ux-drawer-language .aureum-locale__trigger { width: 100%; }
 #mmenu .ux-drawer-destinations > summary {
@@ -142,11 +142,12 @@ body:has(#mmenu:not([hidden])) .contact-actions { display: none !important; }
 
 .aureum-lead-result { scroll-margin-top: 98px; }
 .aureum-lead-dialog .aureum-lead-result { scroll-margin-top: 12px; }
-.ux-contact-launcher {
+#aureum-contact-hub #launch-whatsapp.ux-contact-launcher {
   width: auto !important;
   min-width: 0 !important;
+  height: 48px;
   min-height: 48px;
-  padding: 0 15px;
+  padding: 0 15px !important;
   font: 650 13px/1.15 Inter, Arial, sans-serif;
   background: #184939 !important;
   color: #fffaf1 !important;
