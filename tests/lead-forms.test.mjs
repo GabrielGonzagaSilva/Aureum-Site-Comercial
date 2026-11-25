@@ -39,8 +39,22 @@ test('all public lead forms receive the same international contact controls in f
       assert.doesNotMatch(form, /<input\b(?=[^>]*name=["']email["'])(?=[^>]*\brequired\b)/i, file + ': email must be optional');
       assert.ok(form.includes(label), file + ': phone label must be localized');
       assert.match(form, /contact-method-note/, file + ': at-least-one-contact guidance missing');
-      assert.match(form, /receber e responder ao meu pedido de orientação/, file + ': consent copy must describe active online intake');
-      assert.match(form, /Ao enviar, sua solicitação será encaminhada à equipe Aureum/, file + ': form note must describe direct submission');
+      const consentPhrases = {
+        pt: 'receber e responder ao meu pedido de orientação',
+        en: 'receive and respond to my enquiry',
+        es: 'recibir y responder a mi consulta',
+        fr: 'recevoir et traiter ma demande',
+        de: 'Entgegennahme und Beantwortung meiner Anfrage',
+      };
+      const submissionNotes = {
+        pt: 'Ao enviar, sua solicitação será encaminhada à equipe Aureum.',
+        en: 'When you submit, your request will be sent to the Aureum team.',
+        es: 'Al enviar, tu solicitud se remitirá al equipo de Aureum.',
+        fr: 'En envoyant ce formulaire, votre demande sera transmise à l’équipe Aureum.',
+        de: 'Mit dem Absenden wird Ihre Anfrage an das Aureum-Team weitergeleitet.',
+      };
+      assert.ok(form.includes(consentPhrases[locale] || consentPhrases.pt), file + ': consent copy must describe active online intake');
+      assert.ok(form.includes(submissionNotes[locale] || submissionNotes.pt), file + ': form note must describe direct submission');
       assert.match(form, /name=["']website["']/, file + ': honeypot missing');
       assert.match(form, /name=["']consentimento["']|data-rule=["']consent["']/i, file + ': consent control must be preserved');
       assert.match(form, /name=["']codigo_pais["'][^>]*aria-describedby=/i, file + ': country code selector needs an accessible description');
