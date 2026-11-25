@@ -52,35 +52,32 @@ Quando a Mia estava ativa, o conteúdo da conversa passava pelo Google Gemini pa
 
 ## Notificação por e-mail
 
-A integração com **Resend** está implementada e ativa em Production.
+A integração com **Resend** está ativa em Production e a entrega do primeiro teste foi confirmada pelo responsável da Aureum em 25/11/2026.
 
-- O destinatário e o remetente planejados estão cadastrados como variáveis de configuração no ambiente Production.
-- `RESEND_API_KEY` está cadastrada na Vercel como variável Secret em Production.
-- `AUREUM_LEADS_NOTIFICATION_ENABLED=true`; o endpoint está habilitado para notificar a equipe.
-- O remetente configurado é `notificacoes@mail.aureumassessoria.com.br`. O projeto não está associado a esse subdomínio como domínio de site na Vercel, e isso não confirma nem invalida sua verificação no Resend.
-- O domínio de envio e os registros DKIM/SPF/Return-Path ainda precisam ser confirmados diretamente na conta Resend e no DNS autoritativo (nameservers do Registro.br). Não criar ou substituir registros DNS sem comparar os valores exatos fornecidos pelo Resend.
+- Destinatário interno: `contato.aureum@outlook.com`.
+- Remetente: `notificacoes@mail.aureumassessoria.com.br`.
+- `RESEND_API_KEY` permanece como variável Secret na Vercel Production.
+- `AUREUM_LEADS_NOTIFICATION_ENABLED=true`.
+- A equipe confirmou que `mail.aureumassessoria.com.br` aparece como Verified no painel Resend.
+- O teste sintético pós-deploy retornou HTTP 201; o endpoint concluiu a persistência privada com expiração e o Resend aceitou a notificação. O responsável confirmou o recebimento na caixa Outlook.
 - A API grava primeiro o registro no Blob privado e, depois, solicita o envio da notificação.
 - Se o visitante informou e-mail, a mensagem usa esse endereço como `reply_to`; se informou somente telefone, esse campo é omitido.
 - O conteúdo é enviado como texto simples, sem anexos, pixels de rastreamento ou links públicos para os registros.
 - A chamada usa uma chave de idempotência baseada no identificador da solicitação.
 - Se o armazenamento for concluído, mas o provedor rejeitar a notificação, a API retorna `notification_failed`.
 
-## Pendências para ativação em produção
+## Governança e operação após ativação
 
-1. Publicar e revisar o aviso de privacidade específico do formulário de contato, incluindo controlador, finalidades, categorias de dados, destinatários/operadores, transferência internacional, direitos dos titulares e prazos aplicáveis.
-2. Atualizar o texto de consentimento nos cinco idiomas (PT/EN/ES/FR/DE), com link direto para o aviso. A aprovação da tabela de retenção não deve ser confundida com aprovação de um texto público ainda não revisado.
-3. Confirmar na conta Resend que o domínio `mail.aureumassessoria.com.br` está verificado para envio. Conferir cada registro DKIM e de envio (SPF/Return-Path ou CNAME, conforme o painel atual) nos nameservers autoritativos.
-4. Executar os testes automatizados e de integração com dados sintéticos: persistência privada, TTL/expiração, duplicidade/idempotência, origem, rate limit, rejeição pelo provedor e ausência de exposição da chave.
-5. Só depois dos itens anteriores, registrar a versão do aviso aprovada em `APPROVED_PRIVACY_NOTICE_VERSION` e configurar em Production:
-   - `AUREUM_LEADS_ENABLED=true`
-   - `AUREUM_LEADS_PRIVACY_APPROVED=true`
-   - `AUREUM_LEADS_PRIVACY_NOTICE_VERSION=<versão aprovada>`
-   - `AUREUM_LEADS_RETENTION_DAYS=365`
-   - `AUREUM_LEADS_NOTIFICATION_ENABLED=true`
-6. Fazer um envio controlado, confirmar o registro no Blob privado e acompanhar no Resend o estado real da mensagem (incluindo entrega). Não usar dados reais de clientes para os testes.
-7. Definir como os prazos de cinco anos serão aplicados aos dados de clientes, aos e-mails necessários como prova e aos documentos fiscais/contábeis nos sistemas de origem (incluindo Outlook e armazenamento contábil). A exclusão/anonimização deve respeitar preservação por disputa e obrigações legais.
+1. A aprovação da controladora, a versão do aviso, a retenção de 365 dias para contatos sem contratação e a confirmação de domínio no Resend foram registradas em 25/11/2026.
+2. O aviso específico dos formulários foi publicado em cinco idiomas, com link direto no texto de consentimento.
+3. O build de produção executou 44 testes automatizados, todos aprovados, e gerou 76 páginas/178 arquivos.
+4. O endpoint público foi consultado após a publicação e retornou `enabled=true` com a versão `2026-11-25-v1`.
+5. O primeiro envio sintético foi confirmado como recebido na caixa interna. Monitorar continuamente eventos de entrega, rejeição e bounce no Resend.
+6. Aplicar os prazos de cinco anos a clientes, e-mails comprobatórios e documentos fiscais nos sistemas em que esses registros são mantidos (Outlook, atendimento e contabilidade).
+7. Definir e implementar um prazo aprovado para registros históricos da Mia, incluindo as duas cópias privadas, antes de reativar o assistente.
+8. O rate limiter em memória é proteção complementar e não substitui mecanismo distribuído.
 
-A constante `APPROVED_PRIVACY_NOTICE_VERSION` permanece vazia por padrão. Assim, mesmo que variáveis de ambiente sejam configuradas por engano, o endpoint continuará fechado até a publicação do aviso aprovado e a atualização explícita do código.
+A constante `APPROVED_PRIVACY_NOTICE_VERSION` está versionada no código. Qualquer alteração material no aviso exige nova versão correspondente no endpoint e na configuração de produção.
 
 ## Limites atuais
 
