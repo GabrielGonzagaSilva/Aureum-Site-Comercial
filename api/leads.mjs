@@ -10,7 +10,7 @@ import { sendLeadNotification } from '../server/lead-notifications.mjs';
 
 // Intentionally closed until the approved consent copy and privacy notice are versioned.
 // Do not set the Vercel feature flags while this value is empty.
-const APPROVED_PRIVACY_NOTICE_VERSION = '';
+const APPROVED_PRIVACY_NOTICE_VERSION = '2026-11-25-v1';
 const MAX_PAYLOAD_BYTES = 12000;
 const rateLimit = createRateLimiter();
 const storage = { del, get, head, put };
