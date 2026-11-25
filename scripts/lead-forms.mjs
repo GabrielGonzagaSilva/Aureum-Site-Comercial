@@ -169,7 +169,7 @@ function transformForm(form, locale, index) {
     form = form.replace(consentInput[0], setAttribute(consentInput[0], 'aria-describedby', formId + '-consent-error'));
   }
 
-  form = form.replace(consentBlock, (label) => label.replace(/(<span\\b[^>]*>)[\\s\\S]*?(<\\/span>)/i, '$1' + copy.consentCopy + '$2'));
+  form = form.replace(consentBlock, (label) => label.replace(/(<span\b[^>]*>)[\s\S]*?(<\/span>)/i, '$1' + copy.consentCopy + '$2'));
 
   const updatedOpen = setAttribute(open, 'data-aureum-lead-form', 'v1');
   return updatedOpen + form.slice(open.length);
