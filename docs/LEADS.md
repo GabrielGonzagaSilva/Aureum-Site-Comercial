@@ -4,7 +4,7 @@
 
 A interface dos formulários está preparada para e-mail opcional e telefone/WhatsApp opcional com código internacional. Pelo menos um dos dois meios deve ser informado. O build transforma os formulários existentes nas páginas de marketing sem duplicar a lógica nas páginas de origem.
 
-O endpoint `/api/leads` permanece **intencionalmente desabilitado** até a conclusão do aviso de privacidade específico do formulário e a verificação do domínio remetente no Resend. Enquanto isso, o navegador não envia dados pessoais ao servidor; o formulário apenas prepara uma mensagem local para revisão e cópia.
+O endpoint `/api/leads` está **ativo em produção desde 25/11/2026**. O aviso específico foi publicado em cinco idiomas, a controladora aprovou a política, o domínio remetente foi confirmado como verificado pela equipe e as flags de recebimento/notificação foram habilitadas. O status público do endpoint confirmou `enabled=true` com a versão `2026-11-25-v1`.
 
 Em 25/11/2026, foi confirmada por Gabriel a aprovação de Katarina para a política de retenção e a definição de papéis descritas no registro de governança:
 - Contatos sem contratação: 12 meses após o último contato.
@@ -19,14 +19,14 @@ Em 25/11/2026, foi confirmada por Gabriel a aprovação de Katarina para a polí
 A Vercel Production recebeu `AUREUM_LEADS_RETENTION_DAYS=365`, correspondente ao prazo aprovado para contatos que apenas solicitam informações. Isso não aplica automaticamente a retenção de cinco anos a clientes, e-mails ou documentos fiscais; esses conjuntos exigem gestão nos sistemas em que são efetivamente mantidos.
 
 Controles atuais:
-- `AUREUM_LEADS_ENABLED=false`
-- `AUREUM_LEADS_PRIVACY_APPROVED=false`
-- `AUREUM_LEADS_NOTIFICATION_ENABLED=false`
-- `AUREUM_LEADS_PRIVACY_NOTICE_VERSION` ainda não está cadastrada.
-- `AUREUM_LEADS_RETENTION_DAYS=365` (Production).
-- A constante `APPROVED_PRIVACY_NOTICE_VERSION` permanece vazia no código.
+- `AUREUM_LEADS_ENABLED=true` (Production)
+- `AUREUM_LEADS_PRIVACY_APPROVED=true` (Production)
+- `AUREUM_LEADS_NOTIFICATION_ENABLED=true` (Production)
+- `AUREUM_LEADS_PRIVACY_NOTICE_VERSION=2026-11-25-v1` (Production)
+- `AUREUM_LEADS_RETENTION_DAYS=365` (Production)
+- `APPROVED_PRIVACY_NOTICE_VERSION=2026-11-25-v1` no código.
 
-A combinação de bloqueios mantém o endpoint fechado, mesmo com o prazo de retenção já configurado.
+O endpoint foi consultado em produção e retornou `enabled=true`. Um envio sintético foi aceito pelo endpoint com HTTP 201; a API concluiu o armazenamento privado com expiração e o Resend aceitou a notificação. A entrega final na caixa de entrada não foi confirmada pelo conector de e-mail; conferir a mensagem de teste no Outlook e no painel de eventos do Resend.
 
 ## Arquitetura
 
@@ -52,11 +52,11 @@ Quando a Mia estava ativa, o conteúdo da conversa passava pelo Google Gemini pa
 
 ## Notificação por e-mail
 
-A integração com **Resend** está implementada no código, mas não está ativa.
+A integração com **Resend** está implementada e ativa em Production.
 
 - O destinatário e o remetente planejados estão cadastrados como variáveis de configuração no ambiente Production.
 - `RESEND_API_KEY` está cadastrada na Vercel como variável Secret em Production.
-- `AUREUM_LEADS_NOTIFICATION_ENABLED=false`; portanto, nenhuma notificação automática é enviada.
+- `AUREUM_LEADS_NOTIFICATION_ENABLED=true`; o endpoint está habilitado para notificar a equipe.
 - O remetente configurado é `notificacoes@mail.aureumassessoria.com.br`. O projeto não está associado a esse subdomínio como domínio de site na Vercel, e isso não confirma nem invalida sua verificação no Resend.
 - O domínio de envio e os registros DKIM/SPF/Return-Path ainda precisam ser confirmados diretamente na conta Resend e no DNS autoritativo (nameservers do Registro.br). Não criar ou substituir registros DNS sem comparar os valores exatos fornecidos pelo Resend.
 - A API grava primeiro o registro no Blob privado e, depois, solicita o envio da notificação.
@@ -84,8 +84,8 @@ A constante `APPROVED_PRIVACY_NOTICE_VERSION` permanece vazia por padrão. Assim
 
 ## Limites atuais
 
-- Nenhum e-mail ou WhatsApp automático é enviado nesta versão.
-- O modo local apenas prepara uma mensagem para o visitante copiar e encaminhar.
-- O recebimento online permanece indisponível enquanto qualquer requisito de privacidade, retenção, armazenamento ou notificação estiver ausente.
+- O formulário público recebe solicitações e envia notificação por e-mail à caixa interna configurada.
+- Não há envio automático de WhatsApp; o telefone é incluído na notificação para retorno humano.
+- A aceitação pelo Resend não garante entrega final; monitorar eventos e caixa de entrada.
 - A confirmação exibida ao visitante só ocorre depois da persistência privada e da aceitação da notificação pelo provedor; isso não substitui a verificação posterior de entrega na caixa de entrada.
 - O rate limiter em memória é uma proteção complementar e não substitui um mecanismo distribuído.
