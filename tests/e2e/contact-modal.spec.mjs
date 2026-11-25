@@ -28,6 +28,10 @@ async function open(page) {
   await expect(dialog(page)).toBeVisible();
   await expect(dialog(page)).toHaveCSS('opacity', '1');
 }
+async function openPersonalFields(page) {
+  const disclosure = page.locator('#lead-main .ux-manual-contact');
+  if (await disclosure.getAttribute('open') === null) await disclosure.locator('summary').click();
+}
 async function dismiss(page, method) {
   if (method === 'Escape') await page.keyboard.press('Escape');
   else if (method === 'backdrop') await page.mouse.click(2, 2);
@@ -108,12 +112,10 @@ test('focus trap, restore, reduced motion, validation and local-only review', as
   const backgroundFocus = await page.locator('#mm-open').evaluate(e => { e.focus(); return document.activeElement === e; });
   expect(backgroundFocus).toBe(false);
   await page.locator('#lead-main button[type=submit]').click();
-  await expect(page.locator('#lead-main-name')).toBeFocused();
-  await expect(page.locator('#lead-main-name')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.locator('#lead-main [name=consentimento]')).toBeFocused();
+  await openPersonalFields(page);
   await page.locator('#lead-main-name').fill('Teste Aureum');
   await page.locator('#lead-main [name=consentimento]').check();
-  await page.locator('#lead-main button[type=submit]').click();
-  await expect(page.locator('#lead-main-email')).toBeFocused();
   await page.locator('#lead-main [name=codigo_pais]').selectOption('other');
   await page.locator('#lead-main [name=codigo_pais_outro]').fill('+44');
   await page.locator('#lead-main [name=whatsapp]').fill('020 7946 0958');
@@ -205,6 +207,7 @@ for (const locale of ['', 'en/', 'es/', 'fr/', 'de/']) {
       await open(page);
       await expect(dialog(page)).toHaveAccessibleName(/.+/);
       await expect(page.locator(close)).toHaveAccessibleName(/.+/);
+      await openPersonalFields(page);
       await expect(page.locator('#lead-main [name=codigo_pais]')).toHaveAccessibleName(/.+/);
       if (path.includes('destinos')) await expect(page.locator('#lead-main [name=destino]')).toHaveValue('Portugal');
       const results = await new AxeBuilder({ page }).include('#aureum-lead-dialog').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
@@ -219,6 +222,7 @@ test('closing after local review at the page bottom preserves the original posit
   await position(page, 1);
   const y = await page.evaluate(() => scrollY);
   await open(page);
+  await openPersonalFields(page);
   await page.locator('#lead-main-name').fill('Teste Aureum');
   await page.locator('#lead-main-email').fill('teste@example.com');
   await page.locator('#lead-main [name=consentimento]').check();
@@ -226,6 +230,24 @@ test('closing after local review at the page bottom preserves the original posit
   await expect(page.locator('.aureum-lead-dialog .aureum-lead-result')).toBeVisible();
   await dismiss(page, 'X');
   expect(await page.evaluate(() => scrollY)).toBeCloseTo(y, 0);
+});
+
+test('a narrow first-contact form keeps the service context and reveals the manual review', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 550 });
+  const posts = [];
+  page.on('request', request => { if (request.method() === 'POST') posts.push(request.url()); });
+  await load(page, '/?servico=vistos#contato');
+  const form = page.locator('#lead-main');
+  await expect(form.locator('#ux-flow-context')).toContainText('Vistos');
+  await expect(form.locator('#lead-main-name')).toBeHidden();
+  await form.locator('#lead-main-msg').fill('Quero saber como organizar um projeto de estudos.');
+  await form.locator('[name=consentimento]').check();
+  await form.locator('button[type=submit]').click();
+  const review = page.locator('.aureum-lead-result');
+  await expect(review.getByRole('heading')).toBeInViewport();
+  await expect(review.getByRole('button', { name: 'Copiar mensagem' })).toBeInViewport();
+  await expect(review.locator('textarea')).toHaveValue(/Objetivo: Vistos/);
+  expect(posts).toEqual([]);
 });
 
 test('200 percent viewport zoom/reflow and pointer drag do not lose the form', async ({ page }) => {
@@ -250,7 +272,7 @@ test('200 percent viewport zoom/reflow and pointer drag do not lose the form', a
 });
 
 for (const configured of [false, true]) {
-  test(`white brand surface and WhatsApp ${configured ? 'configured' : 'unavailable'}`, async ({ page, context }) => {
+  test(`white brand surface and ${configured ? 'WhatsApp' : 'Instagram'} contact`, async ({ page, context }) => {
     await load(page);
     await position(page, .5);
     await page.evaluate(configured => {
@@ -265,6 +287,7 @@ for (const configured of [false, true]) {
     if (configured) {
       await expect(link).toHaveAttribute('href', /^https:\/\/wa\.me\/12025550147\?text=/);
       await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      await openPersonalFields(page);
       await page.locator('#lead-main-name').fill('Private form name');
       await page.locator('#lead-main-email').fill('private@example.com');
       await page.locator('#lead-main-msg').fill('Private message');
@@ -282,10 +305,8 @@ for (const configured of [false, true]) {
       await expect(dialog(page)).toBeVisible();
       await expect(page.locator('#lead-main-name')).toHaveValue('Private form name');
     } else {
-      await expect(link).toHaveAttribute('aria-disabled', 'true');
-      await expect(link).not.toHaveAttribute('href');
-      await expect(link).toHaveText('WhatsApp indisponível');
-      await expect(page.locator('#aureum-lead-whatsapp-detail')).toContainText('formulário abaixo');
+      await expect(link).toHaveAttribute('href', 'https://www.instagram.com/aureum.assessoria/');
+      await expect(link).toHaveText('Conversar no Instagram');
     }
     const results = await new AxeBuilder({ page }).include('#aureum-lead-dialog').withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     expect(results.violations).toEqual([]);

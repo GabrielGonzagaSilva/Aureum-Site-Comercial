@@ -2,6 +2,13 @@
 
 Todas as mudanças relevantes devem ser registradas aqui.
 
+## 2026-11-25 — Experiência de navegação e primeiro contato
+
+- A abertura mostra a proposta da Aureum e dá acesso aos caminhos de orientação e aos destinos. A imagem é exibida primeiro e o vídeo curto fica disponível sob demanda em telas maiores.
+- O menu móvel prioriza idioma e contato, com uma lista de destinos recolhível e fechamento fixo.
+- O fluxo manual torna opcionais os dados de retorno, preserva o serviço escolhido e traz a mensagem pronta para a área visível. Os canais exibem o destino real da conversa.
+- As páginas de serviços ganham fotos, navegação, orientações para o primeiro contato e links de privacidade nos cinco idiomas.
+
 ## 2026-11-24 — Segurança, privacidade e páginas de serviços
 
 - A API da Mia acompanha a pausa da interface e bloqueia novas conversas antes de ler dados ou contatar o Google Gemini.

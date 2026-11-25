@@ -9,8 +9,6 @@
       close: 'Fechar formulário de contato',
       whatsapp: "Conversar no WhatsApp",
       whatsappDetail: "Abra o WhatsApp para falar com a equipe.",
-      whatsappUnavailable: "WhatsApp indisponível",
-      whatsappFallback: "Você pode preparar sua mensagem no formulário abaixo.",
       whatsappMessage: "Olá! Gostaria de conversar com a equipe da Aureum sobre uma assessoria internacional."
     },
     en: {
@@ -19,8 +17,6 @@
       close: 'Close contact form',
       whatsapp: "Chat on WhatsApp",
       whatsappDetail: "Open WhatsApp to talk with our team.",
-      whatsappUnavailable: "WhatsApp unavailable",
-      whatsappFallback: "You can prepare your message using the form below.",
       whatsappMessage: "Hello! I would like to speak with the Aureum team about international advisory services."
     },
     es: {
@@ -29,8 +25,6 @@
       close: 'Cerrar formulario de contacto',
       whatsapp: "Hablar por WhatsApp",
       whatsappDetail: "Abre WhatsApp para hablar con el equipo.",
-      whatsappUnavailable: "WhatsApp no disponible",
-      whatsappFallback: "Puedes preparar tu mensaje con el formulario de abajo.",
       whatsappMessage: "Hola. Me gustaría hablar con el equipo de Aureum sobre asesoría internacional."
     },
     fr: {
@@ -39,8 +33,6 @@
       close: 'Fermer le formulaire de contact',
       whatsapp: "Échanger sur WhatsApp",
       whatsappDetail: "Ouvrez WhatsApp pour échanger avec notre équipe.",
-      whatsappUnavailable: "WhatsApp indisponible",
-      whatsappFallback: "Vous pouvez préparer votre message avec le formulaire ci-dessous.",
       whatsappMessage: "Bonjour. Je souhaite échanger avec l’équipe Aureum au sujet de l’accompagnement international."
     },
     de: {
@@ -49,8 +41,6 @@
       close: 'Kontaktformular schließen',
       whatsapp: "Über WhatsApp schreiben",
       whatsappDetail: "Öffnen Sie WhatsApp, um mit unserem Team zu sprechen.",
-      whatsappUnavailable: "WhatsApp nicht verfügbar",
-      whatsappFallback: "Sie können Ihre Nachricht mit dem Formular unten vorbereiten.",
       whatsappMessage: "Hallo. Ich möchte mit dem Aureum-Team über internationale Beratung sprechen."
     }
   };
@@ -64,6 +54,11 @@
 
     var lang = (document.documentElement.lang || 'pt').toLowerCase().split('-')[0];
     var copy = COPY[lang] || COPY.pt;
+    var instagram = document.querySelector('footer a.f-social-link[href^="https://www.instagram.com/"]');
+    var instagramLabel = {
+      pt: 'Conversar no Instagram', en: 'Chat on Instagram', es: 'Hablar por Instagram',
+      fr: 'Échanger sur Instagram', de: 'Über Instagram schreiben',
+    }[lang];
     var modal = document.createElement('dialog');
     modal.className = 'aureum-lead-dialog';
     modal.id = 'aureum-lead-dialog';
@@ -127,18 +122,16 @@
     function updateWhatsApp() {
       var number = String((window.AUREUM_INTEGRATIONS || {}).whatsappNumber || '').replace(/\D/g, '');
       var available = /^[1-9]\d{9,14}$/.test(number);
-      whatsappLabel.textContent = available ? copy.whatsapp : copy.whatsappUnavailable;
-      whatsappDetail.textContent = available ? copy.whatsappDetail : copy.whatsappFallback;
+      whatsappLabel.textContent = available ? copy.whatsapp : instagramLabel;
+      whatsappDetail.textContent = available ? copy.whatsappDetail : '';
+      alternative.hidden = !available && !instagram;
+      whatsapp.dataset.channel = available ? 'whatsapp' : 'instagram';
       if (available) {
         whatsapp.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(copy.whatsappMessage);
-        whatsapp.removeAttribute('aria-disabled');
-        whatsapp.removeAttribute('tabindex');
-        whatsapp.removeAttribute('role');
+      } else if (instagram) {
+        whatsapp.href = instagram.href;
       } else {
         whatsapp.removeAttribute('href');
-        whatsapp.setAttribute('role', 'link');
-        whatsapp.setAttribute('aria-disabled', 'true');
-        whatsapp.setAttribute('tabindex', '-1');
       }
     }
     updateWhatsApp();

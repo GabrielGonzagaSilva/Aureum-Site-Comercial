@@ -10,7 +10,7 @@
       name: 'Nome', email: 'E-mail', phone: 'Telefone / WhatsApp', destination: 'Destino',
       objective: 'Objetivo', message: 'Mensagem', intro: 'Olá, equipe Aureum. Gostaria de solicitar uma orientação inicial.',
       reviewTitle: 'Sua mensagem está pronta para revisão',
-      reviewText: 'O recebimento online ainda não está habilitado. Nenhum dado foi enviado ou armazenado. Copie a mensagem e encaminhe pelos canais oficiais da Aureum.',
+      reviewText: 'Copie a mensagem e cole na conversa com a Aureum no Instagram. Nenhum dado foi enviado ou armazenado pelo formulário.',
       copy: 'Copiar mensagem', instagram: 'Abrir Instagram', edit: 'Editar dados', copied: 'Mensagem copiada. Encaminhe-a pelo canal oficial da Aureum.',
       copyFailed: 'Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.',
       successTitle: 'Solicitação registrada', successText: 'Sua solicitação foi registrada com segurança. A equipe da Aureum poderá consultar os dados informados para dar continuidade ao atendimento.',
@@ -24,7 +24,7 @@
       name: 'Name', email: 'Email', phone: 'Phone / WhatsApp', destination: 'Destination',
       objective: 'Purpose', message: 'Message', intro: 'Hello, Aureum team. I would like to request initial guidance.',
       reviewTitle: 'Your message is ready for review',
-      reviewText: 'Online submission is not enabled yet. No information was sent or stored. Copy the message and forward it through Aureum’s official contact channels.',
+      reviewText: 'Copy the message and paste it into your Instagram conversation with Aureum. The form has not sent or stored your details.',
       copy: 'Copy message', instagram: 'Open Instagram', edit: 'Edit details', copied: 'Message copied. Forward it through an official Aureum contact channel.',
       copyFailed: 'Automatic copying failed. Select the text and copy it manually.',
       successTitle: 'Enquiry received', successText: 'Your enquiry has been securely recorded. The Aureum team can access the details provided to continue the conversation.',
@@ -38,7 +38,7 @@
       name: 'Nombre', email: 'Correo electrónico', phone: 'Teléfono / WhatsApp', destination: 'Destino',
       objective: 'Objetivo', message: 'Mensaje', intro: 'Hola, equipo de Aureum. Me gustaría solicitar una orientación inicial.',
       reviewTitle: 'Tu mensaje está listo para revisar',
-      reviewText: 'El envío en línea aún no está habilitado. No se ha enviado ni almacenado ningún dato. Copia el mensaje y envíalo por los canales oficiales de Aureum.',
+      reviewText: 'Copia el mensaje y pégalo en tu conversación con Aureum en Instagram. El formulario no ha enviado ni guardado tus datos.',
       copy: 'Copiar mensaje', instagram: 'Abrir Instagram', edit: 'Editar datos', copied: 'Mensaje copiado. Envíalo por un canal oficial de Aureum.',
       copyFailed: 'No se pudo copiar automáticamente. Selecciona el texto y cópialo manualmente.',
       successTitle: 'Solicitud recibida', successText: 'Tu solicitud se ha registrado de forma segura. El equipo de Aureum podrá consultar los datos para continuar la atención.',
@@ -52,7 +52,7 @@
       name: 'Nom', email: 'E-mail', phone: 'Téléphone / WhatsApp', destination: 'Destination',
       objective: 'Objectif', message: 'Message', intro: 'Bonjour, équipe Aureum. Je souhaite demander un premier accompagnement.',
       reviewTitle: 'Votre message est prêt à être vérifié',
-      reviewText: 'L’envoi en ligne n’est pas encore activé. Aucune donnée n’a été envoyée ni enregistrée. Copiez le message et transmettez-le par les canaux officiels d’Aureum.',
+      reviewText: 'Copiez le message et collez-le dans votre conversation avec Aureum sur Instagram. Le formulaire n’a transmis ni enregistré vos données.',
       copy: 'Copier le message', instagram: 'Ouvrir Instagram', edit: 'Modifier les informations', copied: 'Message copié. Transmettez-le par un canal officiel d’Aureum.',
       copyFailed: 'La copie automatique a échoué. Sélectionnez le texte et copiez-le manuellement.',
       successTitle: 'Demande enregistrée', successText: 'Votre demande a été enregistrée de manière sécurisée. L’équipe Aureum pourra consulter les informations fournies pour poursuivre les échanges.',
@@ -66,7 +66,7 @@
       name: 'Name', email: 'E-Mail', phone: 'Telefon / WhatsApp', destination: 'Zielland',
       objective: 'Anliegen', message: 'Nachricht', intro: 'Hallo, Aureum-Team. Ich möchte eine erste Orientierung anfragen.',
       reviewTitle: 'Ihre Nachricht kann überprüft werden',
-      reviewText: 'Die Online-Übermittlung ist noch nicht aktiviert. Es wurden keine Daten gesendet oder gespeichert. Kopieren Sie die Nachricht und senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
+      reviewText: 'Kopieren Sie die Nachricht und fügen Sie sie in Ihren Instagram-Chat mit Aureum ein. Das Formular hat Ihre Angaben weder gesendet noch gespeichert.',
       copy: 'Nachricht kopieren', instagram: 'Instagram öffnen', edit: 'Angaben bearbeiten', copied: 'Nachricht kopiert. Senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
       copyFailed: 'Automatisches Kopieren nicht möglich. Markieren und kopieren Sie den Text bitte manuell.',
       successTitle: 'Anfrage registriert', successText: 'Ihre Anfrage wurde sicher gespeichert. Das Aureum-Team kann die angegebenen Daten einsehen, um den Kontakt fortzusetzen.',
@@ -171,7 +171,8 @@
     var destination = (form.querySelector('[name="destino"]') || {}).value || '';
     var objective = (form.querySelector('[name="objetivo"]') || {}).value || '';
     var message = (form.querySelector('[name="mensagem"]') || {}).value || '';
-    var lines = [text.intro, '', text.name + ': ' + name.trim()];
+    var lines = [text.intro, ''];
+    if (name.trim()) lines.push(text.name + ': ' + name.trim());
     if (email.trim()) lines.push(text.email + ': ' + email.trim());
     if (phone) lines.push(text.phone + ': ' + phone);
     if (destination.trim()) lines.push(text.destination + ': ' + destination.trim());
@@ -248,7 +249,7 @@
         actions.append(instagramLink);
       }
       actions.append(editButton);
-      result.append(label, preview, actions, status);
+      result.append(actions, status, label, preview);
     } else if (success) {
       var newButton = makeButton(text.newRequest, 'btn btn-line');
       newButton.addEventListener('click', function () {
@@ -268,6 +269,7 @@
     form.hidden = true;
     form.insertAdjacentElement('afterend', result);
     result.focus({ preventScroll: true });
+    result.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
   forms.forEach(function (form) {
@@ -281,11 +283,58 @@
     var nameField = form.querySelector('[name="nome"]');
     var consent = form.querySelector('[name="consentimento"]') || form.querySelector('[data-rule="consent"]');
     var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+    var personalFields = form.querySelector('.ux-manual-contact');
+    var nameLabel = nameField && Array.from(nameField.labels)[0];
+    var optional = { pt: 'opcional', en: 'optional', es: 'opcional', fr: 'facultatif', de: 'optional' };
     var status = document.createElement('p');
     status.className = 'aureum-lead-status';
     status.setAttribute('role', 'status');
     status.setAttribute('aria-live', 'polite');
     form.appendChild(status);
+    configPromise.then(function (config) {
+      if (personalFields) personalFields.open = config.enabled;
+      if (nameField) nameField.required = config.enabled;
+      if (personalFields && !config.enabled && nameLabel) nameLabel.textContent += ' (' + optional[locale] + ')';
+      if (personalFields && !config.enabled) {
+        var contactNote = form.querySelector('.contact-method-note');
+        if (contactNote) contactNote.hidden = true;
+        var safetyNote = document.createElement('p');
+        safetyNote.className = 'ux-contact-safety';
+        safetyNote.textContent = {
+          pt: 'Descreva seu objetivo. Evite incluir documentos pessoais ou dados sensíveis.',
+          en: 'Describe your goal. Keep personal documents and sensitive details out of the message.',
+          es: 'Describe tu objetivo. Evita incluir documentos personales o datos sensibles.',
+          fr: 'Décrivez votre objectif. Évitez d’inclure des documents personnels ou des données sensibles.',
+          de: 'Beschreiben Sie Ihr Ziel. Teilen Sie keine persönlichen Dokumente oder sensiblen Daten.',
+        }[locale];
+        form.insertBefore(safetyNote, personalFields);
+      }
+    });
+
+    if (form.id === 'lead-main') {
+      var serviceSlug = new URLSearchParams(window.location.search).get('servico');
+      var serviceLink = Array.from(document.querySelectorAll('.service-category a[href]')).find(function (link) {
+        return serviceSlug && new URL(link.href).pathname.endsWith('/servicos/' + serviceSlug + '/');
+      });
+      var serviceTitle = serviceLink && serviceLink.closest('.service-category').querySelector('h3');
+      var intentField = form.querySelector('[name="objetivo"]');
+      var context = form.querySelector('#ux-flow-context');
+      if (serviceTitle && intentField && context) {
+        intentField.value = serviceTitle.textContent.trim();
+        context.textContent = text.objective + ': ' + intentField.value;
+        var clear = makeButton({
+          pt: 'Limpar seleção', en: 'Clear selection', es: 'Borrar selección',
+          fr: 'Effacer la sélection', de: 'Auswahl löschen',
+        }[locale], 'ux-context-clear');
+        clear.addEventListener('click', function () {
+          intentField.value = intentField.defaultValue;
+          context.hidden = true;
+          form.querySelector('[name="mensagem"]')?.focus();
+        });
+        context.append(' ', clear);
+        context.hidden = false;
+      }
+    }
 
     if (codeSelect && otherCode) {
       codeSelect.addEventListener('change', function () {
@@ -311,9 +360,12 @@
       field.addEventListener('change', handleEdit);
     });
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
       event.preventDefault();
       event.stopImmediatePropagation();
+      if (form.hidden || form.getAttribute('aria-busy') === 'true') return;
+      var config = await configPromise;
+      if (form.hidden || form.getAttribute('aria-busy') === 'true') return;
 
       var firstInvalid = null;
       var name = nameField ? nameField.value.trim() : '';
@@ -321,11 +373,11 @@
       var phone = normalizePhone(form);
       var hasContact = Boolean(email || phone.value);
 
-      if (name.length < 2) {
+      if ((config.enabled || name) && name.length < 2) {
         setError(nameField, text.nameError);
         firstInvalid = firstInvalid || nameField;
       }
-      if (!hasContact) {
+      if (config.enabled && !hasContact) {
         setError(emailField, text.contactError);
         firstInvalid = firstInvalid || emailField;
       } else if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
@@ -342,67 +394,66 @@
         firstInvalid = firstInvalid || consent;
       }
       if (firstInvalid) {
+        if (personalFields && personalFields.contains(firstInvalid)) personalFields.open = true;
         firstInvalid.focus();
         return;
       }
 
       var payloadMessage = buildMessage(form, phone.value);
-      configPromise.then(function (config) {
-        if (!config.enabled) {
-          showResult(form, text.reviewTitle, text.reviewText, payloadMessage, false);
-          return;
-        }
+      if (!config.enabled) {
+        showResult(form, text.reviewTitle, text.reviewText, payloadMessage, false);
+        return;
+      }
 
-        var destination = form.querySelector('[name="destino"]');
-        var objective = form.querySelector('[name="objetivo"]');
-        var message = form.querySelector('[name="mensagem"]');
-        var honeypot = form.querySelector('[name="website"]');
-        var payload = {
-          submissionId: form.dataset.submissionId,
-          name: name,
-          email: email,
-          phone: phone.value,
-          destination: destination ? destination.value : '',
-          objective: objective ? objective.value : '',
-          message: message ? message.value : '',
-          consent: true,
-          privacyNoticeVersion: config.privacyNoticeVersion,
-          locale: locale,
-          sourcePath: window.location.pathname,
-          website: honeypot ? honeypot.value : '',
-          elapsedMs: Math.round(performance.now() - startedAt),
-        };
+      var destination = form.querySelector('[name="destino"]');
+      var objective = form.querySelector('[name="objetivo"]');
+      var message = form.querySelector('[name="mensagem"]');
+      var honeypot = form.querySelector('[name="website"]');
+      var payload = {
+        submissionId: form.dataset.submissionId,
+        name: name,
+        email: email,
+        phone: phone.value,
+        destination: destination ? destination.value : '',
+        objective: objective ? objective.value : '',
+        message: message ? message.value : '',
+        consent: true,
+        privacyNoticeVersion: config.privacyNoticeVersion,
+        locale: locale,
+        sourcePath: window.location.pathname,
+        website: honeypot ? honeypot.value : '',
+        elapsedMs: Math.round(performance.now() - startedAt),
+      };
 
-        submissionAttempted = true;
-        if (submitButton) submitButton.disabled = true;
-        form.setAttribute('aria-busy', 'true');
-        status.textContent = text.sending;
+      submissionAttempted = true;
+      if (submitButton) submitButton.disabled = true;
+      form.setAttribute('aria-busy', 'true');
+      status.textContent = text.sending;
 
-        fetch('/api/leads', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          credentials: 'same-origin',
-          cache: 'no-store',
-          body: JSON.stringify(payload),
-        }).then(function (response) {
-          return response.json().catch(function () { return {}; }).then(function (body) {
-            if (!response.ok || body.ok !== true) {
-              var message = body.code === 'notification_failed' ? text.notificationError : (body.error || text.error);
-              var error = new Error(message);
-              error.status = response.status;
-              throw error;
-            }
-            return body;
-          });
-        }).then(function () {
-          submissionAttempted = false;
-          showResult(form, text.successTitle, text.successText, '', true);
-        }).catch(function (error) {
-          status.textContent = error && error.message ? error.message : text.error;
-        }).finally(function () {
-          if (submitButton) submitButton.disabled = false;
-          form.removeAttribute('aria-busy');
+      fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        credentials: 'same-origin',
+        cache: 'no-store',
+        body: JSON.stringify(payload),
+      }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (body) {
+          if (!response.ok || body.ok !== true) {
+            var message = body.code === 'notification_failed' ? text.notificationError : (body.error || text.error);
+            var error = new Error(message);
+            error.status = response.status;
+            throw error;
+          }
+          return body;
         });
+      }).then(function () {
+        submissionAttempted = false;
+        showResult(form, text.successTitle, text.successText, '', true);
+      }).catch(function (error) {
+        status.textContent = error && error.message ? error.message : text.error;
+      }).finally(function () {
+        if (submitButton) submitButton.disabled = false;
+        form.removeAttribute('aria-busy');
       });
     }, true);
   });

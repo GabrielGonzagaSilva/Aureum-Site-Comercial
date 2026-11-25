@@ -144,8 +144,14 @@
     if (phoneInput) phoneInput.disabled = !active;
     if (submitButton) submitButton.disabled = !active;
     if (!active) {
-      if (directStatus) directStatus.textContent = t.unconfigured;
       if (form) form.closest('.contact-option').remove();
+      const launcher = document.getElementById('launch-whatsapp');
+      if (launcher) {
+        launcher.classList.add('ux-contact-launcher');
+        launcher.textContent = t.title;
+        launcher.title = t.title;
+        launcher.setAttribute('aria-label', t.title);
+      }
       if (instagram && directButton) {
         const instagramLink = document.createElement('a');
         instagramLink.className = directButton.className;

@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { filesUnder } from './verify.mjs';
 import { localizedIntentTranslations } from './localized-copy.mjs';
 import { siteOrigin } from './search-metadata.mjs';
+import { experienceCopy, privacyPath } from './experience.mjs';
 
 // Public service categories and localized guidance for the first contact.
 const COPY = {
@@ -161,6 +162,8 @@ export async function applyServicePages(root = 'dist') {
       const folder = join(root, route.slice(1));
       const title = copy.cards[index];
       const description = copy.descriptions[index];
+      const experience = experienceCopy[locale];
+      const contactHref = homePath(locale) + '?servico=' + service.slug + '#contato';
       const languages = Object.entries(COPY).map(([target, translated]) => `<a href="${servicePath(target, service)}" lang="${translated.lang}" hreflang="${translated.lang}"${target === locale ? ' aria-current="page"' : ''}>${target.toUpperCase()}</a>`).join('');
       const alternates = Object.entries(COPY).map(([target, translated]) => `<link rel="alternate" hreflang="${translated.lang}" href="${siteOrigin}${servicePath(target, service)}">`).join('\n');
       const html = `<!doctype html>
@@ -171,8 +174,45 @@ export async function applyServicePages(root = 'dist') {
 <link rel="alternate" hreflang="x-default" href="${siteOrigin}${servicePath('pt', service)}">
 <link rel="preload" href="/assets/fonts/aureum-refined-inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/css/aureum-service-page.css"></head>
-<body><header class="service-page-header"><a class="service-page-brand" href="${homePath(locale)}" aria-label="Aureum — ${escape(copy.home)}"><img src="/assets/brand/logo-reduzida-preto.svg" alt="Aureum" width="764" height="186"></a><nav aria-label="${escape(copy.languages)}">${languages}</nav></header>
-<main><h1>${escape(title)}</h1><p>${escape(description)}</p><p>${escape(copy.scope)}</p><div class="service-page-actions"><a class="service-page-contact" href="${homePath(locale)}#contato">${escape(copy.contact)}</a><a class="service-page-back" href="${homePath(locale)}#servicos">${escape(copy.back)}</a></div></main>
+<body>
+<header class="service-page-header">
+  <a class="service-page-brand" href="${homePath(locale)}" aria-label="Aureum — ${escape(copy.home)}"><img src="/assets/brand/logo-reduzida-preto.svg" alt="Aureum" width="764" height="186"></a>
+  <nav class="service-page-navigation" aria-label="Aureum">
+    <a href="${homePath(locale)}#servicos">${escape(experience.services)}</a>
+    <a href="${homePath(locale)}#destinos">${escape(experience.destinations)}</a>
+    <a href="${homePath(locale)}#como-funciona">${escape(experience.process)}</a>
+  </nav>
+  <nav class="service-page-language" aria-label="${escape(copy.languages)}">${languages}</nav>
+</header>
+<main>
+  <div class="service-page-hero">
+    <div class="service-page-intro">
+      <ol class="service-page-crumbs">
+        <li><a href="${homePath(locale)}">${escape(copy.home)}</a></li>
+        <li><a href="${homePath(locale)}#servicos">${escape(experience.services)}</a></li>
+        <li aria-current="page">${escape(title)}</li>
+      </ol>
+      <h1>${escape(title)}</h1>
+      <p>${escape(description)}</p>
+      <div class="service-page-actions"><a class="service-page-contact" href="${contactHref}">${escape(copy.contact)}</a><a class="service-page-back" href="${homePath(locale)}#servicos">${escape(copy.back)}</a></div>
+    </div>
+    <img class="service-page-photo" src="${service.photo}" srcset="${service.srcset}" sizes="(max-width: 760px) 92vw, 42vw" width="${service.width}" height="${service.height}" alt="" decoding="async">
+  </div>
+  <div class="service-page-details">
+    <section>
+      <h2>${escape(experience.serviceSections[1])}</h2>
+      <p>${escape(copy.scope)}</p>
+    </section>
+    <section>
+      <h2>${escape(experience.preparation)}</h2>
+      <ul>${experience.prompts.map(prompt => '<li>' + escape(prompt) + '</li>').join('')}</ul>
+    </section>
+  </div>
+</main>
+<footer class="service-page-footer">
+  <a href="${homePath(locale)}#destinos">${escape(experience.guide)}</a>
+  <a href="${privacyPath(locale)}">${escape(experience.privacy)}</a>
+</footer>
 </body></html>\n`;
       await mkdir(folder, { recursive: true });
       await writeFile(join(folder, 'index.html'), html);

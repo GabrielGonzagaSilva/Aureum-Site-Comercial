@@ -1,0 +1,174 @@
+/* Shared editorial styling for the public journey. */
+#home .ux-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  min-height: min(840px, 88svh);
+  overflow: hidden;
+  color: #fffaf1;
+  background: #142923;
+}
+
+.ux-hero-media,
+.ux-hero-media::after,
+.ux-hero-media > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ux-hero-media { z-index: -1; }
+.ux-hero-media > * { object-fit: cover; object-position: 62% center; }
+.ux-hero-media::after {
+  content: '';
+  background: linear-gradient(90deg, rgba(9, 26, 22, .92) 0%, rgba(9, 26, 22, .70) 45%, rgba(9, 26, 22, .18) 100%),
+    linear-gradient(180deg, rgba(9, 26, 22, .53), transparent 38%);
+}
+.ux-hero-video { opacity: 0; }
+.ux-hero-video[data-playing] { opacity: 1; }
+
+#home .ux-hero .ux-hero-copy {
+  display: block;
+  width: 100%;
+  max-width: var(--wrap);
+  min-height: 0;
+  margin: 0 auto;
+  padding-block: clamp(116px, 16vh, 163px) clamp(64px, 12vh, 125px);
+  text-align: left;
+}
+
+#home .ux-hero .hero-brand-center {
+  display: block;
+  width: clamp(124px, 12vw, 160px);
+  height: auto;
+  margin: 0 0 clamp(22px, 4vh, 36px);
+}
+
+#home .ux-hero h1 {
+  max-width: 15ch;
+  margin: 0;
+  color: #fffaf1;
+  font: 400 clamp(52px, 6.2vw, 92px)/.99 Georgia, 'Times New Roman', serif;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  letter-spacing: -.04em;
+  text-wrap: pretty;
+}
+
+#home .ux-hero .ux-hero-copy p {
+  max-width: 41ch;
+  margin: 24px 0 0;
+  color: #f3eee4;
+  font-size: clamp(16px, 1.45vw, 21px);
+  line-height: 1.6;
+}
+
+.ux-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
+.ux-hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 12px 21px;
+  border: 1px solid #fffaf1;
+  border-radius: 999px;
+  font-weight: 650;
+  text-decoration: none;
+}
+.ux-hero-actions .ux-hero-primary { color: #15372a; background: #fffaf1; }
+.ux-hero-actions .ux-hero-primary:hover { background: #eaddc6; border-color: #eaddc6; }
+.ux-hero-actions .ux-hero-secondary { color: #fffaf1; background: rgba(9, 26, 22, .35); }
+.ux-hero-actions .ux-hero-secondary:hover { background: rgba(9, 26, 22, .75); }
+.ux-hero :is(a, button):focus-visible { outline: 2px solid #fffaf1; outline-offset: 4px; }
+.ux-hero-motion {
+  position: absolute;
+  right: max(28px, calc((100% - 1220px) / 2));
+  bottom: 22px;
+  z-index: 5;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 250, 241, .66);
+  border-radius: 999px;
+  color: #fffaf1;
+  background: rgba(9, 26, 22, .67);
+}
+.ux-hero-motion[hidden] { display: none !important; }
+
+.ux-preparation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.ux-preparation-grid article { padding: clamp(20px, 2.7vw, 32px); background: #f1f2eb; border-radius: 14px; }
+.ux-preparation-grid h3 { margin: 0 0 12px; color: #183b2d; font-size: clamp(19px, 2vw, 25px); line-height: 1.16; }
+.ux-preparation-grid p { margin: 0; color: #44534b; font-size: 15px; line-height: 1.6; }
+.aureum-refined.ae-process .ae-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+#mmenu .mmenu-top { position: sticky; top: 0; z-index: 2; background: #fff; }
+#mmenu .ux-drawer-language { padding-block: 12px; }
+#mmenu .ux-drawer-language .aureum-locale { width: 100%; }
+#mmenu .ux-drawer-language .aureum-locale__trigger { width: 100%; }
+#mmenu .ux-drawer-destinations > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 54px;
+  border-block-end: 1px solid #e5e9e5;
+  font-weight: 650;
+  font-size: inherit;
+}
+#mmenu .ux-drawer-destinations > summary::-webkit-details-marker { display: none; }
+#mmenu .ux-drawer-destinations > summary::after { content: '+'; font-size: 22px; }
+#mmenu .ux-drawer-destinations[open] > summary::after { content: '−'; }
+#mmenu .ux-drawer-destinations > a { font-size: 16px; padding-inline: 12px; }
+body:has(#mmenu:not([hidden])) .contact-actions { display: none !important; }
+
+.ux-manual-contact {
+  padding: 12px;
+  border: 1px solid #dde4dd;
+  border-radius: 12px;
+}
+.ux-manual-contact > summary { cursor: pointer; padding: 4px 0; font-weight: 625; color: #234e3b; }
+.ux-manual-contact[open] > summary { margin-bottom: 12px; }
+.ux-manual-contact .f + .f { margin-top: 14px; }
+.ux-manual-contact[hidden],
+.contact-method-note[hidden],
+.aureum-lead-dialog__alternative[hidden] { display: none !important; }
+.aureum-lead-dialog__whatsapp[data-channel="instagram"] svg { display: none; }
+.aureum-lead-dialog__alternative p:empty { display: none; }
+.ux-contact-safety { margin: 0; color: #40574c; font-size: 13px; }
+.ux-context-clear { background: none; border: 0; color: #183b2d; font: inherit; text-decoration: underline; cursor: pointer; }
+
+.aureum-lead-result { scroll-margin-top: 98px; }
+.aureum-lead-dialog .aureum-lead-result { scroll-margin-top: 12px; }
+.ux-contact-launcher {
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 48px;
+  padding: 0 15px;
+  font: 650 13px/1.15 Inter, Arial, sans-serif;
+  background: #184939 !important;
+  color: #fffaf1 !important;
+  white-space: nowrap;
+}
+.ux-contact-launcher::before,
+.ux-contact-launcher::after { content: none !important; }
+
+@media (max-width: 760px) {
+  #home .ux-hero { min-height: min(740px, 84svh); }
+  #home .ux-hero .ux-hero-copy { padding-block: 88px 54px; }
+  #home .ux-hero .hero-brand-center { width: 109px; margin-bottom: 20px; }
+  #home .ux-hero h1 { max-width: 22ch; font-size: clamp(38px, 10vw, 59px); line-height: 1.05; overflow-wrap: anywhere; }
+  #home .ux-hero .ux-hero-copy p { margin-top: 16px; }
+  .ux-hero-media > * { object-position: 58% center; }
+  .ux-hero-media::after {
+    background: linear-gradient(90deg, rgba(6, 24, 20, .83), rgba(6, 24, 20, .45)),
+      linear-gradient(0deg, rgba(6, 24, 20, .78), transparent 62%);
+  }
+  .ux-hero-actions { margin-top: 23px; gap: 9px; }
+  .ux-hero-actions a { min-height: 45px; font-size: 14px; }
+  .ux-preparation-grid { grid-template-columns: 1fr; }
+  .aureum-refined.ae-process .ae-steps { grid-template-columns: 1fr; }
+  .aureum-lead-result { scroll-margin-top: 77px; }
+}
