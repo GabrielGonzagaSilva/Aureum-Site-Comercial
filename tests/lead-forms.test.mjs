@@ -39,6 +39,8 @@ test('all public lead forms receive the same international contact controls in f
       assert.doesNotMatch(form, /<input\b(?=[^>]*name=["']email["'])(?=[^>]*\brequired\b)/i, file + ': email must be optional');
       assert.ok(form.includes(label), file + ': phone label must be localized');
       assert.match(form, /contact-method-note/, file + ': at-least-one-contact guidance missing');
+      assert.match(form, /receber e responder ao meu pedido de orientação/, file + ': consent copy must describe active online intake');
+      assert.match(form, /Ao enviar, sua solicitação será encaminhada à equipe Aureum/, file + ': form note must describe direct submission');
       assert.match(form, /name=["']website["']/, file + ': honeypot missing');
       assert.match(form, /name=["']consentimento["']|data-rule=["']consent["']/i, file + ': consent control must be preserved');
       assert.match(form, /name=["']codigo_pais["'][^>]*aria-describedby=/i, file + ': country code selector needs an accessible description');
