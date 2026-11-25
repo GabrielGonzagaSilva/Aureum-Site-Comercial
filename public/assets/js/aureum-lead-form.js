@@ -14,7 +14,7 @@
       reviewText: 'O recebimento online ainda não está habilitado. Nenhum dado foi enviado ou armazenado. Copie a mensagem e encaminhe pelos canais oficiais da Aureum.',
       copy: 'Copiar mensagem', instagram: 'Abrir Instagram', edit: 'Editar dados', copied: 'Mensagem copiada. Encaminhe-a pelo canal oficial da Aureum.',
       copyFailed: 'Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.',
-      successTitle: 'Sua solicitação foi enviada!', successText: 'Recebemos seu pedido e ele já foi encaminhado à equipe Aureum. Entraremos em contato pelos dados informados.'
+      successTitle: 'Sua solicitação foi enviada!', successText: 'Recebemos seu pedido e ele já foi encaminhado à equipe Aureum. Entraremos em contato pelos dados informados.',
       newRequest: 'Enviar outra solicitação', error: 'Não foi possível registrar agora. Tente novamente ou utilize um canal oficial de contato.', notificationError: 'Sua solicitação foi registrada, mas a equipe ainda não foi notificada. Tente novamente em alguns minutos.',
       contactError: 'Informe pelo menos um meio de contato: e-mail ou telefone/WhatsApp.',
       emailError: 'Confira o e-mail informado.', phoneError: 'Confira o código do país, o DDD/código de área e o número.',
@@ -29,7 +29,7 @@
       reviewText: 'Online submission is not enabled yet. No information was sent or stored. Copy the message and forward it through Aureum’s official contact channels.',
       copy: 'Copy message', instagram: 'Open Instagram', edit: 'Edit details', copied: 'Message copied. Forward it through an official Aureum contact channel.',
       copyFailed: 'Automatic copying failed. Select the text and copy it manually.',
-      successTitle: 'Your request has been sent!', successText: 'We have received your request and forwarded it to the Aureum team. We will contact you using the details provided.'
+      successTitle: 'Your request has been sent!', successText: 'We have received your request and forwarded it to the Aureum team. We will contact you using the details provided.',
       newRequest: 'Send another enquiry', error: 'We could not record your enquiry. Please try again or use an official contact channel.', notificationError: 'Your request was saved, but the team has not been notified yet. Please try again in a few minutes.',
       contactError: 'Provide at least one way to reach you: email or phone/WhatsApp.',
       emailError: 'Check the email address.', phoneError: 'Check the country code, area code and phone number.',
@@ -44,7 +44,7 @@
       reviewText: 'El envío en línea aún no está habilitado. No se ha enviado ni almacenado ningún dato. Copia el mensaje y envíalo por los canales oficiales de Aureum.',
       copy: 'Copiar mensaje', instagram: 'Abrir Instagram', edit: 'Editar datos', copied: 'Mensaje copiado. Envíalo por un canal oficial de Aureum.',
       copyFailed: 'No se pudo copiar automáticamente. Selecciona el texto y cópialo manualmente.',
-      successTitle: '¡Tu solicitud ha sido enviada!', successText: 'Hemos recibido tu solicitud y ya la hemos enviado al equipo de Aureum. Nos pondremos en contacto contigo a través de los datos indicados.'
+      successTitle: '¡Tu solicitud ha sido enviada!', successText: 'Hemos recibido tu solicitud y ya la hemos enviado al equipo de Aureum. Nos pondremos en contacto contigo a través de los datos indicados.',
       newRequest: 'Enviar otra solicitud', error: 'No se pudo registrar la solicitud. Inténtalo de nuevo o utiliza un canal oficial.', notificationError: 'Tu solicitud se ha guardado, pero el equipo aún no ha recibido la notificación. Inténtalo de nuevo en unos minutos.',
       contactError: 'Indica al menos un medio de contacto: correo electrónico o teléfono/WhatsApp.',
       emailError: 'Comprueba el correo electrónico.', phoneError: 'Comprueba el código del país, el prefijo de área y el número.',
@@ -59,7 +59,7 @@
       reviewText: 'L’envoi en ligne n’est pas encore activé. Aucune donnée n’a été envoyée ni enregistrée. Copiez le message et transmettez-le par les canaux officiels d’Aureum.',
       copy: 'Copier le message', instagram: 'Ouvrir Instagram', edit: 'Modifier les informations', copied: 'Message copié. Transmettez-le par un canal officiel d’Aureum.',
       copyFailed: 'La copie automatique a échoué. Sélectionnez le texte et copiez-le manuellement.',
-      successTitle: 'Votre demande a été envoyée !', successText: 'Nous avons reçu votre demande et l’avons transmise à l’équipe Aureum. Nous vous contacterons aux coordonnées indiquées.'
+      successTitle: 'Votre demande a été envoyée !', successText: 'Nous avons reçu votre demande et l’avons transmise à l’équipe Aureum. Nous vous contacterons aux coordonnées indiquées.',
       newRequest: 'Envoyer une autre demande', error: 'Impossible d’enregistrer la demande. Réessayez ou utilisez un canal officiel.', notificationError: 'Votre demande a été enregistrée, mais l’équipe n’a pas encore été notifiée. Réessayez dans quelques minutes.',
       contactError: 'Indiquez au moins un moyen de contact : e-mail ou téléphone/WhatsApp.',
       emailError: 'Vérifiez l’adresse e-mail.', phoneError: 'Vérifiez l’indicatif du pays, l’indicatif régional et le numéro.',
@@ -74,7 +74,7 @@
       reviewText: 'Die Online-Übermittlung ist noch nicht aktiviert. Es wurden keine Daten gesendet oder gespeichert. Kopieren Sie die Nachricht und senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
       copy: 'Nachricht kopieren', instagram: 'Instagram öffnen', edit: 'Angaben bearbeiten', copied: 'Nachricht kopiert. Senden Sie sie über einen offiziellen Aureum-Kontaktkanal.',
       copyFailed: 'Automatisches Kopieren nicht möglich. Markieren und kopieren Sie den Text bitte manuell.',
-      successTitle: 'Ihre Anfrage wurde gesendet!', successText: 'Wir haben Ihre Anfrage erhalten und an das Aureum-Team weitergeleitet. Wir kontaktieren Sie über die angegebenen Kontaktdaten.'
+      successTitle: 'Ihre Anfrage wurde gesendet!', successText: 'Wir haben Ihre Anfrage erhalten und an das Aureum-Team weitergeleitet. Wir kontaktieren Sie über die angegebenen Kontaktdaten.',
       newRequest: 'Weitere Anfrage senden', error: 'Die Anfrage konnte nicht gespeichert werden. Versuchen Sie es erneut oder nutzen Sie einen offiziellen Kontaktkanal.', notificationError: 'Ihre Anfrage wurde gespeichert, aber das Team wurde noch nicht benachrichtigt. Bitte versuchen Sie es in einigen Minuten erneut.',
       contactError: 'Geben Sie mindestens eine Kontaktmöglichkeit an: E-Mail oder Telefon/WhatsApp.',
       emailError: 'Bitte prüfen Sie die E-Mail-Adresse.', phoneError: 'Bitte prüfen Sie Ländervorwahl, Ortsvorwahl und Rufnummer.',
