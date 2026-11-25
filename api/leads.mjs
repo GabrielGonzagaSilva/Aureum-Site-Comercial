@@ -34,12 +34,16 @@ function isSameOrigin(request) {
   }
 }
 
-export async function GET() {
-  const config = getLeadIntakeConfig(process.env, APPROVED_PRIVACY_NOTICE_VERSION);
+export function getLeadStatus(env = process.env) {
+  const config = getLeadIntakeConfig(env, APPROVED_PRIVACY_NOTICE_VERSION);
   return json({
     enabled: config.enabled,
     privacyNoticeVersion: config.privacyNoticeVersion,
   });
+}
+
+export async function GET() {
+  return getLeadStatus(process.env);
 }
 
 export async function handleLeadPost(request, {
@@ -163,6 +167,6 @@ export async function handleLeadPost(request, {
   return json({ ok: true, requestId, duplicate: !stored }, stored ? 201 : 200);
 }
 
-export function POST(request) {
-  return handleLeadPost(request);
+export function POST(request, options) {
+  return handleLeadPost(request, options);
 }
