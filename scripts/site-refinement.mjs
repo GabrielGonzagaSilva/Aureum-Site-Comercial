@@ -38,6 +38,8 @@ export function refineSiteHtml(html, locale) {
     footer.replace('/assets/brand/logo-reduzida-branco.svg','/assets/brand/logo-reduzida-bege.svg')
       // Keep social links directly below the logo, without the brand description.
       .replace(/(<div class="f-brand">\s*<a\b[^>]*>[\s\S]*?<\/a>)\s*<p>[\s\S]*?<\/p>(?=\s*<div class="f-social">)/, '$1\n')
+      .replace(/<span class="f-social-link is-pending" role="img" aria-label="Facebook da Aureum[^"]*" title="[^"]*">([\\s\\S]*?)<\\/span>/, '<a class="f-social-link" href="https://www.facebook.com/profile.php?id=61596232775892" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Aureum">$1</a>')
+      .replace(/<span class="f-social-link is-pending" role="img" aria-label="LinkedIn da Aureum[^"]*" title="[^"]*">([\\s\\S]*?)<\\/span>/, '<a class="f-social-link" href="https://www.linkedin.com/company/aureum-assessoria-internacional/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Aureum">$1</a>')
       .replace(/<nav\b[^>]*><h4>[^<]+<\/h4>(?:<a href="(?:\/(?:(?:en|es|fr|de)\/)?)?#servicos">[^<]+<\/a>)+<\/nav>/g, nav => {
       const heading=nav.match(/<h4>[^<]+<\/h4>/)[0];
       const opening=nav.match(/^<nav\b[^>]*>/)[0];
