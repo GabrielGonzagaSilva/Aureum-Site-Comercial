@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const logo = page => page.locator('#hdr .navbar .logo');
-const hero = page => page.locator('#home .hero-logo-centered-test');
+const hero = page => page.locator('#home #top');
 
 test.beforeEach(async ({ page }) => {
   await page.route(/https:\/\/fonts\.(googleapis|gstatic)\.com\//, route => route.abort());
